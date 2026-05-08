@@ -829,7 +829,8 @@ h1 .amp{{color:var(--accent);font-variation-settings:"MONO" 0,"CASL" 1,"CRSV" 1;
 .sort:hover{{color:var(--ink);background:var(--bg-2)}}
 .sort.active{{color:var(--ink);font-variation-settings:"MONO" 1,"wght" 600;border-color:var(--rule);background:var(--bg-2)}}
 .sort .arrow{{display:inline-block;min-width:8px;color:var(--accent);font-size:11px;font-variation-settings:"wght" 700}}
-.item{{display:grid;grid-template-columns:56px 1fr auto;gap:20px;padding:20px 0;border-bottom:1px solid var(--rule);align-items:start}}
+.item{{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:20px;padding:20px 0;border-bottom:1px solid var(--rule);align-items:start}}
+.body{{min-width:0;overflow-wrap:anywhere}}
 .item.hidden{{display:none}}
 .rank{{font-family:var(--ft-mono);font-variation-settings:"MONO" 1,"wght" 500;font-size:22px;color:var(--ink-2);text-align:right;padding-top:2px;font-feature-settings:"tnum"}}
 .rank-1,.rank-2,.rank-3{{color:var(--accent);font-variation-settings:"MONO" 1,"wght" 700}}
@@ -867,12 +868,13 @@ h1 .amp{{color:var(--accent);font-variation-settings:"MONO" 0,"CASL" 1,"CRSV" 1;
 footer{{margin-top:60px;padding-top:18px;border-top:1px solid var(--rule);color:var(--dim);font-size:12px;font-family:var(--ft-mono);font-variation-settings:"MONO" 1;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}}
 @media (max-width:640px){{
   body{{font-size:15px}}
-  .wrap{{padding:24px 18px 60px}}
-  .item{{grid-template-columns:32px 1fr;gap:14px;padding:16px 0}}
+  .wrap{{padding:24px 18px 60px;max-width:100%}}
+  .item{{grid-template-columns:32px minmax(0,1fr);gap:14px;padding:16px 0}}
   .right{{grid-column:2;text-align:left;min-width:0;font-size:11.5px}}
   h1{{font-size:30px}}
   .body h2{{font-size:17.5px;letter-spacing:-0.01em}}
   .summary{{font-size:14.5px}}
+  .also{{overflow-wrap:anywhere}}
 }}
 </style>
 </head>
@@ -881,7 +883,6 @@ footer{{margin-top:60px;padding-top:18px;border-top:1px solid var(--rule);color:
 <h1>feedrank<span class="amp">.</span>security</h1>
 <div class="tag">supply chain &amp; infra security</div>
 <div class="meta">
-<span><b>{n}</b> items</span>
 <span><b>{ns}</b> sources</span>
 <span><b>{days}</b>d window</span>
 <span>generated <b>{date}</b></span>
@@ -1136,8 +1137,8 @@ def render_html(items: list[Item], n_sources: int, days: int) -> str:
 <span>score {it.score:.3f}</span>
 </div></div>''')
     return HTML.format(
-        date=datetime.now().strftime("%a %b %d %Y · %H:%M"),
-        n=len(items), ns=n_sources, days=days,
+        date=datetime.now().astimezone().strftime("%a %b %d %Y · %H:%M %Z"),
+        ns=n_sources, days=days,
         items="\n".join(parts) if parts else '<div class="empty">no items</div>',
     )
 
