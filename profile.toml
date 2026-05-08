@@ -1,0 +1,157 @@
+# feedrank — your interest profile
+#
+# This is the default profile shipped with the repo. It's organized around
+# incident *patterns* — the shapes incidents take, not the product names
+# they happen to involve. Pattern vocabulary tends to show up in actual
+# reporting, so BM25 ranks well even for products you never explicitly named.
+#
+# Customize freely. To keep a private profile out of git, copy this file to
+# `profile.local.toml` and pass `--profile profile.local.toml` at runtime —
+# `.gitignore` already excludes it.
+
+[interests]
+# 10 incident-pattern topics. Each is a separate BM25 query; an item's score
+# is the max across all topics, so it only needs to match one pattern well.
+# Distinctive vocabulary beats generic — "supply chain compromise" is more
+# discriminating than "security incident".
+topics = [
+    # Supply chain compromise — malicious packages, hijacked maintainers,
+    # backdoors slipped into trusted libraries
+    "supply chain compromise malicious package npm pypi crates rubygems nuget composer typosquatting backdoor obfuscated payload credential stealer compromised maintainer postinstall script",
+
+    # Cloud misconfiguration / privilege issues — exposed buckets, leaked
+    # credentials, IAM mistakes, workload identity escalation
+    "cloud misconfiguration aws gcp azure iam policy bucket public exposed credentials leaked privilege escalation workload identity service account role assumption",
+
+    # Identity / auth bypass — OAuth, SAML, JWT, MFA bypass, session theft,
+    # phishing, AD/Entra/Okta-style identity provider compromise
+    "identity authentication bypass oauth saml oidc jwt token session mfa bypass single sign on active directory entra okta credential phishing kerberos ntlm relay",
+
+    # Exploit in the wild — actively exploited CVEs, zero-days, emergency
+    # advisories, unauthenticated RCE
+    "actively exploited zero-day cve remote code execution unauthenticated patch tuesday emergency advisory exploitation in the wild kev catalog",
+
+    # Ransomware, breach, data theft
+    "ransomware data breach extortion exfiltration incident response leak ransom payment threat actor double extortion",
+
+    # Hypervisor / container / kernel escape — escape primitives across all
+    # virtualization layers, plus kernel privilege escalation
+    "hypervisor escape vm breakout container escape kernel privilege escalation namespace cgroup syscall qemu kvm vmware esxi guest host runc",
+
+    # Infrastructure runtime CVE — TLS libs, kernel, openssh, dns, networking
+    # protocols, low-level libraries used by everything
+    "openssl tls glibc kernel openssh dns dnssec bgp networking protocol library vulnerability cryptographic flaw memory corruption",
+
+    # CI/CD and developer tooling abuse — github actions runners, build
+    # provenance, supply chain attacks targeting the build pipeline itself
+    "ci cd build pipeline github actions gitlab runner self-hosted oidc token theft provenance slsa sigstore in-toto compromised workflow malicious commit",
+
+    # DDoS / availability / network attacks
+    "ddos botnet outage resolver cdn rate limit volumetric amplification dns water torture mirai layer 7 application layer",
+
+    # Vendor advisory — appliance / firewall / VPN / management plane CVEs
+    # and emergency patches from network and security vendors
+    "vendor advisory firewall vpn appliance management plane firmware emergency patch authentication bypass cisco palo alto fortinet citrix juniper f5 ivanti",
+]
+
+[stack]
+# Hard filter — case-insensitive substring match. An item must contain at
+# least one of these to survive (skip with --no-filter). This list is
+# deliberately broader than the topic vocabulary so legitimate items aren't
+# dropped just because they use a product name the topic line didn't mention.
+keywords = [
+    # === Languages / package ecosystems ===
+    "npm", "pypi", "python", "node", "nodejs", "javascript", "typescript",
+    "rust", "cargo", "crates.io", "go ", "golang", "java", "jvm", "jdk",
+    "ruby", "rubygems", "gem ", "composer", "packagist", "php",
+    ".net", "dotnet", "nuget", "csharp",
+
+    # === Build / CI / dev tooling ===
+    "github", "github actions", "gitlab", "jenkins", "circleci",
+    "buildkite", "ci/cd", "supply chain", "sbom", "slsa", "sigstore",
+    "provenance", "runner",
+
+    # === Containers / orchestration / IaC ===
+    "kubernetes", "k8s", "container", "docker", "helm",
+    "containerd", "runc", "podman",
+    "istio", "envoy", "argocd",
+    "terraform", "ansible", "pulumi",
+
+    # === Virtualization / private cloud / bare metal ===
+    "kvm", "qemu", "libvirt", "kubevirt",
+    "vmware", "esxi", "vcenter", "vsphere", "nsx",
+    "xen", "hyper-v", "hyperv", "proxmox",
+    "openstack", "ovn", "ovs",
+    "ceph", "minio", "ipmi", "redfish",
+    "sonic", "arista", "cisco", "juniper", "frr",
+
+    # === Cloud — three majors plus common services ===
+    "aws", "amazon web services", "ec2", "eks", "ecs", "iam", "s3",
+    "rds", "lambda", "cloudfront", "waf", "guardduty", "cloudtrail",
+    "kms", "secrets manager",
+    "gcp", "google cloud", "gke", "cloud run", "bigquery",
+    "azure", "entra", "active directory", "aks", "key vault", "sentinel",
+
+    # === Operating systems ===
+    "linux", "kernel", "ubuntu", "debian", "rhel", "rocky", "alpine",
+    "systemd", "glibc", "musl",
+    "windows", "windows server", "ntlm", "kerberos", "lsass",
+    "smb", "rdp",
+    "macos", "apple", "xprotect", "gatekeeper", "keychain",
+
+    # === Databases / caches / queues / data ===
+    "postgres", "postgresql", "mysql", "mariadb", "sqlite",
+    "mongodb", "redis", "valkey",
+    "kafka", "rabbitmq", "nats",
+    "elasticsearch", "opensearch", "clickhouse", "snowflake",
+
+    # === Identity / auth / SaaS commonly hit ===
+    "okta", "auth0", "duo", "ping identity",
+    "saml", "oidc", "oauth", "jwt", "mfa", "passkey", "fido2",
+    "session", "token", "credential", "1password", "lastpass", "bitwarden",
+    "slack", "teams", "zoom", "atlassian", "jira", "confluence",
+    "salesforce", "hubspot", "stripe", "shopify", "zendesk",
+
+    # === Network / edge / TLS ===
+    "tls", "ssl", "openssl", "boringssl", "rustls",
+    "certificate", "ca", "acme", "lets encrypt", "x.509",
+    "bgp", "dns", "dnssec", "bind", "unbound",
+    "cloudflare", "fastly", "akamai", "cdn",
+    "vpn", "wireguard", "openvpn", "ipsec", "ssh", "openssh",
+
+    # === Network / security appliances (vendor advisory pattern) ===
+    "fortinet", "palo alto", "checkpoint", "f5", "ivanti", "sonicwall",
+    "watchguard", "barracuda", "pulse secure", "globalprotect",
+    "asa", "firewall", "vpn appliance",
+
+    # === Observability / SIEM / endpoint ===
+    "grafana", "prometheus", "opentelemetry", "datadog", "splunk",
+    "elastic", "siem", "edr", "xdr", "crowdstrike", "sentinelone",
+    "defender",
+
+    # === Browser / runtime / common consumer attack surface ===
+    "chrome", "chromium", "firefox", "safari", "edge", "v8", "webkit",
+    "electron",
+
+    # === Severity / incident vocabulary ===
+    "rce", "0day", "zero-day", "exploit", "actively exploited",
+    "in the wild", "kev", "emergency advisory",
+    "ransomware", "breach", "stealer", "rat", "backdoor",
+    "exfiltration", "data leak",
+    "deserialization", "ssrf", "sql injection", "xss", "csrf",
+    "privilege escalation", "authentication bypass",
+    "cve-", "cvss", "critical severity", "high severity",
+
+    # === Active campaign markers — refresh these as new ones land ===
+    "shai-hulud", "tj-actions", "lightning",
+]
+
+# Boost-term BM25 sub-query. Items containing these tokens get an additive
+# bonus on top of the topic match. Use sparingly — boost what matters *most*
+# to your team. Editing this list is the cheapest way to shape your top items.
+boost_terms = [
+    "supply chain", "actively exploited", "zero-day",
+    "credential theft", "stealer",
+    "kubernetes", "openssl", "active directory",
+    "ransomware", "data breach",
+]

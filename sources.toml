@@ -1,0 +1,261 @@
+# feedrank sources
+# Categories: advisory, research, aggregator, government, build
+#
+# All URLs in this file have been verified working as of v6.
+# Disabled sources are at the bottom with notes on why.
+
+# ---------------------------------------------------------------------------
+# Advisory (vulnerability databases, package compromises)
+# ---------------------------------------------------------------------------
+
+# GitHub Advisory Database — REST API (the public Atom endpoint was deprecated).
+# Unauthenticated rate limit is 60/hr. Set GH_TOKEN for 5000/hr.
+
+[[source]]
+name = "GHSA — npm"
+url = "ghsa-api://npm"
+category = "advisory"
+weight = 0.55
+
+[[source]]
+name = "GHSA — pip"
+url = "ghsa-api://pip"
+category = "advisory"
+weight = 0.55
+
+[[source]]
+name = "GHSA — composer"
+url = "ghsa-api://composer"
+category = "advisory"
+weight = 0.55
+
+[[source]]
+name = "GHSA — go"
+url = "ghsa-api://go"
+category = "advisory"
+weight = 0.55
+
+[[source]]
+name = "GHSA — rust"
+url = "ghsa-api://rust"
+category = "advisory"
+weight = 0.55
+
+[[source]]
+name = "RustSec"
+url = "https://rustsec.org/feed.xml"
+category = "advisory"
+weight = 1.0
+
+[[source]]
+name = "OpenSSF Malicious Packages"
+url = "https://github.com/ossf/malicious-packages/commits/main.atom"
+category = "advisory"
+weight = 1.0
+
+[[source]]
+name = "PyPI Security Announcements"
+url = "https://discuss.python.org/c/security-announce/30.rss"
+category = "advisory"
+weight = 1.0
+
+# ---------------------------------------------------------------------------
+# Vendor research (deep IOC posts and campaign analysis)
+# ---------------------------------------------------------------------------
+
+[[source]]
+name = "Wiz Research"
+url = "https://www.wiz.io/feed/rss.xml"
+category = "research"
+weight = 1.3
+
+[[source]]
+name = "Aqua Nautilus"
+url = "https://blog.aquasec.com/rss.xml"
+category = "research"
+weight = 1.1
+
+[[source]]
+name = "Sysdig"
+url = "https://sysdig.com/feed"
+category = "research"
+weight = 1.0
+
+[[source]]
+name = "Datadog Security Labs"
+url = "https://securitylabs.datadoghq.com/rss/feed.xml"
+category = "research"
+weight = 1.0
+
+[[source]]
+name = "ReversingLabs"
+url = "https://www.reversinglabs.com/blog/rss.xml"
+category = "research"
+weight = 1.1
+
+[[source]]
+name = "Snyk"
+url = "https://snyk.io/blog/feed/"
+category = "research"
+weight = 0.9
+
+[[source]]
+name = "JFrog Security Research"
+url = "https://jfrog.com/blog/category/security-research/feed/"
+category = "research"
+weight = 1.0
+
+[[source]]
+name = "Checkmarx Zero"
+url = "https://checkmarx.com/feed/"
+category = "research"
+weight = 0.9
+
+[[source]]
+name = "OX Security"
+url = "https://www.ox.security/feed/"
+category = "research"
+weight = 0.9
+
+[[source]]
+name = "Phylum (Veracode)"
+url = "https://www.veracode.com/blog/feed/"
+category = "research"
+weight = 0.9
+
+[[source]]
+name = "StepSecurity"
+url = "https://www.stepsecurity.io/blog/rss.xml"
+category = "research"
+weight = 1.15
+
+[[source]]
+name = "Endor Labs"
+url = "https://www.endorlabs.com/learn/rss.xml"
+category = "research"
+weight = 0.9
+
+# ---------------------------------------------------------------------------
+# Aggregators (editorial judgment, broader coverage)
+# ---------------------------------------------------------------------------
+
+[[source]]
+name = "Risky Business News"
+url = "https://risky.biz/feeds/risky-business-news/"
+category = "aggregator"
+weight = 1.1
+
+[[source]]
+name = "tl;dr sec"
+url = "https://tldrsec.com/feed.xml"
+category = "aggregator"
+weight = 1.0
+
+[[source]]
+name = "Detection Engineering Weekly"
+url = "https://www.detectionengineering.net/feed"
+category = "aggregator"
+weight = 0.9
+
+[[source]]
+name = "The Hacker News"
+url = "https://feeds.feedburner.com/TheHackersNews"
+category = "aggregator"
+weight = 0.7
+
+[[source]]
+name = "BleepingComputer"
+url = "https://www.bleepingcomputer.com/feed/"
+category = "aggregator"
+weight = 0.7
+
+# ---------------------------------------------------------------------------
+# Government / authoritative
+# ---------------------------------------------------------------------------
+
+[[source]]
+name = "CISA Advisories"
+url = "https://www.cisa.gov/cybersecurity-advisories/all.xml"
+category = "government"
+weight = 1.0
+
+# CISA Known Exploited Vulnerabilities — every entry treated as critical (=actively exploited).
+[[source]]
+name = "CISA KEV"
+url = "kev-api://recent"
+category = "government"
+weight = 1.3
+
+# ---------------------------------------------------------------------------
+# Build / CI tooling
+# ---------------------------------------------------------------------------
+
+[[source]]
+name = "GitHub Security Blog"
+url = "https://github.blog/security/feed/"
+category = "build"
+weight = 0.9
+
+[[source]]
+name = "GitHub Changelog"
+url = "https://github.blog/changelog/feed/"
+category = "build"
+weight = 0.6
+
+[[source]]
+name = "Socket Blog"
+url = "https://socket.dev/api/blog/feed.atom"
+category = "advisory"
+weight = 1.2
+
+# ---------------------------------------------------------------------------
+# DISABLED — sources that don't have a working RSS endpoint as of v6.
+# Re-enable after verifying URLs with: curl -sI <url>
+# ---------------------------------------------------------------------------
+
+# Socket Blog at /blog/rss.xml — superseded by /api/blog/feed.atom above.
+# [[source]]
+# name = "Socket Blog (old)"
+# url = "https://socket.dev/blog/rss.xml"
+# category = "advisory"
+# weight = 1.2
+
+# OSV.dev — REMOVED. Their /v1/query API requires per-package queries, not
+# ecosystem-wide. The GHSA ecosystems above already cover what OSV would provide.
+# [[source]]
+# name = "OSV.dev"
+# url = "osv-api://recent"
+# category = "advisory"
+# weight = 1.0
+
+# Semgrep — RSS endpoint returns HTML page, not a feed. Their blog probably
+# moved to a hosted platform without RSS.
+# [[source]]
+# name = "Semgrep"
+# url = "https://semgrep.dev/blog/rss.xml"
+# category = "research"
+# weight = 1.0
+
+# CyberWire Daily — feed URL responds 200 but content was empty in earlier
+# testing. Worth re-checking on your machine.
+# [[source]]
+# name = "CyberWire Daily"
+# url = "https://thecyberwire.com/feeds/rss.xml"
+# category = "aggregator"
+# weight = 0.9
+
+# CERT-IN — page exists but returns HTML, not RSS. They may have removed
+# the feed.
+# [[source]]
+# name = "CERT-IN"
+# url = "https://www.cert-in.org.in/RSSFeed.jsp"
+# category = "government"
+# weight = 0.8
+
+# Sigstore — all common RSS paths return 404. Check blog.sigstore.dev manually
+# if you want this back.
+# [[source]]
+# name = "Sigstore"
+# url = "https://blog.sigstore.dev/rss/"
+# category = "build"
+# weight = 0.8

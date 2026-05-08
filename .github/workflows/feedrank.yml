@@ -1,0 +1,73 @@
+name: feedrank
+
+on:
+  schedule:
+    # Every 6 hours at :15 past (off-the-hour to dodge GitHub's busiest scheduler windows).
+    # GitHub's cron is best-effort: 5–15 min of jitter is normal, longer delays
+    # during peak load. If a tick is dropped, the next one runs as scheduled.
+    - cron: '15 */6 * * *'
+  workflow_dispatch:  # manual trigger from the Actions tab
+  push:
+    branches: [main]
+    paths:
+      - 'feedrank.py'
+      - 'sources.toml'
+      - 'profile.toml'
+      - 'requirements.txt'
+      - '.github/workflows/feedrank.yml'
+
+# Prevent overlapping runs (rare, but cheap insurance)
+concurrency:
+  group: feedrank
+  cancel-in-progress: false
+
+permissions:
+  contents: write    # required to push to gh-pages
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run feedrank
+        env:
+          # Optional but recommended: lifts the GHSA REST rate limit
+          # from 60/hr to 5000/hr. Add a fine-grained PAT (public-repo
+          # read-only is enough) and store as repo secret named GH_TOKEN.
+          # Without it, with 5 GHSA ecosystems × 4 runs/day = 20 calls/day,
+          # you're well under the 60/hr unauthenticated limit anyway.
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: python feedrank.py --days 5
+
+      - name: Add a tiny index.html that redirects to feedrank.html
+        run: |
+          cat > out/index.html <<'EOF'
+          <!doctype html><meta charset=utf-8>
+          <title>feedrank.security</title>
+          <meta http-equiv=refresh content="0; url=feedrank.html">
+          <link rel=canonical href=feedrank.html>
+          <p>redirecting to <a href=feedrank.html>feedrank.html</a>…
+          EOF
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          # Keep history clean — gh-pages branch is single-purpose
+          force_orphan: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'feedrank: refresh dashboard'
