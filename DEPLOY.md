@@ -52,12 +52,6 @@ schedule:
 
 GitHub's cron has 5–15 min jitter and occasionally drops runs.
 
-## Cost
-
-Public repo: **$0**. GitHub Actions has no monthly minute cap on public repos, and feedrank uses ~150 minutes/month. Pages bandwidth (100 GB/month) and site size (1 GB) are far beyond what a ~150 KB dashboard needs.
-
-Private repo: 2,000 free Actions minutes/month on GitHub Free, 3,000 on Pro. Still well under the cap.
-
 ## Making it private
 
 - **Private repo + Pages.** Requires GitHub Pro ($4/month). Anyone with repo read access sees the page.
