@@ -51,15 +51,8 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: python feedrank.py --days 5
 
-      - name: Add a tiny index.html that redirects to feedrank.html
-        run: |
-          cat > out/index.html <<'EOF'
-          <!doctype html><meta charset=utf-8>
-          <title>feedrank.security</title>
-          <meta http-equiv=refresh content="0; url=feedrank.html">
-          <link rel=canonical href=feedrank.html>
-          <p>redirecting to <a href=feedrank.html>feedrank.html</a>…
-          EOF
+      - name: Rename for GitHub Pages
+        run: mv out/feedrank.html out/index.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
