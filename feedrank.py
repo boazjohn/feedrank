@@ -23,6 +23,7 @@ import os
 import re
 import sys
 import time
+import functools
 import tomllib
 import urllib.request
 from collections import Counter
@@ -105,6 +106,7 @@ class Item:
     severity: str = ""
     cvss: float = 0.0
     cves: list[str] = field(default_factory=list)
+    packages: list[str] = field(default_factory=list)
     corroboration: int = 1
     other_sources: list[dict] = field(default_factory=list)
     id: str = ""
@@ -166,6 +168,7 @@ def fetch_ghsa_api(ecosystem: str, source: dict, timeout: int) -> list[Item]:
             severity=(adv.get("severity") or "").lower(),
             cvss=float((adv.get("cvss") or {}).get("score") or 0.0),
             cves=cves,
+            packages=pkgs,
         ))
     log.info(f"fetched {len(items):3d} from {name}")
     return items
@@ -344,7 +347,7 @@ SEVERITY_TERMS = {
     "hijacked": 8.5, "backdoored": 9.0, "backdoor": 8.5,
     "malicious package": 8.5, "malicious version": 8.5,
     "obfuscated payload": 8.5, "obfuscated javascript": 8.0,
-    "self-propagat": 9.0, "worm": 8.5,
+    "self-propagating": 9.0, "self-propagation": 9.0, "worm": 8.5,
 }
 
 # Tokenizer that preserves security-relevant tokens:
@@ -388,16 +391,60 @@ def within_days(item: Item, days: int) -> bool:
     return dt >= datetime.now(timezone.utc) - timedelta(days=days)
 
 
+@functools.lru_cache(maxsize=4096)
+def _kw_re(kw: str) -> re.Pattern:
+    """Word-bounded matcher for a keyword.
+
+    Plain substring matching tags 'rce' inside 'source' and 'helm' inside
+    'overwhelmed', producing nonsense severity boosts and matched-keyword
+    chips. We add \\b on each side, but only where the boundary actually
+    fires — for keywords starting or ending with non-word chars (e.g. '.net',
+    'cve-', 'go ' with trailing space) the keyword's own non-word char serves
+    as the natural boundary.
+    """
+    escaped = re.escape(kw)
+    left = r"\b" if kw[:1].isalnum() else ""
+    right = r"\b" if kw[-1:].isalnum() else ""
+    return re.compile(left + escaped + right)
+
+
 def keyword_filter(items: list[Item], keywords: list[str]) -> list[Item]:
     kws = [k.lower() for k in keywords]
     out = []
     for it in items:
         hay = (it.title + " " + it.summary).lower()
-        matched = [k for k in kws if k in hay]
+        matched = [k for k in kws if _kw_re(k).search(hay)]
         if matched:
             it.matched_keywords = matched
             out.append(it)
     return out
+
+
+# Title patterns that almost always indicate vendor marketing or sponsored
+# content rather than security advisory / incident reporting. Matched
+# title-only (summaries can legitimately mention 'webinar' as an aside).
+# Add patterns sparingly — every entry is a hard drop.
+MARKETING_RE = re.compile(
+    r"""
+      \|\s*blog\s*\|                                         # "| Blog |" suffix (Endor Labs and similar)
+    | \bwebinar\b
+    | \bon[-\s]?demand\s+(?:webinar|event|recording)\b
+    | \bregister\s+(?:now|today|here|for)\b
+    | \bwhitepaper\b
+    | \bsponsored\s+(?:by|content|post)\b
+    | \bcase\s+stud(?:y|ies)\b
+    | \bcustomer\s+stor(?:y|ies)\b
+    | \bdownload\s+(?:the|our)\s+(?:report|guide|ebook|whitepaper)\b
+    | \bsee\s+and\s+secure\b                                  # Wiz partnership-post pattern
+    | \bsolve\s+your\s+\S+(?:\s+\S+){0,3}\s+(?:problem|challenge|issue)s?\b  # "Solve Your X Problem"
+    """,
+    re.IGNORECASE | re.VERBOSE,
+)
+
+
+def marketing_filter(items: list[Item]) -> list[Item]:
+    """Drop items whose titles match obvious vendor-marketing patterns."""
+    return [it for it in items if not MARKETING_RE.search(it.title)]
 
 
 def dedupe(items: list[Item]) -> list[Item]:
@@ -423,7 +470,7 @@ def enrich(it: Item) -> None:
     if not it.severity and it.cvss == 0.0:
         text_lc = text.lower()
         for term, cvss in SEVERITY_TERMS.items():
-            if term in text_lc:
+            if _kw_re(term).search(text_lc):
                 it.cvss = max(it.cvss, cvss)
         if it.cvss >= 9.0:   it.severity = "critical"
         elif it.cvss >= 7.0: it.severity = "high"
@@ -476,13 +523,17 @@ def cluster_and_collapse(items: list[Item]) -> list[Item]:
 
     An item is in the same cluster as another if they share:
       - a CVE ID, or
-      - a distinctive campaign / package name token
+      - a primary affected package (advisory feeds), or
+      - a distinctive campaign token from `_DISTINCTIVE_RE`.
 
     Within a cluster, one item becomes the representative. Selection priority:
       higher source weight -> advisory > research > government > build > aggregator -> recent
 
-    The reps inherit the union of CVEs and the highest CVSS / severity in
-    the cluster. The other items become 'other_sources' references on the rep.
+    The rep inherits the union of CVEs and the highest CVSS / severity in
+    the cluster. Other items become 'other_sources' references on the rep,
+    deduped by link (so a single source publishing multiple distinct
+    advisories about the same package — e.g. a vm2 GHSA wave — stays
+    visible rather than silently collapsing).
     """
     n = len(items)
     if n < 2:
@@ -507,6 +558,19 @@ def cluster_and_collapse(items: list[Item]) -> list[Item]:
         for cve in it.cves:
             cve_groups.setdefault(cve, []).append(i)
     for idxs in cve_groups.values():
+        for j in idxs[1:]:
+            union(idxs[0], j)
+
+    # Package-based unions (advisory feeds): cluster all items affecting the
+    # same package. A single project getting hit with a wave of GHSAs (e.g.
+    # vm2) otherwise floods the feed with what looks like duplicates.
+    pkg_groups: dict[str, list[int]] = {}
+    for i, it in enumerate(items):
+        if it.packages:
+            pkg_groups.setdefault(it.packages[0].lower(), []).append(i)
+    for idxs in pkg_groups.values():
+        if len(idxs) < 2:
+            continue
         for j in idxs[1:]:
             union(idxs[0], j)
 
@@ -564,16 +628,19 @@ def cluster_and_collapse(items: list[Item]) -> list[Item]:
         max_cvss = rep.cvss
         sev_order = {"critical": 4, "high": 3, "medium": 2, "low": 1, "": 0}
         best_sev = rep.severity
-        seen_sources = {rep.source}  # don't list rep itself
+        # Dedupe by link, not by source name — a single source publishing
+        # multiple distinct advisories about the same package (e.g. 11 vm2
+        # GHSAs on one day) is exactly what package-clustering catches, and
+        # collapsing them by source would silently hide that count.
+        seen_links = {rep.link}
         for other in members[1:]:
             all_cves.update(other.cves)
             max_cvss = max(max_cvss, other.cvss)
             if sev_order.get(other.severity, 0) > sev_order.get(best_sev, 0):
                 best_sev = other.severity
-            # Dedupe by source name; keep the most recent if same source has multiple
-            if other.source in seen_sources:
+            if other.link in seen_links:
                 continue
-            seen_sources.add(other.source)
+            seen_links.add(other.link)
             rep.other_sources.append({
                 "source": other.source,
                 "link": other.link,
@@ -583,8 +650,18 @@ def cluster_and_collapse(items: list[Item]) -> list[Item]:
         rep.cves = sorted(all_cves)
         rep.cvss = max_cvss
         rep.severity = best_sev
-        # Corroboration counts distinct sources (more honest signal than total reports)
-        rep.corroboration = len(seen_sources)
+        rep.corroboration = len(seen_links)
+        # Use the freshest publish date across the cluster as the rep's date.
+        # Makes "this incident is active as of X" the displayed semantics, and
+        # lets the trending chip's day-bucket sort match without exposing a
+        # second timestamp to the UI. Singletons (skipped via the `continue`
+        # above) keep their own date.
+        all_dates = [rep.published] + [
+            (o.get("published") or "") for o in rep.other_sources
+        ]
+        valid = [d for d in all_dates if d]
+        if valid:
+            rep.published = max(valid)
         out.append(rep)
 
     return out
@@ -631,19 +708,27 @@ def rank(items: list[Item], topics: list[str], boost_terms: list[str]) -> list[I
     norm_scores = [s / max_raw if max_raw > 0 else 0.0 for s in raw_scores]
 
     now = datetime.now(timezone.utc)
+
     for it, bm in zip(items, norm_scores):
         enrich(it)
         it.bm25 = bm
         try:
+            # rep.published was rewritten to the freshest cluster-member date
+            # in cluster_and_collapse, so this naturally reflects "trending".
             dt = datetime.fromisoformat(it.published.replace("Z", "+00:00"))
             age_days = (now - dt).days
-            recency = max(0.3, 1.0 - age_days / 14.0)
+            # 7-day decay (was 14) gives stronger recency bias:
+            # today=1.0, 3 days=0.57, 7+ days clamped to 0.3.
+            recency = max(0.3, 1.0 - age_days / 7.0)
         except Exception:
             recency = 0.7
 
         sev = severity_factor(it)
-        # Corroboration: 1 source = 1.0x, 2 = 1.28x, 3 = 1.44x, 4 = 1.55x
-        corrob = 1.0 + 0.4 * math.log1p(it.corroboration - 1)
+        # Corroboration: 1 = 1.00x, 2 = 1.42x, 3 = 1.77x, 4 = 2.04x, 8 = 2.46x.
+        # Stronger lift than a flat severity boost — multi-source corroboration
+        # is one of the few signals that distinguishes real incidents from
+        # single-source vendor noise.
+        corrob = 1.0 + 0.7 * math.log1p(it.corroboration - 1)
 
         # Score formula:
         # - If item has good BM25 match: standard score
@@ -662,7 +747,35 @@ def rank(items: list[Item], topics: list[str], boost_terms: list[str]) -> list[I
 
         it.score = base * recency * it.source_weight * sev * corrob
 
-    items.sort(key=lambda x: x.score, reverse=True)
+    # Trending sort, 4 keys:
+    #   1. tier_main — critical/high (1) vs medium/low/none (0). Keeps today's
+    #      no-sev blog from ever sitting above yesterday's CVSS 10 cluster.
+    #   2. day_bucket — today before yesterday before older (within tier).
+    #   3. is_critical — within tier 1 + same day, critical before high.
+    #   4. score — final tiebreak.
+    # day_bucket reads `it.published`, which `cluster_and_collapse` rewrote
+    # to the freshest cluster-member date — so a 4-day-old rep with a
+    # fresh-today republish bucketizes as today.
+    def _sev_tier(it: Item) -> int:
+        return 1 if it.severity in ("critical", "high") else 0
+
+    def _is_critical(it: Item) -> int:
+        return 1 if it.severity == "critical" else 0
+
+    def _day_bucket(it: Item) -> int:
+        try:
+            return datetime.fromisoformat(
+                it.published.replace("Z", "+00:00")
+            ).date().toordinal()
+        except Exception:
+            return 0
+
+    items.sort(key=lambda x: (
+        -_sev_tier(x),
+        -_day_bucket(x),
+        -_is_critical(x),
+        -x.score,
+    ))
     return items
 
 
@@ -716,7 +829,6 @@ h1 .amp{{color:var(--accent);font-variation-settings:"MONO" 0,"CASL" 1,"CRSV" 1;
 .sort:hover{{color:var(--ink);background:var(--bg-2)}}
 .sort.active{{color:var(--ink);font-variation-settings:"MONO" 1,"wght" 600;border-color:var(--rule);background:var(--bg-2)}}
 .sort .arrow{{display:inline-block;min-width:8px;color:var(--accent);font-size:11px;font-variation-settings:"wght" 700}}
-.items[data-sort-key]:not([data-sort-key="score"]) .rank{{visibility:hidden}}
 .item{{display:grid;grid-template-columns:56px 1fr auto;gap:20px;padding:20px 0;border-bottom:1px solid var(--rule);align-items:start}}
 .item.hidden{{display:none}}
 .rank{{font-family:var(--ft-mono);font-variation-settings:"MONO" 1,"wght" 500;font-size:22px;color:var(--ink-2);text-align:right;padding-top:2px;font-feature-settings:"tnum"}}
@@ -789,11 +901,10 @@ footer{{margin-top:60px;padding-top:18px;border-top:1px solid var(--rule);color:
 </div>
 <div class="sort-row">
 <span class="sort-label">sort:</span>
-<button class="sort active" data-sort="score">score <span class="arrow">↓</span></button>
+<button class="sort active" data-sort="trending">trending <span class="arrow">↓</span></button>
 <button class="sort" data-sort="date">date <span class="arrow"></span></button>
 <button class="sort" data-sort="sevrank">severity <span class="arrow"></span></button>
-<button class="sort" data-sort="corrob">sources <span class="arrow"></span></button>
-<button class="sort" data-sort="source">source <span class="arrow"></span></button>
+<button class="sort" data-sort="corrob">reports <span class="arrow"></span></button>
 </div>
 <div class="items collapsed" id="items">{items}</div>
 <button class="show-more" id="show-more">show more <span class="show-more-count" id="show-more-count"></span></button>
@@ -806,32 +917,50 @@ const itemsContainer=document.getElementById('items'),showMore=document.getEleme
 const sortButtons=document.querySelectorAll('.sort');
 const TOTAL=items.length,INITIAL=10,STEP=20;
 let activeCat='all',activeSev=null,reveal=INITIAL;
-let sortKey='score',sortDir='desc';
+let sortKey='trending',sortDir='desc';
 
 // Sort direction defaults — what makes intuitive sense when picking each key
-const DEFAULT_DIR={{score:'desc',date:'desc',sevrank:'desc',corrob:'desc',source:'asc'}};
+const DEFAULT_DIR={{trending:'desc',date:'desc',sevrank:'desc',corrob:'desc'}};
 
 function isFiltering(){{
   return search.value.trim()!==''||activeCat!=='all'||activeSev!==null;
 }}
 
 function applySort(){{
-  // Numeric vs string keys
-  const numeric={{score:1,date:1,sevrank:1,corrob:1,rank:1}};
+  // The `trending` and `sevrank` chips handle their own tiebreak chains
+  // below; `date` and `corrob` fall into the generic numeric branch.
+  const numeric={{date:1,corrob:1}};
   const sorted=[...items].sort((a,b)=>{{
-    let av,bv;
-    if(numeric[sortKey]){{
-      av=parseFloat(a.dataset[sortKey]||0);
-      bv=parseFloat(b.dataset[sortKey]||0);
-    }}else{{
-      av=a.dataset[sortKey]||'';
-      bv=b.dataset[sortKey]||'';
+    let cmp;
+    if(sortKey==='trending'){{
+      // 4-key sort mirroring server rank(): tier (crit/high vs rest), day,
+      // is-critical, score. data-date = freshest cluster-member date.
+      const at=parseFloat(a.dataset.sevrank||0)>=3?1:0;
+      const bt=parseFloat(b.dataset.sevrank||0)>=3?1:0;
+      cmp=at-bt;
+      if(cmp===0){{
+        const ad=Math.floor(parseFloat(a.dataset.date||0)/86400);
+        const bd=Math.floor(parseFloat(b.dataset.date||0)/86400);
+        cmp=ad-bd;
+      }}
+      if(cmp===0){{
+        const ac=parseFloat(a.dataset.sevrank||0)===4?1:0;
+        const bc=parseFloat(b.dataset.sevrank||0)===4?1:0;
+        cmp=ac-bc;
+      }}
+      if(cmp===0) cmp=parseFloat(a.dataset.score||0)-parseFloat(b.dataset.score||0);
+    }}else if(sortKey==='sevrank'){{
+      // Severity-primary, CVSS tiebreak so CVSS 10 critical items appear
+      // above CVSS 9.0 critical items within the same severity bucket.
+      cmp=parseFloat(a.dataset.sevrank||0)-parseFloat(b.dataset.sevrank||0);
+      if(cmp===0) cmp=parseFloat(a.dataset.cvss||0)-parseFloat(b.dataset.cvss||0);
+    }}else if(numeric[sortKey]){{
+      cmp=parseFloat(a.dataset[sortKey]||0)-parseFloat(b.dataset[sortKey]||0);
     }}
-    let cmp=av<bv?-1:av>bv?1:0;
-    // Stable secondary sort by score desc — keeps ordering predictable for ties
+    // Final tiebreak: score desc — keeps ordering predictable
     if(cmp===0){{
       const as=parseFloat(a.dataset.score||0),bs=parseFloat(b.dataset.score||0);
-      cmp=bs-as;
+      cmp=as-bs;
     }}
     return sortDir==='asc'?cmp:-cmp;
   }});
@@ -870,15 +999,19 @@ function apply(){{
 }}
 
 function updateOverflow(){{
-  // When filtering OR when sorted by something other than score,
-  // show all (overflow gating only makes sense for the default score view).
-  if(isFiltering()||sortKey!=='score'){{
+  // When filtering OR when sorted by something other than the default feed,
+  // show all (overflow gating only makes sense for the default view).
+  if(isFiltering()||sortKey!=='trending'){{
     itemsContainer.classList.remove('collapsed');
     showMore.style.display='none';
+    renumber();
     return;
   }}
-  items.forEach(it=>{{
-    const r=parseInt(it.dataset.rank,10);
+  // In default-feed view, mark items past the reveal threshold as overflow.
+  // Walk current DOM order so the threshold respects the active sort.
+  let r=0;
+  Array.from(itemsContainer.children).forEach(it=>{{
+    r++;
     it.dataset.overflow=(r>reveal)?'true':'false';
   }});
   if(reveal>=TOTAL){{
@@ -889,6 +1022,25 @@ function updateOverflow(){{
     showMore.style.display='block';
     showMoreCount.textContent='('+(TOTAL-reveal)+' more)';
   }}
+  renumber();
+}}
+
+function renumber(){{
+  // Rewrite rank text to match each item's current visible position so the
+  // numbering stays consistent across sort changes and filter toggles.
+  // Skip items hidden by filter or by collapsed-overflow.
+  const collapsed=itemsContainer.classList.contains('collapsed');
+  let r=0;
+  Array.from(itemsContainer.children).forEach(it=>{{
+    if(it.classList.contains('hidden')) return;
+    if(collapsed&&it.dataset.overflow==='true') return;
+    r++;
+    const el=it.querySelector('.rank');
+    if(!el) return;
+    el.textContent=r<10?('0'+r):String(r);
+    el.classList.remove('rank-1','rank-2','rank-3');
+    if(r<=3) el.classList.add('rank-'+r);
+  }});
 }}
 
 showMore.addEventListener('click',()=>{{
@@ -921,13 +1073,13 @@ document.addEventListener('keydown',e=>{{
   else if(e.key==='Escape'){{
     search.value='';activeCat='all';activeSev=null;
     chips.forEach(x=>{{x.classList.remove('active');if(x.dataset.cat==='all')x.classList.add('active');}});
-    sortKey='score';sortDir='desc';reveal=INITIAL;
+    sortKey='trending';sortDir='desc';reveal=INITIAL;
     applySort();apply();search.blur();
   }}
 }});
 
 // Initial state
-itemsContainer.dataset.sortKey='score';
+itemsContainer.dataset.sortKey='trending';
 updateOverflow();
 </script>
 </body></html>"""
@@ -947,7 +1099,7 @@ def render_html(items: list[Item], n_sources: int, days: int) -> str:
             sev_html = f'<span class="sev sev-{escape(it.severity)}">{escape(it.severity)}{cvss_str}</span>'
         corrob_html = ""
         if it.corroboration > 1:
-            corrob_html = f'<span class="corrob">×{it.corroboration} sources</span>'
+            corrob_html = f'<span class="corrob">×{it.corroboration} reports</span>'
         cve_html = "".join(f'<span class="cve">{escape(c)}</span>' for c in it.cves[:3])
         kw_html = "".join(f'<span class="kw">{escape(k)}</span>' for k in it.matched_keywords[:6])
         also_html = ""
@@ -970,7 +1122,7 @@ def render_html(items: list[Item], n_sources: int, days: int) -> str:
             ts_iso = datetime.fromisoformat(it.published.replace("Z", "+00:00")).timestamp()
         except Exception:
             ts_iso = 0
-        parts.append(f'''<div class="item" data-cat="{escape(it.category)}" data-sev="{escape(it.severity)}" data-rank="{i}" data-overflow="{overflow}" data-score="{it.score:.4f}" data-date="{ts_iso:.0f}" data-sevrank="{sev_rank}" data-corrob="{it.corroboration}" data-source="{escape(it.source.lower())}" data-text="{escape(text_idx)}">
+        parts.append(f'''<div class="item" data-cat="{escape(it.category)}" data-sev="{escape(it.severity)}" data-overflow="{overflow}" data-score="{it.score:.4f}" data-date="{ts_iso:.0f}" data-sevrank="{sev_rank}" data-cvss="{it.cvss:.1f}" data-corrob="{it.corroboration}" data-text="{escape(text_idx)}">
 <div class="rank {rank_class}">{i:02d}</div>
 <div class="body">
 <h2><a href="{escape(it.link)}" target="_blank" rel="noopener">{escape(it.title)}</a></h2>
@@ -1006,7 +1158,7 @@ def render_md(items: list[Item], days: int) -> str:
                 sev += f" {it.cvss:.1f}"
             sev += "**"
         cves = " · " + ", ".join(it.cves[:3]) if it.cves else ""
-        corrob = f" · ×{it.corroboration} sources" if it.corroboration > 1 else ""
+        corrob = f" · ×{it.corroboration} reports" if it.corroboration > 1 else ""
         out.append(f"### {i}. [{it.title}]({it.link})")
         out.append(f"_{it.source} · {date_str} · score {it.score:.3f}{sev}{corrob}{cves}_")
         if it.summary:
@@ -1105,6 +1257,10 @@ def main() -> int:
     if not args.no_filter:
         items = keyword_filter(items, keywords)
         log.info(f"after keyword filter: {len(items)}")
+
+    before = len(items)
+    items = marketing_filter(items)
+    log.info(f"after marketing filter: {len(items)} ({before - len(items)} dropped)")
 
     items = dedupe(items)
     log.info(f"after dedupe: {len(items)}")

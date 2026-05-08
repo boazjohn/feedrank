@@ -15,31 +15,31 @@
 name = "GHSA — npm"
 url = "ghsa-api://npm"
 category = "advisory"
-weight = 0.55
+weight = 1.0
 
 [[source]]
 name = "GHSA — pip"
 url = "ghsa-api://pip"
 category = "advisory"
-weight = 0.55
+weight = 1.0
 
 [[source]]
 name = "GHSA — composer"
 url = "ghsa-api://composer"
 category = "advisory"
-weight = 0.55
+weight = 1.0
 
 [[source]]
 name = "GHSA — go"
 url = "ghsa-api://go"
 category = "advisory"
-weight = 0.55
+weight = 1.0
 
 [[source]]
 name = "GHSA — rust"
 url = "ghsa-api://rust"
 category = "advisory"
-weight = 0.55
+weight = 1.0
 
 [[source]]
 name = "RustSec"
@@ -196,12 +196,20 @@ url = "https://github.blog/security/feed/"
 category = "build"
 weight = 0.9
 
+# GitHub Changelog is mostly product release notes (deprecations, feature
+# launches, dev tool updates) — security-relevant items are rare. Kept for
+# the occasional CodeQL/Dependabot/Actions security note, but weighted low
+# so non-security items sit at the bottom of the feed.
 [[source]]
 name = "GitHub Changelog"
 url = "https://github.blog/changelog/feed/"
 category = "build"
-weight = 0.6
+weight = 0.3
 
+# Socket Blog — currently behind Cloudflare bot challenge for non-browser
+# clients (cf-mitigated: challenge, all paths 403). Kept enabled anyway so
+# fetches resume automatically if Socket lifts the block; expect a
+# `fetch fail [Socket Blog]: HTTP Error 403` warning until then.
 [[source]]
 name = "Socket Blog"
 url = "https://socket.dev/api/blog/feed.atom"
@@ -212,13 +220,6 @@ weight = 1.2
 # DISABLED — sources that don't have a working RSS endpoint as of v6.
 # Re-enable after verifying URLs with: curl -sI <url>
 # ---------------------------------------------------------------------------
-
-# Socket Blog at /blog/rss.xml — superseded by /api/blog/feed.atom above.
-# [[source]]
-# name = "Socket Blog (old)"
-# url = "https://socket.dev/blog/rss.xml"
-# category = "advisory"
-# weight = 1.2
 
 # OSV.dev — REMOVED. Their /v1/query API requires per-package queries, not
 # ecosystem-wide. The GHSA ecosystems above already cover what OSV would provide.
