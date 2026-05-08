@@ -3,9 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 
-Aggregates 30 supply-chain and infra security feeds, clusters multi-source reports of the same incident, ranks with BM25 against your interest profile, and renders an HTML dashboard.
-
-One Python file, one dependency (`feedparser`). Pure Python BM25 — no numpy, no compiled extensions.
+Aggregates security feeds, clusters multi-source reports of the same incident, ranks with BM25 against your interest profile, and renders an HTML dashboard.
 
 ## Install
 
