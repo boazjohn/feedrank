@@ -788,6 +788,7 @@ HTML = r"""<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>feedrank.security — {date}</title>
+<link rel="alternate" type="application/atom+xml" title="feedrank.security" href="feedrank.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..1000,0..1,0..1,0..1&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
@@ -910,7 +911,7 @@ footer{{margin-top:60px;padding-top:18px;border-top:1px solid var(--rule);color:
 <div class="items collapsed" id="items">{items}</div>
 <button class="show-more" id="show-more">show more <span class="show-more-count" id="show-more-count"></span></button>
 <div class="empty" id="empty" style="display:none">no matches</div>
-<footer><span>feedrank.security</span><span><a href="feedrank.json">json</a> · <a href="feedrank.md">md</a></span></footer>
+<footer><span>feedrank.security</span><span><a href="feedrank.xml">atom</a> · <a href="feedrank.json">json</a> · <a href="feedrank.md">md</a></span></footer>
 </div>
 <script>
 const items=Array.from(document.querySelectorAll('.item')),search=document.getElementById('search'),chips=document.querySelectorAll('.chip'),empty=document.getElementById('empty');
@@ -1177,6 +1178,95 @@ def render_md(items: list[Item], days: int) -> str:
     return "\n".join(out)
 
 
+def render_atom(items: list[Item], days: int, site_url: str = "") -> str:
+    # Feed `updated` = freshest entry's publish time (Atom RFC 4287 §4.2.15).
+    now = datetime.now(timezone.utc)
+    feed_updated = now
+    for it in items:
+        try:
+            dt = datetime.fromisoformat(it.published.replace("Z", "+00:00"))
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            if dt > feed_updated:
+                feed_updated = dt
+        except Exception:
+            pass
+
+    site = site_url.rstrip("/")
+    self_link = f'<link rel="self" href="{escape(site)}/feedrank.xml"/>' if site else ""
+    alt_link = f'<link rel="alternate" type="text/html" href="{escape(site)}/"/>' if site else ""
+    feed_id = f"{site}/feedrank.xml" if site else "urn:feedrank:feed"
+
+    entries = []
+    for it in items:
+        try:
+            dt = datetime.fromisoformat(it.published.replace("Z", "+00:00"))
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+        except Exception:
+            dt = now
+        iso = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+        # Build a richer HTML summary so feed-reader views are useful on their
+        # own (severity badge, score, corroboration, also-sources).
+        bits = []
+        if it.severity:
+            sev = it.severity.upper()
+            if it.cvss > 0:
+                sev += f" {it.cvss:.1f}"
+            bits.append(f"<strong>{escape(sev)}</strong>")
+        bits.append(escape(it.source))
+        bits.append(f"score {it.score:.3f}")
+        if it.corroboration > 1:
+            bits.append(f"×{it.corroboration} reports")
+        if it.cves:
+            bits.append(", ".join(escape(c) for c in it.cves[:3]))
+        meta = " · ".join(bits)
+        body_parts = [f"<p><em>{meta}</em></p>"]
+        if it.summary:
+            body_parts.append(f"<p>{escape(it.summary)}</p>")
+        if it.other_sources:
+            also = ", ".join(
+                f'<a href="{escape(o.get("link",""))}">{escape(o.get("source",""))}</a>'
+                for o in it.other_sources[:5]
+            )
+            body_parts.append(f"<p><em>also: {also}</em></p>")
+        summary_html = "".join(body_parts)
+
+        cats = []
+        if it.category:
+            cats.append(f'<category term="{escape(it.category)}"/>')
+        if it.severity:
+            cats.append(f'<category term="sev:{escape(it.severity)}"/>')
+
+        entries.append(
+            f"<entry>"
+            f"<title>{escape(it.title)}</title>"
+            f'<link rel="alternate" href="{escape(it.link)}"/>'
+            f"<id>urn:feedrank:{escape(it.id)}</id>"
+            f"<updated>{iso}</updated>"
+            f"<published>{iso}</published>"
+            f"<author><name>{escape(it.source)}</name></author>"
+            + "".join(cats)
+            + f'<summary type="html">{escape(summary_html)}</summary>'
+            + "</entry>"
+        )
+
+    return (
+        '<?xml version="1.0" encoding="utf-8"?>\n'
+        '<feed xmlns="http://www.w3.org/2005/Atom">\n'
+        "<title>feedrank.security</title>\n"
+        "<subtitle>supply chain &amp; infra security · "
+        f"{days}d window</subtitle>\n"
+        f"{self_link}\n{alt_link}\n"
+        f"<id>{escape(feed_id)}</id>\n"
+        f"<updated>{feed_updated.strftime('%Y-%m-%dT%H:%M:%SZ')}</updated>\n"
+        "<generator>feedrank</generator>\n"
+        + "\n".join(entries)
+        + "\n</feed>\n"
+    )
+
+
 def post_slack(webhook: str, items: list[Item], top: int = 10) -> None:
     blocks = [{"type": "header", "text": {"type": "plain_text", "text": f"feedrank — top {top}"}}]
     for i, it in enumerate(items[:top], 1):
@@ -1211,6 +1301,8 @@ def main() -> int:
     p.add_argument("--diagnose", action="store_true",
                    help="print per-source fetch summary and exit")
     p.add_argument("--out-dir", default=str(here / "out"))
+    p.add_argument("--site-url", default="",
+                   help="public deployment URL; used for Atom feed self/alternate links")
     p.add_argument("--slack-webhook")
     p.add_argument("--max-workers", type=int, default=8)
     args = p.parse_args()
@@ -1281,7 +1373,8 @@ def main() -> int:
     (out_dir / "feedrank.html").write_text(render_html(items, len(sources), args.days))
     (out_dir / "feedrank.md").write_text(render_md(items, args.days))
     (out_dir / "feedrank.json").write_text(json.dumps([asdict(i) for i in items], indent=2))
-    log.info(f"wrote {out_dir}/feedrank.{{html,md,json}}")
+    (out_dir / "feedrank.xml").write_text(render_atom(items, args.days, args.site_url))
+    log.info(f"wrote {out_dir}/feedrank.{{html,md,json,xml}}")
 
     if args.slack_webhook:
         post_slack(args.slack_webhook, items)
