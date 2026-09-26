@@ -1,0 +1,1617 @@
+[
+  {
+    "title": "SharePoint RCE and MikroTik RouterOS Flaws Actively Exploited in the Wild",
+    "link": "https://thehackernews.com/2026/09/sharepoint-rce-and-mikrotik-routeros.html",
+    "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Friday added two security flaws impacting Microsoft SharePoint and Mikrotik RouterOS to its Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation. The vulnerabilities in question are as follows - CVE-2026-65660 (CVSS score: 8.8) - A code injection vulnerability in Microsoft Office SharePoint",
+    "published": "2026-09-26T08:49:53+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "rce",
+      "actively exploited",
+      "in the wild",
+      "kev",
+      "cve-",
+      "cvss"
+    ],
+    "score": 1.7418564857049328,
+    "bm25": 0.8591992575000302,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [
+      "CVE-2026-65660"
+    ],
+    "packages": [],
+    "corroboration": 2,
+    "other_sources": [
+      {
+        "source": "The Hacker News",
+        "link": "https://thehackernews.com/2026/09/sharepoint-flaw-initially-listed-as.html",
+        "published": "2026-09-22T11:17:41+00:00",
+        "category": "aggregator"
+      }
+    ],
+    "id": "049c4c6d156c"
+  },
+  {
+    "title": "Attackers Bypass WAFs to Exploit Oracle PeopleSoft Flaw and Deploy Web Shells",
+    "link": "https://thehackernews.com/2026/09/attackers-bypass-wafs-to-exploit-oracle.html",
+    "summary": "Google is warning of renewed mass exploitation of a known security vulnerability in Oracle PeopleSoft as part of a campaign targeting multiple sectors globally. The ShinyHunters-linked activity involves the weaponization of CVE-2026-35273 (CVSS score: 9.8), a critical security flaw that could result in unauthenticated remote code execution. The vulnerability was first exploited as a zero-day",
+    "published": "2026-09-26T11:46:40+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "zero-day",
+      "exploit",
+      "cve-",
+      "cvss"
+    ],
+    "score": 0.6142485322900216,
+    "bm25": 0.44999892475459463,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [
+      "CVE-2026-35273"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "124ca5b2bbe4"
+  },
+  {
+    "title": "Re-Enabled GitHub Actions Expose Thousands of Repositories to Mini Shai-Hulud",
+    "link": "https://socket.dev/blog/mini-shai-hulud-actions?utm_medium=feed",
+    "summary": "Two compromised GitHub Actions were re-enabled with malicious tags intact, exposing thousands of downstream repositories to Mini Shai-Hulud.",
+    "published": "2026-09-26T14:19:46+00:00",
+    "source": "Socket Blog",
+    "category": "advisory",
+    "source_weight": 1.2,
+    "matched_keywords": [
+      "github",
+      "github actions",
+      "shai-hulud"
+    ],
+    "score": 1.5985728483258206,
+    "bm25": 0.40704704195544594,
+    "severity": "high",
+    "cvss": 8.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 3,
+    "other_sources": [
+      {
+        "source": "BleepingComputer",
+        "link": "https://www.bleepingcomputer.com/news/security/github-actions-re-enabled-with-mini-shai-hulud-payload-still-active/",
+        "published": "2026-09-26T14:19:46+00:00",
+        "category": "aggregator"
+      },
+      {
+        "source": "The Hacker News",
+        "link": "https://thehackernews.com/2026/09/compromised-github-actions-came-back.html",
+        "published": "2026-09-25T14:44:41+00:00",
+        "category": "aggregator"
+      }
+    ],
+    "id": "ca9735f3d9c0"
+  },
+  {
+    "title": "Elementor CSRF Flaw Lets Attackers Take Over Sites After Admin Clicks Crafted Link",
+    "link": "https://thehackernews.com/2026/09/elementor-csrf-flaw-lets-attackers-take.html",
+    "summary": "Details have emerged about a high-severity security flaw in the Elementor Website Builder WordPress plugin that could be exploited by an unauthenticated attacker to create rogue administrator accounts and take control of a site. The cross-site request forgery (CSRF) vulnerability, which has yet to be assigned a CVE identifier, carries a CVSS score of 8.8 out of 10.0. It only affects versions",
+    "published": "2026-09-26T09:55:22+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "csrf",
+      "cvss"
+    ],
+    "score": 0.2880157493589063,
+    "bm25": 0.22858392806262404,
+    "severity": "high",
+    "cvss": 8.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "087d84aa6c29"
+  },
+  {
+    "title": "CISA warns of Sharepoint, WSO2, Adobe Commerce flaws exploited in attacks",
+    "link": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-sharepoint-wso2-adobe-commerce-flaws-exploited-in-attacks/",
+    "summary": "The Cybersecurity and Infrastructure Security Agency (CISA) warns that hackers are exploiting a critical authentication bypass vulnerability (CVE-2026-5430) affecting multiple products from enterprise software provider WSO2. [...]",
+    "published": "2026-09-25T17:24:20+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "authentication bypass",
+      "cve-"
+    ],
+    "score": 0.7616378360271814,
+    "bm25": 0.37569034450828914,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [
+      "CVE-2026-5430"
+    ],
+    "packages": [],
+    "corroboration": 2,
+    "other_sources": [
+      {
+        "source": "The Hacker News",
+        "link": "https://thehackernews.com/2026/09/wso2-and-adobe-commerce-flaws-exploited.html",
+        "published": "2026-09-25T04:46:34+00:00",
+        "category": "aggregator"
+      }
+    ],
+    "id": "2e9b76e63d00"
+  },
+  {
+    "title": "WordPress Core: WordPress Core Remote File Inclusion Vulnerability",
+    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-87902",
+    "summary": "WordPress Core contains a remote file inclusion vulnerability which could allow an unauthenticated attacker to make page-template resolution include a chosen readable local `.php` file outside the active theme directories, leading to remote code execution. Required action: Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+    "published": "2026-09-25T00:00:00+00:00",
+    "source": "CISA KEV",
+    "category": "government",
+    "source_weight": 1.3,
+    "matched_keywords": [
+      "php"
+    ],
+    "score": 0.7251834974363967,
+    "bm25": 0.22471440492638178,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [
+      "CVE-2026-87902"
+    ],
+    "packages": [],
+    "corroboration": 2,
+    "other_sources": [
+      {
+        "source": "The Hacker News",
+        "link": "https://thehackernews.com/2026/09/attackers-exploit-wordpress-cve-2026.html",
+        "published": "2026-09-24T05:36:18+00:00",
+        "category": "aggregator"
+      }
+    ],
+    "id": "2754cda4fe7b"
+  },
+  {
+    "title": "Roundcube Pre-Auth SQL Injection Flaw Actively Exploited in the Wild",
+    "link": "https://thehackernews.com/2026/09/roundcube-pre-auth-sql-injection-flaw.html",
+    "summary": "The Canadian Centre for Cyber Security has warned that a now-patched Roundcube Webmail vulnerability is being actively exploited in the wild. The vulnerability in question is CVE-2026-48842 (CVSS score: 8.1), a pre-authentication SQL injection in the virtuser_query plugin of Roundcube Webmail versions 1.6.x before 1.6.16 and 1.7.x before 1.7.1. The issue stems from a preg_replace() backslash",
+    "published": "2026-09-25T10:14:02+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "actively exploited",
+      "in the wild",
+      "sql injection",
+      "cve-",
+      "cvss"
+    ],
+    "score": 0.6873662951943578,
+    "bm25": 0.5874925599951776,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [
+      "CVE-2026-48842"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "8479bfbd51e5"
+  },
+  {
+    "title": "MikroTik RouterOS: Mikrotik RouterOS Improper Enforcement of Behavioral Workflow Vulnerability",
+    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-67279",
+    "summary": "Mikrotik RouterOS contains an improper enforcement of behavioral workflow vulnerability that could allow an unauthenticated client to open a session channel and send an exec request. This vulnerability can be chained to achieve unauthenticated exploitation of CVE-2026-86060. Required action: Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+    "published": "2026-09-25T00:00:00+00:00",
+    "source": "CISA KEV",
+    "category": "government",
+    "source_weight": 1.3,
+    "matched_keywords": [
+      "session",
+      "cve-"
+    ],
+    "score": 0.5093986301730625,
+    "bm25": 0.16200252501311685,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [
+      "CVE-2026-67279",
+      "CVE-2026-86060"
+    ],
+    "packages": [],
+    "corroboration": 2,
+    "other_sources": [
+      {
+        "source": "The Hacker News",
+        "link": "https://thehackernews.com/2026/09/mikrotrick-chain-let-attackers-take.html",
+        "published": "2026-09-23T16:06:41+00:00",
+        "category": "aggregator"
+      }
+    ],
+    "id": "c3ad82d8a0e4"
+  },
+  {
+    "title": "Kiteworks urges 6-hour server shutdown over potential zero-day attacks",
+    "link": "https://www.bleepingcomputer.com/news/security/kiteworks-urges-6-hour-server-shutdown-over-potential-zero-day-attacks/",
+    "summary": "Secure file-sharing software company Kiteworks is urging customers worldwide to temporarily shut down their servers on Saturday for a six-hour window after receiving threat intelligence warning of a potentially imminent cyberattack. [...]",
+    "published": "2026-09-25T21:41:07+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "zero-day"
+    ],
+    "score": 0.2317511031204784,
+    "bm25": 0.17424894971464544,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "3e6437721d93"
+  },
+  {
+    "title": "ShinyHunters hacked Clop leak site using Grav CMS path traversal flaw",
+    "link": "https://www.bleepingcomputer.com/news/security/shinyhunters-hacked-clop-leak-site-using-grav-cms-path-traversal-flaw/",
+    "summary": "The Clop ransomware gang has moved its data leak site to a new Tor address after confirming its previous server was compromised and defaced through an unpatched Grav CMS flaw that BleepingComputer has learned is an unauthenticated path traversal vulnerability. [...]",
+    "published": "2026-09-25T20:57:55+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "ransomware",
+      "data leak"
+    ],
+    "score": 0.5507421478779103,
+    "bm25": 0.4370969427602463,
+    "severity": "high",
+    "cvss": 8.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "6e342a8a97cf"
+  },
+  {
+    "title": "Elementor WordPress flaw lets attackers create admin accounts",
+    "link": "https://www.bleepingcomputer.com/news/security/elementor-wordpress-flaw-lets-attackers-create-admin-accounts/",
+    "summary": "A cross-site request forgery (CSRF) vulnerability in the Elementor plugin for WordPress could allow an unauthenticated attacker to create administrator accounts. [...]",
+    "published": "2026-09-25T18:13:33+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "csrf"
+    ],
+    "score": 0.18434079323009092,
+    "bm25": 0.14630221684927852,
+    "severity": "high",
+    "cvss": 8.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "53c3f861257c"
+  },
+  {
+    "title": "Discovering and exploiting a remote code execution vulnerability in OpenCode (GHSA-632h-h47v-g4x4)",
+    "link": "https://securitylabs.datadoghq.com/articles/opencode-upgrade-remote-code-execution/",
+    "summary": "Datadog Security Labs discovered GHSA-632h-h47v-g4x4, a vulnerability in OpenCode's upgrade endpoint that, under certain conditions, allowed malicious webpages to execute code on developers' machines.",
+    "published": "2026-09-24T00:00:00+00:00",
+    "source": "Datadog Security Labs",
+    "category": "research",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "datadog"
+    ],
+    "score": 0.5153078479504325,
+    "bm25": 0.379700519542424,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "ecfde50e9461"
+  },
+  {
+    "title": "MemTensor npm and PyPI Packages Compromised in Credential-Stealing Supply Chain Attack",
+    "link": "https://socket.dev/blog/memtensor-compromise?utm_medium=feed",
+    "summary": "The compromise affects MemTensor's MemOS, an open source memory framework for large language models (LLMs) and AI agents. Both npm package @memtensor/memos-cloud-openclaw-plugin and the PyPI package MemoryOS are compromised. They drop cross-platform Go binaries that exfiltrate developer secrets.",
+    "published": "2026-09-23T09:16:58+00:00",
+    "source": "Socket Blog",
+    "category": "advisory",
+    "source_weight": 1.2,
+    "matched_keywords": [
+      "npm",
+      "pypi",
+      "go ",
+      "supply chain",
+      "credential"
+    ],
+    "score": 1.2817026922890586,
+    "bm25": 0.9837630313622162,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "65a27eab56c9"
+  },
+  {
+    "title": "Compromised MemTensor Packages Deliver sckit Credential Stealer via npm and PyPI",
+    "link": "https://thehackernews.com/2026/09/compromised-memtensor-packages-deliver.html",
+    "summary": "Unknown threat actors have managed to compromise two legitimate MemTensor packages across the npm and Python Package Index (PyPI) repositories to push a platform-specific Go-based implant dubbed sckit designed for Windows, Linux, and macOS. According to reports from Aikido, SafeDep, Socket, and StepSecurity, the libraries in question below - @memtensor/memos-cloud-openclaw-plugin versions",
+    "published": "2026-09-23T13:52:46+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "npm",
+      "pypi",
+      "python",
+      "linux",
+      "windows",
+      "macos",
+      "credential",
+      "stealer"
+    ],
+    "score": 0.7599999999999999,
+    "bm25": 1.0,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "344fcd62c82a"
+  },
+  {
+    "title": "F5 BIG-IP APM: F5 BIG-IP APM Heap-based Buffer Overflow Vulnerability",
+    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-94127",
+    "summary": "F5 BIG-IP APM contains a heap-based buffer overflow vulnerability when access policy and an OAuth profile are configured on a virtual server. This vulnerability could allow an unauthenticated attacker to perform remote code execution. Required action: Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+    "published": "2026-09-23T08:29:48+00:00",
+    "source": "CISA KEV",
+    "category": "government",
+    "source_weight": 1.3,
+    "matched_keywords": [
+      "oauth",
+      "f5"
+    ],
+    "score": 0.5962784371140606,
+    "bm25": 0.27715541233397506,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [
+      "CVE-2026-94127"
+    ],
+    "packages": [],
+    "corroboration": 2,
+    "other_sources": [
+      {
+        "source": "The Hacker News",
+        "link": "https://thehackernews.com/2026/09/f5-patches-critical-big-ip-apm-zero-day.html",
+        "published": "2026-09-23T08:29:48+00:00",
+        "category": "aggregator"
+      }
+    ],
+    "id": "0f86d09d31f1"
+  },
+  {
+    "title": "Chinese Hackers Exploit Chrome-Windows Zero-Day Chain to Deploy CLEANGULP Malware",
+    "link": "https://thehackernews.com/2026/09/chinese-hackers-exploit-chrome-windows.html",
+    "summary": "A Chinese threat actor codenamed UTA0565 has been observed exploiting the recently disclosed Google Chrome-Microsoft Windows exploit chain as zero-days through fake websites. The attacks, detected on September 3 and 4, 2026, involved the chaining of two vulnerabilities in Chrome (CVE-2026-85046, CVE-2026-87491) and one impacting Windows Advanced Local Procedure Call (CVE-2026-85880) to break",
+    "published": "2026-09-23T08:29:24+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "windows",
+      "chrome",
+      "zero-day",
+      "exploit",
+      "cve-"
+    ],
+    "score": 0.18554852054273516,
+    "bm25": 0.24414279018780946,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [
+      "CVE-2026-85046",
+      "CVE-2026-85880",
+      "CVE-2026-87491"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "47e5a40f39f4"
+  },
+  {
+    "title": "Sckit Supply Chain Worm Hits MemTensor npm & PyPi scopes",
+    "link": "https://www.stepsecurity.io/blog/sckit-supply-chain-worm-hits-memtensor-npm-pypi-scopes",
+    "summary": "Compromised MemTensor npm releases turn an AI memory plugin into a credential-harvesting entry point, exposing prompts and creating a path to further package compromise.",
+    "published": "2026-09-23T14:34:30+00:00",
+    "source": "StepSecurity",
+    "category": "research",
+    "source_weight": 1.15,
+    "matched_keywords": [
+      "npm",
+      "pypi",
+      "supply chain",
+      "credential"
+    ],
+    "score": 1.022780650678837,
+    "bm25": 0.8413001826970459,
+    "severity": "high",
+    "cvss": 8.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "08cd5ea6b46d"
+  },
+  {
+    "title": "WordPress Issues Patch for Critical Flaw That Can Enable Code Execution on Some Servers",
+    "link": "https://thehackernews.com/2026/09/wordpress-issues-patch-for-critical.html",
+    "summary": "WordPress has fixed a critical flaw in its core software that lets an attacker with no account make a site load a PHP file from outside its theme folders. On some servers, that can go further, allowing the attacker to run their own code. The fix shipped on September 22 in WordPress 7.1.2, with fixes for every branch the project still supports, back to 4.7, and WordPress is telling site owners",
+    "published": "2026-09-22T18:03:10+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "go ",
+      "php"
+    ],
+    "score": 0.2725300541126393,
+    "bm25": 0.34939750527261454,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "a94b0a5ed1ae"
+  },
+  {
+    "title": "Check Point Multiple Products: Check Point Multiple Products Improper Certificate Validation Vulnerability",
+    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85102",
+    "summary": "Check Point Security Gateway and Check Point Spark Firewall using Site to Site VPN or Remote Access VPN contain an improper certificate validation vulnerability which could allow an unauthenticated remote attacker to execute arbitrary code on the Gateway. Required action: Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+    "published": "2026-09-22T00:00:00+00:00",
+    "source": "CISA KEV",
+    "category": "government",
+    "source_weight": 1.3,
+    "matched_keywords": [
+      "certificate",
+      "vpn",
+      "firewall"
+    ],
+    "score": 0.27251511725197114,
+    "bm25": 0.2574366829640753,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [
+      "CVE-2026-85102"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "2e32251fa433"
+  },
+  {
+    "title": "Check Point Warns of Management Server Zero-Day Exploited in Targeted Attacks",
+    "link": "https://thehackernews.com/2026/09/check-point-warns-of-management-server.html",
+    "summary": "Attackers exploited a previously unknown flaw in Check Point's Security Management Server in a handful of targeted attacks on July 23,&nbsp;the company said. The flaw, CVE-2026-93616, allows an attacker who can access the server's web service to run scripts on it without logging in. Check Point released a fix on September 22 for the server that controls firewall policies for the Check Point",
+    "published": "2026-09-22T18:29:39+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "firewall",
+      "zero-day",
+      "cve-"
+    ],
+    "score": 0.26522152611961597,
+    "bm25": 0.3489756922626527,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [
+      "CVE-2026-93616"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "5871a8a80040"
+  },
+  {
+    "title": "Arista VeloCloud Orchestrator: Arista VeloCloud Orchestrator Improper Input Validation Vulnerability",
+    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-93952",
+    "summary": "Arista VeloCloud Orchestrator (VCO) on-prem contains an improper input validation vulnerability that may allow a remote attacker to access privileged internal functionality and impact the VCO host. Successful exploitation may compromise the confidentiality, integrity, and availability of the orchestrator and data managed by the orchestrator. Required action: Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+    "published": "2026-09-22T12:29:00+00:00",
+    "source": "CISA KEV",
+    "category": "government",
+    "source_weight": 1.3,
+    "matched_keywords": [
+      "arista"
+    ],
+    "score": 0.22109341247214093,
+    "bm25": 0.13702152570336926,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [
+      "CVE-2026-93952"
+    ],
+    "packages": [],
+    "corroboration": 2,
+    "other_sources": [
+      {
+        "source": "The Hacker News",
+        "link": "https://thehackernews.com/2026/09/new-cvss-100-velocloud-orchestrator.html",
+        "published": "2026-09-22T12:29:00+00:00",
+        "category": "aggregator"
+      }
+    ],
+    "id": "01271320a5d0"
+  },
+  {
+    "title": "Researcher Drops BigDiskBuster Zero-Day PoC That Blocks Microsoft Defender Updates",
+    "link": "https://thehackernews.com/2026/09/researcher-drops-bigdiskbuster-zero-day.html",
+    "summary": "A zero-day proof-of-concept tool that stops Microsoft Defender from installing platform and signature updates by filling all available disk space was&nbsp;published on GitHub&nbsp;on September 19. The tool, called BigDiskBuster, has no patch, no CVE, and no Microsoft advisory. Its author, Abdelhamid Naceri, is a former Microsoft security researcher whose earlier Defender exploits were used in",
+    "published": "2026-09-22T16:14:04+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "github",
+      "defender",
+      "zero-day"
+    ],
+    "score": 0.20001440055433214,
+    "bm25": 0.3509024571128634,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "fa09678c05a6"
+  },
+  {
+    "title": "Critical Bifrost AI Gateway Flaw Lets Attackers Run Commands Without Credentials",
+    "link": "https://thehackernews.com/2026/09/critical-bifrost-ai-gateway-flaw-lets.html",
+    "summary": "A critical vulnerability in&nbsp;Bifrost, an open-source AI gateway that routes requests to more than 20 LLM providers, allows an unauthenticated attacker to run arbitrary commands on the gateway server with a single HTTP request. The flaw, tracked as&nbsp;CVE-2026-90898&nbsp;(CVSS score: 9.8), affects all versions of the Bifrost HTTP transport before 2.1.0 when management authentication is",
+    "published": "2026-09-22T16:41:12+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "cve-",
+      "cvss"
+    ],
+    "score": 0.15603386718899065,
+    "bm25": 0.20004341947306498,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [
+      "CVE-2026-90898"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "ba859ad0f6f0"
+  },
+  {
+    "title": "WordPress Comment2Shell Flaw Can Turn Anonymous Comment XSS Into RCE via Admin Session",
+    "link": "https://thehackernews.com/2026/09/wordpress-comment2shell-flaw-can-turn.html",
+    "summary": "A new flaw in WordPress core let an anonymous visitor leave a comment that planted a hidden script on the page. If a logged-in administrator later opened that page, the script could run code on the site's server. WordPress fixed the flaw, tracked as&nbsp;CVE-2026-93485&nbsp;and called \"Comment2Shell,\" on September 17 in&nbsp;version 7.1.1&nbsp;and told site owners to update right away. There is",
+    "published": "2026-09-22T06:03:14+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "session",
+      "rce",
+      "xss",
+      "cve-"
+    ],
+    "score": 0.08655647579584319,
+    "bm25": 0.15185346630849683,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [
+      "CVE-2026-93485"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "fc67da5b97ae"
+  },
+  {
+    "title": "One Hidden Meta Muse Setting Could Let Attackers Turn the AI Assistant Into a Backdoor",
+    "link": "https://thehackernews.com/2026/09/one-hidden-meta-muse-setting-could-let.html",
+    "summary": "Malware already running on a Mac can quietly take over Meta's Muse assistant and use the broad access its owner granted the app, security researcher Patrick Wardle has shown in a&nbsp;proof-of-concept&nbsp;released on September 21. It works by changing a hidden setting so that when the user taps the microphone and dictates a prompt, the words go to the attacker instead of Meta. The flaw is in",
+    "published": "2026-09-22T06:33:57+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "go ",
+      "backdoor"
+    ],
+    "score": 0.10048759152642125,
+    "bm25": 0.18105872347102928,
+    "severity": "high",
+    "cvss": 8.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "f549f03719ff"
+  },
+  {
+    "title": "Add malicious PyPI report for my-private-pkg (#1552)",
+    "link": "https://github.com/ossf/malicious-packages/commit/4384aaf6ac1752c829901287db06ccdb73cdf568",
+    "summary": "Add malicious PyPI report for my-private-pkg (#1552) Signed-off-by: Jiseounghoon &lt;ragon5500@gmail.com&gt; Co-authored-by: Caleb Brown &lt;calebbrown@google.com&gt;",
+    "published": "2026-09-25T06:29:49+00:00",
+    "source": "OpenSSF Malicious Packages",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "pypi"
+    ],
+    "score": 0.24060209128177895,
+    "bm25": 0.2807024398287421,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "93c58cfe1c65"
+  },
+  {
+    "title": "The SOC Doesn't Need to Start Over with Every Alert",
+    "link": "https://thehackernews.com/2026/09/the-soc-doesnt-need-to-start-over-with.html",
+    "summary": "Security leaders keep debating whether AI will produce an entirely new class of cyberattack. The nearer change is quieter and already visible: AI has made a failed attack cheap to retry. The routine version looks like this. An attacker lands on a low-privilege cloud account, and the first try at privilege escalation goes nowhere. That dead end used to cost hours of documentation reading,",
+    "published": "2026-09-25T11:30:00+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "privilege escalation"
+    ],
+    "score": 0.21813930901229042,
+    "bm25": 0.363565515020484,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "5859ebb6f1f8"
+  },
+  {
+    "title": "Socket Joins New OpenJS Program to Fund Node.js Security Work",
+    "link": "https://socket.dev/blog/openjs-nodejs-security?utm_medium=feed",
+    "summary": "Socket is joining the OpenJS Security Stewardship Program to fund Node.js vulnerability research, maintainer remediation, and security releases.",
+    "published": "2026-09-25T20:59:05+00:00",
+    "source": "Socket Blog",
+    "category": "advisory",
+    "source_weight": 1.2,
+    "matched_keywords": [
+      "node"
+    ],
+    "score": 0.16374934098540037,
+    "bm25": 0.1364577841545003,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "79305160e1c7"
+  },
+  {
+    "title": "With the Rise of AI Agents, SOC 2 Should Adapt or Risk Irrelevance",
+    "link": "https://www.bleepingcomputer.com/news/security/with-the-rise-of-ai-agents-soc-2-should-adapt-or-risk-irrelevance/",
+    "summary": "AI agents can operate through human credentials and take actions that existing SOC 2 controls may not distinguish from human activity. Token Security explains why SOC 2 needs to adapt to address the security gaps created by agent identities. [...]",
+    "published": "2026-09-25T14:51:10+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "token"
+    ],
+    "score": 0.13135847785155194,
+    "bm25": 0.21893079641925325,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "d6c9977600d4"
+  },
+  {
+    "title": "Changes to query results in the GitHub Actions API and UI",
+    "link": "https://github.blog/changelog/2026-09-25-changes-to-query-results-in-the-github-actions-api-and-ui",
+    "summary": "Queries for workflow runs in the GitHub Actions API and UI now return a less precise but more accurate count of records when you search by workflow, event, status, branch,&#8230; The post Changes to query results in the GitHub Actions API and UI appeared first on The GitHub Blog .",
+    "published": "2026-09-25T18:17:06+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github",
+      "github actions"
+    ],
+    "score": 0.12252525913091468,
+    "bm25": 0.4084175304363823,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "de36fa73b854"
+  },
+  {
+    "title": "Cloudflare Fixes Flaw That Let One Container Read Another Customer's Leftover Disk Data",
+    "link": "https://thehackernews.com/2026/09/cloudflare-fixes-flaw-that-let-one.html",
+    "summary": "A flaw in Cloudflare Containers let a paying customer read data that other customers' containers had left behind on the same server, Cloudflare and the researchers who found it said on Thursday. The data came from disk space that earlier containers had used and given up, not from any live workload, and an attacker could not choose whose data they got,&nbsp;according to Cloudflare. The company",
+    "published": "2026-09-25T04:49:22+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "container",
+      "cloudflare"
+    ],
+    "score": 0.11439937529423416,
+    "bm25": 0.1906656254903903,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "b6378b315cd4"
+  },
+  {
+    "title": "PamStealer macOS Malware Adds Live C2 Payload Decryption and Multi-Layer Persistence",
+    "link": "https://thehackernews.com/2026/09/pamstealer-macos-malware-adds-live-c2.html",
+    "summary": "Cybersecurity researchers have flagged a new version of PamStealer that ensures that the main payload can only be recovered using a server-side decryption chain. The latest artifacts, per Jamf Threat Labs, continue to rely on the same JavaScript for Automation (JXA) dropper mechanism, but modify the lure and the delivery method. \"Where earlier variants embedded their payload key material",
+    "published": "2026-09-25T13:18:06+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "javascript",
+      "macos"
+    ],
+    "score": 0.11314381936662227,
+    "bm25": 0.18857303227770378,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "4731c385479b"
+  },
+  {
+    "title": "Microsoft plans to deprecate Windows Deployment Services",
+    "link": "https://www.bleepingcomputer.com/news/microsoft/microsoft-to-deprecate-windows-deployment-services-after-windows-server-2025/",
+    "summary": "Microsoft announced it will deprecate the Windows Deployment Services (WDS) server role starting with the next Windows Server release. [...]",
+    "published": "2026-09-25T12:40:59+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "windows",
+      "windows server"
+    ],
+    "score": 0.0769101187886705,
+    "bm25": 0.12818353131445084,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "b77adcfbe2b6"
+  },
+  {
+    "title": "Agentic autofix now uses Copilot Memory",
+    "link": "https://github.blog/changelog/2026-09-25-agentic-autofix-now-uses-copilot-memory",
+    "summary": "Agentic autofix now uses Copilot Memory for customers who&#8217;ve enabled it. When you use agentic autofix, it reviews existing memories for context that can help resolve security alerts. When it&#8230; The post Agentic autofix now uses Copilot Memory appeared first on The GitHub Blog .",
+    "published": "2026-09-25T17:25:50+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.0452841330791188,
+    "bm25": 0.15094711026372934,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "2653f5794fb9"
+  },
+  {
+    "title": "Updates to GitHub Copilot for Slack and Microsoft Teams",
+    "link": "https://github.blog/changelog/2026-09-25-updates-to-github-copilot-for-slack-and-microsoft-teams",
+    "summary": "GitHub Copilot in Slack and Microsoft Teams now gives you more context, more control, and a clearer path from conversation to GitHub work. Whether you&#8217;re sharing files in Slack or&#8230; The post Updates to GitHub Copilot for Slack and Microsoft Teams appeared first on The GitHub Blog .",
+    "published": "2026-09-25T16:33:42+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github",
+      "slack",
+      "teams"
+    ],
+    "score": 0.030017303119639092,
+    "bm25": 0.10005767706546365,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "c1d4e08f8273"
+  },
+  {
+    "title": "Default Enablement of Copilot features for Copilot Business and Enterprise",
+    "link": "https://github.blog/changelog/2026-09-24-default-enablement-of-copilot-features-for-copilot-business-and-enterprise",
+    "summary": "We&#8217;re introducing a new global default policy for generally available GitHub Copilot features and supported client capabilities in enterprise and organization Copilot settings. For the next 28 days, you can&#8230; The post Default Enablement of Copilot features for Copilot Business and Enterprise appeared first on The GitHub Blog .",
+    "published": "2026-09-25T03:13:23+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.027593781101594297,
+    "bm25": 0.10730914872842226,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "9111ec33ec96"
+  },
+  {
+    "title": "Microsoft: Recent Windows updates cause desktop loading issues",
+    "link": "https://www.bleepingcomputer.com/news/microsoft/microsoft-recent-windows-updates-cause-desktop-loading-issues/",
+    "summary": "Microsoft has confirmed that some users may experience desktop loading issues, including black screens, after installing the August 2026 preview updates and subsequent updates. [...]",
+    "published": "2026-09-25T10:30:38+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "windows"
+    ],
+    "score": 0.006,
+    "bm25": 0.0,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "a32e62f50e70"
+  },
+  {
+    "title": "Enterprise managed settings in-product validator",
+    "link": "https://github.blog/changelog/2026-09-25-enterprise-managed-settings-in-product-validator",
+    "summary": "You can now use an in-product validator for enterprise managed settings for GitHub Copilot. The validator detects malformed JSON, unsupported configurations, invalid team mappings, and other errors that can prevent&#8230; The post Enterprise managed settings in-product validator appeared first on The GitHub Blog .",
+    "published": "2026-09-25T23:24:57+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.003,
+    "bm25": 0.07379420280533848,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "07dade882106"
+  },
+  {
+    "title": "Usage metrics API adds pull request review stages",
+    "link": "https://github.blog/changelog/2026-09-25-usage-metrics-api-adds-pull-request-review-stages",
+    "summary": "The enterprise and organization repository-level Copilot usage metrics reports now break down how long pull requests spend in each stage of review. A new pull_request_review_times array on each repos-1-day row&#8230; The post Usage metrics API adds pull request review stages appeared first on The GitHub Blog .",
+    "published": "2026-09-25T21:09:40+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.003,
+    "bm25": 0.047738165576866484,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "0a10d0252c63"
+  },
+  {
+    "title": "Private saved views for repository issues and \u201cRelates to\u201d issue relationship is generally available",
+    "link": "https://github.blog/changelog/2026-09-25-personal-saved-views-for-repository-issues-and-more",
+    "summary": "Private saved views for repository issues Repository issues pages now support private saved views, making it easier to create and save personalized views of your issues. &#8220;Relates to&#8221; issue relationship&#8230; The post Private saved views for repository issues and \u201cRelates to\u201d issue relationship is generally available appeared first on The GitHub Blog .",
+    "published": "2026-09-25T19:05:03+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.003,
+    "bm25": 0.04541683346175353,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "10030137c3a0"
+  },
+  {
+    "title": "GitHub Copilot weekly releases \u2014 September 21",
+    "link": "https://github.blog/changelog/2026-09-25-github-copilot-weekly-releases-september-21",
+    "summary": "This week&#8217;s releases add new models to Copilot, local sandboxing in the Copilot app, and updates to Copilot in Slack, Microsoft Teams, JetBrains, and VS Code. GitHub Copilot Claude Opus&#8230; The post GitHub Copilot weekly releases \u2014 September 21 appeared first on The GitHub Blog .",
+    "published": "2026-09-25T16:42:48+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github",
+      "slack",
+      "teams"
+    ],
+    "score": 0.003,
+    "bm25": 0.09827735538025822,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "48eaa8bbafaa"
+  },
+  {
+    "title": "CodeQL 2.27.1 adds C and C++ query and Kotlin 2.4.20 support",
+    "link": "https://github.blog/changelog/2026-09-25-codeql-2-27-1-adds-c-and-c-query-and-kotlin-2-4-20-support",
+    "summary": "CodeQL 2.27.1 adds new queries for C/C++ and C#, support for Kotlin 2.4.20, and query-accuracy improvements. CodeQL is the static analysis engine behind GitHub code scanning, which helps you find&#8230; The post CodeQL 2.27.1 adds C and C++ query and Kotlin 2.4.20 support appeared first on The GitHub Blog .",
+    "published": "2026-09-25T09:55:23+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.0025714285714285713,
+    "bm25": 0.0742130243773256,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "f79e7d7a6338"
+  },
+  {
+    "title": "Why are SBOMs failing to stop supply chain attacks?",
+    "link": "https://webflow.sysdig.com/blog/why-are-sboms-failing-to-stop-supply-chain-attacks",
+    "summary": "A software bill of materials (SBOM) could prevent most supply chain attacks. Let\u2019s analyze what\u2019s holding back their broader adoption.",
+    "published": "2026-09-24T11:50:00+00:00",
+    "source": "Sysdig",
+    "category": "research",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "supply chain",
+      "sbom"
+    ],
+    "score": 0.31771957800288086,
+    "bm25": 0.4448074092040332,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "73cee2914ff3"
+  },
+  {
+    "title": "[tl;dr sec] #347 - AI Agents Hacking Companies for $25, Threat Hunter's Guide to GitHub, Finding Gadgets Like it\u2019s 2026",
+    "link": "https://tldrsec.com/p/tldr-sec-347",
+    "summary": "Threat actor using open source harnesses to hack companies, how to use GitHub logs to find baddies, using LLMs to find novel Java deserialization gadgets",
+    "published": "2026-09-24T14:30:00+00:00",
+    "source": "tl;dr sec",
+    "category": "aggregator",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "java",
+      "github",
+      "deserialization"
+    ],
+    "score": 0.15324353617967448,
+    "bm25": 0.21454095065154427,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "6f57adcd98c3"
+  },
+  {
+    "title": "How MCP Is Bypassing a Decade of Cloud Security Best Practices",
+    "link": "https://www.ox.security/blog/how-mcp-is-bypassing-a-decade-of-cloud-security-best-practices/",
+    "summary": "OX Security Research reveals a governance gap in the MCP ecosystem, with servers hosted in China, Russia, and private homes&#160; Enterprise security spent a decade building governance around the cloud: Data residency requirements, Zero Trust boundaries, Granular IAM policies and continuous supply-chain audits. Security teams know how to ask where their data lives, who operates [&#8230;] The post How MCP Is Bypassing a Decade of Cloud Security Best Practices appeared first on OX Security .",
+    "published": "2026-09-24T09:00:00+00:00",
+    "source": "OX Security",
+    "category": "research",
+    "source_weight": 0.9,
+    "matched_keywords": [
+      "iam",
+      "teams"
+    ],
+    "score": 0.14642336240876958,
+    "bm25": 0.227769674858086,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "b8497b3e2bef"
+  },
+  {
+    "title": "Hacked Ukrainian Sites Serve Fake Cloudflare ClickFix Lures for Psychedelic Stealer",
+    "link": "https://thehackernews.com/2026/09/hacked-ukrainian-sites-serve-fake.html",
+    "summary": "An active ClickFix campaign has been observed compromising legitimate Ukrainian business websites to inject bogus Cloudflare verification pages and trick victims into downloading a previously undocumented information stealer called Psychedelic. \"When a visitor interacts with the page, the lure copies a Windows Installer command to the clipboard and instructs the visitor to paste it into the",
+    "published": "2026-09-24T14:29:06+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "windows",
+      "cloudflare",
+      "stealer"
+    ],
+    "score": 0.12805857235896448,
+    "bm25": 0.25611714471792896,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "f6922c0e9c4b"
+  },
+  {
+    "title": "ThreatsDay: AI Search Poisoning, AI Coding Tool Leaking Repos, One-Click Code Execution and 13 More Stories",
+    "link": "https://thehackernews.com/2026/09/threatsday-ai-search-poisoning-ai.html",
+    "summary": "This week, the dangerous stuff keeps arriving dressed as something boring. An update. A login box. A search answer. A coding tool. A link you have clicked a hundred times before. That is the thread running through the pile. Trusted paths get poisoned. Old bugs find new jobs. AI tools leak more than expected. Fake prompts look real enough. And some attacks barely need an exploit at all \u2014 just",
+    "published": "2026-09-24T17:52:43+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "exploit"
+    ],
+    "score": 0.12090139847674568,
+    "bm25": 0.20150233079457613,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "37f6b04fa6f0"
+  },
+  {
+    "title": "MacSync malware uses public iCloud calendars to deliver new payloads",
+    "link": "https://www.bleepingcomputer.com/news/security/macsync-malware-uses-public-icloud-calendars-to-deliver-new-payloads/",
+    "summary": "A new variant of the MacSync malware targeting macOS systems now uses public iCloud calendar events to deliver new native payloads. [...]",
+    "published": "2026-09-24T20:53:35+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "macos"
+    ],
+    "score": 0.11625565068639872,
+    "bm25": 0.19375941781066455,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "7265697f416b"
+  },
+  {
+    "title": "TeamFiltration Campaign Compromises Seven Microsoft 365 Accounts Using Default Passwords",
+    "link": "https://thehackernews.com/2026/09/teamfiltration-compromises-seven.html",
+    "summary": "Cybersecurity researchers have disclosed details of an active TeamFiltration campaign codenamed UNK_CondorFiltration that has targeted over 5,700 accounts across 28 Microsoft 365 tenants. According to Proofpoint, the activity has primarily focused on Chilean retail and financial institutions. It originated from 1,487 unique AWS EC2 source IP addresses. \"The campaign compromised 7 accounts \u2013",
+    "published": "2026-09-24T06:32:03+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "aws",
+      "ec2"
+    ],
+    "score": 0.0707478429298021,
+    "bm25": 0.1414956858596042,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "b54ca687b5eb"
+  },
+  {
+    "title": "Require proof of presence for high-impact actions",
+    "link": "https://github.blog/changelog/2026-09-24-require-proof-of-presence-for-high-impact-actions",
+    "summary": "You can now require an interactive re-authentication or a multi-factor challenge before members take high-impact actions on GitHub Enterprise Cloud accounts. Proof of presence is an expansion of GitHub&#8217;s sudo&#8230; The post Require proof of presence for high-impact actions appeared first on The GitHub Blog .",
+    "published": "2026-09-24T20:28:33+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.06464949281538622,
+    "bm25": 0.25141469428205754,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "b0878320c6bd"
+  },
+  {
+    "title": "AI-powered fuzzing with the GitHub Security Lab Taskflow Agent",
+    "link": "https://github.blog/security/application-security/ai-powered-fuzzing-with-the-github-security-lab-taskflow-agent/",
+    "summary": "In this blog post, I explain how to use the new fuzzing taskflow based on the GitHub Security Lab Taskflow Agent AI framework. The post AI-powered fuzzing with the GitHub Security Lab Taskflow Agent appeared first on The GitHub Blog .",
+    "published": "2026-09-24T18:26:12+00:00",
+    "source": "GitHub Security Blog",
+    "category": "build",
+    "source_weight": 0.9,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.007714285714285715,
+    "bm25": 0.09778738289591439,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "4431c738b4b1"
+  },
+  {
+    "title": "C API: Migrate embedded Python to PyConfig and PyInitConfig APIs",
+    "link": "https://discuss.python.org/t/c-api-migrate-embedded-python-to-pyconfig-and-pyinitconfig-apis/109215",
+    "summary": "Hi, I removed 21 deprecated global configuration variables and 4 deprecated functions in Python 3.16 C API. If your project embeds Python, it may affected if it doesn\u2019t use PyConfig or PyInitConfig C API yet. I created this thread to share experience with updating code bases to these C APIs. Tell me if you need guidance (documentation?) for this update, or if you need help directly with your code base. I worked on the C API to configure the Python initialization over the last years. In Python 3.8, I implemented PEP 587 \u201cPython Initialization Configuration\u201d: PyConfig C API. In Python 3.14, I im",
+    "published": "2026-09-24T16:18:01+00:00",
+    "source": "PyPI Security Announcements",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "python"
+    ],
+    "score": 0.0071428571428571435,
+    "bm25": 0.06014576373654639,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "04bcf212b1a3"
+  },
+  {
+    "title": "Placeholder third-party[.]com Referenced Across 1,700+ Repositories Now Serves Malicious Content",
+    "link": "https://thehackernews.com/2026/09/placeholder-third-partycom-referenced.html",
+    "summary": "The \"third-party[.]com\" domain, commonly used as a documentation placeholder, has been observed serving a ClickFix lure to Windows browsers while displaying a harmless decoy to other users. \"third-party[.]com has been a generic documentation placeholder for years, the same role example.com plays,\" Manifold Security's Head of Research, Ax Sharma, said. \"Unlike 'example[.]com,' third-party[.]com",
+    "published": "2026-09-24T15:27:32+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "windows"
+    ],
+    "score": 0.005,
+    "bm25": 0.09416522139537781,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "e32e04002703"
+  },
+  {
+    "title": "17,000 URLs Reveal How ClickFix Turns Trusted Websites Into Malware Traps: Report by CTM360",
+    "link": "https://thehackernews.com/2026/09/17000-urls-reveal-how-clickfix-turns.html",
+    "summary": "ClickFix has become the most common way attackers get into enterprise networks, and it does it without an exploit, an attachment, or a file on disk. Our new global threat report traces the technique from a novelty in late 2023 to a subscription product with on-chain infrastructure and a state-sponsored user base, and explains why blocking malicious domains is no longer a useful defense. Read",
+    "published": "2026-09-24T09:14:21+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "exploit"
+    ],
+    "score": 0.005,
+    "bm25": 0.05762185625958431,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "5408002adacb"
+  },
+  {
+    "title": "Exploit Released for Unpatched Ubuntu Linux Flaw Enabling Host-Root Container Escape",
+    "link": "https://thehackernews.com/2026/09/exploit-released-for-unpatched-ubuntu.html",
+    "summary": "A use-after-free in the Linux kernel's AF_UNIX socket subsystem can be used to escape a container and gain root on the host, security firm DepthFirst&nbsp;said in research published September 22. The flaw, tracked as&nbsp;CVE-2026-80521&nbsp;(CVSS score: 7.8), was fixed upstream on August 6, but Ubuntu has not shipped the patch for its 26.04, 24.04, or 22.04 LTS releases. DepthFirst&nbsp;",
+    "published": "2026-09-23T11:12:18+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "container",
+      "linux",
+      "kernel",
+      "ubuntu",
+      "exploit",
+      "cve-",
+      "cvss"
+    ],
+    "score": 0.2841741184258788,
+    "bm25": 0.7104352960646971,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [
+      "CVE-2026-80521"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "a94e39978082"
+  },
+  {
+    "title": "ShinyHunters Claims FBI Breach, Says It Stole Data on Agents and Job Applicants",
+    "link": "https://thehackernews.com/2026/09/shinyhunters-claims-fbi-breach-says-it.html",
+    "summary": "The cyber extortion group known as ShinyHunters on Tuesday claimed it had breached the U.S. Federal Bureau of Investigation and stolen data belonging to current and former employees at the agency. \"We have compromised the FBI. We hold very sensitive data on almost ALL FBI Agents and individuals who filed an application with the FBI for a job,\" the group said in a statement posted on their dark",
+    "published": "2026-09-23T05:30:09+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "breach"
+    ],
+    "score": 0.2594193374268444,
+    "bm25": 0.6485483435671111,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "c2b107c39a2f"
+  },
+  {
+    "title": "Malicious Firefox Extension Poses as PDF Identity Verifier to Hijack Google Accounts",
+    "link": "https://socket.dev/blog/firefox-google-account-takeover?utm_medium=feed",
+    "summary": "A malicious Firefox extension fetches its payload after installation to evade detection, steal Google session cookies, and automate account takeover.",
+    "published": "2026-09-23T21:37:15+00:00",
+    "source": "Socket Blog",
+    "category": "advisory",
+    "source_weight": 1.2,
+    "matched_keywords": [
+      "session",
+      "firefox"
+    ],
+    "score": 0.2405283462654324,
+    "bm25": 0.2806164039763378,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "06f42acfff32"
+  },
+  {
+    "title": "A Leaked GitLab Issue Email Address Lets Anyone Push Code and Run CI Jobs as You",
+    "link": "https://thehackernews.com/2026/09/a-leaked-gitlab-issue-email-address.html",
+    "summary": "The private email address GitLab gives you for filing issues by email is a credential. Anyone who gets it can email a patch that GitLab commits in your name, to any branch you can push to, including main, and can start CI/CD jobs that run as you. GitLab shows each user this address behind a button labeled \"Email work item to this project.\" Mail sent to it opens an issue in that project, authored",
+    "published": "2026-09-23T16:53:10+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "gitlab",
+      "ci/cd",
+      "credential"
+    ],
+    "score": 0.20004763488513314,
+    "bm25": 0.4000952697702663,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "88652842189a"
+  },
+  {
+    "title": "This Windows Malware is Built to Let Up to Four AI Models Vote on Its Next Move",
+    "link": "https://thehackernews.com/2026/09/windows-malware-is-built-to-let-up-to.html",
+    "summary": "A Windows malware called CLOSEDQUORUM is built to take orders from a vote of up to four AI models instead of an attacker's server,&nbsp;Cisco Talos said&nbsp;on September 22. The models can choose to steal Windows credentials, saved browser passwords, and crypto wallet data. Talos has not seen this setup work from start to finish, and the public version of the malware does not work as it is.",
+    "published": "2026-09-23T14:17:58+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "cisco",
+      "windows"
+    ],
+    "score": 0.06556494171373503,
+    "bm25": 0.1639123542843376,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "1e2c3d8631df"
+  },
+  {
+    "title": "Attackers Use Malicious Terraform Providers to Deliver Go Malware via HashiCorp Registry",
+    "link": "https://thehackernews.com/2026/09/attackers-use-malicious-terraform.html",
+    "summary": "Cybersecurity researchers have disclosed Go-based malware distributed via two Go Modules and two Terraform providers, marking the first time threat actors are using the centralized repository hosted by HashiCorp as a distribution vector for malicious payloads. According to Aikido, the list of Terraform providers and Go modules is below - gocommunity-io/dockerd (222 downloads) kreuzwenker/",
+    "published": "2026-09-23T18:06:30+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "go ",
+      "terraform"
+    ],
+    "score": 0.05039355735758081,
+    "bm25": 0.10078711471516162,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "d1ccb5f32ae9"
+  },
+  {
+    "title": "New Linux Kernel Flaw Gives ARM64 KVM Guests Read-Write Access to Host Memory",
+    "link": "https://thehackernews.com/2026/09/new-linux-kernel-flaw-gives-arm64-kvm.html",
+    "summary": "A new flaw in the Linux kernel's KVM virtualization code for ARM64 processors can leave a freed piece of host memory exposed to a guest virtual machine on hosts with nested virtualization enabled. The bug, tracked as&nbsp;CVE-2026-89775, allows a guest to read and write host kernel memory, and the researcher who found it says it can be used to escape the guest and run code on the host machine.",
+    "published": "2026-09-22T11:38:40+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "kvm",
+      "linux",
+      "kernel",
+      "cve-"
+    ],
+    "score": 0.27939357397467973,
+    "bm25": 0.9313119132489324,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [
+      "CVE-2026-89775"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "319e5d081a9a"
+  },
+  {
+    "title": "Malicious npm campaign targets developers integrating Twilio",
+    "link": "https://www.reversinglabs.com/blog/malicious-npm-campaign-twilio",
+    "summary": "The package poses as a security tool targeting developers looking to implement Internet-based apps with telecom networks.",
+    "published": "2026-09-22T15:00:00+00:00",
+    "source": "ReversingLabs",
+    "category": "research",
+    "source_weight": 1.1,
+    "matched_keywords": [
+      "npm"
+    ],
+    "score": 0.1570961968577023,
+    "bm25": 0.33323435697088355,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "c147a428945f"
+  },
+  {
+    "title": "Malicious npm Package Poses as Twilio Bug-Bounty Probe, Can Exfiltrate Credentials",
+    "link": "https://thehackernews.com/2026/09/malicious-npm-package-poses-as-twilio.html",
+    "summary": "Cybersecurity researchers have disclosed details of a malicious npm package named \"tw-pkgprobe-7731\" that masquerades as a security tool targeting developers integrating Twilio into their applications, while stealthily attempting to harvest sensitive data. The package, named \"tw-pkgprobe-7731,\" was first uploaded to the npm registry in mid-August 2026 by an npm account named \"twdepprobe7731.\"",
+    "published": "2026-09-22T17:58:15+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "npm"
+    ],
+    "score": 0.15327773868850858,
+    "bm25": 0.3831943467212715,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "b38195d46412"
+  },
+  {
+    "title": "Malicious npm Package indexed-btree Hid Its Loader in Runtime Code Before Removal",
+    "link": "https://thehackernews.com/2026/09/malicious-npm-package-indexed-btree-hid.html",
+    "summary": "A malicious npm package named \"indexed-btree\" has been observed hiding its malicious behavior within application code rather than using lifecycle scripts, indicating that threat actors are likely shifting tactics in response to recent security controls. \"Indexed-btree is a malicious npm package mimicking the legit sorted-btree package, an ordinary B-tree/indexing utility,\" Checkmarx said. \"",
+    "published": "2026-09-22T09:38:18+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "npm"
+    ],
+    "score": 0.11631607488949632,
+    "bm25": 0.38772024963165436,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "9806c677170e"
+  },
+  {
+    "title": "Risky identities continue to plague cloud infrastructures",
+    "link": "https://webflow.sysdig.com/blog/risky-identities-continue-to-plague-cloud-infrastructures",
+    "summary": "Our research finds cloud-native IAM remains one of the most persistently misconfigured and poorly governed areas of security. Here\u2019s what you can do.",
+    "published": "2026-09-22T00:00:00+00:00",
+    "source": "Sysdig",
+    "category": "research",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "iam"
+    ],
+    "score": 0.10231252186088124,
+    "bm25": 0.23872921767538954,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "229883e56e7f"
+  },
+  {
+    "title": "Microsoft Takes Down EvilTokens Device-Code Phishing Service Tied to 12,000 Inbox Compromises",
+    "link": "https://thehackernews.com/2026/09/microsoft-takes-down-eviltokens-device.html",
+    "summary": "Microsoft on Tuesday announced the takedown of the EvilTokens device code phishing service that it said used artificial intelligence (AI) \"at every step of the attack chain.\" The action, carried out with authorization from the U.S. District Court for the Eastern District of Virginia, involved the efforts of Health-ISAC, alongside Cloudflare, Coinbase, OpenAI, Railway, SpyCloud, The Shadowserver",
+    "published": "2026-09-22T17:03:31+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "cloudflare"
+    ],
+    "score": 0.08245766088031449,
+    "bm25": 0.20614415220078625,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "ac1280aee3db"
+  },
+  {
+    "title": "RUSTSEC-2026-0298: Vulnerability in unicycle",
+    "link": "https://rustsec.org/advisories/RUSTSEC-2026-0298.html",
+    "summary": "Use-after-free when a future&apos;s `Drop` panics while the container is dropped",
+    "published": "2026-09-22T12:00:00+00:00",
+    "source": "RustSec",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "container"
+    ],
+    "score": 0.056747889539317295,
+    "bm25": 0.13241174225840702,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "a82cbe01f979"
+  },
+  {
+    "title": "AI Agents Are Rewriting the Rules of Lateral Movement",
+    "link": "https://thehackernews.com/2026/09/ai-agents-are-rewriting-rules-of.html",
+    "summary": "Security teams have spent decades asking whether an identity has too much access. AI agents raise a harder question: how can we determine which paths an autonomous system can discover, given the access it already has? A person may try several ways to complete a task. A deterministic application follows the flow its developer wrote. But an AI agent is relentless in its pursuit of done. In May",
+    "published": "2026-09-22T12:30:00+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "teams"
+    ],
+    "score": 0.030535215589570227,
+    "bm25": 0.10178405196523409,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "456273433b44"
+  },
+  {
+    "title": "Lovable\u2019s OJ Rewrites Vite\u2019s Dev Server in Rust as AI Lowers the Cost of Forking Open Source",
+    "link": "https://socket.dev/blog/oj-vite-rust?utm_medium=feed",
+    "summary": "Lovable\u2019s OJ rewrites Vite\u2019s dev server in Rust, reducing memory use and preview times as AI lowers the cost of open source reimplementation.",
+    "published": "2026-09-22T05:48:11+00:00",
+    "source": "Socket Blog",
+    "category": "advisory",
+    "source_weight": 1.2,
+    "matched_keywords": [
+      "rust"
+    ],
+    "score": 0.005142857142857143,
+    "bm25": 0.07945341057101096,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "a3a63d755927"
+  }
+]
