@@ -1,0 +1,2350 @@
+[
+  {
+    "title": "Warlock Exploits SharePoint Flaws to Disable Security Tools and Deploy Ransomware",
+    "link": "https://thehackernews.com/2026/10/warlock-exploits-sharepoint-flaws-to.html",
+    "summary": "The suspected China-linked threat actor known as Warlock is still continuing to weaponize Microsoft SharePoint vulnerabilities, likely both old and new, in attacks targeting organizations in Portuguese- and Spanish-speaking countries. The activity, observed by the Symantec and Carbon Black Threat Hunter Team, has hit critical infrastructure, government, and education organizations. \"In the",
+    "published": "2026-10-03T14:36:33+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "ransomware"
+    ],
+    "score": 0.6018464259368669,
+    "bm25": 0.4409131325544813,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "d5d7c3b1775b"
+  },
+  {
+    "title": "SiYuan Agent Tools SSRF via DNS-Rebinding TOCTOU (Bypass of CheckHostSSRF)",
+    "link": "https://github.com/advisories/GHSA-x8gv-g2g3-65fj",
+    "summary": "Affected: github.com/siyuan-note/siyuan/kernel. # Security Advisory \u2014 SiYuan Agent Tools SSRF via DNS-Rebinding TOCTOU (Bypass of `CheckHostSSRF`) | Field | Value | |---|---| | **Disclosed by** | joysinleung (`joysinleung@gmail.com`) | | **Report date** | 2026-08-13 | | **Product** | SiYuan (\u601d\u6e90\u7b14\u8bb0) \u2014 `siyuan-note/siyuan` | | **Go module** | `github.com/siyuan-note/siyuan/kernel` | | **Affected versions** | `<= 3.8.0` (latest release at report time; dynamically verified on v3.8.0) | | **Patched versions** | 3.8.1 | | **Component** | `kernel/util/httprequest.go` (`CheckHostSSRF`), `kernel/mcp/tools/http_request.go`, `kernel/util/webfetch.go`,",
+    "published": "2026-10-02T23:17:16Z",
+    "source": "GHSA \u2014 go",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "go ",
+      "github",
+      "kernel",
+      "dns",
+      "ssrf"
+    ],
+    "score": 1.8130868204840564,
+    "bm25": 0.33844852593852764,
+    "severity": "critical",
+    "cvss": 10.0,
+    "cves": [
+      "CVE-2026-69085",
+      "CVE-2026-72788",
+      "CVE-2026-73605",
+      "CVE-2026-73606",
+      "CVE-2026-73607",
+      "CVE-2026-73609",
+      "CVE-2026-74802",
+      "CVE-2026-74904"
+    ],
+    "packages": [
+      "github.com/siyuan-note/siyuan/kernel"
+    ],
+    "corroboration": 11,
+    "other_sources": [
+      {
+        "source": "GHSA \u2014 go",
+        "link": "https://github.com/advisories/GHSA-p23f-cm6q-2qp8",
+        "published": "2026-10-02T23:16:56Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 go",
+        "link": "https://github.com/advisories/GHSA-4vpg-gwqq-w44c",
+        "published": "2026-10-02T23:05:33Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 go",
+        "link": "https://github.com/advisories/GHSA-3cc2-h3v6-rqpq",
+        "published": "2026-10-02T22:46:18Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 go",
+        "link": "https://github.com/advisories/GHSA-vg99-7gj7-2fr5",
+        "published": "2026-10-01T16:29:35Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 go",
+        "link": "https://github.com/advisories/GHSA-9cqf-hhrq-7v45",
+        "published": "2026-10-01T16:24:38Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 go",
+        "link": "https://github.com/advisories/GHSA-j4ph-9xwf-wcj4",
+        "published": "2026-10-01T16:23:37Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 go",
+        "link": "https://github.com/advisories/GHSA-hf8h-97gm-4x2p",
+        "published": "2026-10-01T15:46:01Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 go",
+        "link": "https://github.com/advisories/GHSA-53fp-9jmv-227g",
+        "published": "2026-10-01T15:44:46Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 go",
+        "link": "https://github.com/advisories/GHSA-hgfg-j9pg-43xw",
+        "published": "2026-10-01T14:39:32Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 go",
+        "link": "https://github.com/advisories/GHSA-33jq-p8c2-q3q4",
+        "published": "2026-10-01T14:38:48Z",
+        "category": "advisory"
+      }
+    ],
+    "id": "97d048c70cdb"
+  },
+  {
+    "title": "Fortinet FortiMail: Fortinet FortiMail Path Traversal Vulnerability",
+    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104286",
+    "summary": "Fortinet FortiMail contains a path traversal and an improper neutralization of NULL byte or NULL character vulnerability that may allow an unauthenticated attacker to write arbitrary files on the underlying system via crafted HTTP or HTTPS requests. Required action: Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+    "published": "2026-10-02T05:49:50+00:00",
+    "source": "CISA KEV",
+    "category": "government",
+    "source_weight": 1.3,
+    "matched_keywords": [
+      "fortinet"
+    ],
+    "score": 1.2524345000546238,
+    "bm25": 0.3258284433535344,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [
+      "CVE-2026-104286"
+    ],
+    "packages": [],
+    "corroboration": 3,
+    "other_sources": [
+      {
+        "source": "The Hacker News",
+        "link": "https://thehackernews.com/2026/10/critical-fortimail-zero-day-flaw.html",
+        "published": "2026-10-02T05:49:50+00:00",
+        "category": "aggregator"
+      },
+      {
+        "source": "BleepingComputer",
+        "link": "https://www.bleepingcomputer.com/news/security/fortinet-warns-of-critical-fortimail-flaw-exploited-in-zero-day-attacks/",
+        "published": "2026-10-01T22:42:49+00:00",
+        "category": "aggregator"
+      }
+    ],
+    "id": "b2eb524aefa7"
+  },
+  {
+    "title": "gitea-runner: workflow container.options passes host namespaces and capability flags to job container when privileged mode is disabled",
+    "link": "https://github.com/advisories/GHSA-x4q3-gcj3-m6cf",
+    "summary": "Affected: gitea.com/gitea/runner. ### Summary act_runner appends workflow-controlled `jobs.<job>.container.options` directly to the Docker HostConfig for the job container. When runner privileged mode is disabled, only `Privileged` is forced false. Host namespace flags, capability expansion, and security profile overrides from workflow YAML are preserved in the final HostConfig. A workflow author can enter host PID/IPC namespaces and execute commands on the runner host as root. ### Details Source-to-sink path in act_runner: - `ContainerSpec.Options` accepts workflow YAML `container.options` - `RunContext.options()` appe",
+    "published": "2026-10-02T23:18:12Z",
+    "source": "GHSA \u2014 go",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "runner",
+      "container",
+      "docker"
+    ],
+    "score": 0.8681039787769806,
+    "bm25": 0.4362331551643119,
+    "severity": "critical",
+    "cvss": 9.9,
+    "cves": [
+      "CVE-2026-73802"
+    ],
+    "packages": [
+      "gitea.com/gitea/runner"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "9211fd9094e8"
+  },
+  {
+    "title": "Vibe-Trading FastAPI endpoints permit unauthenticated access, file upload, and an RCE chain",
+    "link": "https://github.com/advisories/GHSA-v2f8-6655-7grj",
+    "summary": "Affected: vibe-trading-ai. ### Summary: 5 findings \u2014 unauthenticated full-API exposure (F1, lead Critical), read-side authorization gap that persists even with `API_AUTH_KEY` set (F2), unauthenticated file write of `.py`/`.sh`/`.yaml` to a server-returned path (F3), default-permissive CORS that combines with a loopback-only check to grant any browser page on whitelisted localhost ports credentialed cross-origin access (F-A4), and partial API-key disclosure via `_mask_secret()` (F-A5). --- ### Shared baseline (applies to all 5 findings) The shipped `agent/.env.example` line 112 ships `# API_AUTH_KEY=` commented out.",
+    "published": "2026-10-02T22:44:26Z",
+    "source": "GHSA \u2014 pip",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "rce"
+    ],
+    "score": 0.6094333932062799,
+    "bm25": 0.1722508591703836,
+    "severity": "critical",
+    "cvss": 10.0,
+    "cves": [],
+    "packages": [
+      "vibe-trading-ai"
+    ],
+    "corroboration": 3,
+    "other_sources": [
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-5rmq-chc7-m22f",
+        "published": "2026-10-02T22:44:12Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-jqmf-mx4f-hfr6",
+        "published": "2026-10-02T22:44:03Z",
+        "category": "advisory"
+      }
+    ],
+    "id": "7ee8c3339768"
+  },
+  {
+    "title": "Zammad GmbH Zammad: Zammad GmbH Zammad Improper Privilege Management Vulnerability",
+    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102490",
+    "summary": "Zammad GmbH Zammad contains an improper privilege management vulnerability that can allow the local zammad user to escalate privileges to root. This vulnerability can be chained with CVE-2026-102489. Required action: Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+    "published": "2026-10-02T00:00:00+00:00",
+    "source": "CISA KEV",
+    "category": "government",
+    "source_weight": 1.3,
+    "matched_keywords": [
+      "cve-"
+    ],
+    "score": 0.5951654077713366,
+    "bm25": 0.28111726412951127,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [
+      "CVE-2026-102490"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "6347b6bb6b0d"
+  },
+  {
+    "title": "GitLab Patches Critical 9.9 AI Gateway Flaw Allowing Command Execution on Self-Hosted Servers",
+    "link": "https://thehackernews.com/2026/10/gitlab-patches-critical-self-hosted-ai.html",
+    "summary": "A critical flaw in GitLab's AI Gateway could let a logged-in user with Duo Agent Platform access run commands on the gateway under certain conditions, GitLab&nbsp;said in an advisory. The gateway is the service that connects a GitLab instance to AI models, and only organizations that host their own gateway need to act. The flaw is fixed in gateway versions 19.2.4, 19.3.2, and 19.4.1. The flaw",
+    "published": "2026-10-02T17:33:31+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "gitlab",
+      "duo"
+    ],
+    "score": 0.5893856588097235,
+    "bm25": 0.4317843654283689,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "5ef20bc51467"
+  },
+  {
+    "title": "Trigger.dev: Cross-tenant SQL injection in the TSQL query compiler (POST /api/v1/query) via unsanitized window-function name",
+    "link": "https://github.com/advisories/GHSA-9q4r-4842-93vw",
+    "summary": "Affected: trigger.dev. ### Summary A cross-tenant SQL injection in the TSQL query compiler lets **any authenticated trigger.dev customer read every other tenant's analytics data**. The customer-facing query endpoint `POST /api/v1/query` accepts a TSQL/TRQL query that is compiled to ClickHouse SQL by `internal-packages/tsql`. The compiler parameterizes or escapes all user input and injects a per-tenant `WHERE` guard \u2014 **except the window-function name**, which is concatenated into the SQL string with no allowlist and no escaping. By smuggling a backtick-quoted identifier into that position, an attacker injects a raw",
+    "published": "2026-10-02T22:42:20Z",
+    "source": "GHSA \u2014 npm",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "clickhouse",
+      "sql injection"
+    ],
+    "score": 0.5646140360258776,
+    "bm25": 0.0746465089832363,
+    "severity": "critical",
+    "cvss": 7.7,
+    "cves": [],
+    "packages": [
+      "trigger.dev"
+    ],
+    "corroboration": 5,
+    "other_sources": [
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-pqxw-g93w-hj9x",
+        "published": "2026-10-02T22:39:48Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-gg6r-gp4c-89hp",
+        "published": "2026-10-02T22:39:00Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-q567-cr4x-96w4",
+        "published": "2026-10-02T22:35:31Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-xxv7-2vv3-h682",
+        "published": "2026-10-02T19:31:33Z",
+        "category": "advisory"
+      }
+    ],
+    "id": "205e79621c65"
+  },
+  {
+    "title": "@a2ui/web_core: `openUrl` permits `javascript:` URI execution via agent-supplied button actions",
+    "link": "https://github.com/advisories/GHSA-72qq-p3r5-f7wq",
+    "summary": "Affected: @a2ui/web_core. ### Summary The `openUrl` function in `@a2ui/web_core` passes an agent-controlled URL directly to `window.open()` without validating the URI scheme. A malicious agent can supply a `javascript:` URI as the `url` argument of a `Button` component's `functionCall` action. When the user clicks the rendered button, arbitrary JavaScript executes in the victim application's browser origin, constituting a stored/reflected XSS. No non-default configuration is required; the Basic Catalog is enabled by default. ### Details The vulnerability exists in the `openUrl` function implementation within the Bas",
+    "published": "2026-10-02T22:55:49Z",
+    "source": "GHSA \u2014 npm",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "javascript",
+      "xss"
+    ],
+    "score": 0.49246418341027637,
+    "bm25": 0.2551627893317494,
+    "severity": "critical",
+    "cvss": 9.3,
+    "cves": [
+      "CVE-2026-10032"
+    ],
+    "packages": [
+      "@a2ui/web_core"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "e01c737e6419"
+  },
+  {
+    "title": "Dell CSM Flaws Enable Unauthenticated Admin Access and Root on Kubernetes Nodes",
+    "link": "https://thehackernews.com/2026/10/dell-csm-flaws-enable-unauthenticated.html",
+    "summary": "Dell has released security updates to address multiple critical security flaws in Dell Container Storage Modules (CSM) that could be exploited by bad actors to take over susceptible systems. The vulnerabilities are listed below - CVE-2026-63688 (CVSS score: 10.0) - A missing authentication for critical function vulnerability in the csm-authorization-storage gRPC server that an",
+    "published": "2026-10-02T17:02:12+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "kubernetes",
+      "container",
+      "cve-",
+      "cvss"
+    ],
+    "score": 0.4321251946789127,
+    "bm25": 0.3165752341970057,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [
+      "CVE-2026-63688"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "5f13530361d7"
+  },
+  {
+    "title": "Zammad GmbH Zammad: Zammad GmbH Zammad Session Fixation Vulnerability",
+    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102489",
+    "summary": "Zammad GmbH Zammad contains a session fixation vulnerability that can lead to remote code execution as the zammad user. This vulnerability can be chained with CVE-2026-102490. Required action: Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+    "published": "2026-10-02T00:00:00+00:00",
+    "source": "CISA KEV",
+    "category": "government",
+    "source_weight": 1.3,
+    "matched_keywords": [
+      "session",
+      "cve-"
+    ],
+    "score": 0.4043058024473665,
+    "bm25": 0.1909676529778384,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [
+      "CVE-2026-102489"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "0e2fce4f1a19"
+  },
+  {
+    "title": "GitLab warns of critical RCE vulnerability in AI Gateway service",
+    "link": "https://www.bleepingcomputer.com/news/security/gitlab-warns-of-critical-rce-vulnerability-in-ai-gateway-service/",
+    "summary": "GitLab warned customers today to immediately patch a critical AI Gateway vulnerability that could let attackers run arbitrary commands on vulnerable instances. [...]",
+    "published": "2026-10-02T16:20:05+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "gitlab",
+      "rce"
+    ],
+    "score": 0.30409826948786695,
+    "bm25": 0.22278261500942634,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "9814dffcb60c"
+  },
+  {
+    "title": "aws-smithy-json: Uncontrolled recursion in the aws-smithy-json unknown-key skip path allows unauthenticated remote denial of service in smithy-rs generated servers",
+    "link": "https://github.com/advisories/GHSA-8ffr-xgwf-xj56",
+    "summary": "Affected: aws-smithy-json. ### Summary Smithy-RS is a Rust code generation and runtime framework that generates HTTP clients and servers from Smithy interface definitions, powering the AWS SDK for Rust and custom service implementations. An issue exists which allows uncontrolled recursion in the unknown-key skip path of the Amazon aws-smithy-json runtime crate in versions 0.62.6 and earlier. ### Impact Uncontrolled recursion in the unknown-key skip path of the aws-smithy-json runtime crate before 0.62.7, which the smithy-rs code generator invokes from every generated struct deserializer, might allow remote unauthentica",
+    "published": "2026-10-02T22:44:52Z",
+    "source": "GHSA \u2014 rust",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "rust",
+      "aws"
+    ],
+    "score": 0.5465345143223069,
+    "bm25": 0.31230543675560396,
+    "severity": "high",
+    "cvss": 7.5,
+    "cves": [
+      "CVE-2026-18140"
+    ],
+    "packages": [
+      "aws-smithy-json"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "cabd92ed2f8e"
+  },
+  {
+    "title": "Dulwich: Arbitrary File Write (RCE) on Windows via Unvalidated Drive Letters in Tree Paths",
+    "link": "https://github.com/advisories/GHSA-8mcx-5rqc-vhmf",
+    "summary": "Affected: dulwich. ### Affected files * `dulwich/index.py` (Methods: `validate_path_element_ntfs`, `_tree_to_fs_path`) * `dulwich/porcelain/__init__.py` (Method: `_checked_worktree_path`) ### Description / Summary A High-severity Path Traversal vulnerability exists in Dulwich's checkout logic when running on Windows. The functions responsible for validating NTFS paths strictly reject `.git` variants, Alternate Data Streams (ADS), `git~1` short names, and reserved device names, but they completely fail to check for **DOS drive letter prefixes**. A malicious Git tree can contain an entry named `C:`. When Dulwich",
+    "published": "2026-10-02T19:14:21Z",
+    "source": "GHSA \u2014 pip",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "windows",
+      "rce"
+    ],
+    "score": 0.41882725344253324,
+    "bm25": 0.07670616126434392,
+    "severity": "high",
+    "cvss": 8.8,
+    "cves": [],
+    "packages": [
+      "dulwich"
+    ],
+    "corroboration": 2,
+    "other_sources": [
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-8w8g-wq8h-fq33",
+        "published": "2026-10-02T18:53:35Z",
+        "category": "advisory"
+      }
+    ],
+    "id": "899ddb761c33"
+  },
+  {
+    "title": "@fastify/busboy vulnerable to Denial of Service via prototype-named multipart part header",
+    "link": "https://github.com/advisories/GHSA-x8mw-p69m-v3mx",
+    "summary": "Affected: @fastify/busboy. ### Impact Versions of `@fastify/busboy` from 1.0.0 and prior to 3.2.1 are vulnerable to a Denial of Service. The multipart header parser stores part-header names on a plain JavaScript object, so a part header named `__proto__` or `constructor` resolves to an inherited value that is not an array, and the parser throws `TypeError: this.header[h].push is not a function`. Through the documented `req.pipe(busboy)` integration this surfaces as an `error` event, while direct `write()`/`end()` usage throws synchronously and can terminate the Node.js process if uncaught. The parser runs before applic",
+    "published": "2026-10-02T23:16:36Z",
+    "source": "GHSA \u2014 npm",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "node",
+      "javascript"
+    ],
+    "score": 0.29579753760026933,
+    "bm25": 0.11380744675267238,
+    "severity": "high",
+    "cvss": 7.5,
+    "cves": [
+      "CVE-2026-19481",
+      "CVE-2026-19484"
+    ],
+    "packages": [
+      "@fastify/busboy"
+    ],
+    "corroboration": 2,
+    "other_sources": [
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-xjh9-v7x6-24jw",
+        "published": "2026-10-02T23:16:17Z",
+        "category": "advisory"
+      }
+    ],
+    "id": "f1a9409870b5"
+  },
+  {
+    "title": "Antino Backdoor Uses Outlook and OneDrive for C2 in China-Nexus Espionage Campaign",
+    "link": "https://thehackernews.com/2026/10/antino-backdoor-uses-outlook-and.html",
+    "summary": "Government and policy organizations across Asia have become the target of a new campaign orchestrated by a China-nexus threat actor. The activity, which has targeted government and policy organizations in Taiwan, India, the Philippines, Cambodia, Pakistan, Thailand, and Myanmar, involves the deployment of a previously undocumented backdoor codenamed Antino. Cisco Talos is tracking the cluster",
+    "published": "2026-10-02T17:33:16+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "cisco",
+      "backdoor"
+    ],
+    "score": 0.24445202746053496,
+    "bm25": 0.18876604437106945,
+    "severity": "high",
+    "cvss": 8.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "2fb0abb39d71"
+  },
+  {
+    "title": "Xray-core: Pinning a CA certificate via pinnedPeerCertSha256 can lead to the success of MITM attacks",
+    "link": "https://github.com/advisories/GHSA-5wf9-h793-w73c",
+    "summary": "Affected: github.com/xtls/xray-core. ### Summary Pinning a CA certificate via `pinnedPeerCertSha256` can lead to the success of MITM attacks in some cases. ### Details https://github.com/XTLS/Xray-core/blob/45cf2898ab12e97a55dd8f1f3d78d903340bdc9e/transport/internet/tls/config.go#L333-L347 If `r.Config.ServerName` is empty, `DNSName` will be empty and `certs[0].Verify(opts)` will not verify against dNSName or iPAddress. If a user pins a well-known and non-self-signed CA, an attacker can issue a leaf certificate through the Root CA (using the attacker's own domain name or IP address) and hijack the connections. In Go crypto/",
+    "published": "2026-10-02T22:35:51Z",
+    "source": "GHSA \u2014 go",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "go ",
+      "github",
+      "tls",
+      "certificate",
+      "ca"
+    ],
+    "score": 0.24,
+    "bm25": 0.0,
+    "severity": "high",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [
+      "github.com/xtls/xray-core"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "5b4ee521e9e6"
+  },
+  {
+    "title": "Microsoft\u2019s X account hacked in crypto pump-and-dump scheme",
+    "link": "https://www.bleepingcomputer.com/news/security/microsofts-x-account-hacked-in-crypto-token-pump-and-dump-scheme/",
+    "summary": "On Thursday, unknown attackers hijacked the official Microsoft account on X, which has over 13 million followers, in what appeared to be a pump-and-dump scheme promoting a crypto token. [...]",
+    "published": "2026-10-02T09:29:56+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "token"
+    ],
+    "score": 0.2116913166452282,
+    "bm25": 0.19071289787858395,
+    "severity": "high",
+    "cvss": 8.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "b8b4a1085f35"
+  },
+  {
+    "title": "figlet is vulnerable to denial of service via unbounded loop when whitespaceBreak is used with a small width",
+    "link": "https://github.com/advisories/GHSA-62ch-8vmq-8xm7",
+    "summary": "Affected: figlet. ### Impact A denial-of-service (infinite loop) can occur in `text()` / `textSync()` when **both**: - `whitespaceBreak: true` is set, **and** - `width` is set smaller than the rendered width of a single FIGlet character. Under these conditions `breakWord()` could never find a valid break point, so the word-wrapping loop in `generateFigTextLines()` never terminated. This pins a CPU core and grows memory without bound, blocking the Node.js event loop. ### Severity Low or Medium. Triggering requires a non-default configuration (`whitespaceBreak: true`) and an attacker-controlled `width` value rea",
+    "published": "2026-10-02T22:39:16Z",
+    "source": "GHSA \u2014 npm",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "node"
+    ],
+    "score": 0.17610510836120877,
+    "bm25": 0.11006569272575548,
+    "severity": "high",
+    "cvss": 0.0,
+    "cves": [
+      "CVE-2026-96780"
+    ],
+    "packages": [
+      "figlet"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "e5c27a6b3ef0"
+  },
+  {
+    "title": "Cisco Catalyst SD-WAN Manager: Cisco Catalyst SD-WAN Manager Hex Encoding Vulnerability",
+    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76504",
+    "summary": "Cisco Catalyst SD-WAN Manager contains a hex encoding vulnerability that could allow an unauthenticated, remote attacker to access an affected system with privileges of the admin user due to improper handling of URI encoding in an HTTP request. Required action: Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+    "published": "2026-10-01T10:33:16+00:00",
+    "source": "CISA KEV",
+    "category": "government",
+    "source_weight": 1.3,
+    "matched_keywords": [
+      "cisco"
+    ],
+    "score": 0.9171035919607435,
+    "bm25": 0.28630808469374297,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [
+      "CVE-2026-76504"
+    ],
+    "packages": [],
+    "corroboration": 3,
+    "other_sources": [
+      {
+        "source": "The Hacker News",
+        "link": "https://thehackernews.com/2026/10/cisa-adds-exploited-cisco-catalyst-sd.html",
+        "published": "2026-10-01T10:33:16+00:00",
+        "category": "aggregator"
+      },
+      {
+        "source": "The Hacker News",
+        "link": "https://thehackernews.com/2026/09/cisco-warns-of-attackers-exploiting.html",
+        "published": "2026-09-30T15:24:54+00:00",
+        "category": "aggregator"
+      }
+    ],
+    "id": "8674d3195e6c"
+  },
+  {
+    "title": "vm2: Incomplete nodejs.* symbol filtering lets sandbox override host WebStream state checks",
+    "link": "https://github.com/advisories/GHSA-jf8q-945g-9q4c",
+    "summary": "Affected: vm2. ## Summary vm2 current head (`v3.11.5`, commit `7a1f5100b96f48d34e0fe104ab37c0acc5944f92`) still exposes registered Node.js internal symbols from host WebStream prototypes to sandbox code. The prior `nodejs.*` symbol hardening blocks `Symbol.for('nodejs.<name>')` at the source, but the extraction filters and bridge write traps still enumerate a fixed set of known registered symbols. On Node.js `v25.8.0`, `stream/web` exposes two additional registered symbols: - `nodejs.stream.disturbed` - `nodejs.stream.errored` Sandbox code can extract those real host symbols with `Object.getOwnPropertySy",
+    "published": "2026-10-01T15:42:15Z",
+    "source": "GHSA \u2014 npm",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "node",
+      "nodejs"
+    ],
+    "score": 0.6973021348810094,
+    "bm25": 0.1714271818630421,
+    "severity": "critical",
+    "cvss": 10.0,
+    "cves": [
+      "CVE-2026-92935",
+      "CVE-2026-92937",
+      "CVE-2026-92938",
+      "CVE-2026-92939",
+      "CVE-2026-92940",
+      "CVE-2026-92941",
+      "CVE-2026-92944",
+      "CVE-2026-92948",
+      "CVE-2026-92949",
+      "CVE-2026-92950",
+      "CVE-2026-92951",
+      "CVE-2026-92952",
+      "CVE-2026-92957",
+      "CVE-2026-92958"
+    ],
+    "packages": [
+      "vm2"
+    ],
+    "corroboration": 14,
+    "other_sources": [
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-qhwx-74w5-xhxq",
+        "published": "2026-10-01T15:41:31Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-jxxv-8r27-vm4p",
+        "published": "2026-10-01T15:40:45Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-h85j-hv3c-qfgq",
+        "published": "2026-10-01T15:38:26Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-c48m-32m9-vx93",
+        "published": "2026-10-01T15:37:19Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-6rh5-qq4q-97xh",
+        "published": "2026-10-01T15:36:48Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-8686-vhfx-7r3j",
+        "published": "2026-10-01T15:36:01Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-633r-hq9m-c4ff",
+        "published": "2026-10-01T15:35:25Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-8hr7-r645-pc6w",
+        "published": "2026-10-01T15:34:58Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-647f-g98j-qq25",
+        "published": "2026-10-01T15:32:10Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-6w8r-xxw2-g3hx",
+        "published": "2026-10-01T15:29:04Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-46pr-c5wc-xffx",
+        "published": "2026-10-01T15:28:36Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-27g9-p43v-cw3v",
+        "published": "2026-10-01T15:28:07Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-98xx-8mx4-x7cm",
+        "published": "2026-10-01T15:27:28Z",
+        "category": "advisory"
+      }
+    ],
+    "id": "dd0293e1eacd"
+  },
+  {
+    "title": "Apple Multiple Products: Apple Multiple Products Out-of-Bounds Write Vulnerability",
+    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-86950",
+    "summary": "Apple iOS, macOS, and iPadOS contain an out-of-bounds write vulnerability in CoreGraphics that may lead to arbitrary code execution. Required action: Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+    "published": "2026-10-01T05:54:41+00:00",
+    "source": "CISA KEV",
+    "category": "government",
+    "source_weight": 1.3,
+    "matched_keywords": [
+      "macos",
+      "apple"
+    ],
+    "score": 0.4681607836186244,
+    "bm25": 0.07906878336158228,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [
+      "CVE-2026-86950"
+    ],
+    "packages": [],
+    "corroboration": 3,
+    "other_sources": [
+      {
+        "source": "The Hacker News",
+        "link": "https://thehackernews.com/2026/10/apple-coregraphics-poc-emerges-as.html",
+        "published": "2026-10-01T05:54:41+00:00",
+        "category": "aggregator"
+      },
+      {
+        "source": "The Hacker News",
+        "link": "https://thehackernews.com/2026/09/apple-patches-coregraphics-flaw.html",
+        "published": "2026-09-28T19:18:01+00:00",
+        "category": "aggregator"
+      }
+    ],
+    "id": "973397c2ff96"
+  },
+  {
+    "title": "Bitget Confirms Third-Party Zero-Day Behind $387.5 Million Cryptocurrency Theft",
+    "link": "https://thehackernews.com/2026/10/bitget-confirms-third-party-zero-day.html",
+    "summary": "Cryptocurrency exchange Bitget on Wednesday confirmed that attackers who stole $387.5 million last week exploited a zero-day flaw in third-party security products, citing ongoing investigation findings from SlowMist. \"Their investigation identified malicious activity involving third-party security products, including a zero-day vulnerability, and recovered a customized tool used by the attacker",
+    "published": "2026-10-01T05:21:10+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "zero-day"
+    ],
+    "score": 0.434668198023214,
+    "bm25": 0.4575454716033832,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "b4409a570832"
+  },
+  {
+    "title": "ThreatsDay: AI-Powered Zero-Day Chain, 543K Live Secrets, Model Inspection RCE and 13 More Stories",
+    "link": "https://thehackernews.com/2026/10/threatsday-ai-powered-zero-day-chain.html",
+    "summary": "This week, the useful words are boring ones: inspect, cache, compile, store, trust. Each sounds harmless. Each can become an attack path when a system does a little more than people expect. A model check can run code. A cache can mix up requests. A public secret can stay useful for years. That is the lesson running through the list. Attackers do not always need a brilliant new trick. They can",
+    "published": "2026-10-01T16:45:38+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "rce",
+      "zero-day"
+    ],
+    "score": 0.2846065493386585,
+    "bm25": 0.2496548678409285,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "ab51ae9f2bbe"
+  },
+  {
+    "title": "piscina: Prototype-pollution gadget in ThreadPool.options allows RCE via execArgv / loadBalancer / env",
+    "link": "https://github.com/advisories/GHSA-67c8-pqhq-4rmx",
+    "summary": "Affected: piscina, piscina, piscina. ### Summary A prototype-pollution gadget in `ThreadPool.options` allows an attacker who can pollute `Object.prototype` to execute arbitrary code in Piscina worker threads, invoke arbitrary functions during task scheduling, or inject environment variables into workers. The root cause is that `ThreadPool.options` is created as a plain object inheriting from `Object.prototype`, so any option without an explicit default in `kDefaultOptions` can be supplied via the prototype chain. ### Details In `src/index.ts` the `ThreadPool` constructor builds the resolved options object as a plain object: `",
+    "published": "2026-10-01T15:03:33Z",
+    "source": "GHSA \u2014 npm",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "rce"
+    ],
+    "score": 0.20357142857142854,
+    "bm25": 0.05095107007048583,
+    "severity": "critical",
+    "cvss": 0.0,
+    "cves": [
+      "CVE-2026-102992"
+    ],
+    "packages": [
+      "piscina",
+      "piscina",
+      "piscina"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "1f2ff64bb781"
+  },
+  {
+    "title": "pypdf: Possible long runtimes with large amount of embedded files",
+    "link": "https://github.com/advisories/GHSA-v247-6f48-mgcj",
+    "summary": "Affected: pypdf. ### Impact An attacker who uses this vulnerability can craft a PDF which leads to long runtimes. This requires accessing the embedded files through the dictionary-based API. ### Patches This has been fixed in [pypdf==6.19.0](https://github.com/py-pdf/pypdf/releases/tag/6.19.0). ### Workarounds If you cannot upgrade yet, consider applying the changes from PR [#4081](https://github.com/py-pdf/pypdf/pull/4081).",
+    "published": "2026-10-01T15:07:35Z",
+    "source": "GHSA \u2014 pip",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.4209615564301517,
+    "bm25": 0.04882295234923065,
+    "severity": "high",
+    "cvss": 0.0,
+    "cves": [
+      "CVE-2026-102993",
+      "CVE-2026-102994",
+      "CVE-2026-102995",
+      "CVE-2026-102996",
+      "CVE-2026-102997",
+      "CVE-2026-102998",
+      "CVE-2026-102999",
+      "CVE-2026-103000"
+    ],
+    "packages": [
+      "pypdf"
+    ],
+    "corroboration": 8,
+    "other_sources": [
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-php9-fj8v-98fj",
+        "published": "2026-10-01T15:07:21Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-w23x-9jrw-r45c",
+        "published": "2026-10-01T15:07:08Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-jw7q-gvrg-4vj3",
+        "published": "2026-10-01T15:06:33Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-g9cg-prrw-2r8q",
+        "published": "2026-10-01T15:06:13Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-fp3h-c4fm-7vvf",
+        "published": "2026-10-01T15:06:04Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-5jq2-8x83-x246",
+        "published": "2026-10-01T15:05:53Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-qv6h-rv94-w285",
+        "published": "2026-10-01T15:03:45Z",
+        "category": "advisory"
+      }
+    ],
+    "id": "63c9ae2f2204"
+  },
+  {
+    "title": "WordPress Backdoor Rebuilds Itself After Cleanup Using Files, Database, and Shared Memory",
+    "link": "https://thehackernews.com/2026/10/wordpress-backdoor-rebuilds-itself.html",
+    "summary": "Cybersecurity researchers have shed light on a WordPress compromise in which threat actors deployed multiple persistence mechanisms to ensure that the final payload kept returning without having to infect the site again. The backdoor has been codenamed SC after the \"SC_\" markers present in the injected content. Sucuri has described the malware as a \"self-healing mesh\" that's",
+    "published": "2026-10-01T14:37:35+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "backdoor"
+    ],
+    "score": 0.3787428438925563,
+    "bm25": 0.4094517231270879,
+    "severity": "high",
+    "cvss": 8.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "dcd4b62c704a"
+  },
+  {
+    "title": "devalue: `stringify`/`uneval` serialize shared memory",
+    "link": "https://github.com/advisories/GHSA-j22f-vq7h-c4qm",
+    "summary": "Affected: devalue. ### Impact `stringify` and `uneval` serialize a typed array by emitting its backing `ArrayBuffer`, not just the view. In the case of a Node `Buffer` object, the backing buffer is a process-wide shared pool, meaning unrelated memory can be serialized into a response that is then sent to the client. For a Node `Buffer` the backing store is Node's **process-wide shared pool**, so serializing a small `Buffer` copies up to 64 KB of unrelated process memory \u2014 including bytes from other in-flight requests \u2014 into the output. In an SSR framework (SvelteKit, Nuxt) a public page whose `load()` returns a",
+    "published": "2026-10-01T15:18:06Z",
+    "source": "GHSA \u2014 npm",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "node"
+    ],
+    "score": 0.3172168897754785,
+    "bm25": 0.12879249506051527,
+    "severity": "high",
+    "cvss": 7.5,
+    "cves": [
+      "CVE-2026-92708"
+    ],
+    "packages": [
+      "devalue"
+    ],
+    "corroboration": 4,
+    "other_sources": [
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-hx4r-w6wj-j8fg",
+        "published": "2026-10-01T15:17:42Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-x5rw-q4pp-hg5g",
+        "published": "2026-10-01T15:15:13Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-4q55-j62x-fr9h",
+        "published": "2026-10-01T15:13:23Z",
+        "category": "advisory"
+      }
+    ],
+    "id": "dcfca501c960"
+  },
+  {
+    "title": "JupyterLab: Cross-site scripting (XSS) in JupyterLab via crafted language package (jupyterlab.json)",
+    "link": "https://github.com/advisories/GHSA-3jqq-pw4j-pqcj",
+    "summary": "Affected: jupyterlab, jupyterlab, jupyterlite-core. ## Description A language pack ships a `Plural-Forms` header saying how the language counts, for example `nplurals=2; plural=(n != 1);`. JupyterLab turns that string into a function with `new Function`, so the header gets executed. The check that meant to keep it safe was a regular expression. The regex was anchored at the start but not at the end, so it accepted any string that began with a valid plural rule and ignored everything after it. A header such as the following passed the check, and the part after the plural rule ran in the JupyterLab page as soon as the first plural string was tr",
+    "published": "2026-10-01T15:22:17Z",
+    "source": "GHSA \u2014 pip",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "xss"
+    ],
+    "score": 0.29069435985525466,
+    "bm25": 0.1271016567643845,
+    "severity": "high",
+    "cvss": 8.1,
+    "cves": [
+      "CVE-2026-102830",
+      "CVE-2026-102831",
+      "CVE-2026-102904"
+    ],
+    "packages": [
+      "jupyterlab",
+      "jupyterlab",
+      "jupyterlite-core"
+    ],
+    "corroboration": 3,
+    "other_sources": [
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-3325-v43h-43rv",
+        "published": "2026-10-01T15:21:17Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-6966-vjj6-99xv",
+        "published": "2026-10-01T15:20:41Z",
+        "category": "advisory"
+      }
+    ],
+    "id": "ac2580656979"
+  },
+  {
+    "title": "virtualenv: Command injection via --prompt in activate.bat (batch activator)",
+    "link": "https://github.com/advisories/GHSA-x78j-v8h9-3j2q",
+    "summary": "Affected: virtualenv. `BatchActivator.quote()` returned its input unchanged, the only activator with no escaping at all. `--prompt`, the `VIRTUALENV_PROMPT` environment variable, and the config file all set the prompt, and `activate.bat` writes it straight into `@set \"VAR=value\"`. A prompt containing a double quote closes that string early, and whatever follows runs as live cmd.exe syntax: ```console $ virtualenv --prompt 'x\" & calc & \"' venv $ venv\\Scripts\\activate.bat ``` runs `calc` the moment someone activates the environment. Confirmed on a real Windows runner. Anyone who templates a prompt from untrusted in",
+    "published": "2026-10-01T15:08:29Z",
+    "source": "GHSA \u2014 pip",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "runner",
+      "windows"
+    ],
+    "score": 0.19482158827607843,
+    "bm25": 0.11477817289107783,
+    "severity": "high",
+    "cvss": 0.0,
+    "cves": [
+      "CVE-2026-102930",
+      "CVE-2026-102937"
+    ],
+    "packages": [
+      "virtualenv"
+    ],
+    "corroboration": 2,
+    "other_sources": [
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-94p9-xgh2-xp45",
+        "published": "2026-09-30T23:54:13Z",
+        "category": "advisory"
+      }
+    ],
+    "id": "a7abc5b45485"
+  },
+  {
+    "title": "PyJWT: Unauthenticated RecursionError DoS in pre-verification payload parse (PyJWKClient.get_signing_key_from_jwt / verify_signature=False)",
+    "link": "https://github.com/advisories/GHSA-42vr-xj54-vc7v",
+    "summary": "Affected: PyJWT. ## Summary `PyJWKClient.get_signing_key_from_jwt(token)` \u2014 the first step of the JWKS verification flow documented in `docs/usage.rst` \u2014 must decode a token's payload before its signature can be checked, via `jwt.api_jwt.decode_complete(token, options={\"verify_signature\": False})`. That call parses the payload with `json.loads` in `PyJWT._decode_payload` (`jwt/api_jwt.py:297-300`), whose `except` clause catches only `ValueError`. A payload that is valid JSON but nested ~20,000 levels deep makes `json.loads` raise `RecursionError`, which is **not** a `ValueError` and escapes as a raw, undocume",
+    "published": "2026-09-30T15:41:05Z",
+    "source": "GHSA \u2014 pip",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "jwt",
+      "token"
+    ],
+    "score": 0.6364957925908457,
+    "bm25": 0.21772296512283557,
+    "severity": "critical",
+    "cvss": 9.1,
+    "cves": [
+      "CVE-2026-101917",
+      "CVE-2026-101918",
+      "CVE-2026-102265",
+      "CVE-2026-102267",
+      "CVE-2026-102268",
+      "CVE-2026-102269",
+      "CVE-2026-102270",
+      "CVE-2026-102271",
+      "CVE-2026-102272",
+      "CVE-2026-102273",
+      "CVE-2026-102274"
+    ],
+    "packages": [
+      "PyJWT"
+    ],
+    "corroboration": 11,
+    "other_sources": [
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-jwrc-g2q2-pq5p",
+        "published": "2026-09-30T14:40:25Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-8wjv-2p76-3863",
+        "published": "2026-09-29T23:43:06Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-hxm8-2xgr-2p9m",
+        "published": "2026-09-29T23:17:55Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-ffc3-869f-jxw9",
+        "published": "2026-09-29T23:17:33Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-w2cx-738m-mc7w",
+        "published": "2026-09-29T23:16:55Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-9v7f-9g4p-ffgj",
+        "published": "2026-09-29T23:15:00Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-p4g4-x82p-q773",
+        "published": "2026-09-29T23:14:33Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-r6x4-923q-g947",
+        "published": "2026-09-29T23:14:00Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-2gx3-rcp4-g85q",
+        "published": "2026-09-29T23:11:51Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-w6j9-cwv2-h6wq",
+        "published": "2026-09-29T18:23:01Z",
+        "category": "advisory"
+      }
+    ],
+    "id": "b2bc0dfcf0c2"
+  },
+  {
+    "title": "ShinyHunters suspect arrested in the Netherlands",
+    "link": "https://risky.biz/RBNEWS617/",
+    "summary": "A ShinyHunters suspect has been arrested in the Netherlands, Apple fixes an iOS zero-day found by Meta, recent Citrix zero-days see mass exploitation within hours and NVIDIA launches an AI sandboxing platform.",
+    "published": "2026-09-30T03:56:03+00:00",
+    "source": "Risky Business News",
+    "category": "aggregator",
+    "source_weight": 1.1,
+    "matched_keywords": [
+      "apple",
+      "zero-day"
+    ],
+    "score": 0.37696740950595015,
+    "bm25": 0.3156425677681401,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "121abf7b72d1"
+  },
+  {
+    "title": "Attackers Exploit Zimbra Flaw to Deploy Web Shells and Harvest Authentication Secrets",
+    "link": "https://thehackernews.com/2026/09/attackers-exploit-zimbra-flaw-to-deploy.html",
+    "summary": "Threat actors have weaponized a now-patched security flaw in Zimbra Collaboration Suite (ZCS) to deploy web shells and access mailbox data, according to findings from the Microsoft Security Research team. The attack exploits CVE-2026-73570 (CVSS score: 8.9), an unauthenticated operating system command injection flaw that can lead to remote code execution when Simple Network Management Protocol",
+    "published": "2026-09-30T16:46:29+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "exploit",
+      "cve-",
+      "cvss"
+    ],
+    "score": 0.28824600980176845,
+    "bm25": 0.30341685242291416,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [
+      "CVE-2026-73570"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "fe95a2c38caf"
+  },
+  {
+    "title": "Citrix NetScaler CVE-2026-88772 Exploit Details Show Pre-Auth Path to Shellcode Execution",
+    "link": "https://thehackernews.com/2026/09/citrix-netscaler-cve-2026-88772-exploit.html",
+    "summary": "Cybersecurity researchers have disclosed technical details of a recently patched critical security flaw in Citrix NetScaler ADC and Gateway that has come under active exploitation in the wild. The vulnerability, tracked as CVE-2026-88772 (CVSS score: 9.5), has been described as a memory overflow bug in the Datagram Transport Layer Security (DTLS) protocol handling that's rooted in the NetScaler",
+    "published": "2026-09-30T05:30:30+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "exploit",
+      "in the wild",
+      "cve-",
+      "cvss"
+    ],
+    "score": 0.2700149186843363,
+    "bm25": 0.3461729726722261,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [
+      "CVE-2026-88772"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "a2c9b41769a0"
+  },
+  {
+    "title": "Sckit Supply Chain Worm Hits MemTensor npm & PyPi scopes",
+    "link": "https://www.stepsecurity.io/blog/sckit-supply-chain-worm-hits-memtensor-npm-pypi-scopes",
+    "summary": "Compromised MemTensor npm releases turn an AI memory plugin into a credential-harvesting entry point, exposing prompts and creating a path to further package compromise.",
+    "published": "2026-09-30T16:52:36+00:00",
+    "source": "StepSecurity",
+    "category": "research",
+    "source_weight": 1.15,
+    "matched_keywords": [
+      "npm",
+      "pypi",
+      "supply chain",
+      "credential"
+    ],
+    "score": 1.519642857142857,
+    "bm25": 1.0,
+    "severity": "high",
+    "cvss": 8.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "08cd5ea6b46d"
+  },
+  {
+    "title": "OpenSSL Fixes High-Severity DTLS Flaw That Can Leak Heap Memory Unencrypted",
+    "link": "https://thehackernews.com/2026/09/openssl-fixes-high-severity-dtls-flaw.html",
+    "summary": "A High-severity OpenSSL flaw can leak heap memory to the other side of a DTLS connection or crash the program,&nbsp;OpenSSL said&nbsp;on September 29 as it released fixes. DTLS, the TLS variant used for UDP traffic, resends a handshake message if no reply arrives before the timer expires. The leak or crash can happen when such a resend starts while a larger handshake message is stuck part-way",
+    "published": "2026-09-30T08:09:28+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "tls",
+      "openssl"
+    ],
+    "score": 0.47667437638855525,
+    "bm25": 0.6809633948407933,
+    "severity": "high",
+    "cvss": 7.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "1b25f217f425"
+  },
+  {
+    "title": "tornado: CurlAsyncHTTPClient enforces no response-size limit \u2014 decompression bomb drives unbounded memory accumulation to OOM",
+    "link": "https://github.com/advisories/GHSA-chx6-46f5-w4vp",
+    "summary": "Affected: tornado. An unbounded memory accumulation (decompression bomb) in `tornado.curl_httpclient.CurlAsyncHTTPClient` \u2014 the client-side sibling gap of CVE-2026-49855 \u2014 verified end-to-end on the 2026-08-15 master snapshot (`6.6.dev1`) and present unchanged in the latest release tag `v6.5.8` and on master (checked 2026-08-17). When a Tornado application configures the curl client (the documented deployment for proxy support / advanced TLS options) and `fetch()`es an attacker-chosen or attacker-compromised URL with default `decompress_response=True`, a malicious server replying `Content-Encoding: gzip` with a",
+    "published": "2026-09-30T23:49:13Z",
+    "source": "GHSA \u2014 pip",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "tls",
+      "cve-"
+    ],
+    "score": 0.46889074664567765,
+    "bm25": 0.25256654521356037,
+    "severity": "high",
+    "cvss": 7.5,
+    "cves": [
+      "CVE-2026-49855"
+    ],
+    "packages": [
+      "tornado"
+    ],
+    "corroboration": 2,
+    "other_sources": [
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-c2m8-h5v5-343r",
+        "published": "2026-09-30T23:48:55Z",
+        "category": "advisory"
+      }
+    ],
+    "id": "ca1c0128745e"
+  },
+  {
+    "title": "fastify vulnerable to Denial of Service via unhandled exception on HTTP/2 trailer responses",
+    "link": "https://github.com/advisories/GHSA-4mh8-r7rc-xpvc",
+    "summary": "Affected: fastify. ### Impact `fastify` crashes with an uncaught `ERR_HTTP2_INVALID_CONNECTION_HEADERS` exception when a route that registers a response trailer via `reply.trailer()` is served over HTTP/2. Fastify unconditionally adds the `Transfer-Encoding: chunked` header when a trailer is set, which is forbidden on HTTP/2, so Node.js throws while serializing the response headers. The exception is not caught and becomes an uncaughtException, terminating the Node.js process. One unauthenticated HTTP/2 request to any route that uses trailers is enough to crash the server, dropping all in-flight requests, and t",
+    "published": "2026-09-30T23:53:44Z",
+    "source": "GHSA \u2014 npm",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "node"
+    ],
+    "score": 0.36257632750336116,
+    "bm25": 0.1472087753652964,
+    "severity": "high",
+    "cvss": 7.5,
+    "cves": [
+      "CVE-2026-76169",
+      "CVE-2026-84428",
+      "CVE-2026-84469",
+      "CVE-2026-92081"
+    ],
+    "packages": [
+      "fastify"
+    ],
+    "corroboration": 4,
+    "other_sources": [
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-p68q-wchp-6fh7",
+        "published": "2026-09-30T23:45:34Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-hwr6-493r-vm6h",
+        "published": "2026-09-30T23:44:58Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-9q9j-q6p8-xq58",
+        "published": "2026-09-30T23:44:27Z",
+        "category": "advisory"
+      }
+    ],
+    "id": "939003b23d4c"
+  },
+  {
+    "title": "league/commonmark: DisallowedRawHtml bypassed when a disallowed tag name ends the raw-HTML literal",
+    "link": "https://github.com/advisories/GHSA-97jj-33gv-5xf9",
+    "summary": "Affected: league/commonmark. \ufeff## Summary The `DisallowedRawHtml` extension does not escape a disallowed tag when the tag name is the last thing in the raw HTML. A Markdown line containing just `<script` is emitted unchanged, and the next block can supply its attributes. With the shipped GFM defaults this allows stored XSS by anyone who can post Markdown. ## Details `DisallowedRawHtmlRenderer` escapes tags with this regex: ``` /<(\\/?(?:title|textarea|style|xmp|iframe|noembed|noframes|script|plaintext)[\\s\\/>])/i ``` The trailing character class requires one character after the tag name. The block parser does not: `Rege",
+    "published": "2026-09-30T15:36:33Z",
+    "source": "GHSA \u2014 composer",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "xss"
+    ],
+    "score": 0.35536464819162294,
+    "bm25": 0.2392700808420237,
+    "severity": "high",
+    "cvss": 7.5,
+    "cves": [],
+    "packages": [
+      "league/commonmark"
+    ],
+    "corroboration": 2,
+    "other_sources": [
+      {
+        "source": "GHSA \u2014 composer",
+        "link": "https://github.com/advisories/GHSA-3q6v-r5mr-hxv8",
+        "published": "2026-09-30T15:36:13Z",
+        "category": "advisory"
+      }
+    ],
+    "id": "52cd972c21ac"
+  },
+  {
+    "title": "Russh: Unbounded memory exhaustion via CHANNEL_OPEN flood during a client-stalled rekey",
+    "link": "https://github.com/advisories/GHSA-35g8-35p8-c8fw",
+    "summary": "Affected: russh. ## Summary A russh **server** can be driven to unbounded heap growth (process OOM / kill) by a peer that speaks only standard SSH messages, in the **default configuration**. The peer starts a key re-exchange (sends `SSH_MSG_KEXINIT`) but never sends the follow-up `SSH_MSG_KEX_ECDH_INIT`, leaving the server's kex state machine in `SessionKexState::InProgress` **indefinitely**. While a rekey is in progress the server's three message-drain paths are all gated off (`if !self.kex.active()`), but the network-read path stays active, so every `SSH_MSG_CHANNEL_OPEN` the peer sends is processed inline",
+    "published": "2026-09-30T23:40:43Z",
+    "source": "GHSA \u2014 rust",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "ssh"
+    ],
+    "score": 0.30409850934116806,
+    "bm25": 0.13752112723818327,
+    "severity": "high",
+    "cvss": 7.5,
+    "cves": [
+      "CVE-2026-102821",
+      "CVE-2026-102823",
+      "CVE-2026-102824"
+    ],
+    "packages": [
+      "russh"
+    ],
+    "corroboration": 3,
+    "other_sources": [
+      {
+        "source": "GHSA \u2014 rust",
+        "link": "https://github.com/advisories/GHSA-47hw-gvq5-r2gm",
+        "published": "2026-09-30T23:27:17Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 rust",
+        "link": "https://github.com/advisories/GHSA-w3jg-pjxf-73p4",
+        "published": "2026-09-30T23:26:48Z",
+        "category": "advisory"
+      }
+    ],
+    "id": "335073f4d48c"
+  },
+  {
+    "title": "GitPython submodule update path traversal can write outside the repository",
+    "link": "https://github.com/advisories/GHSA-59cr-6r3x-644w",
+    "summary": "Affected: GitPython. **Affected:** `GitPython` **3.1.61** (latest release) and `main` \u2014 `git/objects/submodule/base.py`. `git diff 3.1.61 origin/main -- git/objects/submodule/` is empty, so both are identical here. --- ## The gap The fix for `GHSA-hmq2-w58f-27jc` added `Submodule._validated_name()` and wired it into `update()` and five siblings, closing the `.gitmodules` **name** \u2192 `.git/modules/<name>` traversal. The other attacker-controlled `.gitmodules` field, **`path`**, is read raw: ```python # git/objects/submodule/base.py:172-177 def _set_cache_(self, attr): if attr in (\"path\", \"_url\", \"_branch_pat",
+    "published": "2026-09-30T23:47:12Z",
+    "source": "GHSA \u2014 pip",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "python"
+    ],
+    "score": 0.27847556744849283,
+    "bm25": 0.0,
+    "severity": "high",
+    "cvss": 7.5,
+    "cves": [
+      "CVE-2026-87819"
+    ],
+    "packages": [
+      "GitPython"
+    ],
+    "corroboration": 2,
+    "other_sources": [
+      {
+        "source": "GHSA \u2014 pip",
+        "link": "https://github.com/advisories/GHSA-g5vv-9gxw-82hx",
+        "published": "2026-09-30T23:29:14Z",
+        "category": "advisory"
+      }
+    ],
+    "id": "024980c297f3"
+  },
+  {
+    "title": "Astro: Malformed port in the Host header can crash the Node adapter",
+    "link": "https://github.com/advisories/GHSA-qh8j-hqjv-7m4x",
+    "summary": "Affected: @astrojs/node. ## Summary In the Astro Node adapter, a request whose `Host` header contains a malformed port (for example `example.com:65536` or `example.com:8080:8080`) produced an invalid request URL. The fallback intended to recover from an unparseable URL reused the same malformed host, so it failed again and raised an uncaught `TypeError: Invalid URL` while the request was being built, before any route ran. ## Impact The effect depends on the adapter configuration: - Default configuration (`standalone`): the request returns `500 Internal Server Error` and the server continues running. - With the opt",
+    "published": "2026-09-30T23:29:40Z",
+    "source": "GHSA \u2014 npm",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "node"
+    ],
+    "score": 0.20061390547591645,
+    "bm25": 0.17553716729142688,
+    "severity": "high",
+    "cvss": 0.0,
+    "cves": [
+      "CVE-2026-102984"
+    ],
+    "packages": [
+      "@astrojs/node"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "fcf5651c4c68"
+  },
+  {
+    "title": "urllib3: HTTPS proxy TLS configuration may be ignored or overridden",
+    "link": "https://github.com/advisories/GHSA-8988-9cw3-xx77",
+    "summary": "Affected: urllib3. ## Impact urllib3 supports configuring TLS independently for an HTTPS proxy and the target server. `proxy_ssl_context`, `proxy_assert_hostname`, and `proxy_assert_fingerprint` configure the TLS connection to the proxy. `ssl_context` and the other target-specific TLS parameters configure the connection to the target server. In urllib3 versions 1.26.0 through 2.7.0, these configurations were not consistently separated. Depending on the proxy mode, urllib3 could: 1. Ignore `proxy_ssl_context` and use the target server's SSL context for the TLS connection to an HTTPS forwarding proxy. 2. Overr",
+    "published": "2026-09-30T14:46:04Z",
+    "source": "GHSA \u2014 pip",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "tls",
+      "ssl"
+    ],
+    "score": 0.19096001023286713,
+    "bm25": 0.20886251119219842,
+    "severity": "high",
+    "cvss": 0.0,
+    "cves": [
+      "CVE-2026-97687"
+    ],
+    "packages": [
+      "urllib3"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "faacfd08b706"
+  },
+  {
+    "title": "Angular Server-Side Rendering (SSR): Denial of Service via Numeric URL Matrix Parameters",
+    "link": "https://github.com/advisories/GHSA-ff3f-86qr-9cv3",
+    "summary": "Affected: @angular/router, @angular/router, @angular/router, @angular/router. A denial of service (DoS) vulnerability was identified in `@angular/router` when Server-Side Rendering (SSR) is enabled on Node.js (V8). When `@angular/router` parses incoming request URLs, it extracts path segments, matrix parameters, and child outlets into plain JavaScript objects (`Record<string, string>`). When matrix parameter names or outlet names are numeric strings (such as `/a;990;2522`), the V8 JavaScript engine interprets them as array-indexed properties rather than named properties. Under V8's internal property-storage heuristics, setting numeric keys on an initially empty object",
+    "published": "2026-09-30T15:40:47Z",
+    "source": "GHSA \u2014 npm",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "node",
+      "javascript",
+      "v8"
+    ],
+    "score": 0.10966715177221072,
+    "bm25": 0.11994844725085547,
+    "severity": "high",
+    "cvss": 0.0,
+    "cves": [
+      "CVE-2026-101896"
+    ],
+    "packages": [
+      "@angular/router",
+      "@angular/router",
+      "@angular/router",
+      "@angular/router"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "6fa7d0cfd0b7"
+  },
+  {
+    "title": "PHPCSUtils: Remote code execution via eval() in AbstractArrayDeclarationSniff::getActualArrayKey()",
+    "link": "https://github.com/advisories/GHSA-r6hr-vr92-vv28",
+    "summary": "Affected: phpcsstandards/phpcsutils. ### Impact PHPCSUtils versions 1.0.0-alpha1 through 1.2.2 contain an arbitrary code execution vulnerability in `PHPCSUtils\\AbstractSniffs\\AbstractArrayDeclarationSniff::getActualArrayKey()`. The vulnerable method is reached by any sniff that extends `AbstractArrayDeclarationSniff` and calls `getActualArrayKey()`. Running PHPCS over untrusted PHP code through such a sniff, for example, in a CI pipeline that lints pull requests, or on a developer machine reviewing third-party code, could lead to arbitrary command execution on the scanning host. The vulnerability happens when the method determ",
+    "published": "2026-09-29T17:57:16Z",
+    "source": "GHSA \u2014 composer",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "php"
+    ],
+    "score": 0.4045851977020344,
+    "bm25": 0.3806581161175055,
+    "severity": "high",
+    "cvss": 8.6,
+    "cves": [
+      "CVE-2026-65954"
+    ],
+    "packages": [
+      "phpcsstandards/phpcsutils"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "b6ad6157d748"
+  },
+  {
+    "title": "Russia's Star Blizzard Targets 100+ Organizations With Fake Event Invites to Deliver Backdoor",
+    "link": "https://thehackernews.com/2026/09/russias-star-blizzard-targets-100.html",
+    "summary": "Russian state hackers known as Star Blizzard have been using fake event invitations to trick people into installing a backdoor on their Windows computers,&nbsp;according to Microsoft. The campaigns, aimed at people and organizations tied to Ukraine, have affected more than 100 organizations since January, mostly in the U.S. and U.K. At least one computer was infected, but the number of breached",
+    "published": "2026-09-29T17:20:08+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "windows",
+      "backdoor"
+    ],
+    "score": 0.1372299564405492,
+    "bm25": 0.18544588708182325,
+    "severity": "high",
+    "cvss": 8.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "ca7def1fee7c"
+  },
+  {
+    "title": "How we found 24 Android vulnerabilities using our open source AI security agent",
+    "link": "https://github.blog/security/how-we-found-24-android-vulnerabilities-using-our-open-source-ai-security-agent/",
+    "summary": "A look at the targeted AI taskflows behind these findings, the critical Android bugs they uncovered, and how to run the same open-source agent on your own app. The post How we found 24 Android vulnerabilities using our open source AI security agent appeared first on The GitHub Blog .",
+    "published": "2026-09-28T19:00:00+00:00",
+    "source": "GitHub Security Blog",
+    "category": "build",
+    "source_weight": 0.9,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.11282142857142859,
+    "bm25": 0.062408473629623165,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "0baeacde9fea"
+  },
+  {
+    "title": "Danish university DTU breach exposes data of up to 200,000 people",
+    "link": "https://www.bleepingcomputer.com/news/security/danish-university-dtu-breach-exposes-data-of-up-to-200-000-people/",
+    "summary": "The Technical University of Denmark (DTU) says information belonging to up to 200,000 users may have been exposed after hackers accessed its identity and access management system and downloaded a large amount of data. [...]",
+    "published": "2026-10-03T14:35:20+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "breach"
+    ],
+    "score": 0.27214157985815235,
+    "bm25": 0.38877368551164626,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "c24f61f66f61"
+  },
+  {
+    "title": "Composer: GHSA-gjfg-22fp-rrxx fix bypass via symlinked package bin path",
+    "link": "https://github.com/advisories/GHSA-96h3-5x6v-m776",
+    "summary": "Affected: composer/composer, composer/composer. ## Summary A malicious or compromised Composer package could, when installed as a dependency, cause Composer to change the permissions of a file outside that package's own directory and to register a runnable `vendor/bin` command that points at that outside file. This is a path traversal and link following issue. It is not remote code execution, the attacker gains no ability to read or receive your data directly. The risk is that a file which was readable only by its owner, but modifiable by Composer, can be made world readable and executable, which is enough to expose its contents on a share",
+    "published": "2026-10-02T19:14:34Z",
+    "source": "GHSA \u2014 composer",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "composer"
+    ],
+    "score": 0.9697925512911969,
+    "bm25": 0.6023556219199981,
+    "severity": "medium",
+    "cvss": 6.1,
+    "cves": [
+      "CVE-2026-59944"
+    ],
+    "packages": [
+      "composer/composer",
+      "composer/composer"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "2b0ae25af7e7"
+  },
+  {
+    "title": "Anubis: Policy bypass via client controlled X-Original-URI header",
+    "link": "https://github.com/advisories/GHSA-6wcg-mqvh-fcvg",
+    "summary": "Affected: github.com/TecharoHQ/anubis. Any HTTP client can bypass Anubis bot protection on the default configuration by adding a single request header. No challenge needs to be solved. Affected versions: v1.22.0 through v1.25.0 (introduced in commit d1d631a, PR #1015) The root cause is in `lib/policy/checker.go`, `PathChecker.Check()`: ```go func (pc *PathChecker) Check(r *http.Request) (bool, error) { originalUrl := r.Header.Get(\"X-Original-URI\") if originalUrl != \"\" { if pc.regexp.MatchString(originalUrl) { return true, nil } } if pc.regexp.MatchString(r.URL.Path) { return true",
+    "published": "2026-10-02T18:22:08Z",
+    "source": "GHSA \u2014 go",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "go ",
+      "github"
+    ],
+    "score": 0.660530045681541,
+    "bm25": 0.4180569909376841,
+    "severity": "medium",
+    "cvss": 5.8,
+    "cves": [
+      "CVE-2026-62314"
+    ],
+    "packages": [
+      "github.com/TecharoHQ/anubis"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "46a2057a9aa2"
+  },
+  {
+    "title": "Warlock ransomware breach SharePoint in water, telecom operator attacks",
+    "link": "https://www.bleepingcomputer.com/news/security/warlock-ransomware-breach-sharepoint-in-water-telecom-operator-attacks/",
+    "summary": "The China-linked ransomware group Warlock targeted a water utility, a telecom provider, a regional government body, and a university by exploiting SharePoint vulnerabilities to gain initial access. [...]",
+    "published": "2026-10-02T18:33:01+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "ransomware",
+      "breach"
+    ],
+    "score": 0.3173763409562755,
+    "bm25": 0.4533947727946793,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "e611cb20ae49"
+  },
+  {
+    "title": "Frontline Education breach exposes school district employee data",
+    "link": "https://www.bleepingcomputer.com/news/security/frontline-education-data-breach-impacts-school-district-employees/",
+    "summary": "Frontline Education is notifying school districts of a data breach after attackers exploited a vulnerability in third-party software to gain unauthorized access to its systems and steal employee information, including Social Security numbers. [...]",
+    "published": "2026-10-02T19:01:40+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "breach"
+    ],
+    "score": 0.3139124361748373,
+    "bm25": 0.44844633739262474,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "1a019c2da706"
+  },
+  {
+    "title": "rmcp OAuth client fetches server-controlled resource_metadata URLs",
+    "link": "https://github.com/advisories/GHSA-c9xm-49cp-xcr9",
+    "summary": "Affected: rmcp. ## Summary The `rmcp` OAuth client accepts a server-controlled `resource_metadata=` URL from the `WWW-Authenticate` header and fetches it without same-origin or private-network validation. An attacker-controlled MCP server can return a `401 WWW-Authenticate: Bearer resource_metadata=\"...\"` header pointing at an internal URL, including localhost, RFC 1918 addresses, or cloud metadata endpoints. The client then performs an outbound GET to that URL from the victim application's network context. ## Affected version - Repository: `modelcontextprotocol/rust-sdk` - Crate: `rmcp` - Current `main`",
+    "published": "2026-10-02T16:12:31Z",
+    "source": "GHSA \u2014 rust",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "rust",
+      "oauth"
+    ],
+    "score": 0.22515960992137543,
+    "bm25": 0.20206631659610613,
+    "severity": "medium",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [
+      "rmcp"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "5cfce351005c"
+  },
+  {
+    "title": "AI agent exploits Zammad zero-days in DIVD breach: What we know and how to detect it",
+    "link": "https://webflow.sysdig.com/blog/ai-agent-exploits-zammad-zero-days-in-divd-breach-what-we-know-and-how-to-detect-it",
+    "summary": "",
+    "published": "2026-10-02T00:00:00+00:00",
+    "source": "Sysdig",
+    "category": "research",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "breach"
+    ],
+    "score": 0.20214465022054992,
+    "bm25": 0.23583542525730822,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "68f0362f888a"
+  },
+  {
+    "title": "Dell asks admins to patch max severity CSM flaws as soon as possible",
+    "link": "https://www.bleepingcomputer.com/news/security/new-max-severity-dell-csm-flaws-give-hackers-admin-privileges/",
+    "summary": "Dell has patched two maximum severity vulnerabilities in the Container Storage Modules (CSM) that connect Dell enterprise storage arrays to Kubernetes environments. [...]",
+    "published": "2026-10-02T12:37:40+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "kubernetes",
+      "container"
+    ],
+    "score": 0.14368970724283792,
+    "bm25": 0.23948284540472983,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "778774296a1f"
+  },
+  {
+    "title": "Authorities dismantle KillSec group",
+    "link": "https://risky.biz/RBNEWS618/",
+    "summary": "Authorities dismantle the KillSec hacking group, South Africa thwarts a ransomware attack against air traffic control systems, the US sanctions Venezuelan ATM hackers and a Chinese APT targets AI experts.",
+    "published": "2026-10-02T02:57:07+00:00",
+    "source": "Risky Business News",
+    "category": "aggregator",
+    "source_weight": 1.1,
+    "matched_keywords": [
+      "ransomware"
+    ],
+    "score": 0.13747934253105668,
+    "bm25": 0.14581142389657525,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "3549cc3a40f3"
+  },
+  {
+    "title": "Why CISOs Struggle to Answer the Board's Three Hardest Questions, and How to Fix the Report",
+    "link": "https://thehackernews.com/2026/10/why-cisos-struggle-to-answer-boards.html",
+    "summary": "The quarterly board meeting is two weeks out. The security team is pulling exports from the identity provider, the cloud posture tool, the vulnerability scanner, the SIEM and the EDR console. Someone is building a spreadsheet to reconcile them. Someone else is turning that spreadsheet into slides. Then a board member asks three questions: How secure is the organization, overall? What is",
+    "published": "2026-10-02T11:30:00+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "siem",
+      "edr"
+    ],
+    "score": 0.10580823093472243,
+    "bm25": 0.1763470515578707,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "43a11e7cfe0b"
+  },
+  {
+    "title": "Stateless GitHub App installation tokens rolled out",
+    "link": "https://github.blog/changelog/2026-10-02-stateless-github-app-installation-tokens-rolled-out",
+    "summary": "The staged rollout of the stateless GitHub App installation token format, which began on April 27, 2026, is complete. By default, all newly minted GitHub App installation tokens will be&#8230; The post Stateless GitHub App installation tokens rolled out appeared first on The GitHub Blog .",
+    "published": "2026-10-02T22:18:23+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github",
+      "token"
+    ],
+    "score": 0.06961114306441148,
+    "bm25": 0.23203714354803825,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "4ce371788dc0"
+  },
+  {
+    "title": "Repository security advisory comments API in public preview",
+    "link": "https://github.blog/changelog/2026-10-02-repository-security-advisory-comments-api-in-public-preview",
+    "summary": "You can now read, add, and edit comments on repository security advisories using the REST API, including advisories created from private vulnerability reports. Until now, the discussion on an advisory&#8230; The post Repository security advisory comments API in public preview appeared first on The GitHub Blog .",
+    "published": "2026-10-02T13:15:25+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.05252860009049431,
+    "bm25": 0.2042778892408112,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "8430be4786d8"
+  },
+  {
+    "title": "Selected models in GitHub Copilot deprecated",
+    "link": "https://github.blog/changelog/2026-10-02-selected-models-in-github-copilot-deprecated",
+    "summary": "As of today, October 2, 2026, we have deprecated the following models across all GitHub Copilot experiences (including Copilot Chat, inline edits, ask and agent modes, and code completions). Model&#8230; The post Selected models in GitHub Copilot deprecated appeared first on The GitHub Blog .",
+    "published": "2026-10-02T18:24:19+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.03749288956952341,
+    "bm25": 0.12497629856507804,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "705956e4f1fc"
+  },
+  {
+    "title": "Copilot code review: API support and new default effort level",
+    "link": "https://github.blog/changelog/2026-10-02-copilot-code-review-api-support-and-new-default-effort-level",
+    "summary": "You can now request a GitHub Copilot code review through the REST and GraphQL APIs and set the review effort level for each request. Balanced is also now the default&#8230; The post Copilot code review: API support and new default effort level appeared first on The GitHub Blog .",
+    "published": "2026-10-02T19:13:50+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.033784354323336596,
+    "bm25": 0.11261451441112198,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "be3b1d341079"
+  },
+  {
+    "title": "New fields for SecurityAdvisory GraphQL API",
+    "link": "https://github.blog/changelog/2026-10-02-new-fields-for-securityadvisory-graphql-api",
+    "summary": "You can now read more of the GitHub Advisory Database directly from the GraphQL API without falling back to the REST API. The SecurityAdvisory object gained five new fields: cveId:&#8230; The post New fields for SecurityAdvisory GraphQL API appeared first on The GitHub Blog .",
+    "published": "2026-10-02T13:18:00+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.03099391675790792,
+    "bm25": 0.12053189850297524,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "532f5738d069"
+  },
+  {
+    "title": "xxhash-rust: Safe xxh3 custom-secret API accepts too-short secret in release",
+    "link": "https://github.com/advisories/GHSA-6g2r-675j-hx59",
+    "summary": "Affected: xxhash-rust. I have a minimized safe Rust witness for xxhash-rust 0.8.15. Safe public route: xxhash_rust::xxh3::xxh3_64_with_secret(&[0x41], &[]) The caller-side harness contains no unsafe code. Under release execution, the internal minimum custom-secret length predicate is enforced only by debug_assert!. Release-Miri reports construction of a fixed-width reference beyond the empty secret allocation. Observed diagnostic: Undefined Behavior: constructing invalid value of type &[u8; 4]: encountered a dangling reference Local repair evidence: handling custom-secret slices shorter than the internal minim",
+    "published": "2026-10-02T18:29:13Z",
+    "source": "GHSA \u2014 rust",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "rust"
+    ],
+    "score": 0.0123,
+    "bm25": 0.07464047108860544,
+    "severity": "low",
+    "cvss": 2.3,
+    "cves": [],
+    "packages": [
+      "xxhash-rust"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "1d463b722540"
+  },
+  {
+    "title": "The EDR blind spot: 3 ways browser attacks evade endpoint telemetry",
+    "link": "https://www.bleepingcomputer.com/news/security/the-edr-blind-spot-3-ways-browser-attacks-evade-endpoint-telemetry/",
+    "summary": "Browser-based attacks can steal sessions, abuse extensions, or manipulate users without creating the endpoint artifacts EDR is designed to detect. NordLayer explains three ways attacks can evade endpoint telemetry and why browser-level controls can help close the gap. [...]",
+    "published": "2026-10-02T14:00:10+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "edr"
+    ],
+    "score": 0.006,
+    "bm25": 0.0,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "f4b6d95f5f5a"
+  },
+  {
+    "title": "Confidential comments on repository security advisories",
+    "link": "https://github.blog/changelog/2026-10-02-confidential-comments-on-repository-security-advisories",
+    "summary": "You can now post confidential comments on repository security advisories. Confidential comments are visible only to people with write access to the repository, so you can discuss a report with&#8230; The post Confidential comments on repository security advisories appeared first on The GitHub Blog .",
+    "published": "2026-10-02T13:15:40+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.0025714285714285713,
+    "bm25": 0.0722202446798094,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "59fc4a70abc3"
+  },
+  {
+    "title": "Police Arrest 16-Year-Old Suspected of Running KillSec, Seize Ransomware Leak Site and Servers",
+    "link": "https://thehackernews.com/2026/10/police-arrest-16-year-old-suspected-of.html",
+    "summary": "Police in Spain have arrested a 16-year-old whom investigators suspect of running the KillSec ransomware group. KillSec is accused of stealing data from organizations and threatening to publish it on its leak site unless they paid. The 16-year-old was one of 3 people arrested on September 30, when police also took control of that site. Investigators identified him as KillSec's suspected",
+    "published": "2026-10-01T16:55:57+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "ransomware"
+    ],
+    "score": 0.2893364807349552,
+    "bm25": 0.48222746789159204,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "1ba8da53d09e"
+  },
+  {
+    "title": "Insecure Agents Podcast: How to Keep AI Agents From Bypassing Security Controls",
+    "link": "https://socket.dev/blog/insecure-agents-security-controls?utm_medium=feed",
+    "summary": "Socket CTO Ahmad Nassri discusses how to keep AI agents from bypassing package blocks, limit credential access, and monitor their actions.",
+    "published": "2026-10-01T03:38:06+00:00",
+    "source": "Socket Blog",
+    "category": "advisory",
+    "source_weight": 1.2,
+    "matched_keywords": [
+      "credential"
+    ],
+    "score": 0.23033207704939468,
+    "bm25": 0.2687207565576271,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "ecc8eecab1f1"
+  },
+  {
+    "title": "Police dismantle KillSec ransomware gang allegedly led by 16-year-old",
+    "link": "https://www.bleepingcomputer.com/news/security/police-dismantle-killsec-ransomware-gang-allegedly-led-by-16-year-old/",
+    "summary": "An international law enforcement operation dubbed \"Operation KillSwitch\" seized the KillSec ransomware gang's data leak site and servers, led to three arrests, and identified a 16-year-old as the group's alleged administrator. [...]",
+    "published": "2026-10-01T14:25:14+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "ransomware",
+      "data leak"
+    ],
+    "score": 0.22440707609932442,
+    "bm25": 0.4488141521986489,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "624e1a7a0804"
+  },
+  {
+    "title": "The Day-One Hole in Zero Trust Architecture",
+    "link": "https://www.bleepingcomputer.com/news/security/the-day-one-hole-in-zero-trust-architecture/",
+    "summary": "Zero Trust can verify users once they are established, but onboarding creates a gap where organizations must decide who to trust before strong authentication exists. Specops explains why identity verification should begin before credentials, MFA methods, and access are issued. [...]",
+    "published": "2026-10-01T14:01:11+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "mfa"
+    ],
+    "score": 0.19735763069589096,
+    "bm25": 0.394715261391782,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "929134258e6a"
+  },
+  {
+    "title": "How Financial Services Companies Can Modernize Their Software Supply Chain",
+    "link": "https://thehackernews.com/2026/10/how-financial-services-companies-can.html",
+    "summary": "Every security leader at a bank, insurer, or asset manager has had a version of this conversation: Security wants to eliminate a class of vulnerabilities. Engineering explains what it would take to upgrade the platform where they live. Somebody prices out the regression testing. Somebody else raises the change-freeze calendar. The finding gets an exception, a compensating control, and a date",
+    "published": "2026-10-01T11:45:00+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "supply chain"
+    ],
+    "score": 0.16422891328017283,
+    "bm25": 0.3284578265603457,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "1866931397ea"
+  },
+  {
+    "title": "GitHub Actions: macOS 14 runner image retirement",
+    "link": "https://github.blog/changelog/2026-10-01-github-actions-macos-14-runner-image-retirement",
+    "summary": "The macOS 14 runner image will be retired on November 2, 2026. To raise awareness of the upcoming removal, jobs using macOS 14 will temporarily fail during the following scheduled&#8230; The post GitHub Actions: macOS 14 runner image retirement appeared first on The GitHub Blog .",
+    "published": "2026-10-01T19:11:23+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github",
+      "github actions",
+      "runner",
+      "macos"
+    ],
+    "score": 0.1465005015152203,
+    "bm25": 0.56972417255919,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "038fee3588d7"
+  },
+  {
+    "title": "Securing the Financial Frontier: How Capital One Uses Socket for Open Source Security",
+    "link": "https://socket.dev/blog/capital-one-open-source-security?utm_medium=feed",
+    "summary": "Capital One is partnering with Socket to proactively secure its open source supply chain.",
+    "published": "2026-10-01T12:58:10+00:00",
+    "source": "Socket Blog",
+    "category": "advisory",
+    "source_weight": 1.2,
+    "matched_keywords": [
+      "supply chain"
+    ],
+    "score": 0.0969830782438564,
+    "bm25": 0.11314692461783245,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "230be39f1a16"
+  },
+  {
+    "title": "Microsoft says threat actors are ahead in the early AI race",
+    "link": "https://www.bleepingcomputer.com/news/security/microsoft-says-threat-actors-are-ahead-in-the-early-ai-race/",
+    "summary": "Microsoft says cyberattackers are currently benefiting from artificial intelligence faster than defenders, allowing threat actors to speed up vulnerability discovery, malware development, and post-compromise activity while security teams struggle to keep pace. [...]",
+    "published": "2026-10-01T19:32:47+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "teams"
+    ],
+    "score": 0.0872750579417308,
+    "bm25": 0.14545842990288466,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "8b472bb05c2f"
+  },
+  {
+    "title": "Microsoft enables Windows settings backup by default for orgs",
+    "link": "https://www.bleepingcomputer.com/news/microsoft/microsoft-enables-windows-settings-backup-by-default-for-orgs/",
+    "summary": "Microsoft announced that Windows settings backup and restore is now enabled by default on all Microsoft Entra-joined or Microsoft Entra hybrid-joined enterprise systems upgraded to Windows 11 26H2. [...]",
+    "published": "2026-10-01T11:14:28+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "entra",
+      "windows"
+    ],
+    "score": 0.07830555872891698,
+    "bm25": 0.156611117457834,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "52279358df2a"
+  },
+  {
+    "title": "Rate limits for private vulnerability reports",
+    "link": "https://github.blog/changelog/2026-10-01-rate-limits-for-private-vulnerability-reports",
+    "summary": "Open source maintainers are receiving more low-quality and automated vulnerability reports, which can bury the reports that matter. Rate limits cap how many new reports a single account can submit&#8230; The post Rate limits for private vulnerability reports appeared first on The GitHub Blog .",
+    "published": "2026-10-01T19:57:39+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.06668492595006253,
+    "bm25": 0.2593302675835765,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "b3abbf9a4912"
+  },
+  {
+    "title": "GitHub Copilot can now interact with desktop apps with computer use",
+    "link": "https://github.blog/changelog/2026-10-01-github-copilot-can-now-interact-with-desktop-apps",
+    "summary": "Computer use is now available in public preview in GitHub Copilot CLI and the GitHub Copilot app on macOS and Windows. Copilot can interact with desktop applications on your behalf&#8230; The post GitHub Copilot can now interact with desktop apps with computer use appeared first on The GitHub Blog .",
+    "published": "2026-10-01T19:11:26+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github",
+      "windows",
+      "macos"
+    ],
+    "score": 0.03223322190066622,
+    "bm25": 0.12535141850259085,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "e11a5d7f0be1"
+  },
+  {
+    "title": "Structured forms for private vulnerability reports",
+    "link": "https://github.blog/changelog/2026-10-01-structured-forms-for-private-vulnerability-reports",
+    "summary": "Private vulnerability reports can now use a structured form that asks reporters for the details you need to assess a vulnerability, including a reproducible proof of concept. A single free-text&#8230; The post Structured forms for private vulnerability reports appeared first on The GitHub Blog .",
+    "published": "2026-10-01T19:57:28+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.027279321086515124,
+    "bm25": 0.10608624866978103,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "771239a6e9a1"
+  },
+  {
+    "title": "Securing the Kubernetes Supply Chain: Introducing WizOS Helm Charts",
+    "link": "https://www.wiz.io/blog/wizos-helm-charts",
+    "summary": "Secure your Kubernetes supply chain with WizOS Helm Charts. Eliminate hidden CI/CD risks and unmaintained dependencies with hardened, signed, and CVE-scanned charts for seamless Kubernetes deployment.",
+    "published": "2026-09-30T15:52:31+00:00",
+    "source": "Wiz Research",
+    "category": "research",
+    "source_weight": 1.3,
+    "matched_keywords": [
+      "ci/cd",
+      "supply chain",
+      "kubernetes",
+      "helm",
+      "cve-"
+    ],
+    "score": 0.32666611873696694,
+    "bm25": 0.4397428521459171,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "f348ac3fb147"
+  },
+  {
+    "title": "Astro: Netlify Image CDN allowlist bypass enables SSRF",
+    "link": "https://github.com/advisories/GHSA-4233-jc72-56c5",
+    "summary": "Affected: @astrojs/netlify. ## Summary The `@astrojs/netlify` adapter generated regular expressions for Netlify Image CDN remote-image allowlists without anchoring them to the beginning of the URL. Netlify evaluates these expressions with `RegExp.test()`, so an allowed image origin appearing anywhere in a URL, including its path or query string, could satisfy the allowlist. For example, an application allowing `images.example.com` could accept a source URL such as: ```text http://127.0.0.1:6379/?url=https://images.example.com/image.png ``` The allowlist matched the approved origin in the query string, but Netlify par",
+    "published": "2026-09-30T23:40:12Z",
+    "source": "GHSA \u2014 npm",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "cdn",
+      "ssrf"
+    ],
+    "score": 0.28613276529690473,
+    "bm25": 0.30814297801205126,
+    "severity": "medium",
+    "cvss": 0.0,
+    "cves": [
+      "CVE-2026-102983"
+    ],
+    "packages": [
+      "@astrojs/netlify"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "10c393dda3c9"
+  },
+  {
+    "title": "New AISI Report Details How GPT-6 Astra Turned CTF Challenges Into Supply Chain Attacks",
+    "link": "https://socket.dev/blog/astra-supply-chain-attacks?utm_medium=feed",
+    "summary": "GPT-6 Astra tried to plant malicious code in simulated open source projects using fake GitHub accounts and deceptive PRs during an assigned CTF challenge.",
+    "published": "2026-09-30T04:50:04+00:00",
+    "source": "Socket Blog",
+    "category": "advisory",
+    "source_weight": 1.2,
+    "matched_keywords": [
+      "github",
+      "supply chain"
+    ],
+    "score": 0.27305742164067237,
+    "bm25": 0.39820873989264727,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "c3c23245e8d4"
+  }
+]
