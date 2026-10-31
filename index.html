@@ -1,0 +1,1342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>feedrank.security — Sat Oct 31 2026 · 12:36 UTC</title>
+<link rel="alternate" type="application/atom+xml" title="feedrank.security" href="feedrank.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..1000,0..1,0..1,0..1&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#f6f1e7; --bg-2:#ede5d3; --ink:#1a2540; --ink-2:#3a4566;
+  --rule:#cdbfa3; --accent:#b8331f; --accent-2:#c87633; --good:#4a6b3a;
+  --dim:#7a6c54; --hi:#fbe9b7;
+  --ft-text:'Inter',system-ui,-apple-system,sans-serif;
+  --ft-title:'Fraunces','Iowan Old Style',Georgia,serif;
+  --ft-read:'Source Serif 4','Iowan Old Style',Georgia,serif;
+  --ft-mono:'Recursive',ui-monospace,'SF Mono',Menlo,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink)}
+body{
+  font-family:var(--ft-text);
+  font-weight:400;line-height:1.55;font-size:15.5px;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  background-image:repeating-linear-gradient(0deg,transparent 0 28px,rgba(26,37,64,0.03) 28px 29px);
+}
+.wrap{max-width:1180px;margin:0 auto;padding:40px 28px 80px}
+header{border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:28px}
+h1{font-family:var(--ft-mono);font-variation-settings:"MONO" 1,"wght" 700;font-size:38px;letter-spacing:-0.02em;margin:0 0 4px;line-height:1.1}
+h1 .amp{color:var(--accent);font-variation-settings:"MONO" 0,"CASL" 1,"CRSV" 1;font-size:42px}
+.tag{color:var(--dim);font-size:13px;font-family:var(--ft-mono);font-variation-settings:"MONO" 1}
+.meta{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2);margin-top:10px;font-family:var(--ft-mono);font-variation-settings:"MONO" 1}
+.meta b{color:var(--ink);font-weight:600}
+.controls{display:flex;gap:8px;flex-wrap:wrap;padding:14px 0 22px;border-bottom:1px dashed var(--rule);margin-bottom:22px}
+.search{flex:1;min-width:240px;padding:9px 12px;border:1px solid var(--ink);background:var(--bg-2);color:var(--ink);font-family:var(--ft-mono);font-size:14px;font-variation-settings:"MONO" 1}
+.search:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.chip{padding:6px 11px;border:1px solid var(--ink-2);background:transparent;color:var(--ink-2);cursor:pointer;font-family:var(--ft-mono);font-size:12px;font-variation-settings:"MONO" 1}
+.chip:hover{background:var(--bg-2)}
+.chip.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.sort-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:0 0 22px;border-bottom:1px dashed var(--rule);margin-bottom:22px}
+.sort-label{color:var(--dim);font-family:var(--ft-mono);font-size:11.5px;font-variation-settings:"MONO" 1;letter-spacing:0.05em;text-transform:uppercase;margin-right:4px}
+.sort{padding:5px 10px;border:1px solid transparent;background:transparent;color:var(--ink-2);cursor:pointer;font-family:var(--ft-mono);font-size:12px;font-variation-settings:"MONO" 1;display:inline-flex;align-items:center;gap:4px}
+.sort:hover{color:var(--ink);background:var(--bg-2)}
+.sort.active{color:var(--ink);font-variation-settings:"MONO" 1,"wght" 600;border-color:var(--rule);background:var(--bg-2)}
+.sort .arrow{display:inline-block;min-width:8px;color:var(--accent);font-size:11px;font-variation-settings:"wght" 700}
+.item{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:20px;padding:20px 0;border-bottom:1px solid var(--rule);align-items:start}
+.body{min-width:0;overflow-wrap:anywhere}
+.item.hidden{display:none}
+.rank{font-family:var(--ft-mono);font-variation-settings:"MONO" 1,"wght" 500;font-size:22px;color:var(--ink-2);text-align:right;padding-top:2px;font-feature-settings:"tnum"}
+.rank-1,.rank-2,.rank-3{color:var(--accent);font-variation-settings:"MONO" 1,"wght" 700}
+.body h2{margin:0 0 8px;font-family:var(--ft-title);font-size:20px;line-height:1.3;font-weight:600;letter-spacing:-0.012em;font-variation-settings:"opsz" 24,"SOFT" 30}
+.body h2 a{color:var(--ink);text-decoration:none;border-bottom:1px solid transparent}
+.body h2 a:hover{border-bottom-color:var(--accent);color:var(--accent)}
+.summary{color:var(--ink-2);font-family:var(--ft-read);font-size:15px;line-height:1.55;margin:6px 0 10px}
+.kws{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px;align-items:center}
+.kw{font-size:11px;padding:2px 7px;background:var(--hi);color:var(--ink);font-family:var(--ft-mono);font-variation-settings:"MONO" 1;border:1px solid var(--rule)}
+.sev{display:inline-block;font-size:10px;padding:2px 7px;margin-right:6px;font-family:var(--ft-mono);font-variation-settings:"MONO" 1,"wght" 600;letter-spacing:0.05em;text-transform:uppercase;border:1px solid}
+.sev-critical{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.sev-high{background:var(--accent-2);color:var(--bg);border-color:var(--accent-2)}
+.sev-medium{background:var(--bg-2);color:var(--ink);border-color:var(--ink-2)}
+.sev-low{background:var(--bg-2);color:var(--dim);border-color:var(--rule)}
+.cve{font-size:10px;padding:2px 6px;margin-right:4px;font-family:var(--ft-mono);font-variation-settings:"MONO" 1;color:var(--ink-2);border:1px dashed var(--rule);background:transparent}
+.corrob{display:inline-block;font-size:10px;padding:2px 7px;margin-right:6px;background:var(--ink);color:var(--bg);font-family:var(--ft-mono);font-variation-settings:"MONO" 1,"wght" 600}
+.also{margin-top:8px;padding-top:6px;border-top:1px dotted var(--rule);font-size:12px;color:var(--dim);font-family:var(--ft-mono);font-variation-settings:"MONO" 1}
+.also-link{color:var(--ink-2);text-decoration:none;border-bottom:1px dotted var(--rule);margin:0 2px}
+.also-link:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.also-link.cat-advisory{color:var(--accent)}
+.also-link.cat-research{color:var(--ink-2)}
+.also-link.cat-aggregator{color:var(--accent-2)}
+.also-link.cat-government{color:var(--good)}
+.right{text-align:right;font-size:11.5px;color:var(--dim);font-family:var(--ft-mono);font-variation-settings:"MONO" 1;min-width:150px;display:flex;flex-direction:column;gap:4px;padding-top:4px}
+.right .src{color:var(--ink);font-weight:500}
+.right .src.cat-advisory{color:var(--accent)}
+.right .src.cat-research{color:var(--ink-2)}
+.right .src.cat-aggregator{color:var(--accent-2)}
+.right .src.cat-government{color:var(--good)}
+.empty{padding:60px 20px;text-align:center;color:var(--dim);font-family:var(--ft-mono)}
+.items.collapsed .item[data-overflow="true"]{display:none}
+.show-more{display:none;margin:24px auto 0;padding:10px 22px;border:1px solid var(--ink);background:transparent;color:var(--ink);font-family:var(--ft-mono);font-size:13px;font-variation-settings:"MONO" 1;cursor:pointer;letter-spacing:0.02em}
+.show-more:hover{background:var(--ink);color:var(--bg)}
+.show-more-count{color:var(--dim);margin-left:6px}
+footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--rule);color:var(--dim);font-size:12px;font-family:var(--ft-mono);font-variation-settings:"MONO" 1;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+@media (max-width:640px){
+  body{font-size:15px}
+  .wrap{padding:24px 18px 60px;max-width:100%}
+  .item{grid-template-columns:32px minmax(0,1fr);gap:14px;padding:16px 0}
+  .right{grid-column:2;text-align:left;min-width:0;font-size:11.5px}
+  h1{font-size:30px}
+  .body h2{font-size:17.5px;letter-spacing:-0.01em}
+  .summary{font-size:14.5px}
+  .also{overflow-wrap:anywhere}
+}
+</style>
+</head>
+<body><div class="wrap">
+<header>
+<h1>feedrank<span class="amp">.</span>security</h1>
+<div class="tag">supply chain &amp; infra security</div>
+<div class="meta">
+<span><b>30</b> sources</span>
+<span><b>5</b>d window</span>
+<span>generated <b>Sat Oct 31 2026 · 12:36 UTC</b></span>
+</div>
+</header>
+<div class="controls">
+<input class="search" id="search" placeholder="filter…  (regex: /pattern/)">
+<button class="chip active" data-cat="all">all</button>
+<button class="chip" data-cat="advisory">advisory</button>
+<button class="chip" data-cat="research">research</button>
+<button class="chip" data-cat="aggregator">aggregator</button>
+<button class="chip" data-cat="government">gov</button>
+<button class="chip" data-cat="build">build</button>
+<span style="width:1px;background:var(--rule);margin:0 6px"></span>
+<button class="chip" data-sev="critical">critical only</button>
+<button class="chip" data-sev="high">high+</button>
+</div>
+<div class="sort-row">
+<span class="sort-label">sort:</span>
+<button class="sort active" data-sort="trending">trending <span class="arrow">↓</span></button>
+<button class="sort" data-sort="date">date <span class="arrow"></span></button>
+<button class="sort" data-sort="sevrank">severity <span class="arrow"></span></button>
+<button class="sort" data-sort="corrob">reports <span class="arrow"></span></button>
+</div>
+<div class="items collapsed" id="items"><div class="item" data-cat="government" data-sev="critical" data-overflow="false" data-score="1.6098" data-date="1793435263" data-sevrank="4" data-cvss="9.5" data-corrob="2" data-text="ivanti connect secure: ivanti connect secure missing authentication for critical function vulnerability ivanti connect secure contains a missing authentication for critical function vulnerability that could allow a local authenticated attacker to escalate their privileges. this vulnerability can be chained with cve-2026-104935 and cve-2026-118527. required action: apply mitigations in accordance with vendor instructions, ensuring compliance with cisa’s bod 26-04 prioritizing security updates based on risk (see url in notes) guidance and cisa’s “forensics triage requirements” (see url in notes). follow applicable bod 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. stakeholders are responsible for evaluating each asset&#x27;s internet exposure and ensuring adherence to bod 26-04 patching guidelines. ivanti cve- cisa kev cve-2026-111357 critical the hacker news">
+<div class="rank rank-1">01</div>
+<div class="body">
+<h2><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-111357" target="_blank" rel="noopener">Ivanti Connect Secure: Ivanti Connect Secure Missing Authentication for Critical Function Vulnerability</a></h2>
+<div class="summary">Ivanti Connect Secure contains a missing authentication for critical function vulnerability that could allow a local authenticated attacker to escalate their privileges. This vulnerability can be chained with CVE-2026-104935 and CVE-2026-118527. Required action: Apply mitigations…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.5</span><span class="corrob">×2 reports</span><span class="cve">CVE-2026-111357</span><span class="kw">ivanti</span><span class="kw">cve-</span></div>
+<div class="also">also: <a href="https://thehackernews.com/2026/10/attackers-chain-three-ivanti-connect.html" target="_blank" rel="noopener" class="also-link cat-aggregator">The Hacker News</a></div>
+</div>
+<div class="right">
+<span class="src cat-government">CISA KEV</span>
+<span>Oct 31</span>
+<span>score 1.610</span>
+</div></div>
+<div class="item" data-cat="research" data-sev="high" data-overflow="false" data-score="0.4565" data-date="1793439170" data-sevrank="3" data-cvss="8.5" data-corrob="1" data-text="trojanized claude code extension delivered persistent ssh backdoor to developer machines on october 29, 2026, a trojanized version (2.1.313) of the official claude code vs code extension was published to cursor&#x27;s extension marketplace, reaching up to 5,000 cursor users during an 11-hour window. sandbox and registry analysis confirmed that on load it planted an attacker ssh key, set up persistence on each os, opened a reverse ssh tunnel to attacker infrastructure, and sent host reconnaissance data over plain http. ssh backdoor stepsecurity  high ">
+<div class="rank rank-2">02</div>
+<div class="body">
+<h2><a href="https://www.stepsecurity.io/blog/claude-code-extension-trojanized" target="_blank" rel="noopener">Trojanized Claude Code Extension Delivered Persistent SSH Backdoor to Developer Machines</a></h2>
+<div class="summary">On October 29, 2026, a trojanized version (2.1.313) of the official Claude Code VS Code extension was published to Cursor&#x27;s extension marketplace, reaching up to 5,000 Cursor users during an 11-hour window. Sandbox and registry analysis confirmed that on load it planted an attack…</div>
+<div class="kws"><span class="sev sev-high">high 8.5</span><span class="kw">ssh</span><span class="kw">backdoor</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-research">StepSecurity</span>
+<span>Oct 31</span>
+<span>score 0.456</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="critical" data-overflow="false" data-score="1.1023" data-date="1793401020" data-sevrank="4" data-cvss="9.8" data-corrob="3" data-text="imgproxy has integer overflow in imgproxy ico loader that causes denial of service and may permit remote code execution affected: github.com/imgproxy/imgproxy/v3, github.com/imgproxy/imgproxy/v2, github.com/imgproxy/imgproxy. ## summary the ico loader allocates `data_size + bmp_file_header_len` bytes after reading a 32-bit attacker-controlled `data_size`. for `data_size &gt; uint32_max - bmp_file_header_len`, the addition wraps before allocation. imgproxy then writes the ico prefix and reads up to the original declared size starting 14 bytes into the undersized allocation. a network client can turn this heap overflow into remote denial of service or remote code execution. ## technical details the vulnerable path is in [`vips/icoload.c` at commit `f4fedbb`](https://github.com/imgproxy/imgproxy/blob/f4fedbb5c7f6684e7 github ghsa — go  critical ghsa — go ghsa — go">
+<div class="rank rank-3">03</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-hff9-5pqw-6w9f" target="_blank" rel="noopener">imgproxy has integer overflow in imgproxy ICO loader that causes denial of service and may permit remote code execution</a></h2>
+<div class="summary">Affected: github.com/imgproxy/imgproxy/v3, github.com/imgproxy/imgproxy/v2, github.com/imgproxy/imgproxy. ## Summary The ICO loader allocates `data_size + BMP_FILE_HEADER_LEN` bytes after reading a 32-bit attacker-controlled `data_size`. For `data_size &gt; UINT32_MAX - BMP_FILE_HEA…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.8</span><span class="corrob">×3 reports</span><span class="kw">github</span></div>
+<div class="also">also: <a href="https://github.com/advisories/GHSA-494m-4556-wf5p" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — go</a>, <a href="https://github.com/advisories/GHSA-mmq5-xm89-9pfg" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — go</a></div>
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — go</span>
+<span>Oct 30</span>
+<span>score 1.102</span>
+</div></div>
+<div class="item" data-cat="government" data-sev="critical" data-overflow="false" data-score="0.8757" data-date="1793345225" data-sevrank="4" data-cvss="9.5" data-corrob="3" data-text="gitlab community edition and enterprise edition: gitlab community edition and enterprise edition integer overflow or wraparound vulnerability gitlab community edition and enterprise edition contain a integer overflow or wraparound vulnerability that could allow an unauthenticated user to execute arbitrary code on the gitlab server via a specially crafted regular expression in a ci/cd configuration, due to insufficient regular expression validation. required action: apply mitigations in accordance with vendor instructions, ensuring compliance with cisa’s bod 26-04 prioritizing security updates based on risk (see url in notes) guidance and cisa’s “forensics triage requirements” (see url in notes). follow applicable bod 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. stakeholders are responsible for evaluating each asset&#x27;s internet exposure and ensuring adherence to bod 26-04 patching guidelines. gitlab ci/cd cisa kev cve-2026-97229 critical the hacker news the hacker news">
+<div class="rank ">04</div>
+<div class="body">
+<h2><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-97229" target="_blank" rel="noopener">GitLab Community Edition and Enterprise Edition: GitLab Community Edition and Enterprise Edition Integer Overflow or Wraparound Vulnerability</a></h2>
+<div class="summary">GitLab Community Edition and Enterprise Edition contain a integer overflow or wraparound vulnerability that could allow an unauthenticated user to execute arbitrary code on the GitLab server via a specially crafted regular expression in a CI/CD configuration, due to insufficient …</div>
+<div class="kws"><span class="sev sev-critical">critical 9.5</span><span class="corrob">×3 reports</span><span class="cve">CVE-2026-97229</span><span class="kw">gitlab</span><span class="kw">ci/cd</span></div>
+<div class="also">also: <a href="https://thehackernews.com/2026/10/cisa-adds-actively-exploited-gitlab-rce.html" target="_blank" rel="noopener" class="also-link cat-aggregator">The Hacker News</a>, <a href="https://thehackernews.com/2026/10/attacker-tried-to-exploit-alpine-linuxs.html" target="_blank" rel="noopener" class="also-link cat-aggregator">The Hacker News</a></div>
+</div>
+<div class="right">
+<span class="src cat-government">CISA KEV</span>
+<span>Oct 30</span>
+<span>score 0.876</span>
+</div></div>
+<div class="item" data-cat="government" data-sev="critical" data-overflow="false" data-score="0.6243" data-date="1793318400" data-sevrank="4" data-cvss="9.0" data-corrob="1" data-text="ivanti connect secure: ivanti connect secure generation of predictable numbers or identifiers vulnerability ivanti connect secure contains a generation of predictable numbers or identifiers vulnerability that allows a remote authenticated attacker to upload files with attacker-controlled content to a known location on disk. this vulnerability can be chained with cve-2026-104935 and cve-2026-111357. required action: apply mitigations in accordance with vendor instructions, ensuring compliance with cisa’s bod 26-04 prioritizing security updates based on risk (see url in notes) guidance and cisa’s “forensics triage requirements” (see url in notes). follow applicable bod 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. stakeholders are responsible for evaluating each asset&#x27;s internet exposure and ensuring adherence to bod 26-04 patching guidelines. ivanti cve- cisa kev cve-2026-118527 critical ">
+<div class="rank ">05</div>
+<div class="body">
+<h2><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-118527" target="_blank" rel="noopener">Ivanti Connect Secure: Ivanti Connect Secure Generation of Predictable Numbers or Identifiers Vulnerability</a></h2>
+<div class="summary">Ivanti Connect Secure contains a generation of predictable numbers or identifiers vulnerability that allows a remote authenticated attacker to upload files with attacker-controlled content to a known location on disk. This vulnerability can be chained with CVE-2026-104935 and CVE…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.0</span><span class="cve">CVE-2026-118527</span><span class="kw">ivanti</span><span class="kw">cve-</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-government">CISA KEV</span>
+<span>Oct 30</span>
+<span>score 0.624</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="false" data-score="0.4967" data-date="1793394586" data-sevrank="4" data-cvss="9.5" data-corrob="1" data-text="critical linux kernel flaw allows remote root attacks on mptcp servers security researchers at anthropic have developed an exploit for a critical linux kernel vulnerability that allows unauthenticated attackers to remotely execute commands as root on servers running multipath tcp (mptcp) listeners. [...] linux kernel exploit bleepingcomputer  critical ">
+<div class="rank ">06</div>
+<div class="body">
+<h2><a href="https://www.bleepingcomputer.com/news/security/critical-linux-kernel-flaw-allows-remote-root-attacks-on-mptcp-servers/" target="_blank" rel="noopener">Critical Linux kernel flaw allows remote root attacks on MPTCP servers</a></h2>
+<div class="summary">Security researchers at Anthropic have developed an exploit for a critical Linux kernel vulnerability that allows unauthenticated attackers to remotely execute commands as root on servers running Multipath TCP (MPTCP) listeners. [...]</div>
+<div class="kws"><span class="sev sev-critical">critical 9.5</span><span class="kw">linux</span><span class="kw">kernel</span><span class="kw">exploit</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">BleepingComputer</span>
+<span>Oct 30</span>
+<span>score 0.497</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="false" data-score="0.4258" data-date="1793369294" data-sevrank="4" data-cvss="9.0" data-corrob="1" data-text="wordpress rce flaw draws nearly 63,000 attack attempts in just 24 hours threat actors have been observed attempting to exploit a high-severity security flaw in wordpress core shortly after patches were released. the vulnerability, which does not have a cve identifier, relates to a case of remote code execution impacting wordpress core versions 4.7 through 7.1.3. it carries a cvss score of 8.1 on the cvss scoring system. patches for the flaw were released on october rce exploit cvss the hacker news  critical ">
+<div class="rank ">07</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/10/wordpress-rce-flaw-draws-nearly-63000.html" target="_blank" rel="noopener">WordPress RCE Flaw Draws Nearly 63,000 Attack Attempts in Just 24 Hours</a></h2>
+<div class="summary">Threat actors have been observed attempting to exploit a high-severity security flaw in WordPress Core shortly after patches were released. The vulnerability, which does not have a CVE identifier, relates to a case of remote code execution impacting WordPress Core versions 4.7 th…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.0</span><span class="kw">rce</span><span class="kw">exploit</span><span class="kw">cvss</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Oct 30</span>
+<span>score 0.426</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="false" data-score="0.3793" data-date="1793355367" data-sevrank="4" data-cvss="9.5" data-corrob="1" data-text="drupal warns of critical commerce core flaw exploited in attacks drupal warned admins to patch a critical access bypass vulnerability in the commerce core module that attackers are exploiting in the wild. [...] in the wild bleepingcomputer  critical ">
+<div class="rank ">08</div>
+<div class="body">
+<h2><a href="https://www.bleepingcomputer.com/news/security/drupal-warns-of-critical-commerce-core-flaw-exploited-in-attacks/" target="_blank" rel="noopener">Drupal warns of critical Commerce Core flaw exploited in attacks</a></h2>
+<div class="summary">Drupal warned admins to patch a critical access bypass vulnerability in the Commerce Core module that attackers are exploiting in the wild. [...]</div>
+<div class="kws"><span class="sev sev-critical">critical 9.5</span><span class="kw">in the wild</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">BleepingComputer</span>
+<span>Oct 30</span>
+<span>score 0.379</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="false" data-score="0.3545" data-date="1793346330" data-sevrank="4" data-cvss="9.5" data-corrob="1" data-text="hackers actively exploit highly critical drupal commerce core authorization bypass flaw drupal has warned that threat actors are exploiting a &quot;highly critical&quot; security flaw in its commerce core component. the vulnerability, tracked as cve-2026-118539 (cvss score: n/a), is a case of missing authorization affecting commerce core versions from 0.0.0 to 2.41 and from 3.0.0 to 3.3.13. &quot;this module enables you to sell goods and services to customers through an included shopping cart exploit cve- cvss the hacker news cve-2026-118539 critical ">
+<div class="rank ">09</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/10/hackers-actively-exploit-highly.html" target="_blank" rel="noopener">Hackers Actively Exploit Highly Critical Drupal Commerce Core Authorization Bypass Flaw</a></h2>
+<div class="summary">Drupal has warned that threat actors are exploiting a &quot;highly critical&quot; security flaw in its Commerce Core component. The vulnerability, tracked as CVE-2026-118539 (CVSS score: N/A), is a case of missing authorization affecting Commerce Core versions from 0.0.0 to 2.41 and from 3…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.5</span><span class="cve">CVE-2026-118539</span><span class="kw">exploit</span><span class="kw">cve-</span><span class="kw">cvss</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Oct 30</span>
+<span>score 0.354</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="critical" data-overflow="false" data-score="0.3491" data-date="1793401057" data-sevrank="4" data-cvss="9.8" data-corrob="2" data-text="signalk-server has ssrf via absolute signalk.appicon url in the app store icon fetcher affected: signalk-server. ### summary the app store icon code (`dist/appstore/icon-probe.js` around line 200 and `icon-bytes.js` around line 138) resolves a plugin&#x27;s declared `signalk.appicon`. relative paths are pinned to the cdn, but an absolute http(s) url is used as-is: the server fetches it, follows redirects, and stores any `image/*` response as the plugin&#x27;s icon, which is then served to the admin ui. unrelated to ghsa-q59x-jc9f-gfqf. ### affected signalk-server 2.33.0 (latest). ### reproduction the real dist modules driven directly, docker with `--network none`; a local &quot;internal&quot; service on 127.0.0.1 logs docker cdn ssrf ghsa — npm  critical ghsa — npm">
+<div class="rank ">10</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-7wpf-ch8f-5f4x" target="_blank" rel="noopener">signalk-server has SSRF via absolute signalk.appIcon URL in the app store icon fetcher</a></h2>
+<div class="summary">Affected: signalk-server. ### Summary The app store icon code (`dist/appstore/icon-probe.js` around line 200 and `icon-bytes.js` around line 138) resolves a plugin&#x27;s declared `signalk.appIcon`. Relative paths are pinned to the CDN, but an absolute http(s) URL is used as-is: the s…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.8</span><span class="corrob">×2 reports</span><span class="kw">docker</span><span class="kw">cdn</span><span class="kw">ssrf</span></div>
+<div class="also">also: <a href="https://github.com/advisories/GHSA-4xm8-rg9h-jhq2" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — npm</a></div>
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — npm</span>
+<span>Oct 30</span>
+<span>score 0.349</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="true" data-score="0.1755" data-date="1793361533" data-sevrank="4" data-cvss="9.5" data-corrob="1" data-text="why urgent security fixes aren&#x27;t fixed. observe, prove, act, confirm gets them moving the alert is critical. the fix is known. and the ticket sits in a queue for days. security teams understand the risk, but the people who keep applications available need proof that the change won’t break anything.&amp;nbsp; their concerns are practical. an ips protection could block legitimate traffic. a configuration change could interrupt a service. an endpoint policy could affect an application teams the hacker news  critical ">
+<div class="rank ">11</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/10/why-urgent-security-fixes-arent-fixed.html" target="_blank" rel="noopener">Why Urgent Security Fixes Aren&#x27;t Fixed. Observe, Prove, Act, Confirm Gets Them Moving</a></h2>
+<div class="summary">The alert is critical. The fix is known. And the ticket sits in a queue for days. Security teams understand the risk, but the people who keep applications available need proof that the change won’t break anything.&amp;nbsp; Their concerns are practical. An IPS protection could block …</div>
+<div class="kws"><span class="sev sev-critical">critical 9.5</span><span class="kw">teams</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Oct 30</span>
+<span>score 0.176</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.9723" data-date="1793400788" data-sevrank="3" data-cvss="8.1" data-corrob="6" data-text="adminneo sqlite: multi_query incorrect check of function return value rce affected: adminneo-org/adminneo. ### summary this vulnerability is a patch bypass that exploits catastrophic backtracking in a regular expression used to filter attach statements in adminneo&#x27;s sqlite functionality. the original vulnerability (cve-2021-43008) allowed authenticated users to create php files through sqlite attach statements, achieving remote code execution. the patch introduced a regex filter to block attach queries, but this filter is vulnerable to catastrophic backtracking. originally reported by @zdi-disclosures in adminer: https://github.com/vrana/adminer/security/advisories/ghsa-3582-q6xq-5vf7 ### analys php github sqlite rce cve- ghsa — composer cve-2026-59978 cve-2026-96629 cve-2026-96630 cve-2026-96632 cve-2026-96633 cve-2026-96634 high ghsa — composer ghsa — composer ghsa — composer ghsa — composer ghsa — composer">
+<div class="rank ">12</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-p96f-p2p2-2g3h" target="_blank" rel="noopener">AdminNeo SQLite: multi_query Incorrect Check of Function Return Value RCE</a></h2>
+<div class="summary">Affected: adminneo-org/adminneo. ### Summary This vulnerability is a patch bypass that exploits catastrophic backtracking in a regular expression used to filter ATTACH statements in AdminNeo&#x27;s SQLite functionality. The original vulnerability (CVE-2021-43008) allowed authenticated…</div>
+<div class="kws"><span class="sev sev-high">high 8.1</span><span class="corrob">×6 reports</span><span class="cve">CVE-2026-59978</span><span class="cve">CVE-2026-96629</span><span class="cve">CVE-2026-96630</span><span class="kw">php</span><span class="kw">github</span><span class="kw">sqlite</span><span class="kw">rce</span><span class="kw">cve-</span></div>
+<div class="also">also: <a href="https://github.com/advisories/GHSA-6vfx-w7q3-42gq" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — composer</a>, <a href="https://github.com/advisories/GHSA-rx7m-wxwq-vxr9" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — composer</a>, <a href="https://github.com/advisories/GHSA-q5mp-gfjf-cf2j" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — composer</a>, <a href="https://github.com/advisories/GHSA-wm25-49w3-5qrg" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — composer</a>, <a href="https://github.com/advisories/GHSA-jm85-8cpp-9cjc" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — composer</a></div>
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — composer</span>
+<span>Oct 30</span>
+<span>score 0.972</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.7031" data-date="1793401360" data-sevrank="3" data-cvss="7.5" data-corrob="11" data-text="forge: asn.1 oid first arc truncation in asn1.oidtoder affected: node-forge. ### summary `asn1.oidtoder()` did not range-check the first two arcs of an oid string, so an oid such as `0.42.840.113549.1.1.1` or `4294977127.18.840.113549.1.1.1` was encoded as the der of a different oid (here rsaencryption, `1.2.840.113549.1.1.1`). this is an incomplete fix of cve-2025-66030. fixed in node-forge 1.4.1. ### details x.690 section 8.19 encodes the first two arcs of an oid as one subidentifier, `40 * arc1 + arc2`, where the first arc is 0, 1 or 2 and the second arc is at most 39 when the first is 0 or 1. `asn1.oidtoder()` in `lib/asn1.js` computed that value with no range c node cve- ghsa — npm cve-2026-118775 cve-2026-118777 cve-2026-118778 cve-2026-118779 cve-2026-118780 cve-2026-118781 cve-2026-118782 cve-2026-119186 cve-2026-119187 cve-2026-119188 cve-2026-119190 high ghsa — npm ghsa — npm ghsa — npm ghsa — npm ghsa — npm ghsa — npm ghsa — npm ghsa — npm ghsa — npm ghsa — npm">
+<div class="rank ">13</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-4642-5mcj-2rqw" target="_blank" rel="noopener">Forge: ASN.1 OID first arc truncation in asn1.oidToDer</a></h2>
+<div class="summary">Affected: node-forge. ### Summary `asn1.oidToDer()` did not range-check the first two arcs of an OID string, so an OID such as `0.42.840.113549.1.1.1` or `4294977127.18.840.113549.1.1.1` was encoded as the DER of a different OID (here rsaEncryption, `1.2.840.113549.1.1.1`). This …</div>
+<div class="kws"><span class="sev sev-high">high 7.5</span><span class="corrob">×11 reports</span><span class="cve">CVE-2026-118775</span><span class="cve">CVE-2026-118777</span><span class="cve">CVE-2026-118778</span><span class="kw">node</span><span class="kw">cve-</span></div>
+<div class="also">also: <a href="https://github.com/advisories/GHSA-6wvx-3r32-xmcg" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — npm</a>, <a href="https://github.com/advisories/GHSA-525v-9gp9-w22h" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — npm</a>, <a href="https://github.com/advisories/GHSA-7wch-p9px-956x" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — npm</a>, <a href="https://github.com/advisories/GHSA-h6cr-wjv9-3cpp" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — npm</a>, <a href="https://github.com/advisories/GHSA-4487-j8r4-4g2f" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — npm</a></div>
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — npm</span>
+<span>Oct 30</span>
+<span>score 0.703</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.6308" data-date="1793402018" data-sevrank="3" data-cvss="7.5" data-corrob="2" data-text="kubeflow pipelines: pipeline archive upload allows decompression bomb to exhaust server memory affected: github.com/kubeflow/pipelines, github.com/kubeflow/pipelines. ## summary the kubeflow pipelines api server decompresses uploaded pipeline archives without adequately bounding expanded data in affected versions. a small zip or gzip-compressed tar archive can consume disproportionately large amounts of memory while the server locates or reads the pipeline file, potentially exhausting api-server resources and interrupting service. multipart pipeline and pipeline-version upload processing decompresses the archive before namespace authorization, so a caller who can reach those endpoints does not need a successful pipeline-create authorization decision to tr github ghsa — go cve-2026-118759 cve-2026-118761 high ghsa — go">
+<div class="rank ">14</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-8fmv-6rg5-5924" target="_blank" rel="noopener">Kubeflow Pipelines: Pipeline archive upload allows decompression bomb to exhaust server memory</a></h2>
+<div class="summary">Affected: github.com/kubeflow/pipelines, github.com/kubeflow/pipelines. ## Summary The Kubeflow Pipelines API server decompresses uploaded pipeline archives without adequately bounding expanded data in affected versions. A small ZIP or gzip-compressed tar archive can consume disp…</div>
+<div class="kws"><span class="sev sev-high">high 7.5</span><span class="corrob">×2 reports</span><span class="cve">CVE-2026-118759</span><span class="cve">CVE-2026-118761</span><span class="kw">github</span></div>
+<div class="also">also: <a href="https://github.com/advisories/GHSA-wg5q-x4j9-qm54" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — go</a></div>
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — go</span>
+<span>Oct 30</span>
+<span>score 0.631</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.5669" data-date="1793401996" data-sevrank="3" data-cvss="0.0" data-corrob="7" data-text="pypdf has possible infinite loop when hitting eof in standard xref table during trailer search affected: pypdf. ### impact an attacker who uses this vulnerability can craft a pdf which leads to an infinite loop. this requires opening an incomplete file without a `trailer`. ### patches this has been fixed in [pypdf==6.21.4](https://github.com/py-pdf/pypdf/releases/tag/6.21.4). ### workarounds if you cannot upgrade yet, consider applying the changes from pr [#4289](https://github.com/py-pdf/pypdf/pull/4289). github ghsa — pip cve-2026-119203 cve-2026-119204 cve-2026-119205 cve-2026-119206 cve-2026-119207 cve-2026-119208 cve-2026-119209 high ghsa — pip ghsa — pip ghsa — pip ghsa — pip ghsa — pip ghsa — pip">
+<div class="rank ">15</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-5849-834g-hvw5" target="_blank" rel="noopener">pypdf has possible infinite loop when hitting EOF in standard xref table during trailer search</a></h2>
+<div class="summary">Affected: pypdf. ### Impact An attacker who uses this vulnerability can craft a PDF which leads to an infinite loop. This requires opening an incomplete file without a `trailer`. ### Patches This has been fixed in [pypdf==6.21.4](https://github.com/py-pdf/pypdf/releases/tag/6.21.…</div>
+<div class="kws"><span class="sev sev-high">high</span><span class="corrob">×7 reports</span><span class="cve">CVE-2026-119203</span><span class="cve">CVE-2026-119204</span><span class="cve">CVE-2026-119205</span><span class="kw">github</span></div>
+<div class="also">also: <a href="https://github.com/advisories/GHSA-cggf-277g-3q54" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — pip</a>, <a href="https://github.com/advisories/GHSA-mfr5-77xh-9j7h" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — pip</a>, <a href="https://github.com/advisories/GHSA-42gh-23hr-vphw" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — pip</a>, <a href="https://github.com/advisories/GHSA-4vqv-7265-gm2w" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — pip</a>, <a href="https://github.com/advisories/GHSA-62m5-6wh8-28x7" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — pip</a></div>
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — pip</span>
+<span>Oct 30</span>
+<span>score 0.567</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.4998" data-date="1793401148" data-sevrank="3" data-cvss="4.3" data-corrob="3" data-text="russh: agent server never calls `agent::confirm`, so keys added with the confirm constraint (`ssh-add -c`) sign without confirmation affected: russh. ### summary the agent server in `russh::keys::agent::server` never calls `agent::confirm` before signing with a key that was added with the confirm constraint. that constraint is `ssh_agent_constrain_confirm` (rfc 9987 §5.2.7.2), which is what `ssh-add -c` sends. the call was replaced by a hard-coded `true` in 3e04597 (&quot;native async traits encore&quot;, #455), first released in 0.50.0-beta.12. every release since, up to and including 0.64.1, signs requests for confirm-constrained keys without asking the `agent` implementation. a user who added a key with `-c` is therefore never asked to confirm. ssh ghsa — rust cve-2026-116696 cve-2026-116773 cve-2026-116794 high ghsa — rust ghsa — rust">
+<div class="rank ">16</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-vp5q-ff62-jwqv" target="_blank" rel="noopener">russh: Agent server never calls `Agent::confirm`, so keys added with the confirm constraint (`ssh-add -c`) sign without confirmation</a></h2>
+<div class="summary">Affected: russh. ### Summary The agent server in `russh::keys::agent::server` never calls `Agent::confirm` before signing with a key that was added with the confirm constraint. That constraint is `SSH_AGENT_CONSTRAIN_CONFIRM` (RFC 9987 §5.2.7.2), which is what `ssh-add -c` sends.…</div>
+<div class="kws"><span class="sev sev-high">high 4.3</span><span class="corrob">×3 reports</span><span class="cve">CVE-2026-116696</span><span class="cve">CVE-2026-116773</span><span class="cve">CVE-2026-116794</span><span class="kw">ssh</span></div>
+<div class="also">also: <a href="https://github.com/advisories/GHSA-9wfm-jcj8-jfv9" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — rust</a>, <a href="https://github.com/advisories/GHSA-4p9f-7p9m-5vfg" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — rust</a></div>
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — rust</span>
+<span>Oct 30</span>
+<span>score 0.500</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.4528" data-date="1793401744" data-sevrank="3" data-cvss="8.8" data-corrob="1" data-text="authlib rfc 7592 examples omit registration-access-token client binding affected: authlib. ## description ### summary rfc 7592 (oauth 2.0 dynamic client registration management protocol) lets a previously registered client read, update, or delete its own registration, authenticated by a `registration_access_token` issued specifically to that client at registration time. the entire security model of this protocol depends on the server verifying that the token presented in the request actually belongs to the client identified in the request, not merely that the token is valid for some client. authlib&#x27;s `clientconfigurationendpoint` implements the control flow correctly in structure oauth token ghsa — pip cve-2026-116672 high ">
+<div class="rank ">17</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-c73q-w75p-j82v" target="_blank" rel="noopener">Authlib RFC 7592 examples omit registration-access-token client binding</a></h2>
+<div class="summary">Affected: Authlib. ## Description ### Summary RFC 7592 (OAuth 2.0 Dynamic Client Registration Management Protocol) lets a previously registered client read, update, or delete its own registration, authenticated by a `registration_access_token` issued specifically to that client a…</div>
+<div class="kws"><span class="sev sev-high">high 8.8</span><span class="cve">CVE-2026-116672</span><span class="kw">oauth</span><span class="kw">token</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — pip</span>
+<span>Oct 30</span>
+<span>score 0.453</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.4522" data-date="1793401606" data-sevrank="3" data-cvss="7.5" data-corrob="2" data-text="pyasn1 has quadratic-complexity denial of service in binary real decoding affected: pyasn1. ## summary in pyasn1 0.6.4 and earlier, decoding a binary-encoded asn.1 real with a large mantissa can consume cpu time quadratic in the mantissa length. the ber, cer, and der decoders all use the affected `realpayloaddecoder`. an application is exposed when it passes attacker-controlled asn.1 containing a real value to one of these decoders, either without an `asn1spec` or with a schema that includes real. the work occurs inside `decode()`; the application does not need to convert, print, or otherwise use the resulting real object. this is distinct from [cve-2026-59886](https://github.com/a github cve- ghsa — pip cve-2026-119194 cve-2026-119197 high ghsa — pip">
+<div class="rank ">18</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-mm57-4v3p-rchx" target="_blank" rel="noopener">pyasn1 has quadratic-complexity denial of service in binary REAL decoding</a></h2>
+<div class="summary">Affected: pyasn1. ## Summary In pyasn1 0.6.4 and earlier, decoding a binary-encoded ASN.1 REAL with a large mantissa can consume CPU time quadratic in the mantissa length. The BER, CER, and DER decoders all use the affected `RealPayloadDecoder`. An application is exposed when it …</div>
+<div class="kws"><span class="sev sev-high">high 7.5</span><span class="corrob">×2 reports</span><span class="cve">CVE-2026-119194</span><span class="cve">CVE-2026-119197</span><span class="kw">github</span><span class="kw">cve-</span></div>
+<div class="also">also: <a href="https://github.com/advisories/GHSA-fm9c-5rcf-2q5p" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — pip</a></div>
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — pip</span>
+<span>Oct 30</span>
+<span>score 0.452</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.3528" data-date="1793401217" data-sevrank="3" data-cvss="7.4" data-corrob="1" data-text="@sigstore/oci sends the registry authorization header to a cross-host blob-upload location affected: @sigstore/oci. ### summary @sigstore/oci sends the registry authorization header to a cross-host blob-upload location ## affected versions and vulnerable location - confirmed on sigstore-js at `3a83271` (current head). - file: `packages/oci/src/registry.ts`. - `signin()` installs the credential as a default header on the shared client: `this.#fetch = this.#fetch.defaults({ headers: { [header_authorization]: &#x27;basic &#x27; + basicauth } })` (`:126-128`) or `... &#x27;bearer &#x27; + token` (`:145-147`), plus `creds.headers` from the docker config (`:104`). - `uploadblob()` reads the `location` response header (`:184`) sigstore docker token credential ghsa — npm cve-2026-118763 high ">
+<div class="rank ">19</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-j63v-mwhm-56jx" target="_blank" rel="noopener">@sigstore/oci sends the registry Authorization header to a cross-host blob-upload Location</a></h2>
+<div class="summary">Affected: @sigstore/oci. ### Summary @sigstore/oci sends the registry Authorization header to a cross-host blob-upload Location ## Affected versions and vulnerable location - Confirmed on sigstore-js at `3a83271` (current HEAD). - File: `packages/oci/src/registry.ts`. - `signIn()…</div>
+<div class="kws"><span class="sev sev-high">high 7.4</span><span class="cve">CVE-2026-118763</span><span class="kw">sigstore</span><span class="kw">docker</span><span class="kw">token</span><span class="kw">credential</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — npm</span>
+<span>Oct 30</span>
+<span>score 0.353</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="high" data-overflow="true" data-score="0.3094" data-date="1793350547" data-sevrank="3" data-cvss="8.5" data-corrob="1" data-text="official claude code extension on cursor marketplace trojanized with persistent ssh backdoor cybersecurity researchers have disclosed that a trojanized version of anthropic&#x27;s official claude code extension was distributed through the cursor marketplace as a legitimate update, attempting to install a persistent ssh backdoor on affected systems. the malicious update, version 2.1.313, was distributed under the extension&#x27;s legitimate publisher identity, prompting cursor to temporarily shut ssh backdoor the hacker news  high ">
+<div class="rank ">20</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/10/official-claude-code-vs-code-extension.html" target="_blank" rel="noopener">Official Claude Code Extension on Cursor Marketplace Trojanized with Persistent SSH Backdoor</a></h2>
+<div class="summary">Cybersecurity researchers have disclosed that a trojanized version of Anthropic&#x27;s official Claude Code extension was distributed through the Cursor Marketplace as a legitimate update, attempting to install a persistent SSH backdoor on affected systems. The malicious update, versi…</div>
+<div class="kws"><span class="sev sev-high">high 8.5</span><span class="kw">ssh</span><span class="kw">backdoor</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Oct 30</span>
+<span>score 0.309</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.3060" data-date="1793401111" data-sevrank="3" data-cvss="7.5" data-corrob="1" data-text="graphql-core has denial of service via memory leak in aborted validations affected: graphql-core. ### summary when a validation was aborted because the document contained more errors than allowed by `max_errors` (100 by default), `validate()` raised a single module-level `validationabortederror` instance. python appends the frames of every `raise` to the existing `__traceback__` of an exception that is raised again, so every aborted validation extended the traceback of this shared error. that traceback kept the frames, and with them the document, the validation context and all errors of every aborted validation, alive for the lifetime of the process. ### details any client can trigger a python ghsa — pip cve-2026-119286 high ">
+<div class="rank ">21</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-mpqx-q82w-9x46" target="_blank" rel="noopener">GraphQL-core has denial of service via memory leak in aborted validations</a></h2>
+<div class="summary">Affected: graphql-core. ### Summary When a validation was aborted because the document contained more errors than allowed by `max_errors` (100 by default), `validate()` raised a single module-level `ValidationAbortedError` instance. Python appends the frames of every `raise` to t…</div>
+<div class="kws"><span class="sev sev-high">high 7.5</span><span class="cve">CVE-2026-119286</span><span class="kw">python</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — pip</span>
+<span>Oct 30</span>
+<span>score 0.306</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.2953" data-date="1793401173" data-sevrank="3" data-cvss="5.9" data-corrob="1" data-text="follow-redirects: cross-realm sensitiveheaders arrays are discarded and custom credentials can follow redirects affected: follow-redirects. ### summary follow-redirects 1.16.0 and 1.16.1 validate the documented sensitiveheaders option with instanceof array. an array created in another javascript realm is silently replaced with an empty list, so a caller-declared custom credential header can be forwarded to an attacker-controlled cross-origin redirect destination. ### details affected versions the sensitiveheaders option was introduced in 1.16.0. published 1.16.0 and 1.16.1 both reproduced, giving a tested affected range of 1.16.0 through 1.16.1. the source checkout was pinned at revision 46301256333c90b7faac7aa126effe72ec16d16 javascript credential ghsa — npm cve-2026-116689 high ">
+<div class="rank ">22</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-mrwp-f3q8-3g9p" target="_blank" rel="noopener">follow-redirects: Cross-realm sensitiveHeaders arrays are discarded and custom credentials can follow redirects</a></h2>
+<div class="summary">Affected: follow-redirects. ### Summary follow-redirects 1.16.0 and 1.16.1 validate the documented sensitiveHeaders option with instanceof Array. An array created in another JavaScript realm is silently replaced with an empty list, so a caller-declared custom credential header ca…</div>
+<div class="kws"><span class="sev sev-high">high 5.9</span><span class="cve">CVE-2026-116689</span><span class="kw">javascript</span><span class="kw">credential</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — npm</span>
+<span>Oct 30</span>
+<span>score 0.295</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.2625" data-date="1793401823" data-sevrank="3" data-cvss="7.5" data-corrob="1" data-text="joi: quadratic-time split in `string().email({ multiple: true })` allows denial of service affected: joi, @hapi/joi, joi. ### summary `joi.string().email({ multiple: true })` takes quadratic time to split a value that contains a long run of whitespace. one request with 100 kb of spaces blocks the node.js event loop for several seconds, which causes a denial of service. ### details when the `multiple` option is set, the `email` rule splits the value into addresses with a regular expression that removes whitespace on each side of the separator: ```js const regex = new regexp(`\\s*[${options.separator ? escaperegex(options.separator) : &#x27;,&#x27;}]\\s*`); // ... const emails = options.multiple ? value.split(regex) : [v node ghsa — npm cve-2026-118772 high ">
+<div class="rank ">23</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-4528-x5fx-h6hg" target="_blank" rel="noopener">joi: quadratic-time split in `string().email({ multiple: true })` allows denial of service</a></h2>
+<div class="summary">Affected: joi, @hapi/joi, joi. ### Summary `Joi.string().email({ multiple: true })` takes quadratic time to split a value that contains a long run of whitespace. One request with 100 KB of spaces blocks the Node.js event loop for several seconds, which causes a denial of service.…</div>
+<div class="kws"><span class="sev sev-high">high 7.5</span><span class="cve">CVE-2026-118772</span><span class="kw">node</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — npm</span>
+<span>Oct 30</span>
+<span>score 0.263</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.2625" data-date="1793401813" data-sevrank="3" data-cvss="7.5" data-corrob="1" data-text="@hapi/content: quadratic-time parsing of content-disposition parameters allows denial of service affected: @hapi/content, content. ### summary `content.disposition()` takes quadratic time when a `content-disposition` parameter contains a long token without `=`. one unauthenticated multipart request can block the node.js event loop for several minutes. ### details `content.disposition()` reads the parameters with a global regular expression in `string.prototype.replace()`: ```js /([^\=\*\s]+)(\*)?\s*\=\s*(?:([^;&#x27;&quot;\s]+\&#x27;[\w-]*\&#x27;[^;\s]+)|(?:\&quot;([^&quot;]*)\&quot;)|([^;\s]*))/g ``` the parameter name part `([^\=\*\s]+)` has no anchor. when a run of name characters has no `=` after it, the match attempt reads the full run and fails. node token ghsa — npm cve-2026-119202 high ">
+<div class="rank ">24</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-8494-f6mr-cjpv" target="_blank" rel="noopener">@hapi/content: quadratic-time parsing of Content-Disposition parameters allows denial of service</a></h2>
+<div class="summary">Affected: @hapi/content, content. ### Summary `Content.disposition()` takes quadratic time when a `Content-Disposition` parameter contains a long token without `=`. One unauthenticated multipart request can block the Node.js event loop for several minutes. ### Details `Content.di…</div>
+<div class="kws"><span class="sev sev-high">high 7.5</span><span class="cve">CVE-2026-119202</span><span class="kw">node</span><span class="kw">token</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — npm</span>
+<span>Oct 30</span>
+<span>score 0.263</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.2367" data-date="1793401096" data-sevrank="3" data-cvss="0.0" data-corrob="1" data-text="oauthlib: token grants can use attacker-supplied client_id for authorization after authenticating a different client affected: oauthlib. ## summary oauthlib&#x27;s token grant handlers can authenticate one client while authorizing the grant type and requested scopes using a different, attacker-supplied `client_id` from the request body. in affected token grant flows, `authenticate_client(request)` sets `request.client` to the authenticated client object, but oauthlib does not require `request.client_id` to match `request.client.client_id`. if the request body already contains `client_id=...`, oauthlib keeps that value and passes it to `validate_grant_type()` and `validate_scopes()`. as a result, an authenticated low-privilege con token ghsa — pip cve-2026-118669 high ">
+<div class="rank ">25</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-7984-qgvg-3j9c" target="_blank" rel="noopener">OAuthLib: Token grants can use attacker-supplied client_id for authorization after authenticating a different client</a></h2>
+<div class="summary">Affected: oauthlib. ## Summary OAuthlib&#x27;s token grant handlers can authenticate one client while authorizing the grant type and requested scopes using a different, attacker-supplied `client_id` from the request body. In affected token grant flows, `authenticate_client(request)` s…</div>
+<div class="kws"><span class="sev sev-high">high</span><span class="cve">CVE-2026-118669</span><span class="kw">token</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — pip</span>
+<span>Oct 30</span>
+<span>score 0.237</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="high" data-overflow="true" data-score="0.1499" data-date="1793371014" data-sevrank="3" data-cvss="8.5" data-corrob="1" data-text="malicious claude code extension on cursor planted ssh backdoors a malicious version of anthropic&#x27;s claude code vs code extension was distributed through cursor&#x27;s extension marketplace for approximately 11 hours on october 29, exposing up to 5,000 developers to malware designed to install persistent ssh backdoors. [...] ssh bleepingcomputer  high ">
+<div class="rank ">26</div>
+<div class="body">
+<h2><a href="https://www.bleepingcomputer.com/news/security/malicious-claude-code-extension-on-cursor-planted-ssh-backdoors/" target="_blank" rel="noopener">Malicious Claude Code extension on Cursor planted SSH backdoors</a></h2>
+<div class="summary">A malicious version of Anthropic&#x27;s Claude Code VS Code extension was distributed through Cursor&#x27;s extension marketplace for approximately 11 hours on October 29, exposing up to 5,000 developers to malware designed to install persistent SSH backdoors. [...]</div>
+<div class="kws"><span class="sev sev-high">high 8.5</span><span class="kw">ssh</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">BleepingComputer</span>
+<span>Oct 30</span>
+<span>score 0.150</span>
+</div></div>
+<div class="item" data-cat="government" data-sev="critical" data-overflow="true" data-score="1.1850" data-date="1793270686" data-sevrank="4" data-cvss="9.5" data-corrob="2" data-text="cisco secure firewall asa software and cisco secure ftd software: cisco secure firewall asa software and cisco secure ftd software unchecked return value to null pointer dereference vulnerability cisco secure firewall asa software and cisco secure ftd software contains an unchecked return value to null pointer dereference vulnerability that could allow an unauthenticated, remote attacker to cause the device to reload unexpectedly, resulting in a denial of service (dos) condition. required action: apply mitigations in accordance with vendor instructions, ensuring compliance with cisa’s bod 26-04 prioritizing security updates based on risk (see url in notes) guidance and cisa’s “forensics triage requirements” (see url in notes). follow applicable bod 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. stakeholders are responsible for evaluating each asset&#x27;s internet exposure and ensuring adherence to bod 26-04 patching guidelines. cisco asa firewall cisa kev cve-2026-76418 critical the hacker news">
+<div class="rank ">27</div>
+<div class="body">
+<h2><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-76418" target="_blank" rel="noopener">Cisco Secure Firewall ASA Software and Cisco Secure FTD Software: Cisco Secure Firewall ASA Software and Cisco Secure FTD Software Unchecked Return Value to NULL Pointer Dereference Vulnerability</a></h2>
+<div class="summary">Cisco Secure Firewall ASA Software and Cisco Secure FTD Software contains an unchecked return value to NULL pointer dereference vulnerability that could allow an unauthenticated, remote attacker to cause the device to reload unexpectedly, resulting in a denial of service (DoS) co…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.5</span><span class="corrob">×2 reports</span><span class="cve">CVE-2026-76418</span><span class="kw">cisco</span><span class="kw">asa</span><span class="kw">firewall</span></div>
+<div class="also">also: <a href="https://thehackernews.com/2026/10/cisco-patches-actively-exploited-asa.html" target="_blank" rel="noopener" class="also-link cat-aggregator">The Hacker News</a></div>
+</div>
+<div class="right">
+<span class="src cat-government">CISA KEV</span>
+<span>Oct 29</span>
+<span>score 1.185</span>
+</div></div>
+<div class="item" data-cat="government" data-sev="critical" data-overflow="true" data-score="0.6813" data-date="1793254953" data-sevrank="4" data-cvss="9.0" data-corrob="2" data-text="broadcom vmware esx: broadcom vmware esx insufficient logging vulnerability broadcom vmware esx contains an insufficient logging vulnerability that could allow a malicious actor with admin access to perform certain operations without being logged. required action: apply mitigations in accordance with vendor instructions, ensuring compliance with cisa’s bod 26-04 prioritizing security updates based on risk (see url in notes) guidance and cisa’s “forensics triage requirements” (see url in notes). follow applicable bod 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. stakeholders are responsible for evaluating each asset&#x27;s internet exposure and ensuring adherence to bod 26-04 patching guidelines. vmware cisa kev cve-2026-41709 critical the hacker news">
+<div class="rank ">28</div>
+<div class="body">
+<h2><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-41709" target="_blank" rel="noopener">Broadcom VMware ESX: Broadcom VMWare ESX Insufficient Logging Vulnerability</a></h2>
+<div class="summary">Broadcom VMWare ESX contains an insufficient logging vulnerability that could allow a malicious actor with admin access to perform certain operations without being logged. Required action: Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s B…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.0</span><span class="corrob">×2 reports</span><span class="cve">CVE-2026-41709</span><span class="kw">vmware</span></div>
+<div class="also">also: <a href="https://thehackernews.com/2026/10/china-linked-hackers-exploited-vmware.html" target="_blank" rel="noopener" class="also-link cat-aggregator">The Hacker News</a></div>
+</div>
+<div class="right">
+<span class="src cat-government">CISA KEV</span>
+<span>Oct 29</span>
+<span>score 0.681</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="critical" data-overflow="true" data-score="0.4785" data-date="1793292019" data-sevrank="4" data-cvss="7.5" data-corrob="5" data-text="zip: legacy shrink/reduce/implode decoder: denial of service from attacker-controlled zip64 uncompressed size affected: zip. ### summary a malicious 149-byte zip archive can cause a denial of service in applications that enable `legacy-zip` and use `ziparchive::extract()`. an attacker-controlled zip64 uncompressed size triggers a `capacity overflow` panic in the shrink decoder in optimized builds, potentially terminating the affected process. ### details when reading a shrink-compressed entry, `shrinkdecoder::read()` buffers the compressed input and reserves output capacity using the entry&#x27;s declared uncompressed size: ```rust if !self.stream_read { self.stream_read = true; let mut compressed_bytes = vec rust ghsa — rust cve-2026-115905 cve-2026-115906 cve-2026-115907 cve-2026-115908 cve-2026-115909 critical ghsa — rust ghsa — rust ghsa — rust ghsa — rust">
+<div class="rank ">29</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-9hj8-73fh-9963" target="_blank" rel="noopener">zip: legacy Shrink/Reduce/Implode decoder: denial of service from attacker-controlled ZIP64 uncompressed size</a></h2>
+<div class="summary">Affected: zip. ### Summary A malicious 149-byte ZIP archive can cause a denial of service in applications that enable `legacy-zip` and use `ZipArchive::extract()`. An attacker-controlled ZIP64 uncompressed size triggers a `capacity overflow` panic in the Shrink decoder in optimiz…</div>
+<div class="kws"><span class="sev sev-critical">critical 7.5</span><span class="corrob">×5 reports</span><span class="cve">CVE-2026-115905</span><span class="cve">CVE-2026-115906</span><span class="cve">CVE-2026-115907</span><span class="kw">rust</span></div>
+<div class="also">also: <a href="https://github.com/advisories/GHSA-hjqx-j4rw-g7xv" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — rust</a>, <a href="https://github.com/advisories/GHSA-8hxf-qr8p-62x4" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — rust</a>, <a href="https://github.com/advisories/GHSA-q7v9-x93c-xqv3" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — rust</a>, <a href="https://github.com/advisories/GHSA-m665-v7pm-7grj" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — rust</a></div>
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — rust</span>
+<span>Oct 29</span>
+<span>score 0.478</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="true" data-score="0.4542" data-date="1793301118" data-sevrank="4" data-cvss="9.5" data-corrob="1" data-text="threatsday: critical firewall flaws, banking trojans rented, weaponized pdf, token theft + 26 more stories some attacks take real skill. others just need someone to leave a door open. this week has both. exposed passwords, old bugs still getting exploited, and trusted software doing things it shouldn&#x27;t. there&#x27;s a strange mix of clever tricks and careless mistakes. hackers are borrowing trust from familiar apps, websites, and ai tools. some are using ai to speed things up. others are leaving their token firewall the hacker news  critical ">
+<div class="rank ">30</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/10/threatsday-critical-firewall-flaws.html" target="_blank" rel="noopener">ThreatsDay: Critical Firewall Flaws, Banking Trojans Rented, Weaponized PDF, Token Theft + 26 More Stories</a></h2>
+<div class="summary">Some attacks take real skill. Others just need someone to leave a door open. This week has both. Exposed passwords, old bugs still getting exploited, and trusted software doing things it shouldn&#x27;t. There&#x27;s a strange mix of clever tricks and careless mistakes. Hackers are borrowin…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.5</span><span class="kw">token</span><span class="kw">firewall</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Oct 29</span>
+<span>score 0.454</span>
+</div></div>
+<div class="item" data-cat="research" data-sev="critical" data-overflow="true" data-score="0.3601" data-date="1793232000" data-sevrank="4" data-cvss="9.0" data-corrob="3" data-text="node2shell: reproducing cve-2026-111497 in the node.js brotli decoder we reproduced cve-2026-111497, an out-of-bounds write in the brotli decoder bundled with node.js and other runtimes, and explain how to detect and remediate it. node cve- datadog security labs cve-2026-111497 critical sysdig the hacker news">
+<div class="rank ">31</div>
+<div class="body">
+<h2><a href="https://securitylabs.datadoghq.com/articles/node2shell-cve-2026-111497-nodejs-brotli-decoder/" target="_blank" rel="noopener">Node2Shell: Reproducing CVE-2026-111497 in the Node.js Brotli decoder</a></h2>
+<div class="summary">We reproduced CVE-2026-111497, an out-of-bounds write in the Brotli decoder bundled with Node.js and other runtimes, and explain how to detect and remediate it.</div>
+<div class="kws"><span class="sev sev-critical">critical 9.0</span><span class="corrob">×3 reports</span><span class="cve">CVE-2026-111497</span><span class="kw">node</span><span class="kw">cve-</span></div>
+<div class="also">also: <a href="https://webflow.sysdig.com/blog/node2shell-cve-2026-111497-detecting-the-node-js-brotli-rce" target="_blank" rel="noopener" class="also-link cat-research">Sysdig</a>, <a href="https://thehackernews.com/2026/10/adobe-commerce-polyshell-attacks-breach.html" target="_blank" rel="noopener" class="also-link cat-aggregator">The Hacker News</a></div>
+</div>
+<div class="right">
+<span class="src cat-research">Datadog Security Labs</span>
+<span>Oct 29</span>
+<span>score 0.360</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="true" data-score="0.2424" data-date="1793262262" data-sevrank="4" data-cvss="9.5" data-corrob="1" data-text="hackers exploited cisco sd-wan flaw to plant malware built to steal encryption keys hackers exploited a critical cisco catalyst sd-wan flaw, fixed in february, to plant custom malware inside the systems that control an organization&#x27;s sd-wan network. the malware, called keydrift, is designed to copy the keys that encrypt traffic between sites and store them for later use,&amp;nbsp;cisco talos said&amp;nbsp;on october 28. talos calls the attacks historical but does not specify when they cisco the hacker news  critical ">
+<div class="rank ">32</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/10/hackers-exploited-cisco-sd-wan-flaw-to.html" target="_blank" rel="noopener">Hackers Exploited Cisco SD-WAN Flaw to Plant Malware Built to Steal Encryption Keys</a></h2>
+<div class="summary">Hackers exploited a critical Cisco Catalyst SD-WAN flaw, fixed in February, to plant custom malware inside the systems that control an organization&#x27;s SD-WAN network. The malware, called KeyDrift, is designed to copy the keys that encrypt traffic between sites and store them for l…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.5</span><span class="kw">cisco</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Oct 29</span>
+<span>score 0.242</span>
+</div></div>
+<div class="item" data-cat="research" data-sev="critical" data-overflow="true" data-score="0.2087" data-date="1793272232" data-sevrank="4" data-cvss="9.5" data-corrob="1" data-text="what the php patch scramble reveals about remediation when nick woodhead spoke with business insider on october 23, he had been awake for nearly 48 hours responding to critical php vulnerabilities. the cto of rothco and compubox was helping his teams update systems, review logs for signs of compromise, and protect older installations while they waited for backported fixes. his organization already had [&amp;#8230;] php teams checkmarx zero  critical ">
+<div class="rank ">33</div>
+<div class="body">
+<h2><a href="https://checkmarx.com/blog/what-the-php-patch-scramble-reveals-about-remediation/" target="_blank" rel="noopener">What the PHP Patch Scramble Reveals About Remediation</a></h2>
+<div class="summary">When Nick Woodhead spoke with Business Insider on October 23, he had been awake for nearly 48 hours responding to critical PHP vulnerabilities. The CTO of Rothco and Compubox was helping his teams update systems, review logs for signs of compromise, and protect older installation…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.5</span><span class="kw">php</span><span class="kw">teams</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-research">Checkmarx Zero</span>
+<span>Oct 29</span>
+<span>score 0.209</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.4674" data-date="1793291981" data-sevrank="3" data-cvss="7.3" data-corrob="1" data-text="cert-manager: direct acme challenge resources can bypass issuer dns01 solver policy and use clusterissuer dns credentials affected: github.com/cert-manager/cert-manager, github.com/cert-manager/cert-manager. ## summary `challenge` resources under `acme.cert-manager.io` can be created directly by namespace users. on create, cert-manager performs no admission validation tying the challenge to an `order`, an owner reference, or an issuer-selected solver. the acme challenge controller then reconciles the direct resource and uses `challenge.spec.solver` as the dns01 provider configuration. when the direct challenge references a `clusterissuer`, cert-manager derives the dns provider secret namespace and ambient-credential policy from the `clusterissuer` reference, but the dns provider configuration it github credential acme dns ghsa — go cve-2026-62290 high ">
+<div class="rank ">34</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-8rvj-mm4h-c258" target="_blank" rel="noopener">cert-manager: Direct ACME Challenge resources can bypass Issuer DNS01 solver policy and use ClusterIssuer DNS credentials</a></h2>
+<div class="summary">Affected: github.com/cert-manager/cert-manager, github.com/cert-manager/cert-manager. ## Summary `Challenge` resources under `acme.cert-manager.io` can be created directly by namespace users. On create, cert-manager performs no admission validation tying the Challenge to an `Orde…</div>
+<div class="kws"><span class="sev sev-high">high 7.3</span><span class="cve">CVE-2026-62290</span><span class="kw">github</span><span class="kw">credential</span><span class="kw">acme</span><span class="kw">dns</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — go</span>
+<span>Oct 29</span>
+<span>score 0.467</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.4483" data-date="1793291666" data-sevrank="3" data-cvss="7.3" data-corrob="1" data-text="praisonai vulnerable to remote code execution via broken ast sandbox affected: praisonai. ### summary jobworkflowexecutor._exec_inline_python() is designed to safely execute inline python expressions from yaml workflow script: steps using ast validation. the function claims to block dangerous operations by (a) checking all ast nodes against an allowlist, and (b) providing a __builtins__ whitelist that omits __import__, exec, eval, and open. the sandbox is broken. the module import allowlist (allowed_modules) explicitly includes &#x27;os&#x27;, and the ast allowlist permits ast.import, ast.importfrom, ast.call, and ast.attribute nodes. this means the following malicious workflow script: step python ghsa — pip cve-2026-61438 high ">
+<div class="rank ">35</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-26mh-57q7-jfvr" target="_blank" rel="noopener">PraisonAI vulnerable to Remote Code Execution via Broken AST Sandbox</a></h2>
+<div class="summary">Affected: praisonai. ### Summary JobWorkflowExecutor._exec_inline_python() is designed to safely execute inline Python expressions from YAML workflow script: steps using AST validation. The function claims to block dangerous operations by (a) checking all AST nodes against an all…</div>
+<div class="kws"><span class="sev sev-high">high 7.3</span><span class="cve">CVE-2026-61438</span><span class="kw">python</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — pip</span>
+<span>Oct 29</span>
+<span>score 0.448</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.3886" data-date="1793291589" data-sevrank="3" data-cvss="0.0" data-corrob="1" data-text="daptin: parseacceptlanguage `_` separator bypass enables &gt;250x cpu amplification via accept-language header in languagemiddleware affected: github.com/daptin/daptin. ### summary daptin&#x27;s `languagemiddleware` (registered as a global gin middleware) calls `golang.org/x/text/language.parseacceptlanguage` on the raw `accept-language` header of every http request without imposing any size or shape filter. the underlying parser has quadratic-time behaviour on long lists of malformed language tags. the cve-2022-32149 guard that golang.org/x/text added in v0.3.8 caps the number of `-` characters in the input at 1000, but it does not cap `_` characters even though the parser&#x27;s internal scanner aliases `_` to `-` before parsing. a single unauthenticated get request golang github cve- ghsa — go cve-2026-62160 high ">
+<div class="rank ">36</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-rhj7-vh3v-mcq6" target="_blank" rel="noopener">Daptin: ParseAcceptLanguage `_` separator bypass enables &gt;250x CPU amplification via Accept-Language header in LanguageMiddleware</a></h2>
+<div class="summary">Affected: github.com/daptin/daptin. ### Summary Daptin&#x27;s `LanguageMiddleware` (registered as a global gin middleware) calls `golang.org/x/text/language.ParseAcceptLanguage` on the raw `Accept-Language` header of every HTTP request without imposing any size or shape filter. The un…</div>
+<div class="kws"><span class="sev sev-high">high</span><span class="cve">CVE-2026-62160</span><span class="kw">golang</span><span class="kw">github</span><span class="kw">cve-</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — go</span>
+<span>Oct 29</span>
+<span>score 0.389</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.3324" data-date="1793292066" data-sevrank="3" data-cvss="7.5" data-corrob="1" data-text="twisted: unauthenticated remote denial of service in the twisted http/2 server via rapid stream reset affected: twisted. ## summary an uncontrolled-resource-consumption vulnerability (cwe-400) in the twisted http/2 server lets any unauthenticated remote client exhaust server cpu over a single connection. a client that sends a request header block with `end_stream` and then immediately resets the stream makes the server route and render the request before it processes the reset. reset streams are freed and never count against the concurrent-stream limit, and no reset-rate limiter exists, so the pattern can be repeated at line rate on one connection. this is the http/2 rapid reset class, cve-2023-44487. ## detai cve- ghsa — pip cve-2023-44487 high ">
+<div class="rank ">37</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-vpp8-g58w-m8mp" target="_blank" rel="noopener">Twisted: Unauthenticated Remote Denial of Service in the Twisted HTTP/2 Server via Rapid Stream Reset</a></h2>
+<div class="summary">Affected: Twisted. ## Summary An uncontrolled-resource-consumption vulnerability (CWE-400) in the Twisted HTTP/2 server lets any unauthenticated remote client exhaust server CPU over a single connection. A client that sends a request header block with `END_STREAM` and then immedi…</div>
+<div class="kws"><span class="sev sev-high">high 7.5</span><span class="cve">CVE-2023-44487</span><span class="kw">cve-</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — pip</span>
+<span>Oct 29</span>
+<span>score 0.332</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.2265" data-date="1793291748" data-sevrank="3" data-cvss="8.2" data-corrob="1" data-text="@eeacms/volto-chatbot has unauthenticated danswer api confused deputy proxy affected: @eeacms/volto-chatbot. ## unauthenticated danswer api confused deputy proxy in @eeacms/volto-chatbot ### summary `@eeacms/volto-chatbot` exposes an express middleware route (`**/_v1_da/**`) that accepts unauthenticated http requests from any network client and proxies them to the configured upstream danswer api, automatically attaching the server-side service credentials (`danswer_api_key` or session cookie). because no authorization check, path allowlist, or method restriction is applied before the upstream request is issued, an unauthenticated attacker can invoke arbitrary danswer api operations — including priv session ghsa — npm  high ">
+<div class="rank ">38</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-w9x9-j56r-h98r" target="_blank" rel="noopener">@eeacms/volto-chatbot has Unauthenticated Danswer API Confused Deputy Proxy</a></h2>
+<div class="summary">Affected: @eeacms/volto-chatbot. ## Unauthenticated Danswer API Confused Deputy Proxy in @eeacms/volto-chatbot ### Summary `@eeacms/volto-chatbot` exposes an Express middleware route (`**/_v1_da/**`) that accepts unauthenticated HTTP requests from any network client and proxies t…</div>
+<div class="kws"><span class="sev sev-high">high 8.2</span><span class="kw">session</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — npm</span>
+<span>Oct 29</span>
+<span>score 0.227</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.2057" data-date="1793292088" data-sevrank="3" data-cvss="0.0" data-corrob="1" data-text="decode-uri-component vulnerable to denial of service via quadratic replacement of percent-encoded runs affected: decode-uri-component. ### summary `decodeuricomponent()` takes quadratic time on malformed input that has many distinct percent-encoded runs. a single unauthenticated request of about 224 kb can block the node.js event loop for about 20 seconds. version 0.5.0, the release that fixed cve-2026-45822, is affected. ### details when native decodeuricomponent throws, `decodeuricomponent()` falls back to `customdecodeuricomponent` (`index.js:122`). that function: 1. scans the input for every run of percent-encoded bytes (e.g. `%c3%a5`) and stores each distinct run, with its decoded value, in a lookup table (`index.js:1 node cve- ghsa — npm cve-2026-118664 high ">
+<div class="rank ">39</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-qr28-fpjm-wq7f" target="_blank" rel="noopener">decode-uri-component vulnerable to denial of service via quadratic replacement of percent-encoded runs</a></h2>
+<div class="summary">Affected: decode-uri-component. ### Summary `decodeUriComponent()` takes quadratic time on malformed input that has many distinct percent-encoded runs. A single unauthenticated request of about 224 KB can block the Node.js event loop for about 20 seconds. Version 0.5.0, the relea…</div>
+<div class="kws"><span class="sev sev-high">high</span><span class="cve">CVE-2026-118664</span><span class="kw">node</span><span class="kw">cve-</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — npm</span>
+<span>Oct 29</span>
+<span>score 0.206</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.1629" data-date="1793291675" data-sevrank="3" data-cvss="7.5" data-corrob="1" data-text="@sylphx/pdf-reader-mcp: http transport accepts unauthenticated requests despite a configured mcp_api_key affected: @sylphx/pdf-reader-mcp. ### impact when `@sylphx/pdf-reader-mcp` is run as an http server (`mcp_transport=http`), it reads the `mcp_api_key` environment variable and logs `api key authentication enabled (x-api-key header)` at startup, but it never validated the `x-api-key` header on incoming requests. the key was read into a variable and never enforced on the request path. as a result, the `/mcp` endpoint accepted **unauthenticated** requests. combined with the default bind address of `0.0.0.0` (all interfaces), any client able to reach the port could invoke every pdf tool and read the contents of any pdf the serve bind ghsa — npm cve-2026-62264 high ">
+<div class="rank ">40</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-q344-5v34-gm84" target="_blank" rel="noopener">@sylphx/pdf-reader-mcp: HTTP transport accepts unauthenticated requests despite a configured MCP_API_KEY</a></h2>
+<div class="summary">Affected: @sylphx/pdf-reader-mcp. ### Impact When `@sylphx/pdf-reader-mcp` is run as an HTTP server (`MCP_TRANSPORT=http`), it reads the `MCP_API_KEY` environment variable and logs `API key authentication enabled (X-API-Key header)` at startup, but it never validated the `X-API-K…</div>
+<div class="kws"><span class="sev sev-high">high 7.5</span><span class="cve">CVE-2026-62264</span><span class="kw">bind</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — npm</span>
+<span>Oct 29</span>
+<span>score 0.163</span>
+</div></div>
+<div class="item" data-cat="research" data-sev="critical" data-overflow="true" data-score="0.9222" data-date="1793145600" data-sevrank="4" data-cvss="9.5" data-corrob="2" data-text="php2shell (cve-2026-109618 and cve-2026-109619): detecting unauthenticated remote code execution in php core php2shell (cve-2026-109618 and cve-2026-109619) lets an unauthenticated attacker run code on a php server with http requests alone. the sysdig threat research team analyzed the exploitation and outlines affected versions, mitigations, and how to detect post-exploitation activity at runtime with sysdig secure and open source falco. php cve- sysdig cve-2026-109618 cve-2026-109619 critical ox security">
+<div class="rank ">41</div>
+<div class="body">
+<h2><a href="https://webflow.sysdig.com/blog/php2shell-cve-2026-109618-and-cve-2026-109619-detecting-unauthenticated-remote-code-execution-in-php-core" target="_blank" rel="noopener">PHP2Shell (CVE-2026-109618 and CVE-2026-109619): Detecting unauthenticated remote code execution in PHP core</a></h2>
+<div class="summary">PHP2Shell (CVE-2026-109618 and CVE-2026-109619) lets an unauthenticated attacker run code on a PHP server with HTTP requests alone. The Sysdig Threat Research Team analyzed the exploitation and outlines affected versions, mitigations, and how to detect post-exploitation activity …</div>
+<div class="kws"><span class="sev sev-critical">critical 9.5</span><span class="corrob">×2 reports</span><span class="cve">CVE-2026-109618</span><span class="cve">CVE-2026-109619</span><span class="kw">php</span><span class="kw">cve-</span></div>
+<div class="also">also: <a href="https://www.ox.security/blog/php2shell-day-5-the-panic-hasnt-turned-into-patching/" target="_blank" rel="noopener" class="also-link cat-research">OX Security</a></div>
+</div>
+<div class="right">
+<span class="src cat-research">Sysdig</span>
+<span>Oct 28</span>
+<span>score 0.922</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="true" data-score="0.4333" data-date="1793210913" data-sevrank="4" data-cvss="9.0" data-corrob="1" data-text="volt typhoon used covert silent train network in four zero-day exploitation campaigns the china-nexus cyber espionage group known as volt typhoon has been attributed to a now-disrupted covert access network dubbed silent train that has been put to use for zero-day exploitation and strategic access. &quot;first identified in late 2023, silent train uses rotating chains of compromised soho, iot, and enterprise infrastructure,&quot; lumen technologies black lotus labs said in a report shared zero-day the hacker news  critical ">
+<div class="rank ">42</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/10/volt-typhoon-used-covert-silent-train.html" target="_blank" rel="noopener">Volt Typhoon Used Covert Silent Train Network in Four Zero-Day Exploitation Campaigns</a></h2>
+<div class="summary">The China-nexus cyber espionage group known as Volt Typhoon has been attributed to a now-disrupted covert access network dubbed Silent Train that has been put to use for zero-day exploitation and strategic access. &quot;First identified in late 2023, Silent Train uses rotating chains …</div>
+<div class="kws"><span class="sev sev-critical">critical 9.0</span><span class="kw">zero-day</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Oct 28</span>
+<span>score 0.433</span>
+</div></div>
+<div class="item" data-cat="government" data-sev="critical" data-overflow="true" data-score="0.4166" data-date="1793145600" data-sevrank="4" data-cvss="9.0" data-corrob="1" data-text="linux kernel: linux kernel missing initialization of a variable vulnerability linux kernel contains a missing initialization of a variable vulnerability that could allow for unintended modification of page-cache-backed data via failure to preserve the shared-fragment marker during socket buffer coalescing, causing esp input processing to decrypt shared fragments in place. this vulnerability can be chained with cve-2026-109618 and cve-2026-109619 to implant php webshells and run commands as root. required action: apply mitigations in accordance with vendor instructions, ensuring compliance with cisa’s bod 26-04 prioritizing security updates based on risk (see url in notes) guidance and cisa’s “forensics triage requirements” (see url in notes). follow applicable bod 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. stakeholders are responsible for evaluating each asset&#x27;s internet exposure and ensuring adherence to bod 26-04 patching guidelines. php linux kernel cve- cisa kev cve-2026-46300 critical ">
+<div class="rank ">43</div>
+<div class="body">
+<h2><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-46300" target="_blank" rel="noopener">Linux Kernel: Linux Kernel Missing Initialization of a Variable Vulnerability</a></h2>
+<div class="summary">Linux Kernel contains a missing initialization of a variable vulnerability that could allow for unintended modification of page-cache-backed data via failure to preserve the shared-fragment marker during socket buffer coalescing, causing ESP input processing to decrypt shared fra…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.0</span><span class="cve">CVE-2026-46300</span><span class="kw">php</span><span class="kw">linux</span><span class="kw">kernel</span><span class="kw">cve-</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-government">CISA KEV</span>
+<span>Oct 28</span>
+<span>score 0.417</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="true" data-score="0.2957" data-date="1793191683" data-sevrank="4" data-cvss="9.5" data-corrob="1" data-text="hackers target critical oracle e-business suite rce flaw days after security patch threat actors are beginning to probe for a newly patched critical vulnerability in oracle e-business suite (ebs), according to threat intelligence firm defused cyber. the vulnerability in question is cve-2026-101767 (cvss score: 9.8) , a case of improper authentication in the oracle application object library of oracle e-business suite. it was patched by oracle last week as part of its critical rce cve- cvss the hacker news cve-2026-101767 critical ">
+<div class="rank ">44</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/10/hackers-target-critical-oracle-e.html" target="_blank" rel="noopener">Hackers Target Critical Oracle E-Business Suite RCE Flaw Days After Security Patch</a></h2>
+<div class="summary">Threat actors are beginning to probe for a newly patched critical vulnerability in Oracle E-Business Suite (EBS), according to threat intelligence firm Defused Cyber. The vulnerability in question is CVE-2026-101767 (CVSS score: 9.8) , a case of improper authentication in the Ora…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.5</span><span class="cve">CVE-2026-101767</span><span class="kw">rce</span><span class="kw">cve-</span><span class="kw">cvss</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Oct 28</span>
+<span>score 0.296</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="true" data-score="0.2849" data-date="1793167498" data-sevrank="4" data-cvss="9.5" data-corrob="1" data-text="shinyhunters-exploited oracle peoplesoft zero-day turns out to be three chained flaws the critical oracle peoplesoft bug that shinyhunters has exploited since may is not one flaw but three chained together, the researchers who reported it said this week. oracle patched all three under a single identifier,&amp;nbsp;cve-2026-35273, in june. its root is a server-side request forgery (ssrf) that reaches an internal management interface because peoplesoft trusts its own loopback address zero-day ssrf cve- the hacker news cve-2026-35273 critical ">
+<div class="rank ">45</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/10/shinyhunters-exploited-oracle.html" target="_blank" rel="noopener">ShinyHunters-Exploited Oracle PeopleSoft Zero-Day Turns Out to Be Three Chained Flaws</a></h2>
+<div class="summary">The critical Oracle PeopleSoft bug that ShinyHunters has exploited since May is not one flaw but three chained together, the researchers who reported it said this week. Oracle patched all three under a single identifier,&amp;nbsp;CVE-2026-35273, in June. Its root is a server-side req…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.5</span><span class="cve">CVE-2026-35273</span><span class="kw">zero-day</span><span class="kw">ssrf</span><span class="kw">cve-</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Oct 28</span>
+<span>score 0.285</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="true" data-score="0.2678" data-date="1793186151" data-sevrank="4" data-cvss="9.5" data-corrob="1" data-text="adobe fixes 8 critical campaign classic flaws allowing code execution and security bypass adobe has released patches to address multiple critical security flaws in campaign classic that, if successfully exploited, could result in arbitrary code execution, security feature bypass, and privilege escalation. the list of eight vulnerabilities is as follows - cve-2026-104351 (cvss score: 9.9) - a code injection vulnerability that could lead to arbitrary code execution. privilege escalation cve- cvss the hacker news cve-2026-104351 critical ">
+<div class="rank ">46</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/10/adobe-fixes-8-critical-campaign-classic.html" target="_blank" rel="noopener">Adobe Fixes 8 Critical Campaign Classic Flaws Allowing Code Execution and Security Bypass</a></h2>
+<div class="summary">Adobe has released patches to address multiple critical security flaws in Campaign Classic that, if successfully exploited, could result in arbitrary code execution, security feature bypass, and privilege escalation. The list of eight vulnerabilities is as follows - CVE-2026-1043…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.5</span><span class="cve">CVE-2026-104351</span><span class="kw">privilege escalation</span><span class="kw">cve-</span><span class="kw">cvss</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Oct 28</span>
+<span>score 0.268</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="critical" data-overflow="true" data-score="0.1292" data-date="1793222624" data-sevrank="4" data-cvss="7.5" data-corrob="1" data-text="electrum: malicious server can replace a just-broadcast tx and try to trick user into rbf-ing it affected: electrum. ### summary the main electrum server the client connects to is trusted with mempool (&quot;unconfirmed&quot;) transactions. this is documented [design](https://electrum.readthedocs.io/en/latest/faq.html#does-electrum-trust-servers). [0] however now someone figured out a way to practically exploit it: - when the client broadcasts a new tx1, a malicious server can swallow it, - and update the client&#x27;s history with a conflicting (invalid) tx2 that replaces the outputs with the attacker&#x27;s output address. - tx2 has invalid signatures, but this is not checked (due to light client design). - the wallet will exploit ghsa — pip cve-2026-117601 critical ">
+<div class="rank ">47</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-6jp4-8v48-cc5v" target="_blank" rel="noopener">Electrum: Malicious server can replace a just-broadcast tx and try to trick user into RBF-ing it</a></h2>
+<div class="summary">Affected: electrum. ### Summary The main Electrum server the client connects to is trusted with mempool (&quot;unconfirmed&quot;) transactions. This is documented [design](https://electrum.readthedocs.io/en/latest/faq.html#does-electrum-trust-servers). [0] However now someone figured out a…</div>
+<div class="kws"><span class="sev sev-critical">critical 7.5</span><span class="cve">CVE-2026-117601</span><span class="kw">exploit</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — pip</span>
+<span>Oct 28</span>
+<span>score 0.129</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.7895" data-date="1793221492" data-sevrank="3" data-cvss="7.5" data-corrob="10" data-text="echo: https redirect and hsts bypass via unconditional trust of forwarded scheme headers affected: github.com/labstack/echo/v5, github.com/labstack/echo/v4. ## description `context.scheme()` unconditionally trusts four client-controlled http headers to determine the request scheme, with no mechanism to configure trusted sources. this allows a remote unauthenticated attacker to bypass https redirect enforcement and suppress hsts headers. the trusted headers (checked in this order of precedence): 1. `x-forwarded-proto` 2. `x-forwarded-protocol` 3. `x-forwarded-ssl` 4. `x-url-scheme` ### threat model **scenario a — directly exposed application (vulnerable by default):** the echo application listens on http and is reachable directly by clients (no github ssl ghsa — go cve-2026-118266 cve-2026-118650 cve-2026-118651 cve-2026-118652 cve-2026-118653 cve-2026-118654 cve-2026-118655 cve-2026-118656 cve-2026-118657 cve-2026-118658 high ghsa — go ghsa — go ghsa — go ghsa — go ghsa — go ghsa — go ghsa — go ghsa — go ghsa — go">
+<div class="rank ">48</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-2ffq-g2xg-c22p" target="_blank" rel="noopener">Echo: HTTPS Redirect and HSTS Bypass via Unconditional Trust of Forwarded Scheme Headers</a></h2>
+<div class="summary">Affected: github.com/labstack/echo/v5, github.com/labstack/echo/v4. ## Description `Context.Scheme()` unconditionally trusts four client-controlled HTTP headers to determine the request scheme, with no mechanism to configure trusted sources. This allows a remote unauthenticated a…</div>
+<div class="kws"><span class="sev sev-high">high 7.5</span><span class="corrob">×10 reports</span><span class="cve">CVE-2026-118266</span><span class="cve">CVE-2026-118650</span><span class="cve">CVE-2026-118651</span><span class="kw">github</span><span class="kw">ssl</span></div>
+<div class="also">also: <a href="https://github.com/advisories/GHSA-3pmx-cf9f-34xr" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — go</a>, <a href="https://github.com/advisories/GHSA-xwq5-6cqp-vx96" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — go</a>, <a href="https://github.com/advisories/GHSA-v753-g4cw-jm48" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — go</a>, <a href="https://github.com/advisories/GHSA-23wf-92cp-8pcj" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — go</a>, <a href="https://github.com/advisories/GHSA-375p-5qhx-8wq4" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — go</a></div>
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — go</span>
+<span>Oct 28</span>
+<span>score 0.789</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.7370" data-date="1793221594" data-sevrank="3" data-cvss="7.2" data-corrob="2" data-text="vue i18n: `escapeparameter` does not escape named values when the same call also passes a list affected: vue-i18n, vue-i18n, @intlify/core, @intlify/core, @intlify/core-base. ### summary when `escapeparameter` is enabled (`escapeparameterhtml` in the legacy api), vue i18n escapes the interpolation parameters before formatting a message. `escapeparams()` escapes either the list values or the named values, but not both: the two branches are joined by `else`. when a single call passes both, for example `t(key, [&#x27;...&#x27;], { named: { ... } })`, the named values reach the message without being escaped. ### details `escapeparams()` in [`packages/core-base/src/translate.ts` (v11.4.13)](https://github.com/intlify/vue-i18n/blob/v11.4.13/packages/core-base/src/translate.ts): github ghsa — npm cve-2026-118256 cve-2026-118257 high ghsa — npm">
+<div class="rank ">49</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-8rc2-428q-7ww3" target="_blank" rel="noopener">Vue I18n: `escapeParameter` does not escape named values when the same call also passes a list</a></h2>
+<div class="summary">Affected: vue-i18n, vue-i18n, @intlify/core, @intlify/core, @intlify/core-base. ### Summary When `escapeParameter` is enabled (`escapeParameterHtml` in the Legacy API), Vue I18n escapes the interpolation parameters before formatting a message. `escapeParams()` escapes either the …</div>
+<div class="kws"><span class="sev sev-high">high 7.2</span><span class="corrob">×2 reports</span><span class="cve">CVE-2026-118256</span><span class="cve">CVE-2026-118257</span><span class="kw">github</span></div>
+<div class="also">also: <a href="https://github.com/advisories/GHSA-83rm-6c8r-g728" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — npm</a></div>
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — npm</span>
+<span>Oct 28</span>
+<span>score 0.737</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.4707" data-date="1793222048" data-sevrank="3" data-cvss="7.5" data-corrob="3" data-text="go jose: panics in json parsing affected: github.com/go-jose/go-jose/v4, github.com/go-jose/go-jose/v3. ### summary parsing deeply nested json structures can hit go&#x27;s stack limit, causing the application to crash. note: this advisory is the same as https://github.com/go-jose/go-jose/security/advisories/ghsa-6mp9-8xrw-74r4. ### impact denial of service vulnerability. any application that parses untrusted json via go-jose is exposed. ### workarounds reject large inputs before parsing them. ### acknowledgements thanks to dohyun kim (@azza999), joshua rogers of aisle research, and sueun cho for alerting us to the need to patch this. go  github ghsa — go cve-2026-116585 cve-2026-116586 cve-2026-116587 high ghsa — go ghsa — go">
+<div class="rank ">50</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-vvm8-gf78-28g4" target="_blank" rel="noopener">Go JOSE: Panics in JSON parsing</a></h2>
+<div class="summary">Affected: github.com/go-jose/go-jose/v4, github.com/go-jose/go-jose/v3. ### Summary Parsing deeply nested JSON structures can hit Go&#x27;s stack limit, causing the application to crash. Note: this advisory is the same as https://github.com/go-jose/go-jose/security/advisories/GHSA-6mp…</div>
+<div class="kws"><span class="sev sev-high">high 7.5</span><span class="corrob">×3 reports</span><span class="cve">CVE-2026-116585</span><span class="cve">CVE-2026-116586</span><span class="cve">CVE-2026-116587</span><span class="kw">go </span><span class="kw">github</span></div>
+<div class="also">also: <a href="https://github.com/advisories/GHSA-4w3g-jfj2-cw2q" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — go</a>, <a href="https://github.com/advisories/GHSA-mgcc-cww5-fp2q" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — go</a></div>
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — go</span>
+<span>Oct 28</span>
+<span>score 0.471</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.4156" data-date="1793221517" data-sevrank="3" data-cvss="0.0" data-corrob="1" data-text="graphql tools: per-request connection parameters persist into later users&#x27; websocket authentications affected: @graphql-tools/executor-legacy-ws. # stale authentication state in `@graphql-tools/executor-legacy-ws`: per-request `extensions.connectionparams` persist in executor closure state and are replayed in a later caller&#x27;s `connection_init` ## report metadata | field | value | | --- | --- | | package | `@graphql-tools/executor-legacy-ws` (npm, `pkg:npm/%40graphql-tools/executor-legacy-ws`) | | repository | https://github.com/ardatan/graphql-tools | | component | `buildwslegacyexecutor` (`packages/executors/legacy-ws/src/index.ts`) | | vulnerability class | stale authentication state / credential reuse across requests | | verified a npm github credential ghsa — npm cve-2026-118665 high ">
+<div class="rank ">51</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-434m-5hcj-pxf3" target="_blank" rel="noopener">GraphQL Tools: Per-request connection parameters persist into later users&#x27; WebSocket authentications</a></h2>
+<div class="summary">Affected: @graphql-tools/executor-legacy-ws. # Stale authentication state in `@graphql-tools/executor-legacy-ws`: per-request `extensions.connectionParams` persist in executor closure state and are replayed in a later caller&#x27;s `connection_init` ## Report metadata | Field | Value …</div>
+<div class="kws"><span class="sev sev-high">high</span><span class="cve">CVE-2026-118665</span><span class="kw">npm</span><span class="kw">github</span><span class="kw">credential</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — npm</span>
+<span>Oct 28</span>
+<span>score 0.416</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.3821" data-date="1793222149" data-sevrank="3" data-cvss="8.1" data-corrob="4" data-text="vllm: permissive default cors origins allow cross-origin requests to the vllm http server affected: vllm. ### summary the openai-compatible server registers starlette `corsmiddleware` with `allowed_origins` defaulting to `[&quot;*&quot;]`, and performs no authentication unless `--api-key` (or `vllm_api_key`) is configured. a web page on any origin can send requests to a vllm server that the victim&#x27;s browser can reach (for example `localhost` or an internal/vpn address) and read the responses. the default `allow_credentials=false` blocks cookie-bearing cross-origin requests; because vllm authenticates with a bearer header rather than cookies, the wildcard still permits untokenized access to an unauthenticat vpn ghsa — pip cve-2026-115914 cve-2026-115915 cve-2026-115916 cve-2026-115917 high ghsa — pip ghsa — pip ghsa — pip">
+<div class="rank ">52</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-vvpg-rrww-wpmh" target="_blank" rel="noopener">vLLM: Permissive default CORS origins allow cross-origin requests to the vLLM HTTP server</a></h2>
+<div class="summary">Affected: vllm. ### Summary The OpenAI-compatible server registers Starlette `CORSMiddleware` with `allowed_origins` defaulting to `[&quot;*&quot;]`, and performs no authentication unless `--api-key` (or `VLLM_API_KEY`) is configured. A web page on any origin can send requests to a vLLM se…</div>
+<div class="kws"><span class="sev sev-high">high 8.1</span><span class="corrob">×4 reports</span><span class="cve">CVE-2026-115914</span><span class="cve">CVE-2026-115915</span><span class="cve">CVE-2026-115916</span><span class="kw">vpn</span></div>
+<div class="also">also: <a href="https://github.com/advisories/GHSA-gq5q-89c7-vhvx" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — pip</a>, <a href="https://github.com/advisories/GHSA-h3rc-j82p-2c3h" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — pip</a>, <a href="https://github.com/advisories/GHSA-q97c-p368-75c4" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — pip</a></div>
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — pip</span>
+<span>Oct 28</span>
+<span>score 0.382</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.3374" data-date="1793227369" data-sevrank="3" data-cvss="7.8" data-corrob="3" data-text="systeminformation vulnerable to windows command injection in services() through unicode quotation marks affected: systeminformation. ### summary on windows, `systeminformation@5.33.15` builds a powershell command using the value passed to `services()`. the default sanitizer removes ascii quotes but keeps unicode curly quotes, spaces, and parentheses. a crafted service name can use those characters to break out of the generated filter string and run a powershell expression. the expression runs with the permissions of the node.js process. this report confirms version `5.33.15`. other package versions have not been checked. ### details in `lib/processes.js`, `services()` sanitizes the caller&#x27;s string with `sanitizeshellstr node windows ghsa — npm cve-2026-116576 cve-2026-116673 cve-2026-116674 high ghsa — npm ghsa — npm">
+<div class="rank ">53</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-3f7j-7jwc-fxfj" target="_blank" rel="noopener">systeminformation vulnerable to Windows command injection in services() through Unicode quotation marks</a></h2>
+<div class="summary">Affected: systeminformation. ### Summary On Windows, `systeminformation@5.33.15` builds a PowerShell command using the value passed to `services()`. The default sanitizer removes ASCII quotes but keeps Unicode curly quotes, spaces, and parentheses. A crafted service name can use …</div>
+<div class="kws"><span class="sev sev-high">high 7.8</span><span class="corrob">×3 reports</span><span class="cve">CVE-2026-116576</span><span class="cve">CVE-2026-116673</span><span class="cve">CVE-2026-116674</span><span class="kw">node</span><span class="kw">windows</span></div>
+<div class="also">also: <a href="https://github.com/advisories/GHSA-4vjg-vx72-qq4g" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — npm</a>, <a href="https://github.com/advisories/GHSA-7648-jmwf-vw7j" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — npm</a></div>
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — npm</span>
+<span>Oct 28</span>
+<span>score 0.337</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="high" data-overflow="true" data-score="0.3155" data-date="1793183400" data-sevrank="3" data-cvss="8.5" data-corrob="1" data-text="american organizations under attack: skyw4lker device code phishing campaign exposed modern phishing campaigns can compromise american businesses without relying on traditional credential theft. attackers can abuse legitimate cloud services, authentication mechanisms, and trusted business workflows to gain access to corporate accounts while leaving fewer obvious signs behind. any.run&#x27;s analysis of skyw4lker, a device code phishing campaign primarily targeting u.s. organizations credential the hacker news  high ">
+<div class="rank ">54</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/10/american-organizations-under-attack.html" target="_blank" rel="noopener">American Organizations Under Attack: Skyw4lker Device Code Phishing Campaign Exposed</a></h2>
+<div class="summary">Modern phishing campaigns can compromise American businesses without relying on traditional credential theft. Attackers can abuse legitimate cloud services, authentication mechanisms, and trusted business workflows to gain access to corporate accounts while leaving fewer obvious …</div>
+<div class="kws"><span class="sev sev-high">high 8.5</span><span class="kw">credential</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Oct 28</span>
+<span>score 0.316</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.2960" data-date="1793221602" data-sevrank="3" data-cvss="8.6" data-corrob="2" data-text="happy dom: ssrf via iframe and link stylesheet when parsing untrusted html affected: happy-dom. ## summary happy-dom v20.8.9 makes real server-side http requests to arbitrary urls when parsing html containing `&lt;iframe&gt;` or `&lt;link rel=&quot;stylesheet&quot;&gt;` elements. this behavior is enabled by default (`disableiframepageloading: false`, `disablecssfileloading: false`). when an application uses happy-dom to parse untrusted html on the server side, an attacker can trigger server-side request forgery by embedding these elements. ## affected versions - happy-dom &lt;= 20.8.9 (latest) ## vulnerable behavior by default, happy-dom has: - `disableiframepageloading: false` — iframes fetch their `src` url ssrf ghsa — npm cve-2026-118660 cve-2026-118661 high ghsa — npm">
+<div class="rank ">55</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-c8p4-j97h-3vg8" target="_blank" rel="noopener">Happy DOM: SSRF via iframe and link stylesheet when parsing untrusted HTML</a></h2>
+<div class="summary">Affected: happy-dom. ## Summary happy-dom v20.8.9 makes real server-side HTTP requests to arbitrary URLs when parsing HTML containing `&lt;iframe&gt;` or `&lt;link rel=&quot;stylesheet&quot;&gt;` elements. This behavior is enabled by default (`disableIframePageLoading: false`, `disableCSSFileLoading: …</div>
+<div class="kws"><span class="sev sev-high">high 8.6</span><span class="corrob">×2 reports</span><span class="cve">CVE-2026-118660</span><span class="cve">CVE-2026-118661</span><span class="kw">ssrf</span></div>
+<div class="also">also: <a href="https://github.com/advisories/GHSA-5fpq-26gf-qwcr" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — npm</a></div>
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — npm</span>
+<span>Oct 28</span>
+<span>score 0.296</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.2333" data-date="1793222247" data-sevrank="3" data-cvss="7.5" data-corrob="3" data-text="seroval: fromjson deserializer trusts node-supplied array length and sequence doneat (unauthenticated event-loop dos) affected: seroval. ### summary `fromjson` and `fromcrossjson` used two node fields without checking them. - an array node&#x27;s element list was not checked to be an array. a small payload could set the length the decoder looped over. this part is also tracked in ghsa-wp97-x4hv-qvhp. - a sequence node&#x27;s done index was not checked. a crafted value produced an iterator that never finished. ### impact a service that passes untrusted input to `fromjson` or `fromcrossjson` can be made unavailable by an unauthenticated request. - the array case blocks the thread while the decoder runs. - the sequence case makes any c node ghsa — npm cve-2026-116580 cve-2026-116581 cve-2026-116584 high ghsa — npm ghsa — npm">
+<div class="rank ">56</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-97r2-qh9m-474h" target="_blank" rel="noopener">Seroval: fromJSON deserializer trusts node-supplied array length and sequence doneAt (unauthenticated event-loop DoS)</a></h2>
+<div class="summary">Affected: seroval. ### Summary `fromJSON` and `fromCrossJSON` used two node fields without checking them. - An array node&#x27;s element list was not checked to be an array. A small payload could set the length the decoder looped over. This part is also tracked in GHSA-wp97-x4hv-qvhp.…</div>
+<div class="kws"><span class="sev sev-high">high 7.5</span><span class="corrob">×3 reports</span><span class="cve">CVE-2026-116580</span><span class="cve">CVE-2026-116581</span><span class="cve">CVE-2026-116584</span><span class="kw">node</span></div>
+<div class="also">also: <a href="https://github.com/advisories/GHSA-wp97-x4hv-qvhp" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — npm</a>, <a href="https://github.com/advisories/GHSA-7rv5-mrxv-xcr9" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — npm</a></div>
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — npm</span>
+<span>Oct 28</span>
+<span>score 0.233</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.1875" data-date="1793221990" data-sevrank="3" data-cvss="7.5" data-corrob="1" data-text="graphql-scalars phonenumber scalar is vulnerable to regular expression denial of service affected: graphql-scalars. ## summary the regular expression behind `graphqlphonenumber` since 1.24.1 backtracks exponentially. a string made of a run of digits followed by one character that makes the match fail (for example `&quot;1&quot;.repeat(30) + &quot;x&quot;`) blocks the javascript thread for seconds, and every additional digit doubles the time. graphql-js calls `parseliteral` while *validating* a document and `parsevalue` while coercing variables, so the regex runs for every request that merely contains such a value in a `phonenumber` position, before execution and before any authentication or authorization step of the server. javascript ghsa — npm cve-2026-115887 high ">
+<div class="rank ">57</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-x8rm-f576-gq67" target="_blank" rel="noopener">graphql-scalars PhoneNumber scalar is vulnerable to regular expression denial of service</a></h2>
+<div class="summary">Affected: graphql-scalars. ## Summary The regular expression behind `GraphQLPhoneNumber` since 1.24.1 backtracks exponentially. A string made of a run of digits followed by one character that makes the match fail (for example `&quot;1&quot;.repeat(30) + &quot;x&quot;`) blocks the JavaScript thread f…</div>
+<div class="kws"><span class="sev sev-high">high 7.5</span><span class="cve">CVE-2026-115887</span><span class="kw">javascript</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — npm</span>
+<span>Oct 28</span>
+<span>score 0.188</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.1804" data-date="1793221782" data-sevrank="3" data-cvss="0.0" data-corrob="1" data-text="langgraph javascript custom authentication may permit cross-user store access affected: langgraph-api. ## summary langgraph deployments using javascript or typescript custom authentication may fail to apply store authorization changes returned by an authorization handler. in affected deployments, an authenticated user may be able to access store data outside their authorized namespace. ## required conditions a deployment is affected only when all of the following conditions apply: - it uses an affected `langgraph-api` version. - it runs javascript or typescript custom authentication. - its store authorization handler relies on rewriting the requested namespace to restrict each user to their javascript typescript ghsa — pip cve-2026-118668 high ">
+<div class="rank ">58</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-4hm6-w6qq-w73v" target="_blank" rel="noopener">LangGraph JavaScript custom authentication may permit cross-user Store access</a></h2>
+<div class="summary">Affected: langgraph-api. ## Summary LangGraph deployments using JavaScript or TypeScript custom authentication may fail to apply Store authorization changes returned by an authorization handler. In affected deployments, an authenticated user may be able to access Store data outsi…</div>
+<div class="kws"><span class="sev sev-high">high</span><span class="cve">CVE-2026-118668</span><span class="kw">javascript</span><span class="kw">typescript</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — pip</span>
+<span>Oct 28</span>
+<span>score 0.180</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="true" data-score="0.2502" data-date="1793109549" data-sevrank="4" data-cvss="9.0" data-corrob="1" data-text="apple backports fix for exploited coregraphics flaw to older iphones and ipads apple on monday backported fixes for a high-severity security flaw that was exploited in real-world cyber attacks to older devices. the vulnerability, tracked as cve-2026-86950 (cvss score: 8.8), is an out-of-bounds write affecting coregraphics that could result in arbitrary code execution when processing a maliciously crafted file. patches for the flaw were released last month by apple in apple cve- cvss the hacker news cve-2026-86950 critical ">
+<div class="rank ">59</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/10/apple-backports-fix-for-exploited.html" target="_blank" rel="noopener">Apple Backports Fix for Exploited CoreGraphics Flaw to Older iPhones and iPads</a></h2>
+<div class="summary">Apple on Monday backported fixes for a high-severity security flaw that was exploited in real-world cyber attacks to older devices. The vulnerability, tracked as CVE-2026-86950 (CVSS score: 8.8), is an out-of-bounds write affecting CoreGraphics that could result in arbitrary code…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.0</span><span class="cve">CVE-2026-86950</span><span class="kw">apple</span><span class="kw">cve-</span><span class="kw">cvss</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Oct 27</span>
+<span>score 0.250</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="critical" data-overflow="true" data-score="0.1514" data-date="1793102400" data-sevrank="4" data-cvss="9.0" data-corrob="1" data-text="rustsec-2026-0412: vulnerability in cargo-nextest arbitrary code execution when rerunning tests from a portable recording cargo rustsec  critical ">
+<div class="rank ">60</div>
+<div class="body">
+<h2><a href="https://rustsec.org/advisories/RUSTSEC-2026-0412.html" target="_blank" rel="noopener">RUSTSEC-2026-0412: Vulnerability in cargo-nextest</a></h2>
+<div class="summary">Arbitrary code execution when rerunning tests from a portable recording</div>
+<div class="kws"><span class="sev sev-critical">critical 9.0</span><span class="kw">cargo</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">RustSec</span>
+<span>Oct 27</span>
+<span>score 0.151</span>
+</div></div>
+<div class="item" data-cat="government" data-sev="critical" data-overflow="true" data-score="0.1512" data-date="1793059200" data-sevrank="4" data-cvss="9.0" data-corrob="1" data-text="adobe commerce and magento: adobe commerce and magento unrestricted upload of file with dangerous type vulnerability adobe commerce and magento contain an unrestricted upload of file with dangerous type vulnerability that could result in arbitrary code execution in the context of the current user, potentially gaining elevated access or control over the victim&#x27;s account or session. required action: apply mitigations in accordance with vendor instructions, ensuring compliance with cisa’s bod 26-04 prioritizing security updates based on risk (see url in notes) guidance and cisa’s “forensics triage requirements” (see url in notes). follow applicable bod 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. stakeholders are responsible for evaluating each asset&#x27;s internet exposure and ensuring adherence to bod 26-04 patching guidelines. session cisa kev cve-2026-48356 critical ">
+<div class="rank ">61</div>
+<div class="body">
+<h2><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-48356" target="_blank" rel="noopener">Adobe Commerce and Magento: Adobe Commerce and Magento Unrestricted Upload of File with Dangerous Type Vulnerability</a></h2>
+<div class="summary">Adobe Commerce and Magento contain an unrestricted upload of file with dangerous type vulnerability that could result in arbitrary code execution in the context of the current user, potentially gaining elevated access or control over the victim&#x27;s account or session. Required acti…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.0</span><span class="cve">CVE-2026-48356</span><span class="kw">session</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-government">CISA KEV</span>
+<span>Oct 27</span>
+<span>score 0.151</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.3580" data-date="1793115519" data-sevrank="3" data-cvss="6.4" data-corrob="3" data-text="phpspreadsheet: ssrf whitelist bypass via unre-validated http redirect in drawing::setpath external image loading affected: phpoffice/phpspreadsheet, phpoffice/phpspreadsheet, phpoffice/phpspreadsheet, phpoffice/phpspreadsheet, phpoffice/phpspreadsheet. ## summary phpspreadsheet&#x27;s `worksheet\drawing::setpath()` validates an external-image url against an operator-supplied `iswhitelisted` callback **once**, on the initial url only, then fetches it with `file_get_contents()` using a stream context that does **not** set `follow_location =&gt; 0`. a whitelisted host that returns an http `302 location:` redirect to an internal target is therefore followed by php&#x27;s http wrapper (default `follow_location=1`, `max_redirects=20`) with **no re-validation of the redirect hop** — defeating the whitelist and yielding a blind ssrf from the server. this is an php ssrf ghsa — composer cve-2026-108357 cve-2026-108358 cve-2026-108360 high ghsa — composer ghsa — composer">
+<div class="rank ">62</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-2phh-27fw-q4gc" target="_blank" rel="noopener">PhpSpreadsheet: SSRF whitelist bypass via unre-validated HTTP redirect in Drawing::setPath external image loading</a></h2>
+<div class="summary">Affected: phpoffice/phpspreadsheet, phpoffice/phpspreadsheet, phpoffice/phpspreadsheet, phpoffice/phpspreadsheet, phpoffice/phpspreadsheet. ## Summary PhpSpreadsheet&#x27;s `Worksheet\Drawing::setPath()` validates an external-image URL against an operator-supplied `isWhitelisted` call…</div>
+<div class="kws"><span class="sev sev-high">high 6.4</span><span class="corrob">×3 reports</span><span class="cve">CVE-2026-108357</span><span class="cve">CVE-2026-108358</span><span class="cve">CVE-2026-108360</span><span class="kw">php</span><span class="kw">ssrf</span></div>
+<div class="also">also: <a href="https://github.com/advisories/GHSA-3x94-m842-937c" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — composer</a>, <a href="https://github.com/advisories/GHSA-rxj4-h86g-25gc" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — composer</a></div>
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — composer</span>
+<span>Oct 27</span>
+<span>score 0.358</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.2677" data-date="1793135080" data-sevrank="3" data-cvss="8.6" data-corrob="1" data-text="filebrowser: symlink following escapes user scope allowing arbitrary file read outside the served directory affected: github.com/gtsteffaniak/filebrowser/backend. ## summary file read paths resolve symbolic links with `filepath.evalsymlinks` and then operate on the resolved target without re-checking that the target still lies inside the user&#x27;s source/scope. a symlink located inside a user&#x27;s accessible directory that points outside the scope (for example to `/etc/passwd`, another tenant&#x27;s directory, ssh keys, or container secrets) is followed transparently, and its contents are served through the normal download, preview, media, and onlyoffice endpoints. any authenticated user with download access can read files anywhere the server process can, whene github container ssh ghsa — go cve-2026-116682 high ">
+<div class="rank ">63</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-mgqf-5mf5-prfj" target="_blank" rel="noopener">FileBrowser: Symlink following escapes user scope allowing arbitrary file read outside the served directory</a></h2>
+<div class="summary">Affected: github.com/gtsteffaniak/filebrowser/backend. ## Summary File read paths resolve symbolic links with `filepath.EvalSymlinks` and then operate on the resolved target without re-checking that the target still lies inside the user&#x27;s source/scope. A symlink located inside a …</div>
+<div class="kws"><span class="sev sev-high">high 8.6</span><span class="cve">CVE-2026-116682</span><span class="kw">github</span><span class="kw">container</span><span class="kw">ssh</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — go</span>
+<span>Oct 27</span>
+<span>score 0.268</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.2235" data-date="1793107787" data-sevrank="3" data-cvss="0.0" data-corrob="1" data-text="wails: wildcardpatterntoregex allows origin bypass via suffix match in bindingsallowedorigins affected: github.com/wailsapp/wails/v2. # security vulnerability report: wails v2 — origin validator bypass via wildcard pattern | | | |---|---| | **product** | wailsapp/wails (v2) | | **affected file** | `v2/internal/frontend/originvalidator/originvalidator.go` | | **affected versions** | all versions containing originvalidator (latest as of 2026-03-26) | | **cvssv4.0** | **7.6 high** — `cvss:4.0/av:n/ac:l/at:p/pr:n/ui:p/vc:h/vi:h/va:l/sc:l/si:l/sa:n` | | **cwe** | cwe-625: permissive regular expression | | **platforms** | windows / linux / macos (all desktop targets) | --- ## summary wails v2 provides `bindingsallowedorigins` github linux windows macos cvss ghsa — go cve-2026-34157 high ">
+<div class="rank ">64</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-47hv-j4px-h3c9" target="_blank" rel="noopener">Wails: wildcardPatternToRegex allows Origin bypass via suffix match in BindingsAllowedOrigins</a></h2>
+<div class="summary">Affected: github.com/wailsapp/wails/v2. # Security Vulnerability Report: Wails v2 — Origin Validator Bypass via Wildcard Pattern | | | |---|---| | **Product** | wailsapp/wails (v2) | | **Affected File** | `v2/internal/frontend/originvalidator/originValidator.go` | | **Affected Ve…</div>
+<div class="kws"><span class="sev sev-high">high</span><span class="cve">CVE-2026-34157</span><span class="kw">github</span><span class="kw">linux</span><span class="kw">windows</span><span class="kw">macos</span><span class="kw">cvss</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — go</span>
+<span>Oct 27</span>
+<span>score 0.223</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.1840" data-date="1793127650" data-sevrank="3" data-cvss="0.0" data-corrob="1" data-text="ctfer.io&#x27;s ctfd terraform provider allows a local or remote attacker to read team passwords in state as non sensitive values affected: github.com/ctfer-io/terraform-provider-ctfd, github.com/ctfer-io/terraform-provider-ctfd/v2. ### impact ctfer.io&#x27;s ctfd terraform provider stores `ctfd_team.password` as non-sensitive values (cwe-522). a local or remote attacker, who can have access to the terraform state, can read team passwords without the need for the state password for decryption. ### patches patched in v2.8.2. ### workarounds no workaround exist, yet ctfer.io recommends you keep your state in safe environments with a limited set of users who can access it as a good practice to avoid exploitation of this vulnerability. github terraform ghsa — go cve-2026-116683 high ">
+<div class="rank ">65</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-vg84-c5mg-76xh" target="_blank" rel="noopener">CTFer.io&#x27;s CTFd Terraform Provider allows a local or remote attacker to read team passwords in state as non sensitive values</a></h2>
+<div class="summary">Affected: github.com/ctfer-io/terraform-provider-ctfd, github.com/ctfer-io/terraform-provider-ctfd/v2. ### Impact CTFer.io&#x27;s CTFd Terraform Provider stores `ctfd_team.password` as non-sensitive values (CWE-522). A local or remote attacker, who can have access to the Terraform sta…</div>
+<div class="kws"><span class="sev sev-high">high</span><span class="cve">CVE-2026-116683</span><span class="kw">github</span><span class="kw">terraform</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — go</span>
+<span>Oct 27</span>
+<span>score 0.184</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.1611" data-date="1793135090" data-sevrank="3" data-cvss="8.8" data-corrob="1" data-text="atlantis: os command injection through pr-controlled terraform workspace enables rce during plan affected: github.com/runatlantis/atlantis. ### summary atlantis passes the terraform `workspace` value from a pull request&#x27;s `atlantis.yaml` into a shell command without quoting or escaping it. a contributor whose pull request is eligible for an atlantis plan can include shell metacharacters in the workspace name and execute arbitrary commands as the atlantis service account. this does not require custom workflows, `allow_custom_workflows`, or permission to run `terraform apply`. the executed command inherits the atlantis process environment, which commonly contains cloud-provider, terraform, and vcs credentials. ### details verif github terraform rce ghsa — go cve-2026-116676 high ">
+<div class="rank ">66</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-rjh2-4xgw-p2hj" target="_blank" rel="noopener">Atlantis: OS command injection through PR-controlled Terraform workspace enables RCE during plan</a></h2>
+<div class="summary">Affected: github.com/runatlantis/atlantis. ### Summary Atlantis passes the Terraform `workspace` value from a pull request&#x27;s `atlantis.yaml` into a shell command without quoting or escaping it. A contributor whose pull request is eligible for an Atlantis plan can include shell me…</div>
+<div class="kws"><span class="sev sev-high">high 8.8</span><span class="cve">CVE-2026-116676</span><span class="kw">github</span><span class="kw">terraform</span><span class="kw">rce</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — go</span>
+<span>Oct 27</span>
+<span>score 0.161</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.1611" data-date="1793107765" data-sevrank="3" data-cvss="8.8" data-corrob="1" data-text="dolibarr has sql injection in societe/class/societe.class.php via localtax1_value parameter affected: dolibarr/dolibarr. ### summary a sql injection vulnerability exists in the third party (company) update functionality of dolibarr erp/crm. the `localtax1_value` parameter (`lt1`) is concatenated directly into an sql update statement in `societe/class/societe.class.php` at line 1672 without any escaping, type casting, or parameterized query binding. an authenticated user with standard &quot;third party: create/edit&quot; permission can extract any data from the database, including password hashes, api keys, and all business data. tested on dolibarr v23.0.0 (latest stable), default installation via official doc php sql injection ghsa — composer cve-2026-33944 high ">
+<div class="rank ">67</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-v5fq-cf5m-vwv7" target="_blank" rel="noopener">Dolibarr has SQL Injection in societe/class/societe.class.php via localtax1_value parameter</a></h2>
+<div class="summary">Affected: dolibarr/dolibarr. ### Summary A SQL Injection vulnerability exists in the Third Party (Company) update functionality of Dolibarr ERP/CRM. The `localtax1_value` parameter (`lt1`) is concatenated directly into an SQL UPDATE statement in `societe/class/societe.class.php` …</div>
+<div class="kws"><span class="sev sev-high">high 8.8</span><span class="cve">CVE-2026-33944</span><span class="kw">php</span><span class="kw">sql injection</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — composer</span>
+<span>Oct 27</span>
+<span>score 0.161</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.1371" data-date="1793135232" data-sevrank="3" data-cvss="0.0" data-corrob="1" data-text="tinymce cross-site scripting (xss) vulnerability using media plugin `data-mce-object` serialization affected: tinymce, tinymce, tinymce/tinymce, tinymce, tinymce. ### impact stored xss vulnerability in the media plugin. attackers can inject malicious scripts via elements crafted through the data-mce-object attribute, which are created and executed before sanitization. impacts users of tinymce with the media plugin enabled. ### patches this vulnerability has been patched in tinymce 8.9.3 and tinymce 7.9.4 by ensuring that, when using the media plugin, any content created through the data-mce-object attribute is properly sanitized first. ### workarounds no official workaround available. ### fix to avoid this vulnerability: upgrade to tinymce 8.9.3 or xss ghsa — composer cve-2026-116675 high ">
+<div class="rank ">68</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-mf2p-h6hf-fcwm" target="_blank" rel="noopener">TinyMCE Cross-Site Scripting (XSS) vulnerability using media plugin `data-mce-object` serialization</a></h2>
+<div class="summary">Affected: tinymce, TinyMCE, tinymce/tinymce, tinymce, TinyMCE. ### Impact Stored XSS vulnerability in the media plugin. Attackers can inject malicious scripts via elements crafted through the data-mce-object attribute, which are created and executed before sanitization. Impacts u…</div>
+<div class="kws"><span class="sev sev-high">high</span><span class="cve">CVE-2026-116675</span><span class="kw">xss</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — composer</span>
+<span>Oct 27</span>
+<span>score 0.137</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.1371" data-date="1793115494" data-sevrank="3" data-cvss="0.0" data-corrob="1" data-text="compress zstd: panic on two-block frames affected: github.com/klauspost/compress/zstd. ### summary a crafted ~27 kb two-block zstd frame makes decodeall and the streaming decoder panic with an out-of-range slice index instead of returning a decode error. the same bytes decode fine with the reference zstd. any program that decompresses untrusted zstd input can be crashed by it. reproduced on v1.20.0 and v1.20.1. released in https://github.com/klauspost/compress/releases/tag/v1.20.2 ### details the panic is in the fse decoder that `huff0.readtable` uses to read a block&#x27;s huffman-weight table. three conditions have to hold at once, and the crafted frame arranges all three. github ghsa — go cve-2026-116591 high ">
+<div class="rank ">69</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-fpmh-frq8-7rj8" target="_blank" rel="noopener">compress zstd: Panic on two-block frames</a></h2>
+<div class="summary">Affected: github.com/klauspost/compress/zstd. ### Summary A crafted ~27 KB two-block zstd frame makes DecodeAll and the streaming decoder panic with an out-of-range slice index instead of returning a decode error. The same bytes decode fine with the reference zstd. Any program th…</div>
+<div class="kws"><span class="sev sev-high">high</span><span class="cve">CVE-2026-116591</span><span class="kw">github</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — go</span>
+<span>Oct 27</span>
+<span>score 0.137</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.1258" data-date="1793127699" data-sevrank="3" data-cvss="0.0" data-corrob="1" data-text="symfony: redos in headerutils::split() reachable through the cache-control request header affected: symfony/http-foundation, symfony/http-foundation, symfony/http-foundation, symfony/symfony, symfony/symfony. ### description `headerutils::split()` parsed header values with a pattern whose token alternative also matched whitespace, followed by a `(?&lt;!\s)` lookbehind. a run of whitespace placed before a separator could be divided among the iterations of the enclosing repetition in exponentially many ways, and the engine tried all of them before settling. `headerbag` calls it for the `cache-control` header whenever a `request` is built, so any application handling http requests is reachable, with no authentication. a single request carrying such a header costs close to a second of cpu (813 ms for a token ghsa — composer cve-2026-108082 high ">
+<div class="rank ">70</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-r925-mgvr-h9cc" target="_blank" rel="noopener">Symfony: ReDoS in HeaderUtils::split() Reachable Through the Cache-Control Request Header</a></h2>
+<div class="summary">Affected: symfony/http-foundation, symfony/http-foundation, symfony/http-foundation, symfony/symfony, symfony/symfony. ### Description `HeaderUtils::split()` parsed header values with a pattern whose token alternative also matched whitespace, followed by a `(?&lt;!\s)` lookbehind. A…</div>
+<div class="kws"><span class="sev sev-high">high</span><span class="cve">CVE-2026-108082</span><span class="kw">token</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — composer</span>
+<span>Oct 27</span>
+<span>score 0.126</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.1064" data-date="1793127710" data-sevrank="3" data-cvss="0.0" data-corrob="1" data-text="symfony: unbounded recursion in the yaml inline lexer lets a single document crash the process affected: symfony/symfony, symfony/symfony, symfony/symfony, symfony/symfony, symfony/yaml. ### description `yaml\parser::lexinlinestructure()` recursed through `lexinlinemapping()` and `lexinlinesequence()` for every `{` and `[` of an inline collection, without entering the nesting level that the rest of the parser bounds with `maxnestinglevel`. a document made of deeply nested inline collections, such as `[[[[...]]]]`, exhausted the stack while it was being lexed: depending on the php version and its stack settings, the process crashed or the request ended with a fatal error. any code parsing untrusted yaml is affected. that includes `#[maprequestpayload]` when the yaml component php ghsa — composer cve-2026-109413 high ">
+<div class="rank ">71</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-2v3c-qxhr-7vpv" target="_blank" rel="noopener">Symfony: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process</a></h2>
+<div class="summary">Affected: symfony/symfony, symfony/symfony, symfony/symfony, symfony/symfony, symfony/yaml. ### Description `Yaml\Parser::lexInlineStructure()` recursed through `lexInlineMapping()` and `lexInlineSequence()` for every `{` and `[` of an inline collection, without entering the nest…</div>
+<div class="kws"><span class="sev sev-high">high</span><span class="cve">CVE-2026-109413</span><span class="kw">php</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — composer</span>
+<span>Oct 27</span>
+<span>score 0.106</span>
+</div></div>
+<div class="item" data-cat="research" data-sev="critical" data-overflow="true" data-score="0.9364" data-date="1793026188" data-sevrank="4" data-cvss="9.0" data-corrob="1" data-text="litellm 1.107.0 compromised on pypi and docker: credential stealer and hourly remote code loader litellm 1.107.0 pypi wheels and docker images shipped a .pth credential stealer and an hourly remote code loader that exfiltrate to litellm.dev. analysis, iocs, and how to respond. pypi docker credential stealer stepsecurity  critical ">
+<div class="rank ">72</div>
+<div class="body">
+<h2><a href="https://www.stepsecurity.io/blog/litellm-1-107-0-compromised-pypi-backdoored-wheels-credential-stealer" target="_blank" rel="noopener">litellm 1.107.0 Compromised on PyPI and Docker: Credential Stealer and Hourly Remote Code Loader</a></h2>
+<div class="summary">litellm 1.107.0 PyPI wheels and Docker images shipped a .pth credential stealer and an hourly remote code loader that exfiltrate to litellm.dev. Analysis, IOCs, and how to respond.</div>
+<div class="kws"><span class="sev sev-critical">critical 9.0</span><span class="kw">pypi</span><span class="kw">docker</span><span class="kw">credential</span><span class="kw">stealer</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-research">StepSecurity</span>
+<span>Oct 26</span>
+<span>score 0.936</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.3935" data-date="1793448116" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="chainalysis confirms intrusion into internal tools and exposure of customer identity data american blockchain analysis firm chainalysis said it was the target of a cybersecurity incident in which an external actor accessed non-sensitive customer data. however, the company noted that the breach did not result in unauthorized access to its investigation content, authentication credentials, or session tokens. &quot;this month, chainalysis detected an external actor using offensive agentic session breach the hacker news   ">
+<div class="rank ">73</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/10/chainalysis-confirms-intrusion-into.html" target="_blank" rel="noopener">Chainalysis Confirms Intrusion Into Internal Tools and Exposure of Customer Identity Data</a></h2>
+<div class="summary">American blockchain analysis firm Chainalysis said it was the target of a cybersecurity incident in which an external actor accessed non-sensitive customer data. However, the company noted that the breach did not result in unauthorized access to its investigation content, authent…</div>
+<div class="kws"><span class="kw">session</span><span class="kw">breach</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Oct 31</span>
+<span>score 0.393</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.1874" data-date="1793422572" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="cloudflare reports 18.2 million network-layer ddos attacks in q3, up 38% threat actors are launching about 8,226 network-layer distributed denial-of-service (ddos) attacks per hour, cloudflare revealed thursday. the web infrastructure and security company said it autonomously mitigated 18.2 million network-layer (l3) ddos attacks and 14.4 trillion http ddos requests in the third quarter of 2026. that amounts to 197,400 attacks per day, or one attack every 0.44 cloudflare the hacker news   ">
+<div class="rank ">74</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/10/cloudflare-reports-182-million-network.html" target="_blank" rel="noopener">Cloudflare Reports 18.2 Million Network-Layer DDoS Attacks in Q3, Up 38%</a></h2>
+<div class="summary">Threat actors are launching about 8,226 network-layer distributed denial-of-service (DDoS) attacks per hour, Cloudflare revealed Thursday. The web infrastructure and security company said it autonomously mitigated 18.2 million network-layer (L3) DDoS attacks and 14.4 trillion HTT…</div>
+<div class="kws"><span class="kw">cloudflare</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Oct 31</span>
+<span>score 0.187</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.1045" data-date="1793424821" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="a shared chatgpt link could run attacker code in your session and read private chats a malicious chatgpt share link could run an attacker&#x27;s code in the logged-in session of anyone who opened it, allowing them to read their private conversations, researchers at&amp;nbsp;the security firm parameter&amp;nbsp;showed. the researchers reported the flaw through&amp;nbsp;openai&#x27;s bug bounty program&amp;nbsp;on october 18, and openai fixed it eight days later and rated it p1, its most serious category. session the hacker news   ">
+<div class="rank ">75</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/10/a-shared-chatgpt-link-could-run.html" target="_blank" rel="noopener">A Shared ChatGPT Link Could Run Attacker Code in Your Session and Read Private Chats</a></h2>
+<div class="summary">A malicious ChatGPT share link could run an attacker&#x27;s code in the logged-in session of anyone who opened it, allowing them to read their private conversations, researchers at&amp;nbsp;the security firm Parameter&amp;nbsp;showed. The researchers reported the flaw through&amp;nbsp;OpenAI&#x27;s bu…</div>
+<div class="kws"><span class="kw">session</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Oct 31</span>
+<span>score 0.105</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="medium" data-overflow="true" data-score="0.3896" data-date="1793401253" data-sevrank="2" data-cvss="6.5" data-corrob="1" data-text="nuxt: dot segments in the request path bypass `server/middleware` path checks and server route rules on page routes affected: nuxt, @nuxt/nitro-server. ### summary since `4.6.0`, nuxt resolves `.` and `..` segments in the request path, including percent-encoded forms such as `%2e`, before rendering a page. nitro&#x27;s routing, nitro&#x27;s route rules and `server/middleware` see the path with those segments still in place. a request for `/%2e/admin` therefore renders the page at `/admin`, while server-side checks keyed on `/admin` do not apply. ### impact an unauthenticated attacker can bypass server-side controls that match on the request path of a page route. `server/middleware` that checks `event.path` (or `event.node.req.url`) is skipped: ``` node ghsa — npm cve-2026-119200 medium ">
+<div class="rank ">76</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-9v7c-q64q-vv33" target="_blank" rel="noopener">Nuxt: Dot segments in the request path bypass `server/middleware` path checks and server route rules on page routes</a></h2>
+<div class="summary">Affected: nuxt, @nuxt/nitro-server. ### Summary Since `4.6.0`, Nuxt resolves `.` and `..` segments in the request path, including percent-encoded forms such as `%2e`, before rendering a page. Nitro&#x27;s routing, Nitro&#x27;s route rules and `server/middleware` see the path with those seg…</div>
+<div class="kws"><span class="sev sev-medium">medium 6.5</span><span class="cve">CVE-2026-119200</span><span class="kw">node</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — npm</span>
+<span>Oct 30</span>
+<span>score 0.390</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="medium" data-overflow="true" data-score="0.3453" data-date="1793401281" data-sevrank="2" data-cvss="0.0" data-corrob="1" data-text="phpunit vulnerable to code execution by other local users via shared temporary directory in phpt code coverage handling affected: phpunit/phpunit. ### summary when phpt tests are run with code coverage, phpunit 13.4.0 to 13.4.3 writes the code of each phpt test to a directory with a fixed name below the operating system&#x27;s path used for temporary files, for instance `/tmp/phpunit-phpt` on linux, and executes it from there. phpunit uses this directory even when it was created by another user. on a system where the path used for temporary files is shared between users, another local user can create this directory before the developer runs phpunit, replace the code of a phpt test before it is executed, and thereby execute arbitrary code wi linux ghsa — composer cve-2026-119193 medium ">
+<div class="rank ">77</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-9vw2-f4vp-x7gf" target="_blank" rel="noopener">PHPUnit vulnerable to code execution by other local users via shared temporary directory in PHPT code coverage handling</a></h2>
+<div class="summary">Affected: phpunit/phpunit. ### Summary When PHPT tests are run with code coverage, PHPUnit 13.4.0 to 13.4.3 writes the code of each PHPT test to a directory with a fixed name below the operating system&#x27;s path used for temporary files, for instance `/tmp/phpunit-phpt` on Linux, an…</div>
+<div class="kws"><span class="sev sev-medium">medium</span><span class="cve">CVE-2026-119193</span><span class="kw">linux</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — composer</span>
+<span>Oct 30</span>
+<span>score 0.345</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.3232" data-date="1793326029" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="billions stolen in binance hack billions stolen from binance in a crypto hack, last week’s php2shell bugs are being exploited to hack palo alto networks firewalls, the brotli bugs also get a run, belarusian state hackers carry out a wiper attack, and a hacker leaks the data of 41,000 dhs employees. palo alto risky business news   ">
+<div class="rank ">78</div>
+<div class="body">
+<h2><a href="https://risky.biz/RBNEWS627/" target="_blank" rel="noopener">Billions stolen in Binance hack</a></h2>
+<div class="summary">Billions stolen from Binance in a crypto hack, Last week’s PHP2Shell bugs are being exploited to hack Palo Alto Networks firewalls, The Brotli bugs also get a run, Belarusian state hackers carry out a wiper attack, and a hacker leaks the data of 41,000 DHS employees.</div>
+<div class="kws"><span class="kw">palo alto</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">Risky Business News</span>
+<span>Oct 30</span>
+<span>score 0.323</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.3101" data-date="1793365232" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="cisa says max severity gitlab flaw now exploited in the wild attackers have started exploiting a maximum-severity gitlab vulnerability patched earlier this month, according to the us cybersecurity and infrastructure security agency (cisa). [...] gitlab in the wild bleepingcomputer   ">
+<div class="rank ">79</div>
+<div class="body">
+<h2><a href="https://www.bleepingcomputer.com/news/security/hackers-now-exploiting-max-severity-gitlab-flaw-in-attacks/" target="_blank" rel="noopener">CISA says max severity GitLab flaw now exploited in the wild</a></h2>
+<div class="summary">Attackers have started exploiting a maximum-severity GitLab vulnerability patched earlier this month, according to the US Cybersecurity and Infrastructure Security Agency (CISA). [...]</div>
+<div class="kws"><span class="kw">gitlab</span><span class="kw">in the wild</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">BleepingComputer</span>
+<span>Oct 30</span>
+<span>score 0.310</span>
+</div></div>
+<div class="item" data-cat="research" data-sev="" data-overflow="true" data-score="0.2828" data-date="1793366440" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="compromised claude code extension (2.1.313) in cursor marketplace plants attacker ssh key and persistence a modified build of anthropic&amp;#8217;s claude code extension was available in the cursor extension marketplace for about 11 hours on october 29, 2026. the malicious extension added an attacker-controlled ssh key, installed persistence, and attempted to open a reverse ssh tunnel. overview on october 29, 2026, cursor disclosed that a maliciously modified version of the [&amp;#8230;] the post compromised claude code extension (2.1.313) in cursor marketplace plants attacker ssh key and persistence appeared first on ox security . ssh ox security   ">
+<div class="rank ">80</div>
+<div class="body">
+<h2><a href="https://www.ox.security/blog/malicious-claude-code-extension-cursor-ssh-backdoor/" target="_blank" rel="noopener">Compromised Claude Code Extension (2.1.313) in Cursor Marketplace Plants Attacker SSH Key and Persistence</a></h2>
+<div class="summary">A modified build of Anthropic&amp;#8217;s Claude Code extension was available in the Cursor Extension Marketplace for about 11 hours on October 29, 2026. The malicious extension added an attacker-controlled SSH key, installed persistence, and attempted to open a reverse SSH tunnel. O…</div>
+<div class="kws"><span class="kw">ssh</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-research">OX Security</span>
+<span>Oct 30</span>
+<span>score 0.283</span>
+</div></div></div>
+<button class="show-more" id="show-more">show more <span class="show-more-count" id="show-more-count"></span></button>
+<div class="empty" id="empty" style="display:none">no matches</div>
+<footer><span>feedrank.security</span><span><a href="feedrank.xml">atom</a> · <a href="feedrank.json">json</a> · <a href="feedrank.md">md</a></span></footer>
+</div>
+<script>
+const items=Array.from(document.querySelectorAll('.item')),search=document.getElementById('search'),chips=document.querySelectorAll('.chip'),empty=document.getElementById('empty');
+const itemsContainer=document.getElementById('items'),showMore=document.getElementById('show-more'),showMoreCount=document.getElementById('show-more-count');
+const sortButtons=document.querySelectorAll('.sort');
+const TOTAL=items.length,INITIAL=10,STEP=20;
+let activeCat='all',activeSev=null,reveal=INITIAL;
+let sortKey='trending',sortDir='desc';
+
+// Sort direction defaults — what makes intuitive sense when picking each key
+const DEFAULT_DIR={trending:'desc',date:'desc',sevrank:'desc',corrob:'desc'};
+
+function isFiltering(){
+  return search.value.trim()!==''||activeCat!=='all'||activeSev!==null;
+}
+
+function applySort(){
+  // The `trending` and `sevrank` chips handle their own tiebreak chains
+  // below; `date` and `corrob` fall into the generic numeric branch.
+  const numeric={date:1,corrob:1};
+  const sorted=[...items].sort((a,b)=>{
+    let cmp;
+    if(sortKey==='trending'){
+      // 4-key sort mirroring server rank(): tier (crit/high vs rest), day,
+      // is-critical, score. data-date = freshest cluster-member date.
+      const at=parseFloat(a.dataset.sevrank||0)>=3?1:0;
+      const bt=parseFloat(b.dataset.sevrank||0)>=3?1:0;
+      cmp=at-bt;
+      if(cmp===0){
+        const ad=Math.floor(parseFloat(a.dataset.date||0)/86400);
+        const bd=Math.floor(parseFloat(b.dataset.date||0)/86400);
+        cmp=ad-bd;
+      }
+      if(cmp===0){
+        const ac=parseFloat(a.dataset.sevrank||0)===4?1:0;
+        const bc=parseFloat(b.dataset.sevrank||0)===4?1:0;
+        cmp=ac-bc;
+      }
+      if(cmp===0) cmp=parseFloat(a.dataset.score||0)-parseFloat(b.dataset.score||0);
+    }else if(sortKey==='sevrank'){
+      // Severity-primary, CVSS tiebreak so CVSS 10 critical items appear
+      // above CVSS 9.0 critical items within the same severity bucket.
+      cmp=parseFloat(a.dataset.sevrank||0)-parseFloat(b.dataset.sevrank||0);
+      if(cmp===0) cmp=parseFloat(a.dataset.cvss||0)-parseFloat(b.dataset.cvss||0);
+    }else if(numeric[sortKey]){
+      cmp=parseFloat(a.dataset[sortKey]||0)-parseFloat(b.dataset[sortKey]||0);
+    }
+    // Final tiebreak: score desc — keeps ordering predictable
+    if(cmp===0){
+      const as=parseFloat(a.dataset.score||0),bs=parseFloat(b.dataset.score||0);
+      cmp=as-bs;
+    }
+    return sortDir==='asc'?cmp:-cmp;
+  });
+  // Reorder DOM
+  const frag=document.createDocumentFragment();
+  sorted.forEach(it=>frag.appendChild(it));
+  itemsContainer.appendChild(frag);
+  itemsContainer.dataset.sortKey=sortKey;
+  // Update arrow indicators
+  sortButtons.forEach(b=>{
+    const a=b.querySelector('.arrow');
+    if(b.dataset.sort===sortKey){
+      b.classList.add('active');
+      a.textContent=sortDir==='asc'?'↑':'↓';
+    }else{
+      b.classList.remove('active');
+      a.textContent='';
+    }
+  });
+}
+
+function apply(){
+  const q=search.value.trim();let regex=null,plain=q.toLowerCase();
+  if(q.startsWith('/')&&q.endsWith('/')&&q.length>2){try{regex=new RegExp(q.slice(1,-1),'i');plain='';}catch(e){}}
+  let visible=0;
+  items.forEach(it=>{
+    const cat=it.dataset.cat,sev=it.dataset.sev,text=it.dataset.text;
+    let show=(activeCat==='all'||cat===activeCat);
+    if(show&&activeSev==='critical')show=sev==='critical';
+    if(show&&activeSev==='high')show=(sev==='critical'||sev==='high');
+    if(show&&q)show=regex?regex.test(text):text.includes(plain);
+    it.classList.toggle('hidden',!show);if(show)visible++;
+  });
+  empty.style.display=visible===0?'block':'none';
+  updateOverflow();
+}
+
+function updateOverflow(){
+  // When filtering OR when sorted by something other than the default feed,
+  // show all (overflow gating only makes sense for the default view).
+  if(isFiltering()||sortKey!=='trending'){
+    itemsContainer.classList.remove('collapsed');
+    showMore.style.display='none';
+    renumber();
+    return;
+  }
+  // In default-feed view, mark items past the reveal threshold as overflow.
+  // Walk current DOM order so the threshold respects the active sort.
+  let r=0;
+  Array.from(itemsContainer.children).forEach(it=>{
+    r++;
+    it.dataset.overflow=(r>reveal)?'true':'false';
+  });
+  if(reveal>=TOTAL){
+    itemsContainer.classList.remove('collapsed');
+    showMore.style.display='none';
+  }else{
+    itemsContainer.classList.add('collapsed');
+    showMore.style.display='block';
+    showMoreCount.textContent='('+(TOTAL-reveal)+' more)';
+  }
+  renumber();
+}
+
+function renumber(){
+  // Rewrite rank text to match each item's current visible position so the
+  // numbering stays consistent across sort changes and filter toggles.
+  // Skip items hidden by filter or by collapsed-overflow.
+  const collapsed=itemsContainer.classList.contains('collapsed');
+  let r=0;
+  Array.from(itemsContainer.children).forEach(it=>{
+    if(it.classList.contains('hidden')) return;
+    if(collapsed&&it.dataset.overflow==='true') return;
+    r++;
+    const el=it.querySelector('.rank');
+    if(!el) return;
+    el.textContent=r<10?('0'+r):String(r);
+    el.classList.remove('rank-1','rank-2','rank-3');
+    if(r<=3) el.classList.add('rank-'+r);
+  });
+}
+
+showMore.addEventListener('click',()=>{
+  reveal=Math.min(reveal+STEP,TOTAL);
+  updateOverflow();
+});
+
+sortButtons.forEach(b=>b.addEventListener('click',()=>{
+  const key=b.dataset.sort;
+  if(key===sortKey){
+    // Toggle direction
+    sortDir=sortDir==='asc'?'desc':'asc';
+  }else{
+    sortKey=key;
+    sortDir=DEFAULT_DIR[key]||'desc';
+  }
+  applySort();
+  updateOverflow();
+}));
+
+search.addEventListener('input',apply);
+chips.forEach(c=>c.addEventListener('click',()=>{
+  if(c.dataset.cat){chips.forEach(x=>{if(x.dataset.cat)x.classList.remove('active')});c.classList.add('active');activeCat=c.dataset.cat;}
+  else if(c.dataset.sev){if(c.classList.contains('active')){c.classList.remove('active');activeSev=null;}else{chips.forEach(x=>{if(x.dataset.sev)x.classList.remove('active')});c.classList.add('active');activeSev=c.dataset.sev;}}
+  apply();
+}));
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='/'&&document.activeElement!==search){e.preventDefault();search.focus();}
+  else if(e.key==='Escape'){
+    search.value='';activeCat='all';activeSev=null;
+    chips.forEach(x=>{x.classList.remove('active');if(x.dataset.cat==='all')x.classList.add('active');});
+    sortKey='trending';sortDir='desc';reveal=INITIAL;
+    applySort();apply();search.blur();
+  }
+});
+
+// Initial state
+itemsContainer.dataset.sortKey='trending';
+updateOverflow();
+</script>
+</body></html>
